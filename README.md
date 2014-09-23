@@ -6,6 +6,7 @@ I am in the process of moving my old dotfiles directory (which was at one point 
 
 * Git 1.7.10 or later
 * Exuberant Ctags (5.8 or later?)
+* Powerline beta (installed in /usr/local/bin)
 
 ## Installation
 

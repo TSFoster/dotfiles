@@ -2,3 +2,4 @@
 
 ln -i ./git/home.gitconfig $HOME/.gitconfig
 ln -i ./shell/home.inputrc $HOME/.inputrc
+ln -i ./tmux/home.tmux.conf $HOME/.tmux.conf
