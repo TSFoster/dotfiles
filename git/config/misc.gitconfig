@@ -1,0 +1,17 @@
+[core]
+  editor = vim
+  pager = less -FRSX
+  excludesfile = global.gitignore
+  autocrlf = input
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+[push]
+  default = simple
+[mergetool]
+  keepBackup = false
+[init]
+  templatedir = ~/.dotfiles/git/template

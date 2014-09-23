@@ -1,0 +1,4 @@
+[include]
+  path = config/credentials.gitconfig
+  path = config/aliases.gitconfig
+  path = config/misc.gitconfig

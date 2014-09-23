@@ -1,0 +1,33 @@
+[alias]
+  h = help
+  s = status
+  gr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%Creset' --abbrev-commit --date=relative
+
+  cl = clone
+  a = add
+  c = commit
+  co = checkout
+  nb = checkout -b
+  b = branch
+  m = merge
+  ps = push
+  pl = pull
+
+  d = diff
+  df = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
+
+  st = stash
+  sp = stash pop
+
+  re = reset
+  unadd = reset HEAD
+  ua = reset HEAD
+
+  g = grep -i
+  root = rev-parse --show-toplevel
+  cdr = "!cd `git rev-parse --show-toplevel`"
+
+  ctags = !.git/hooks/ctags
+
+  exec = "!exec "
+  x = "!exec "
