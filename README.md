@@ -8,6 +8,7 @@ My dotfiles do not (yet) check for the existence of any of these, it just assume
 
 * Git 1.7.10+
 * Exuberant Ctags 5.8+
+* tmux 1.9+
 * Powerline beta (installed in /usr/local/bin)
 
 ## Installation
