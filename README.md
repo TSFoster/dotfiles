@@ -4,10 +4,12 @@ I am in the process of moving my old dotfiles directory (which was at one point 
 
 ## Requirements
 
-* Git 1.7.10 or later
-* Exuberant Ctags (5.8 or later?)
+My dotfiles do not (yet) check for the existence of any of these, it just assumes them to be installed.
+
+* Git 1.7.10+
+* Exuberant Ctags 5.8+
 * Powerline beta (installed in /usr/local/bin)
 
 ## Installation
 
-Check requirements, clone this repository `git clone https://github.com/TSFoster/dotfiles.git ~/.dotfiles` and run `~/.dotfiles/bin/refresh_dotfiles`.
+Check requirements are met, clone this repository `git clone https://github.com/TSFoster/dotfiles.git ~/.dotfiles` and run `~/.dotfiles/bin/refresh_dotfiles`.
