@@ -1,9 +1,29 @@
 #!/bin/sh
 
-touch ~/.hushlogin
-mkdir -p $HOME/.config
-ln -i ./powerline $HOME/.config/
-ln -i ./git/home.gitconfig $HOME/.gitconfig
-ln -i ./shell/home.inputrc $HOME/.inputrc
-ln -i ./tmux/home.tmux.conf $HOME/.tmux.conf
-ln -i ./irb/home.irbrc $HOME/.irbrc
+cd $HOME
+
+# Not interested in welcome messages
+touch .hushlogin
+
+cd .dotfiles
+
+# Approximate ln -i with directory (can't symlink, powerline won't work)
+if [ -d "../.config/powerline" ]; then
+  if [ -n "$(diff -r --exclude='*.pyc' powerline ../.config/powerline)" ]; then
+    # Only ask if ~/.config/powerline directory exists and differs (apart from .pyc files)
+    read -p "replace powerline? " reply
+    case $reply in
+        [Yy]* ) rm -rf ../.config/powerline && cp -r powerline ../.config/;;
+        * ) echo 'not replaced';;
+    esac
+  fi
+else
+  mkdir -p .config
+  cp -r powerline ../.config/
+fi
+
+# Only link files if they aren't already
+if ! [ git/home.gitconfig  -ef ../.gitconfig ] ; then ln -i git/home.gitconfig  ../.gitconfig ; fi
+if ! [ shell/home.inputrc  -ef ../.inputrc ]   ; then ln -i shell/home.inputrc  ../.inputrc   ; fi
+if ! [ tmux/home.tmux.conf -ef ../.tmux.conf ] ; then ln -i tmux/home.tmux.conf ../.tmux.conf ; fi
+if ! [ irb/home.irbrc      -ef ../.irbrc ]     ; then ln -i irb/home.irbrc      ../.irbrc     ; fi
