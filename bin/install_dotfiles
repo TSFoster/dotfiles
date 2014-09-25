@@ -27,3 +27,12 @@ if ! [ git/home.gitconfig  -ef ../.gitconfig ] ; then ln -i git/home.gitconfig  
 if ! [ shell/home.inputrc  -ef ../.inputrc ]   ; then ln -i shell/home.inputrc  ../.inputrc   ; fi
 if ! [ tmux/home.tmux.conf -ef ../.tmux.conf ] ; then ln -i tmux/home.tmux.conf ../.tmux.conf ; fi
 if ! [ irb/home.irbrc      -ef ../.irbrc ]     ; then ln -i irb/home.irbrc      ../.irbrc     ; fi
+
+# If we're on a Mac
+if uname | grep -q 'Darwin'; then
+  mkdir -p ../Library/Scripts
+  cd applescript
+  for scpt in *.scpt; do
+    if ! [ "../../Library/Scripts/$scpt" -ef "$scpt" ]; then ln -i $scpt ../../Library/Scripts; fi
+  done
+fi
