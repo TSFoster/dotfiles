@@ -1,0 +1,14 @@
+{
+	"name": "Solarized Dark for tmux",
+	"groups": {
+		"background:divider": { "fg": "solarized_base3"  , "bg": "solarized_base03" } ,
+		"session":            { "fg": "solarized_base3"  , "bg": "solarized_base03" } ,
+		"external_ip":        { "fg": "solarized_base3"  , "bg": "solarized_yellow" } ,
+		"date":               { "fg": "solarized_base3"  , "bg": "solarized_blue"   } ,
+		"time":               { "fg": "solarized_base3"  , "bg": "solarized_cyan"   } ,
+		"battery":            { "fg": "solarized_base03" , "bg": "solarized_base3"  } ,
+		"environment":        { "fg": "solarized_orange" , "bg": "solarized_base1"  } ,
+		"time:divider":       { "fg": "solarized_base3"  , "bg": "solarized_base03" } ,
+		"hostname":           { "fg": "solarized_base03" , "bg": "solarized_blue"   }
+	}
+}

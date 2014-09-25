@@ -1,0 +1,94 @@
+{
+  "name": "Solarized Dark",
+  "groups": {
+    "background":               { "fg": "solarized_base3", "bg": "solarized_base02" },
+    "background:divider":       { "fg": "solarized_base00", "bg": "solarized_base02" },
+    "mode":                     { "fg": "solarized_base3", "bg": "solarized_green", "attr": ["bold"] },
+    "modified_indicator":       { "fg": "solarized_yellow", "bg": "solarized_base01", "attr": ["bold"] },
+    "paste_indicator":          { "fg": "solarized_base3", "bg": "solarized_orange", "attr": ["bold"] },
+    "readonly_indicator":       { "fg": "solarized_red", "bg": "solarized_base01" },
+    "branch":                   { "fg": "solarized_base2", "bg": "solarized_base01" },
+    "branch_dirty":             { "fg": "solarized_yellow", "bg": "solarized_base01" },
+    "branch_clean":             { "fg": "solarized_base2", "bg": "solarized_base01" },
+    "branch:divider":           { "fg": "solarized_base1", "bg": "solarized_base01" },
+    "file_directory":           { "fg": "solarized_base2", "bg": "solarized_base01" },
+    "file_name":                { "fg": "solarized_base3", "bg": "solarized_base01", "attr": ["bold"] },
+    "file_size":                { "fg": "solarized_base3", "bg": "solarized_base01" },
+    "file_name_no_file":        { "fg": "solarized_base3", "bg": "solarized_base01", "attr": ["bold"] },
+    "file_name_empty":          { "fg": "solarized_base3", "bg": "solarized_base01" },
+    "file_format":              { "fg": "solarized_base1", "bg": "solarized_base02" },
+    "file_encoding":            { "fg": "solarized_base1", "bg": "solarized_base02" },
+    "file_type":                { "fg": "solarized_base1", "bg": "solarized_base02" },
+    "file_vcs_status":          { "fg": "solarized_red", "bg": "solarized_base01" },
+    "file_vcs_status_M":        { "fg": "solarized_yellow", "bg": "solarized_base01" },
+    "file_vcs_status_A":        { "fg": "solarized_green", "bg": "solarized_base01" },
+    "line_percent":             { "fg": "solarized_base3", "bg": "solarized_base00" },
+    "line_percent_gradient":    { "fg": "green_yellow_orange_red", "bg": "solarized_base00" },
+    "line_current":             { "fg": "solarized_base03", "bg": "solarized_base2", "attr": ["bold"] },
+    "line_current_symbol":      { "fg": "solarized_base03", "bg": "solarized_base2" },
+    "col_current":              { "fg": "solarized_base0", "bg": "solarized_base2" },
+    "environment":              { "fg": "solarized_base0", "bg": "solarized_base2" },
+    "virtcol_current_gradient": { "fg": "green_yellow_orange_red", "bg": "solarized_base00" }
+  },
+  "mode_translations": {
+    "nc": {
+      "colors": {
+        "solarized_base01": "solarized_base02",
+        "solarized_base00": "solarized_base02",
+        "solarized_base0": "solarized_base01",
+        "solarized_base1": "solarized_base00",
+        "solarized_base2": "solarized_base0",
+        "solarized_base3": "solarized_base1"
+      }
+    },
+    "i": {
+      "groups": {
+        "background":             { "fg": "solarized_base3", "bg": "solarized_base01" },
+        "background:divider":     { "fg": "solarized_base2", "bg": "solarized_base01" },
+        "mode":                   { "fg": "solarized_base3", "bg": "solarized_blue", "attr": ["bold"] },
+        "modified_indicator":     { "fg": "solarized_yellow", "bg": "solarized_base2", "attr": ["bold"] },
+        "paste_indicator":        { "fg": "solarized_base3", "bg": "solarized_orange", "attr": ["bold"] },
+        "readonly_indicator":     { "fg": "solarized_red", "bg": "solarized_base2" },
+        "branch":                 { "fg": "solarized_base01", "bg": "solarized_base2" },
+        "branch:divider":         { "fg": "solarized_base00", "bg": "solarized_base2" },
+        "file_directory":         { "fg": "solarized_base01", "bg": "solarized_base2" },
+        "file_name":              { "fg": "solarized_base02", "bg": "solarized_base2", "attr": ["bold"] },
+        "file_size":              { "fg": "solarized_base02", "bg": "solarized_base2" },
+        "file_name_no_file":      { "fg": "solarized_base02", "bg": "solarized_base2", "attr": ["bold"] },
+        "file_name_empty":        { "fg": "solarized_base02", "bg": "solarized_base2" },
+        "file_format":            { "fg": "solarized_base2", "bg": "solarized_base01" },
+        "file_encoding":          { "fg": "solarized_base2", "bg": "solarized_base01" },
+        "file_type":              { "fg": "solarized_base2", "bg": "solarized_base01" },
+        "file_vcs_status":        { "fg": "solarized_red", "bg": "solarized_base2" },
+        "file_vcs_status_M":      { "fg": "solarized_base03", "bg": "solarized_base2" },
+        "file_vcs_status_A":      { "fg": "solarized_green", "bg": "solarized_base2" },
+        "line_percent":           { "fg": "solarized_base3", "bg": "solarized_base1" },
+        "line_percent_gradient":  { "fg": "solarized_base3", "bg": "solarized_base1" },
+        "line_current":           { "fg": "solarized_base03", "bg": "solarized_base3", "attr": ["bold"] },
+        "line_current_symbol":    { "fg": "solarized_base03", "bg": "solarized_base3" },
+        "col_current":            { "fg": "solarized_base0", "bg": "solarized_base3" },
+        "environment":            { "fg": "solarized_base0", "bg": "solarized_base2" }
+      }
+    },
+    "v": {
+      "groups": {
+        "mode": { "fg": "solarized_base3", "bg": "solarized_base03", "attr": ["bold"] }
+      }
+    },
+    "V": {
+      "groups": {
+        "mode": { "fg": "solarized_base3", "bg": "solarized_base03", "attr": ["bold"] }
+      }
+    },
+    "^V": {
+      "groups": {
+        "mode": { "fg": "solarized_base3", "bg": "solarized_base03", "attr": ["bold"] }
+      }
+    },
+    "R": {
+      "groups": {
+        "mode": { "fg": "solarized_base3", "bg": "solarized_red", "attr": ["bold"] }
+      }
+    }
+  }
+}

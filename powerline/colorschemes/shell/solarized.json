@@ -1,0 +1,18 @@
+{
+	"name": "Solarized Dark",
+	"groups": {
+		"user":               { "fg": "solarized_base3", "bg": "solarized_blue", "attr": ["bold"] },
+		"superuser":          { "fg": "solarized_base3", "bg": "solarized_red", "attr": ["bold"] },
+		"virtualenv":         { "fg": "solarized_base3", "bg": "solarized_green" },
+		"branch":             { "fg": "solarized_base1", "bg": "solarized_base02" },
+		"branch_dirty":       { "fg": "solarized_yellow", "bg": "solarized_base02" },
+		"branch_clean":       { "fg": "solarized_base1", "bg": "solarized_base02" },
+		"cwd":                { "fg": "solarized_base2", "bg": "solarized_base01" },
+		"cwd:current_folder": { "fg": "solarized_base3", "bg": "solarized_base01", "attr": ["bold"] },
+		"cwd:divider":        { "fg": "solarized_base1", "bg": "solarized_base01" },
+		"hostname":           { "fg": "solarized_base3", "bg": "solarized_base01" },
+		"exit_fail":          { "fg": "solarized_base3", "bg": "solarized_red" },
+		"exit_success":       { "fg": "solarized_base3", "bg": "solarized_green" },
+		"environment":        { "fg": "solarized_base3", "bg": "solarized_green" }
+	}
+}
