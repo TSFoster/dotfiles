@@ -14,3 +14,8 @@ My dotfiles do not (yet) check for the existence of any of these, it just assume
 ## Installation
 
 Check requirements are met, clone this repository `git clone https://github.com/TSFoster/dotfiles.git ~/.dotfiles` and run `~/.dotfiles/bin/refresh_dotfiles`.
+
+For the italic fonts (see the `italic-fonts` directory), make sure you have an italic font installed (I recommend [Triplicate]), and follow the instructions on [Alex Pearce]'s website.
+
+[Triplicate]:  http://practicaltypography.com/triplicate.html            "Triplicate font by Matthew Butterick"
+[Alex Pearce]: https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/ "Enabling italic fonts in iTerm2, tmux, and vim"
