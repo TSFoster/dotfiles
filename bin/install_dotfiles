@@ -1,38 +1,44 @@
 #!/bin/sh
 
+function link_unlinked {
+  if ! [ $1 -ef $2 ]; then ln -i $1 $2; fi
+}
+
 cd $HOME
 
 # Not interested in welcome messages
 touch .hushlogin
 
-cd .dotfiles
-
 # Approximate ln -i with directory (can't symlink, powerline won't work)
-if [ -d "../.config/powerline" ]; then
-  if [ -n "$(diff -r --exclude='*.pyc' powerline ../.config/powerline)" ]; then
-    # Only ask if ~/.config/powerline directory exists and differs (apart from .pyc files)
+if [ -d ".config/powerline" ]; then
+  # Only ask to replace if ~/.config/powerline directory
+  # exists and differs (apart from .pyc files)
+  if [ -n "$(diff -r --exclude='*.pyc' .dotfiles/powerline .config/powerline)" ]; then
     read -p "replace powerline? " reply
     case $reply in
-        [Yy]* ) rm -rf ../.config/powerline && cp -r powerline ../.config/;;
+        [Yy]* ) rm -rf .config/powerline;;
         * ) echo 'not replaced';;
     esac
   fi
-else
+fi
+if ! [ -d ".config/powerline" ]; then
   mkdir -p .config
-  cp -r powerline ../.config/
+  cp -r .dotfiles/powerline .config
 fi
 
+cd .dotfiles
+
 # Only link files if they aren't already
-if ! [ git/home.gitconfig  -ef ../.gitconfig ] ; then ln -i git/home.gitconfig  ../.gitconfig ; fi
-if ! [ shell/home.inputrc  -ef ../.inputrc ]   ; then ln -i shell/home.inputrc  ../.inputrc   ; fi
-if ! [ tmux/home.tmux.conf -ef ../.tmux.conf ] ; then ln -i tmux/home.tmux.conf ../.tmux.conf ; fi
-if ! [ irb/home.irbrc      -ef ../.irbrc ]     ; then ln -i irb/home.irbrc      ../.irbrc     ; fi
+link_unlinked git/home.gitconfig  ../.gitconfig
+link_unlinked shell/home.inputrc  ../.inputrc
+link_unlinked tmux/home.tmux.conf ../.tmux.conf
+link_unlinked irb/home.irbrc      ../.irbrc
 
 # If we're on a Mac
 if uname | grep -q 'Darwin'; then
   mkdir -p ../Library/Scripts
   cd applescript
   for scpt in *.scpt; do
-    if ! [ "../../Library/Scripts/$scpt" -ef "$scpt" ]; then ln -i $scpt ../../Library/Scripts; fi
+    link_unlinked "../../Library/Scripts/$scpt" "$scpt"
   done
 fi
