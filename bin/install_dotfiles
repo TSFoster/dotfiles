@@ -26,6 +26,19 @@ if ! [ -d ".config/powerline" ]; then
   cp -r .dotfiles/powerline .config
 fi
 
+if [ -d ".vim/bundle" ]; then
+  read -p "reinstall all vim extensions? (may take a while) " reply
+  case $reply in
+      [Yy]* ) rm -rf .vim/bundle;;
+      * ) echo 'no change';;
+  esac
+fi
+if ! [ -d ".vim/bundle" ]; then
+  mkdir -p .vim/bundle
+  git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
+  vim -u .dotfiles/vim/vundle.vimrc +PluginInstall +qall
+fi
+
 cd .dotfiles
 
 # Only link files if they aren't already
@@ -33,6 +46,7 @@ link_unlinked git/home.gitconfig  ../.gitconfig
 link_unlinked shell/home.inputrc  ../.inputrc
 link_unlinked tmux/home.tmux.conf ../.tmux.conf
 link_unlinked irb/home.irbrc      ../.irbrc
+link_unlinked vim/home.vimrc      ../.vimrc
 
 # If we're on a Mac
 if uname | grep -q 'Darwin'; then
