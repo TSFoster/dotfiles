@@ -9,20 +9,21 @@ cd $HOME
 # Not interested in welcome messages
 touch .hushlogin
 
+# Ensure hidden directories in home folder exist
+mkdir -p .config
+mkdir -p .vim/bundle
+
 # Approximate ln -i with directory (can't symlink, powerline won't work)
-if [ -d ".config/powerline" ]; then
-  # Only ask to replace if ~/.config/powerline directory
-  # exists and differs (apart from .pyc files)
-  if [ -n "$(diff -r --exclude='*.pyc' .dotfiles/powerline .config/powerline)" ]; then
-    read -p "replace powerline? " reply
-    case $reply in
-        [Yy]* ) rm -rf .config/powerline;;
-        * ) echo 'not replaced';;
-    esac
-  fi
+# Only ask to replace if ~/.config/powerline directory
+# exists and differs (apart from .pyc files)
+if [ -d ".config/powerline" ] && [ -n "$(diff -r --exclude='*.pyc' .dotfiles/powerline .config/powerline)" ]; then
+  read -p "replace powerline? " reply
+  case $reply in
+      [Yy]* ) rm -rf .config/powerline;;
+      * ) echo 'not replaced';;
+  esac
 fi
 if ! [ -d ".config/powerline" ]; then
-  mkdir -p .config
   cp -r .dotfiles/powerline .config
 fi
 
@@ -34,7 +35,6 @@ if [ -d ".vim/bundle" ]; then
   esac
 fi
 if ! [ -d ".vim/bundle" ]; then
-  mkdir -p .vim/bundle
   git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
   vim -u .dotfiles/vim/vundle.vimrc +PluginInstall +qall
 fi
