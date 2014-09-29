@@ -1,0 +1,5 @@
+name: notes
+root: ~/Dropbox/Notes
+windows:
+  - editor: clear && vim -S Session.vim
+  - shell: clear && ls -R

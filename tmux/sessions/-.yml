@@ -1,0 +1,5 @@
+name: '-'
+root: ~/
+windows:
+  - editor: clear && vim -S .Session.vim
+  - shell: clear

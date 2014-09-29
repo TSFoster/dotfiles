@@ -12,6 +12,7 @@ touch .hushlogin
 # Ensure hidden directories in home folder exist
 mkdir -p .config
 mkdir -p .vim/bundle
+mkdir -p .tmuxinator
 
 # Approximate ln -i with directory (can't symlink, powerline won't work)
 # Only ask to replace if ~/.config/powerline directory
@@ -47,6 +48,9 @@ link_unlinked shell/home.inputrc  ../.inputrc
 link_unlinked tmux/home.tmux.conf ../.tmux.conf
 link_unlinked irb/home.irbrc      ../.irbrc
 link_unlinked vim/home.vimrc      ../.vimrc
+for f in tmux/sessions/*.yml; do
+  link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
+done
 
 # If we're on a Mac
 if uname | grep -q 'Darwin'; then
