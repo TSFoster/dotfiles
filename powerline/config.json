@@ -1,22 +1,10 @@
 {
 	"common": {
-		"paths": ["~/.config/powerline/powerline/segments"],
-		"term_truecolor": false,
-		"dividers": {
-			"left": {
-				"hard": " ",
-				"soft": " "
-			},
-			"right": {
-				"hard": " ",
-				"soft": " "
-			}
-		},
-		"spaces": 1
+		"term_truecolor": false
 	},
 	"ext": {
 		"ipython": {
-			"colorscheme": "default",
+			"colorscheme": "solarized",
 			"theme": "in",
 			"local_themes": {
 				"rewrite": "rewrite",
@@ -25,24 +13,35 @@
 			}
 		},
 		"shell": {
-			"colorscheme": "default",
-			"theme": "default"
+			"colorscheme": "solarized",
+			"theme": "default",
+			"local_themes": {
+				"continuation": "continuation",
+				"select": "select"
+			}
 		},
 		"tmux": {
 			"colorscheme": "solarized",
-			"theme": "default"
+			"theme": "tsfoster"
 		},
 		"vim": {
 			"colorscheme": "solarized",
 			"theme": "default",
 			"local_themes": {
+				"__tabline__": "tabline",
+
 				"cmdwin": "cmdwin",
 				"help": "help",
-				"quickfix": "quickfix"
+				"quickfix": "quickfix",
+
+				"powerline.matchers.vim.plugin.nerdtree.nerdtree": "plugin_nerdtree",
+				"powerline.matchers.vim.plugin.ctrlp.ctrlp": "plugin_ctrlp",
+				"powerline.matchers.vim.plugin.gundo.gundo": "plugin_gundo",
+				"powerline.matchers.vim.plugin.gundo.gundo_preview": "plugin_gundo-preview"
 			}
 		},
 		"wm": {
-			"colorscheme": "default",
+			"colorscheme": "solarized",
 			"theme": "default"
 		}
 	}
