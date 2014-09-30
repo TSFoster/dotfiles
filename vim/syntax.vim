@@ -48,9 +48,10 @@ command! Spaces set expandtab
 
 " Properly set filetype for odd file extensions
 autocmd BufNewFile,BufRead *.rss        setfiletype xml
-autocmd BufNewFile,BufRead *.zshrc      setfiletype sh
+autocmd BufNewFile,BufRead *.zshrc      setfiletype zsh
 autocmd BufNewFile,BufRead *.shrc       setfiletype sh
-autocmd BufNewFile,BufRead *.bashrc*    setfiletype sh
+autocmd BufNewFile,BufRead *.zshenv     setfiletype zsh
+autocmd BufNewFile,BufRead *.bashrc*    setfiletype bash
 autocmd BufNewFile,BufRead *.vimrc*     setfiletype vim
 autocmd BufNewFile,BufRead *.gitconfig* setfiletype gitconfig
 

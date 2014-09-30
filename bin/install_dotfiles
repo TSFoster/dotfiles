@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
+# Only link files if they aren't already
 function link_unlinked {
   if ! [ $1 -ef $2 ]; then ln -i $1 $2; fi
 }
@@ -11,6 +12,7 @@ touch .hushlogin
 
 # Ensure hidden directories in home folder exist
 mkdir -p .config
+mkdir -p .completion
 mkdir -p .vim/bundle
 mkdir -p .tmuxinator
 
@@ -18,7 +20,7 @@ mkdir -p .tmuxinator
 # Only ask to replace if ~/.config/powerline directory
 # exists and differs (apart from .pyc files)
 if [ -d ".config/powerline" ] && [ -n "$(diff -r --exclude='*.pyc' .dotfiles/powerline .config/powerline)" ]; then
-  read -p "replace powerline? " reply
+  read "reply?replace powerline? "
   case $reply in
       [Yy]* ) rm -rf .config/powerline;;
       * ) echo 'not replaced';;
@@ -28,8 +30,9 @@ if ! [ -d ".config/powerline" ]; then
   cp -r .dotfiles/powerline .config
 fi
 
+# Can't think of a nice way to check if ~/.vim is dirty, so just ask if you want to reinstall every time ~/.vim/bundle exists
 if [ -d ".vim/bundle" ]; then
-  read -p "reinstall all vim extensions? (may take a while) " reply
+  read "reply?reinstall all vim extensions? (may take a while) "
   case $reply in
       [Yy]* ) rm -rf .vim/bundle;;
       * ) echo 'no change';;
@@ -40,11 +43,50 @@ if ! [ -d ".vim/bundle" ]; then
   vim -u .dotfiles/vim/vundle.vimrc +PluginInstall +qall
 fi
 
+if ! [ -f ".completion/_npm" ]; then
+  npm completion > .completion/_npm
+fi
+if ! [ -f ".completion/_fzf" ]; then
+  FZFCOMPLETION=$(locate '*/fzf-completion.zsh' | head -n 1)
+  if [ -n "$FZFCOMPLETION" ]; then ln $FZFCOMPLETION .completion/_fzf; fi
+fi
+if ! [ -f ".completion/_t" ]; then
+  TIMETRAPCOMPLETION=$(locate '*/timetrap*/completions/zsh/_t' | head -n 1)
+  if [ -n "$TIMETRAPCOMPLETION" ]; then ln $TIMETRAPCOMPLETION .completion/_t; fi
+fi
+ZSHCOMP=.completion/zsh-completions
+if ! [ -d "$ZSHCOMP" ]; then
+  git clone git://github.com/zsh-users/zsh-completions.git $ZSHCOMP
+fi
+cd $ZSHCOMP
+git pull
+cd -
+
+
+# Set machine-specific variables and paths
+# Machine name is used when SSHing in to it
+if ! [ -f ".machine.zsh" ]; then
+  read "reply?Enter machine name: $(find .dotfiles/zsh/machines/*.zsh | awk 'BEGIN { FS = "[/|.]" } {printf "'%s', ", $5}')or another for a new machine: "
+  file=".dotfiles/zsh/machines/${reply}.zsh"
+  echo "file: $file"
+  if ! [ -f $file ]; then
+    read "symbol?New machine '$reply' needs a phrase or symbol to identify it (leave blank for '$reply'): "
+    if ! [ -n "$symbol" ]; then symbol=$reply; fi
+    printf "machineName='$symbol'" > $file
+  fi
+  ln $file .machine.zsh
+fi
+
 cd .dotfiles
 
-# Only link files if they aren't already
+if ! [ -f ../.machine-private.zsh ]; then
+  cp zsh/machine-private.zsh ../.machine-private.zsh
+fi
+
 link_unlinked git/home.gitconfig  ../.gitconfig
-link_unlinked shell/home.inputrc  ../.inputrc
+link_unlinked zsh/home.inputrc    ../.inputrc
+link_unlinked zsh/home.zshenv     ../.zshenv
+link_unlinked zsh/home.zshrc      ../.zshrc
 link_unlinked tmux/home.tmux.conf ../.tmux.conf
 link_unlinked irb/home.irbrc      ../.irbrc
 link_unlinked vim/home.vimrc      ../.vimrc

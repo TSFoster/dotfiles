@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+basename=$(basename "$1")
+echo "${basename##*.}"

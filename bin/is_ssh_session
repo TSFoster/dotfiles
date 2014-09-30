@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  exit 0
+else
+  exit 1
+fi

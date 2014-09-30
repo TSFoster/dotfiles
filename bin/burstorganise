@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/exiftool -F -m '-FileName<${DateTimeOriginal}.${SubSecTimeOriginal}.%e' -d '%Y-%m-%d %H.%M.%S' -if '$DateTimeOriginal' -if '$SubSecTimeOriginal' "$@"

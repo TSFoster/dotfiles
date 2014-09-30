@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if [ -d "$1" ]; then
+  echo $(cd $1; pwd)
+else
+  echo $(cd $(dirname $1); pwd)/$(basename $1)
+fi
