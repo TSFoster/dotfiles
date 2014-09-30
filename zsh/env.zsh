@@ -8,9 +8,6 @@ HISTSIZE=1000
 HISTFILE=~/.history
 SAVEHIST=1000
 
-RUBY_CONFIGURE_OPTS="--enable-shared"
-PYTHON_CONFIGURE_OPTS="--enable-shared"
-
 OS='Unknown'
 if uname | grep -q 'Darwin'; then
   OS='Mac'
