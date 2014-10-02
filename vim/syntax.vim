@@ -70,6 +70,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 set foldlevelstart=20
 autocmd BufReadPre * setlocal foldmethod=indent
 autocmd BufReadPre * setlocal foldcolumn=4
+autocmd BufReadPre *.vim setlocal foldmethod=marker
 
 " Format whole file
 nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>:%v/^.\+$/normal S <C-v><C-h><C-v><Esc><CR>
