@@ -2,6 +2,7 @@
 
 source $DOTDIR/terminal.zsh
 source $DOTDIR/prompts.zsh
+source $DOTDIR/autojump.zsh
 source $DOTDIR/aliases/terminal.zsh
 source $DOTDIR/aliases/filesystem.zsh
 source $DOTDIR/aliases/programs.zsh
