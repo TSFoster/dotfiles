@@ -1,6 +1,5 @@
 set runtimepath+=$HOME/.dotfiles/vim
 
-runtime machine-detection.vim
 runtime plugin-settings.vim
 runtime vundle.vim
 runtime mappings.vim

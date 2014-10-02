@@ -1,6 +1,6 @@
 set pastetoggle=<F2>
 
-if g:MachineType == 'Mac'
+if has('mac')
   vmap <Leader>y "*y
   vmap <Leader>d "*d
   nmap <Leader>d "*d

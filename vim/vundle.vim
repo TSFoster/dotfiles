@@ -129,7 +129,7 @@ Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse document
                                                 " :Caniuse <search>
 
 " Mac-specific plugins
-if g:MachineType == 'Mac'
+if has('mac')
   Plugin 'rizzatti/dash.vim' " :Dash.app integration
 endif
 
