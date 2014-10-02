@@ -118,7 +118,7 @@ Plugin 'tpope/vim-surround'                     " Deal with quotes/brackets/tags
                                                 " ----------------------------------------------------------------
 Plugin 'vim-scripts/matchit.zip'                " Match % to tags etc., not just braces
                                                 " ----------------------------------------------------------------
-Plugin 'Valloric/YouCompleteMe'                 " Code completion (needs additional install)
+Plugin 'Shougo/neocomplete.vim'                 " Code completion
                                                 " ----------------------------------------------------------------
 Plugin 'vim-scripts/Tab-Name'                   " Easily rename tabs
                                                 " :TName 'tab_page_name' - set name of tab-page

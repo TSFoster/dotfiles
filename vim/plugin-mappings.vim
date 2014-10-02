@@ -28,3 +28,19 @@ map <Leader>s <Plug>(wildfire-quick-select)
 map <Leader>v <Plug>(wildfire-fuel)
 map <Leader>V <Plug>(wildfire-water)
 " }}}
+
+" Neocomplete {{{
+" <CR>: Expand UltiSnips or send carriage return
+inoremap <silent><expr><CR> (pumvisible() ?
+    \ (len(keys(UltiSnips#SnippetsInCurrentScope())) > 0 ?
+    \ neocomplete#close_popup()."<C-r>=UltiSnips#ExpandSnippet()" :
+    \ neocomplete#close_popup()) : "")."\<CR>"
+
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplete#close_popup()
+inoremap <expr><C-e> neocomplete#cancel_popup()
+
+let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
+" }}}
