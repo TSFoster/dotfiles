@@ -27,4 +27,6 @@ setopt PROMPT_SUBST      # Prompt expansion
 # Keyboard Shortcuts
 bindkey '^O' clear-screen                        # Clear screen shortcut
 bindkey '^R' history-incremental-search-backward # History search shortcut
-bindkey '^N' menu-complete                       # Cycle through completions
+bindkey '^N' menu-complete                       # Vim bindings for cycling…
+bindkey '^P' reverse-menu-complete               # …through completions
+bindkey '^[[Z' reverse-menu-complete             # Shift-tab to reverse through completions
