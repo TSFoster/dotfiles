@@ -29,5 +29,13 @@ nnoremap <Leader>rc :source $MYVIMRC<CR>
 " GO to Alfred. Opens current file in Alfred and displays action menu
 nnoremap goa :silent! !osascript $HOME/.dotfiles/applescript/open_file_in_alfred.scpt '%:p'<CR>:redraw!<CR>
 
+" Delete file and buffer
+command! -bang DeleteFileAndBuffer if <bang>0
+      \ |   :call delete(expand('%'))
+      \ |   bdelete!
+      \ | else
+      \ |   :echoerr 'You are about to delete a buffer and a file. Add ! to show you''re serious'
+      \ | endif
+
 " Turn spelling on for text files
 autocmd FileType md,mkd,markdown,mmd,txt,text set spell

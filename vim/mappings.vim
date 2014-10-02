@@ -42,3 +42,6 @@ if bufwinnr(1)
 endif
 
 nnoremap <Leader>hl :set hlsearch!<CR>
+
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>w :w<CR>
