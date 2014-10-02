@@ -31,9 +31,12 @@ Plugin 'kana/vim-textobj-indent'                " Text object for similarly inde
 Plugin 'gcmt/wildfire.vim'                      " Select closest text object (e.g. quotes, paragraph):
                                                 " Select bigger with <Enter>, smaller with <BS>
                                                 " ----------------------------------------------------------------
-Plugin 'tpope/vim-jdaddy'                       " [a|i]j for dealing with JSON objects
+Plugin 'tpope/vim-jdaddy'                       " {a,i}j for dealing with JSON objects
                                                 " ----------------------------------------------------------------
 Plugin 'godlygeek/tabular'                      " Align text with regular expressions
+                                                " ----------------------------------------------------------------
+Plugin 'tommcdo/vim-lion'                       " Align text with a motion and a single character:
+                                                " g{l,L}<motion><char>
                                                 " ----------------------------------------------------------------
 Plugin 'justinmk/vim-sneak'                     " Search for next occurence of two chars:
                                                 " s<char><char> (S to go backwards)
@@ -96,6 +99,8 @@ Plugin 'SirVer/ultisnips'                       " Advanced snippets
                                                 " ----------------------------------------------------------------
 Plugin 'honza/vim-snippets'                     " Stock snippets for Ultinips
                                                 " ----------------------------------------------------------------
+Plugin 'majutsushi/tagbar'                      " Class outline viewer for Vim
+                                                " ----------------------------------------------------------------
 Plugin 'sjl/gundo.vim'                          " Visually navigate undo trees
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-abolish'                      " Substitute variations of a word:
@@ -105,7 +110,13 @@ Plugin 'tpope/vim-characterize'                 " Improve information given abou
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-speeddating'                  " Make <C-a> and <C-x> work with dates
                                                 " ----------------------------------------------------------------
+Plugin 'airblade/vim-gitgutter'                 " Shows git diff in gutter
+                                                " ----------------------------------------------------------------
 Plugin 'tpope/vim-fugitive'                     " Wrapper for Git
+                                                " ----------------------------------------------------------------
+Plugin 'jaxbot/github-issues.vim'               " Autocomplete for Github issues with Neocomplete, :Gissues
+                                                " ----------------------------------------------------------------
+Plugin 'mattn/gist-vim'                         " Post gists with :Gist (-p for private, -P for public)
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-bundler'                      " Wrapper for Ruby's Bundler:
                                                 " :Bundle
@@ -127,6 +138,11 @@ Plugin 'vim-scripts/Tab-Name'                   " Easily rename tabs
 Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse documentation:
                                                 " <Leader>ciu
                                                 " :Caniuse <search>
+                                                " ----------------------------------------------------------------
+Plugin 'tpope/vim-dispatch'                     " Open Tmux (or other) window
+                                                " `:Dispatch [command]` (or b:dispatch)
+                                                " `:Focus global command` (:Focus! to turn off)
+                                                " `:Start command` for interactive shell (:Start! for background)
 
 " Mac-specific plugins
 if has('mac')

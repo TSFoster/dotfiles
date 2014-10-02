@@ -1,4 +1,4 @@
-" Ctrl-P
+" Ctrl-P {{{
 nnoremap <Leader>o :CtrlPCurWD<CR>
 nnoremap <Leader>O :CtrlPCurFile<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
@@ -17,6 +17,10 @@ vmap  <expr>  D        DVB_Duplicate()
 
 " Gundo {{{
 nnoremap <F5> :GundoToggle<CR>
+" }}}
+
+" Tagbar {{{
+nmap <F6> :TagbarToggle<CR>
 " }}}
 
 " Tabularize {{{
