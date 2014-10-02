@@ -86,6 +86,7 @@ link_unlinked zsh/home.zshrc      ../.zshrc
 link_unlinked tmux/home.tmux.conf ../.tmux.conf
 link_unlinked irb/home.irbrc      ../.irbrc
 link_unlinked vim/home.vimrc      ../.vimrc
+link_unlinked vim/scripts.vim     ../.vim/scripts.vim
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done
