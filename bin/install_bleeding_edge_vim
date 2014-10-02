@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
 # To get lua working with Homebrew on Mac, I had to link lua.h in the Cellar to /usr/include
+# To get ruby and python working dynamically, I had to install them with:
+# {RUBY,PYTHON}_CONFIGURE_OPTS='--enable-shared' {rb,py}env install x.y.z
 
 set -e
 
