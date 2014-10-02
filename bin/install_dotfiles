@@ -43,16 +43,12 @@ if ! [ -d ".vim/bundle" ]; then
   vim -u .dotfiles/vim/vundle.vimrc +PluginInstall +qall
 fi
 
-if ! [ -f ".completion/_npm" ]; then
-  npm completion > .completion/_npm
+if ! [ -f ".completion/npm.zsh" ]; then
+  npm completion > .completion/npm.zsh
 fi
-if ! [ -f ".completion/_fzf" ]; then
-  FZFCOMPLETION=$(locate '*/fzf-completion.zsh' | head -n 1)
-  if [ -n "$FZFCOMPLETION" ]; then ln $FZFCOMPLETION .completion/_fzf; fi
-fi
-if ! [ -f ".completion/_t" ]; then
+if ! [ -f ".completion/src/_t" ]; then
   TIMETRAPCOMPLETION=$(locate '*/timetrap*/completions/zsh/_t' | head -n 1)
-  if [ -n "$TIMETRAPCOMPLETION" ]; then ln $TIMETRAPCOMPLETION .completion/_t; fi
+  if [ -n "$TIMETRAPCOMPLETION" ]; then ln $TIMETRAPCOMPLETION .completion/src/_t; fi
 fi
 ZSHCOMP=.completion/zsh-completions
 if ! [ -d "$ZSHCOMP" ]; then

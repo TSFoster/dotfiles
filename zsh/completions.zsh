@@ -1,3 +1,5 @@
+fpath=($HOME/.completion/src $HOME/.completion/zsh-completions/src $fpath)
+
 autoload -U compinit && compinit # More extensive tab completion
 zmodload zsh/complist
 
@@ -15,4 +17,6 @@ zstyle ':completion:*' verbose yes
 ## case-insensitive (uppercase from lowercase) completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-fpath=($HOME/.completion $HOME/.completion/zsh-completions/src $fpath)
+for f in $HOME/.completion/*.zsh; do
+  source $f
+done
