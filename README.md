@@ -10,9 +10,24 @@ My dotfiles do not (yet) check for the existence of any of these, it just assume
 * Git 1.7.10+
 * Exuberant Ctags 5.8+
 * tmux 1.9+
-* Powerline beta (installed in /usr/local/bin)
-* Ack >= 2
+* Powerline beta
 * Vim 7.4 with huge features, python, ruby
+* Homebrew
+* rbenv
+* Mercurial
+* pyenv
+
+Sort of required:
+
+* node
+* npm
+* Ack >= 2
+* Ag
+* fzf
+* terminal-notifier
+* autojump
+* gitjk
+* get_iplayer
 
 ## Installation
 
