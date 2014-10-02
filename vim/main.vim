@@ -14,4 +14,5 @@ runtime cursor.vim
 runtime powerline.vim
 runtime colors.vim
 runtime syntax.vim
+runtime search.vim
 runtime clipboard.vim
