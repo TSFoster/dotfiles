@@ -2,9 +2,9 @@
 nnoremap <Leader>o :CtrlPCurWD<CR>
 nnoremap <Leader>O :CtrlPCurFile<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap glt :CtrlPBufTag<CR>
-nnoremap gbt :CtrlPBufTagAll<CR>
-nnoremap gt  :CtrlPTag<CR>
+nnoremap <Leader>tb :CtrlPBufTag<CR>
+nnoremap <Leader>ta :CtrlPBufTagAll<CR>
+nnoremap <Leader>tt :CtrlPTag<CR>
 " }}}
 
 " Drag Visuals {{{

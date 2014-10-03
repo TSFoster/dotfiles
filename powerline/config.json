@@ -28,8 +28,7 @@
 			"colorscheme": "solarized",
 			"theme": "default",
 			"local_themes": {
-				"__tabline__": "tabline",
-
+				"tabline": "tabline",
 				"cmdwin": "cmdwin",
 				"help": "help",
 				"quickfix": "quickfix",

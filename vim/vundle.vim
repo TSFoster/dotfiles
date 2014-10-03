@@ -131,10 +131,6 @@ Plugin 'vim-scripts/matchit.zip'                " Match % to tags etc., not just
                                                 " ----------------------------------------------------------------
 Plugin 'Shougo/neocomplete.vim'                 " Code completion
                                                 " ----------------------------------------------------------------
-Plugin 'vim-scripts/Tab-Name'                   " Easily rename tabs
-                                                " :TName 'tab_page_name' - set name of tab-page
-                                                " :TNoName - remove tab page name
-                                                " ----------------------------------------------------------------
 Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse documentation:
                                                 " <Leader>ciu
                                                 " :Caniuse <search>

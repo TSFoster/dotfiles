@@ -45,3 +45,8 @@ nnoremap <Leader>hl :set hlsearch!<CR>
 
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>w :w<CR>
+
+" Tab creation & movement
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap <Leader>gt :execute 'tabmove +'.v:count1<CR>
+nnoremap <Leader>gT :execute 'tabmove -'.v:count1<CR>
