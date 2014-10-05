@@ -32,7 +32,7 @@ set nrformats=alpha,hex        " Include chars and hex numbers in <C-a>,<C-x>
 
 set scrolloff=5
 
-set cryptmethod=blowfish
+set cryptmethod=blowfish2
 
 set nohlsearch
 set incsearch
