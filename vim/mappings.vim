@@ -43,7 +43,11 @@ endif
 nnoremap <Leader>hl :set hlsearch!<CR>
 
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :qa<CR>
+nnoremap <Leader><Leader>w :wq<CR>
+nnoremap <Leader><Leader>q :wq<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>W :wa<CR>
 
 " Tab creation & movement
 nnoremap <Leader>tn :tabnew<CR>
