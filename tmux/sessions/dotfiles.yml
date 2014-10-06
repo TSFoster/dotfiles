@@ -1,5 +1,5 @@
 name: dotfiles
 root: ~/.dotfiles
 windows:
-  - editor: clear && vim -S Session.vim
+  - editor: clear && vs
   - shell: clear && ls && git status
