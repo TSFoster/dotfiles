@@ -27,9 +27,6 @@ vmap § :s//g<LEFT><LEFT>
 
 nnoremap zs :set spell!<CR>
 
-" Make it more forgiving if you hit `q:<CR>` instead of `:q<CR>`
-nnoremap q: q:iq
-
 " %% in command line maps to current file's directory
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 
