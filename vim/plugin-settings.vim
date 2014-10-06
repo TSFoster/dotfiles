@@ -74,3 +74,8 @@ let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::\w*
 " CanIUse {{{
 let g:caniuse_no_mappings = 1
 " }}}
+
+" CoVim {{{
+let CoVim_default_name = 'toby'
+let CoVim_default_port = 1234
+" }}}

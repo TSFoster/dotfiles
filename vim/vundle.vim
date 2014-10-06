@@ -138,6 +138,13 @@ Plugin 'tpope/vim-dispatch'                     " Open Tmux (or other) window
                                                 " `:Dispatch [command]` (or b:dispatch)
                                                 " `:Focus global command` (:Focus! to turn off)
                                                 " `:Start command` for interactive shell (:Start! for background)
+                                                " ----------------------------------------------------------------
+Plugin 'FredKSchott/CoVim'                      " “Think Google Docs for Vim”:
+                                                " `:CoVim start [port] [name]`
+                                                " `:CoVim connect [host address / 'localhost'] [port] [name]`
+                                                " `:CoVim disconnect`
+                                                " `:CoVim quit`
+
 
 " Mac-specific plugins
 if has('mac')
@@ -145,7 +152,6 @@ if has('mac')
 endif
 
 " TO CHECK OUT PROPERLY BEFORE INSTALLING AGAIN SO I ACTUALLY USE THEM THIS TIME
-" Plugin 'FredKSchott/CoVim'
 " Plugin 'jgdavey/vim-turbux'
 " Plugin 'benmills/vimux'     " Open small tmux pane to execute a command:
 "                             " :VimuxRunCommand
