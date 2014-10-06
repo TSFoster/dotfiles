@@ -29,6 +29,8 @@ nnoremap zs :set spell!<CR>
 
 " %% in command line maps to current file's directory
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
+" %p in command line maps to current file's path
+cnoremap %p <C-R>=expand('%:p')<CR>
 
 " Shift+arrow key to change size of current pane
 if bufwinnr(1)
