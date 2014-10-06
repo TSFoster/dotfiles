@@ -3,21 +3,25 @@ alias wcat='wget -q -O -'
 alias v='vim'
 alias vi='vim'
 function vs {
-  local sessionroot="$(git root 2>/dev/null)"
   local session=''
 
+  local sessionroot="$(git root 2>/dev/null)"
   if [ -z "$sessionroot" ]; then sessionroot='.'; fi
 
-  if [ -s "$sessionroot/Session.vim" ]; then
-    session="$sessionroot/Session.vim"
-  elif [ -s "$sessionroot/.Session.vim" ]; then
-    session="$sessionroot/.Session.vim"
+  if [ -n "$*" ]; then
+    session="$sessionroot/$*.vim"
+  else
+    if [ -s "$sessionroot/Session.vim" ]; then
+      session="$sessionroot/Session.vim"
+    elif [ -s "$sessionroot/.Session.vim" ]; then
+      session="$sessionroot/.Session.vim"
+    fi
   fi
 
-  if [ -n "$session" ]; then
-    vim -S $session
+  if [ -s "$session" ]; then
+    vim -S "$session"
   else
-    vim +"Obsession $sessionroot/Session.vim"
+    vim +"Obsession $session"
   fi
 }
 
