@@ -132,7 +132,6 @@ Plugin 'vim-scripts/matchit.zip'                " Match % to tags etc., not just
 Plugin 'Shougo/neocomplete.vim'                 " Code completion
                                                 " ----------------------------------------------------------------
 Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse documentation:
-                                                " <Leader>ciu
                                                 " :Caniuse <search>
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-dispatch'                     " Open Tmux (or other) window

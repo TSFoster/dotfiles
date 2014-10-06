@@ -25,3 +25,7 @@ vmap <Space>/w "zy:Wikipedia <C-r>z<CR>
 command! -nargs=+ Open call system(s:open_command.' "<args>"')
 nmap <Space>// :Open 
 vmap <Space>// "zy:Open <C-r>z<CR>
+
+nmap <Leader>/c :CanIUse 
+nmap <Leader>/C :CanIUse<CR>
+vmap <Leader>/c "zy:CanIUse <C-r>z<CR>
