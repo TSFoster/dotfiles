@@ -118,6 +118,8 @@ Plugin 'jaxbot/github-issues.vim'               " Autocomplete for Github issues
                                                 " ----------------------------------------------------------------
 Plugin 'mattn/gist-vim'                         " Post gists with :Gist (-p for private, -P for public)
                                                 " ----------------------------------------------------------------
+Plugin 'mattn/webapi-vim'                       " Required for gist-vim
+                                                " ----------------------------------------------------------------
 Plugin 'tpope/vim-bundler'                      " Wrapper for Ruby's Bundler:
                                                 " :Bundle
                                                 " ----------------------------------------------------------------
