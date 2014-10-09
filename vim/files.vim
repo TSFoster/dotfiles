@@ -39,3 +39,6 @@ command! -bang DeleteFileAndBuffer if <bang>0
 
 " Turn spelling on for text files
 autocmd FileType md,mkd,markdown,mmd,txt,text set spell
+
+" Use q to quit a helpfile
+autocmd BufWinEnter * if &l:buftype ==# 'help' | map <buffer> q :q<CR> | endif
