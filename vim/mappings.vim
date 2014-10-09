@@ -29,6 +29,8 @@ vmap § :s//g<LEFT><LEFT>
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 " %p in command line maps to current file's path
 cnoremap %p <C-R>=expand('%:p')<CR>
+" %p in command line maps to current file's relative path
+cnoremap %r <C-R>=expand('%')<CR>
 
 " Shift+arrow key to change size of current pane
 if bufwinnr(1)
