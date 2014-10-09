@@ -25,8 +25,6 @@ vnoremap <C-V>     v
 nmap § :%s//g<LEFT><LEFT>
 vmap § :s//g<LEFT><LEFT>
 
-nnoremap zs :set spell!<CR>
-
 " %% in command line maps to current file's directory
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 " %p in command line maps to current file's path
