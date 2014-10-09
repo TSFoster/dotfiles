@@ -21,9 +21,6 @@ Plugin 'bkad/CamelCaseMotion'                   " `w`,`b`,`e` for camelCase and 
 Plugin 'christoomey/vim-tmux-navigator'         " Lets you navigate vim panes and tmux panes with same shortcuts:
                                                 " `<C-h>`/`<C-j>`/`<C-k>`/`<C-l>`
                                                 " ----------------------------------------------------------------
-Plugin 'vim-scripts/SearchInRange'              " `/` but for ranges:
-                                                " <Leader>/
-                                                " ----------------------------------------------------------------
 Plugin 'kana/vim-textobj-user'                  " Create your own text objects
                                                 " ----------------------------------------------------------------
 Plugin 'kana/vim-textobj-indent'                " Text object for similarly indented lines
@@ -135,6 +132,8 @@ Plugin 'Shougo/neocomplete.vim'                 " Code completion
                                                 " ----------------------------------------------------------------
 Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse documentation:
                                                 " :Caniuse <search>
+                                                " ================================================================
+                                                " Tmux plugins {{{
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-tbone'                        " Send and receive text with tmux:
                                                 " :Tyank, :Twrite, :Tmux
@@ -151,11 +150,11 @@ Plugin 'FredKSchott/CoVim'                      " â€œThink Google Docs for Vimâ€
                                                 " `:CoVim connect [host address / 'localhost'] [port] [name]`
                                                 " `:CoVim disconnect`
                                                 " `:CoVim quit`
-                                                " ================================================================
-if has('mac')                                   " Mac-specific plugins
+                                                " }}} ============================================================
+if has('mac')                                   " Mac-specific plugins {{{
                                                 " ----------------------------------------------------------------
   Plugin 'rizzatti/dash.vim'                    " :Dash.app integration
-endif                                           " ================================================================
+endif                                           " }}} =============================================================
 
 call vundle#end()
 filetype plugin indent on
