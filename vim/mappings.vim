@@ -40,6 +40,12 @@ if bufwinnr(1)
   map <S-right> <C-W>>
 endif
 
+" Quick*f*ix and *l*ocation window *o*pen and *close*
+nnoremap <Leader>fo :copen<CR>
+nnoremap <Leader>fc :cclose<CR>
+nnoremap <Leader>lo :lopen<CR>
+nnoremap <Leader>lc :lclose<CR>
+
 nnoremap <Leader>hl :set hlsearch!<CR>
 
 nnoremap <Leader>q :q<CR>
