@@ -42,3 +42,9 @@ autocmd FileType md,mkd,markdown,mmd,txt,text set spell
 
 " Use q to quit a helpfile
 autocmd BufWinEnter * if &l:buftype ==# 'help' | map <buffer> q :q<CR> | endif
+
+" Shortcuts for quickfix windows
+autocmd BufWinEnter * if &l:buftype ==# 'quickfix'
+      \ |   nnoremap <buffer> q :q<CR>
+      \ |   nnoremap <buffer> o <CR>
+      \ | endif
