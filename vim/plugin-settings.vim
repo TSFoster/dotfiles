@@ -3,10 +3,8 @@ let g:ctrlp_working_path_mode = 'ra'
 " }}}
 
 " Fugitive {{{
-if has('autocmd')
-  " Delete hidden fugitive buffers
-  autocmd BufReadPost fugitive://* set bufhidden=delete
-endif
+" Delete hidden fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
 " }}}
 
 " Gundo {{{

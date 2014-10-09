@@ -3,12 +3,7 @@ if has('mouse')
   set ttymouse=xterm2
 endif
 
-" Settle for best available indent etc
-if has("autocmd")
-  filetype plugin indent on
-else
-  set autoindent
-endif
+filetype plugin indent on
 
 let g:netrw_home=$HOME                   " Store network files in fixed location, not current directory
 set dir=~/.vimswap//,/var/tmp//,/tmp//,. " Store swap files in fixed location, not current directory
