@@ -62,4 +62,9 @@ nnoremap <Leader>gpl :Dispatch! git pull<CR>
 nnoremap <Leader>gmv :Gmove<Space>
 nnoremap <Leader>gbl :Gblame<CR>
 nnoremap <Leader>gbr :Git checkout -b<Space>
+nnoremap <Leader>ggh :Gbrowse<CR>
+vnoremap <Leader>ggh :Gbrowse<CR>
+autocmd User fugitive if fugitive#buffer().type() =~# '^\%(tree\|blob\)$'
+  \ |   nnoremap <buffer> .. :edit %:h<CR>
+  \ | endif
 " }}}
