@@ -3,7 +3,7 @@ set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 filetype off
 call vundle#begin()
 
-
+                                                " ================================================================
 Plugin 'gmarik/Vundle.vim'                      " Vundle must manage itself
                                                 " ----------------------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'       " Solarized colorscheme
@@ -151,13 +151,11 @@ Plugin 'FredKSchott/CoVim'                      " â€œThink Google Docs for Vimâ€
                                                 " `:CoVim connect [host address / 'localhost'] [port] [name]`
                                                 " `:CoVim disconnect`
                                                 " `:CoVim quit`
-
-
-" Mac-specific plugins
-if has('mac')
-  Plugin 'rizzatti/dash.vim' " :Dash.app integration
-endif
-
+                                                " ================================================================
+if has('mac')                                   " Mac-specific plugins
+                                                " ----------------------------------------------------------------
+  Plugin 'rizzatti/dash.vim'                    " :Dash.app integration
+endif                                           " ================================================================
 
 call vundle#end()
 filetype plugin indent on
