@@ -136,6 +136,11 @@ Plugin 'Shougo/neocomplete.vim'                 " Code completion
 Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse documentation:
                                                 " :Caniuse <search>
                                                 " ----------------------------------------------------------------
+Plugin 'tpope/vim-tbone'                        " Send and receive text with tmux:
+                                                " :Tyank, :Twrite, :Tmux
+                                                " ----------------------------------------------------------------
+Plugin 'jgdavey/vim-turbux'                     " Ruby testing with tmux
+                                                " ----------------------------------------------------------------
 Plugin 'tpope/vim-dispatch'                     " Open Tmux (or other) window
                                                 " `:Dispatch [command]` (or b:dispatch)
                                                 " `:Focus global command` (:Focus! to turn off)
@@ -152,15 +157,6 @@ Plugin 'FredKSchott/CoVim'                      " â€œThink Google Docs for Vimâ€
 if has('mac')
   Plugin 'rizzatti/dash.vim' " :Dash.app integration
 endif
-
-" TO CHECK OUT PROPERLY BEFORE INSTALLING AGAIN SO I ACTUALLY USE THEM THIS TIME
-" Plugin 'jgdavey/vim-turbux'
-" Plugin 'benmills/vimux'     " Open small tmux pane to execute a command:
-"                             " :VimuxRunCommand
-"                             " :VimuxRunLastCommand
-" Plugin 'jgdavey/tslime.vim' " Send commands to tmux:
-"                             " :Tmux <command here>
-" Plugin 'tpope/vim-tbone'
 
 
 call vundle#end()
