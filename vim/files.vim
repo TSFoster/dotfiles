@@ -23,7 +23,7 @@ nnoremap <Leader>do :DiffOrig<CR>
 nnoremap <Leader>dc :q<CR>:diffoff<CR>:exe "norm! ".g:diffline."G"<CR>
 
 " Edit RC file, source RC file
-nnoremap <Leader>erc :tabnew $HOME/.dotfiles/vim/main.vimrc<CR>
+nnoremap <Leader>re :tabnew $HOME/.dotfiles/vim/main.vim<CR>
 nnoremap <Leader>rc :source $MYVIMRC<CR>
 
 " GO to Alfred. Opens current file in Alfred and displays action menu
