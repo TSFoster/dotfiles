@@ -1,6 +1,7 @@
 " Ctrl-P {{{
-nnoremap <Leader>o :CtrlPCurWD<CR>
-nnoremap <Leader>O :CtrlPCurFile<CR>
+nnoremap <Leader>o :CtrlPMixed<CR>
+nnoremap <Leader>e :CtrlPCurWD<CR>
+nnoremap <Leader>E :CtrlPCurFile<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>tb :CtrlPBufTag<CR>
 nnoremap <Leader>ta :CtrlPBufTagAll<CR>
