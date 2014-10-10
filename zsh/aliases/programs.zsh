@@ -27,6 +27,8 @@ function vs {
 
 alias tm='tmux'
 alias tma='tmux attach'
+alias mo='mux open'
+alias ms='mux start'
 
 alias psg='pgrep -fil'
 
