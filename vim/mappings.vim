@@ -59,3 +59,9 @@ nnoremap <Leader>W :wa<CR>
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>gt :execute 'tabmove +'.v:count1<CR>
 nnoremap <Leader>gT :execute 'tabmove -'.v:count1<CR>
+
+" Diff actions
+nnoremap do :diffget<CR>:diffupdate<CR>
+nnoremap dp :diffput<CR>:diffupdate<CR>
+vnoremap do :diffget<CR>:diffupdate<CR>
+vnoremap dp :diffput<CR>:diffupdate<CR>
