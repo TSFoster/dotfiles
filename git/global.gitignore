@@ -5,3 +5,4 @@ Thumbs.db
 *.pyc
 .sass-cache
 vendor/bundle
+Session.vim
