@@ -65,3 +65,8 @@ nnoremap do :diffget<CR>:diffupdate<CR>
 nnoremap dp :diffput<CR>:diffupdate<CR>
 vnoremap do :diffget<CR>:diffupdate<CR>
 vnoremap dp :diffput<CR>:diffupdate<CR>
+
+" Better keyword help
+au BufReadPost *.pl    set keywordprg=perldoc\ -f
+au BufReadPost *.vim   map K :exe ":help ".expand("<cword>")<CR>
+au BufReadPost *.vimrc map K :exe ":help ".expand("<cword>")<CR>
