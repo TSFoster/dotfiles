@@ -30,8 +30,13 @@ nnoremap <Tab> :Tabularize /
 
 " Wildfire {{{
 map <Leader>s <Plug>(wildfire-quick-select)
-map <Leader>v <Plug>(wildfire-fuel)
-map <Leader>V <Plug>(wildfire-water)
+if has('mac')
+  map √ <Plug>(wildfire-fuel)
+  map ◊ <Plug>(wildfire-water)
+else
+  map <A-v> <Plug>(wilfire-fuel)
+  map <A-v> <Plug>(wilfire-water)
+endif
 " }}}
 
 " Neocomplete {{{
