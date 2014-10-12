@@ -28,6 +28,7 @@ Sort of required:
 * autojump
 * gitjk
 * get_iplayer
+* swig, 1pass
 
 ## Installation
 
