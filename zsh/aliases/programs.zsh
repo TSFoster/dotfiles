@@ -2,6 +2,27 @@ alias wcat='wget -q -O -'
 
 alias v='vim'
 alias vi='vim'
+function vs {
+  session=''
+  sessionroot="$(git root 2>/dev/null)"
+  if [ -z "$sessionroot" ]; then sessionroot='.'; fi
+
+  if [ -n "$*" ]; then
+    session="$sessionroot/$*.vim"
+  else
+    if [ -s "$sessionroot/Session.vim" ]; then
+      session="$sessionroot/Session.vim"
+    elif [ -s "$sessionroot/.Session.vim" ]; then
+      session="$sessionroot/.Session.vim"
+    fi
+  fi
+
+  if [ -s "$session" ]; then
+    vim -S "$session"
+  else
+    vim +"Obsession $session"
+  fi
+}
 
 alias tm='tmux'
 alias tma='tmux attach'
