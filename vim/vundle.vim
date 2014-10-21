@@ -39,6 +39,9 @@ Plugin 'justinmk/vim-sneak'                     " Search for next occurence of t
                                                 " s<char><char> (S to go backwards)
                                                 " Note: use `cl` and `cc` instead of original `s` and `S` mappings
                                                 " ----------------------------------------------------------------
+Plugin 'haya14busa/incsearch.vim'               " Improve incsearch
+                                                " See :h incsearch.txt
+                                                " ----------------------------------------------------------------
 Plugin 'tpope/vim-unimpaired'                   " Mnemonic mappings with braces
                                                 " ----------------------------------------------------------------
 Plugin 'justinmk/vim-gtfo'                      " Go to file/dir in file manager/terminal:

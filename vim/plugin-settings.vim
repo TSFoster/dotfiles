@@ -96,3 +96,8 @@ let g:no_turbux_mappings = 1
 map <Leader>rt <Plug>SendTestToTmux
 map <Leader>RT <Plug>SendFocusedTestToTmux
 " }}}
+
+" Incsearch.vim {{{
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+" }}}

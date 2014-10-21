@@ -29,9 +29,6 @@ set scrolloff=5
 
 set cryptmethod=blowfish2
 
-set nohlsearch
-set incsearch
-
 set formatprg=par\ rqw80j
 set shell=zsh\ -l
 let $PAGER=''             " Let vim be the pager
