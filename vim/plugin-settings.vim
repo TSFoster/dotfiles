@@ -24,8 +24,9 @@ let g:syntastic_always_populate_loc_list=1
 
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger=";;"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-f>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
 " }}}
 
 " Wildfire {{{
