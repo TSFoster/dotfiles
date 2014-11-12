@@ -92,3 +92,8 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 " }}}
+
+" Ag.vim/Ack.vim {{{
+nnoremap <Leader>a :Ag ''<Left>
+nnoremap <Leader>A :Ack ''<Left>
+" }}}
