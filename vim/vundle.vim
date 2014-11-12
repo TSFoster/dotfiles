@@ -143,6 +143,8 @@ Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse document
                                                 " ================================================================
                                                 " Filesystem plugins {{{
                                                 " ----------------------------------------------------------------
+Plugin 'c0r73x/vimdir.vim'                      " Buffer-based file management
+                                                " ----------------------------------------------------------------
 Plugin 'tpope/vim-vinegar'                      " Improve netrw
                                                 " }}} ============================================================
                                                 " Tmux plugins {{{
