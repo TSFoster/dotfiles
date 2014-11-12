@@ -141,6 +141,10 @@ Plugin 'Shougo/neocomplete.vim'                 " Code completion
 Plugin 'zoeesilcock/vim-caniuse'                " Easily access CanIUse documentation:
                                                 " :Caniuse <search>
                                                 " ================================================================
+                                                " Filesystem plugins {{{
+                                                " ----------------------------------------------------------------
+Plugin 'tpope/vim-vinegar'                      " Improve netrw
+                                                " }}} ============================================================
                                                 " Tmux plugins {{{
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-tbone'                        " Send and receive text with tmux:

@@ -25,6 +25,12 @@ set backspace=indent,eol,start " More useful backspace
 set textwidth=0                " Don't auto-newline
 set nrformats=alpha,hex        " Include chars and hex numbers in <C-a>,<C-x>
 
+let g:netrw_preview      = 1  " Vertical preview
+let g:netrw_liststyle    = 3  " Tree view (toggle with `i`)
+let g:netrw_winsize      = 70 " Large windows sizes with `o` and `v`
+let g:netrw_preview      = 1  " Preview in vertical split
+let g:netrw_browse_split = 2  " Vertical split by default
+
 set scrolloff=5
 
 set cryptmethod=blowfish2
