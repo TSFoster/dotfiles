@@ -95,6 +95,11 @@ Plugin 'tpope/vim-rails'                        " Rails tools
                                                 " ----------------------------------------------------------------
 Plugin 'nelstrom/vim-markdown-folding'          " Fold markdown documents by section
                                                 " ----------------------------------------------------------------
+Plugin 'suan/vim-instant-markdown'              " Instant browser preview of markdown files
+                                                " :InstantMarkdownPreview
+                                                " N.B. Must install pygments.rb and redcarpet gems,
+                                                " and install instant-markdown-d node module globally
+                                                " ----------------------------------------------------------------
 Plugin 'SirVer/ultisnips'                       " Advanced snippets
                                                 " ----------------------------------------------------------------
 Plugin 'honza/vim-snippets'                     " Stock snippets for Ultinips

@@ -102,3 +102,7 @@ map <Leader>RT <Plug>SendFocusedTestToTmux
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
 " }}}
+
+" Vim-instant-markdown {{{
+let g:instant_markdown_autostart = 0
+" }}}

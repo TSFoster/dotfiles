@@ -29,6 +29,7 @@ Sort of required:
 * gitjk
 * get_iplayer
 * swig, 1pass
+* pygments.rb, redcarpet, instant-markdown-d
 
 ## Installation
 
