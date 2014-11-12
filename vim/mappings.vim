@@ -70,3 +70,5 @@ vnoremap dp :diffput<CR>:diffupdate<CR>
 au BufReadPost *.pl    set keywordprg=perldoc\ -f
 au BufReadPost *.vim   map K :exe ":help ".expand("<cword>")<CR>
 au BufReadPost *.vimrc map K :exe ":help ".expand("<cword>")<CR>
+
+au BufRead,BufNewFile *.html,*.html.*,*.xml,*.xml.* inoremap </ </<C-x><C-o>
