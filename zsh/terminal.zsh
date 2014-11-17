@@ -33,3 +33,6 @@ bindkey -M viins '^F' history-incremental-pattern-search-forward  # Forward patt
 bindkey '^N' menu-complete                                        # Vim bindings for cycling…
 bindkey '^P' reverse-menu-complete                                # …through completions
 bindkey '^[[Z' reverse-menu-complete                              # Shift-tab to reverse through completions
+bindkey '^[[A' up-line-or-search                                  # History completion up
+bindkey '^[[B' down-line-or-search                                # History completion down
+
