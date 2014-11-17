@@ -25,8 +25,11 @@ setopt COMPLETEINWORD    # Tab completion from both ends
 setopt PROMPT_SUBST      # Prompt expansion
 
 # Keyboard Shortcuts
-bindkey '^O' clear-screen                        # Clear screen shortcut
-bindkey '^R' history-incremental-search-backward # History search shortcut
-bindkey '^N' menu-complete                       # Vim bindings for cycling…
-bindkey '^P' reverse-menu-complete               # …through completions
-bindkey '^[[Z' reverse-menu-complete             # Shift-tab to reverse through completions
+bindkey '^O' clear-screen                                         # Clear screen shortcut
+bindkey -M vicmd '/' history-incremental-pattern-search-backward  # Pattern search in normal mode
+bindkey -M vicmd '?' history-incremental-pattern-search-forward   # Forward pattern search in normal mode
+bindkey -M viins '^R' history-incremental-pattern-search-backward # Pattern search in insert mode
+bindkey -M viins '^F' history-incremental-pattern-search-forward  # Forward pattern search in insert mode
+bindkey '^N' menu-complete                                        # Vim bindings for cycling…
+bindkey '^P' reverse-menu-complete                                # …through completions
+bindkey '^[[Z' reverse-menu-complete                              # Shift-tab to reverse through completions
