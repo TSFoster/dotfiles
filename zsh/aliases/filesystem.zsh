@@ -21,6 +21,8 @@ function mv- { mv $* "$OLDPWD"; c -; }              # Move file(s) to previous d
 function cd! { mkdir! $1; cd $1; }
 alias c!='cd!'
 alias up='c ..'
+alias ...='c ../..'
+alias ....='c ../../..'
 alias hist='dirs -p'
 alias size='du -hs'                                 # Human-readable summary of size of files
 
