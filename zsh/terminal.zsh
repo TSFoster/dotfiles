@@ -39,3 +39,7 @@ bindkey '^[[A' up-line-or-search                                  # History comp
 bindkey '^[[B' down-line-or-search                                # History completion down
 bindkey jj vi-cmd-mode                                            # Map jj to escape
 
+# Edit command in $EDITOR
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
