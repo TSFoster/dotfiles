@@ -12,7 +12,6 @@ setopt AUTO_PUSHD         # pushd insted of cd
 setopt AUTO_NAME_DIRS     # Use named dirs when possible
 setopt PUSHDIGNOREDUPS    # Don't duplicate directories in stack
 setopt EXTENDED_GLOB      # GLOBBING!
-setopt GLOB_COMPLETE      # If we have a glob this will expand it
 setopt NULL_GLOB          # Match *.nomatches to nothing, not literal
 setopt PUSHD_SILENT       # No more annoying pushd messages
 setopt PUSHD_TO_HOME      # Blank pushd goes to home
