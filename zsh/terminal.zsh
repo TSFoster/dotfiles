@@ -37,4 +37,5 @@ bindkey '^P' reverse-menu-complete                                # …through c
 bindkey '^[[Z' reverse-menu-complete                              # Shift-tab to reverse through completions
 bindkey '^[[A' up-line-or-search                                  # History completion up
 bindkey '^[[B' down-line-or-search                                # History completion down
+bindkey jj vi-cmd-mode                                            # Map jj to escape
 
