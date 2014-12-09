@@ -41,6 +41,8 @@ alias ql='qlmanage -p'
 
 alias server='ruby -run -e httpd . -p5000' # One-line server (change port to X with -pX)
 
+alias bonjour_discover='dns-sd -B _ssh._tcp .'
+
 alias ctags_rails='ctags -R --languages=ruby --exclude=.git --exclude=log .'
 alias ctags_rails_bundle='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
 
