@@ -17,7 +17,7 @@ function vs {
     fi
   fi
 
-  local escapedsession="$(printf %q "$session")"
+  local escapedsession="$(printf %q $session)"
 
   if [ -s "$session" ]; then
     vim -S "$escapedsession"
