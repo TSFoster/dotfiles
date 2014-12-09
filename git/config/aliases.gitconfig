@@ -13,8 +13,8 @@
   ps = push
   pl = pull
 
-  d = diff
-  df = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
+  d = icdiff
+  df = icdiff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
 
   st = stash
   sp = stash pop
