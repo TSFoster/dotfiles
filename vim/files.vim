@@ -22,6 +22,18 @@ command! DiffOrig let g:diffline = line('.')
 nnoremap <Leader>do :DiffOrig<CR>
 nnoremap <Leader>dc :q<CR>:diffoff<CR>:exe "norm! ".g:diffline."G"<CR>
 
+function! MoveFile(newspec)
+     let old = expand('%')
+     " could be improved:
+     if (old == a:newspec)
+         return 0
+     endif
+     exe 'sav' fnameescape(a:newspec)
+     call delete(old)
+     exe 'bd ' old
+endfunction
+command! -nargs=1 -complete=file -bar MoveFile call MoveFile('<args>')
+
 " Edit RC file, source RC file
 nnoremap <Leader>re :tabnew $HOME/.dotfiles/vim/main.vim<CR>
 nnoremap <Leader>rc :source $MYVIMRC<CR>
