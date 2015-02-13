@@ -38,6 +38,12 @@ bindkey '^[[A' up-line-or-search                                  # History comp
 bindkey '^[[B' down-line-or-search                                # History completion down
 bindkey jj vi-cmd-mode                                            # Map jj to escape
 
+# Alt-m/. to insert previous first/last words
+autoload -Uz copy-earlier-word
+zle -N copy-earlier-word
+bindkey "^[m" copy-earlier-word # e.g. `ls lib` `<alt-m> dist`
+bindkey '\e.' insert-last-word  # e.g. `mkdir something<CR>`, `cd <alt-.><CR>`
+
 # Edit command in $EDITOR
 autoload edit-command-line
 zle -N edit-command-line
