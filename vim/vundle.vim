@@ -85,6 +85,8 @@ Plugin 'rking/ag.vim'                           " Ag integration:
 Plugin 'scrooloose/nerdcommenter'               " Comment out things:
                                                 " [count]<Leader>c Toggle comment
                                                 " ----------------------------------------------------------------
+Plugin 'Wolfy87/vim-expand'                     " :Expand selected text
+                                                " ----------------------------------------------------------------
 Plugin 'scrooloose/syntastic'                   " Syntax checking with errors
                                                 " ----------------------------------------------------------------
 Plugin 'sheerun/vim-polyglot'                   " Syntax files for all the languages
