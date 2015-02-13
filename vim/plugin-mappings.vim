@@ -6,6 +6,9 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>tb :CtrlPBufTag<CR>
 nnoremap <Leader>ta :CtrlPBufTagAll<CR>
 nnoremap <Leader>tt :CtrlPTag<CR>
+nnoremap <Leader>ll :CtrlPLine<CR>
+nnoremap <Leader>lc :CtrlPChange<CR>
+nnoremap <Leader>lC :CtrlPChangeAll<CR>
 " }}}
 
 " Drag Visuals {{{
