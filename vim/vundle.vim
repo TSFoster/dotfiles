@@ -121,8 +121,6 @@ Plugin 'airblade/vim-gitgutter'                 " Shows git diff in gutter
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-fugitive'                     " Wrapper for Git
                                                 " ----------------------------------------------------------------
-Plugin 'jaxbot/github-issues.vim'               " Autocomplete for Github issues with Neocomplete, :Gissues
-                                                " ----------------------------------------------------------------
 Plugin 'mattn/gist-vim'                         " Post gists with :Gist (-p for private, -P for public)
                                                 " ----------------------------------------------------------------
 Plugin 'mattn/webapi-vim'                       " Required for gist-vim
