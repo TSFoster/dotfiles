@@ -51,3 +51,4 @@ function pvr_radio { echo "type radio\nsearch0 $*" > "$HOME/.get_iplayer/pvr/$*"
 alias pvr_run='get_iplayer --pvr-run &'
 
 alias toa='t o; echo y | t a'
+alias tod='t o; t d'
