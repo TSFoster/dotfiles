@@ -15,3 +15,6 @@
   keepBackup = false
 [init]
   templatedir = ~/.dotfiles/git/template
+[rerere]
+  enabled = true
+  autoupdate = true
