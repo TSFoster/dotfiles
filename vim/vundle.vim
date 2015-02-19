@@ -52,6 +52,8 @@ Plugin 'justinmk/vim-gtfo'                      " Go to file/dir in file manager
                                                 " ----------------------------------------------------------------
 Plugin 'kien/ctrlp.vim'                         " Fuzzy file finder
                                                 " ----------------------------------------------------------------
+Plugin 'd11wtq/ctrlp_bdelete.vim'               " Ctrlp plugin to delete buffers with <C-2>
+                                                " ----------------------------------------------------------------
 Plugin 'junegunn/fzf'                           " Fuzzy file finder based on ctrlp
                                                 " ----------------------------------------------------------------
 Plugin 'mileszs/ack.vim'                        " Ack integration:

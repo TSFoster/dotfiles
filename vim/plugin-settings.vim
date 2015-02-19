@@ -107,3 +107,7 @@ let g:incsearch#auto_nohlsearch = 1
 " Vim-instant-markdown {{{
 let g:instant_markdown_autostart = 0
 " }}}
+
+" Ctrlp bdelete {{{
+call ctrlp_bdelete#init()
+" }}}

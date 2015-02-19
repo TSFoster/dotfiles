@@ -1,7 +1,7 @@
 set runtimepath+=$HOME/.dotfiles/vim
 
-runtime plugin-settings.vim
 runtime vundle.vim
+runtime plugin-settings.vim
 runtime mappings.vim
 runtime plugin-mappings.vim
 runtime dragvisuals.vim
