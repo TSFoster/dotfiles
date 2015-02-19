@@ -36,6 +36,8 @@ bindkey '^P' reverse-menu-complete                                # …through c
 bindkey '^[[Z' reverse-menu-complete                              # Shift-tab to reverse through completions
 bindkey '^[[A' up-line-or-search                                  # History completion up
 bindkey '^[[B' down-line-or-search                                # History completion down
+bindkey -M vicmd 'gg' beginning-of-history                        # beggining of history
+bindkey -M vicmd 'G' end-of-history                               # end of history
 bindkey jj vi-cmd-mode                                            # Map jj to escape
 
 # Alt-m/. to insert previous first/last words
