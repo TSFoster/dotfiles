@@ -21,6 +21,8 @@ Plugin 'bkad/CamelCaseMotion'                   " `w`,`b`,`e` for camelCase and 
 Plugin 'christoomey/vim-tmux-navigator'         " Lets you navigate vim panes and tmux panes with same shortcuts:
                                                 " `<C-h>`/`<C-j>`/`<C-k>`/`<C-l>`
                                                 " ----------------------------------------------------------------
+Plugin 'ashisha/image.vim'                      " Image viewer for vim, requires `pip install Pillow`
+                                                " ----------------------------------------------------------------
 Plugin 'kana/vim-textobj-user'                  " Create your own text objects
                                                 " ----------------------------------------------------------------
 Plugin 'kana/vim-textobj-indent'                " Text object for similarly indented lines
