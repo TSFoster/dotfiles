@@ -56,6 +56,7 @@ autocmd BufNewFile,BufRead *.zshenv     setfiletype zsh
 autocmd BufNewFile,BufRead *.bashrc*    setfiletype bash
 autocmd BufNewFile,BufRead *.vimrc*     setfiletype vim
 autocmd BufNewFile,BufRead *.gitconfig* setfiletype gitconfig
+autocmd BufNewFile,BufRead *.es6        setfiletype javascript
 
 " crontab compatibility
 if $VIM_CRONTAB == "true"
