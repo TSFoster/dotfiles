@@ -100,3 +100,9 @@ map g# <Plug>(incsearch-nohl-g#)
 nnoremap <Leader>a :Ag ''<Left>
 nnoremap <Leader>A :Ack ''<Left>
 " }}}
+
+" Vundle {{{
+nnoremap <Leader>vi :VundleInstall<CR>
+nnoremap <Leader>vu :VundleUpdate<CR>
+nnoremap <Leader>vc :VundleClean<CR>
+" }}}
