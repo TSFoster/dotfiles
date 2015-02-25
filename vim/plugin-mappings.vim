@@ -38,7 +38,7 @@ if has('mac')
   map ◊ <Plug>(wildfire-water)
 else
   map <A-v> <Plug>(wilfire-fuel)
-  map <A-v> <Plug>(wilfire-water)
+  map <A-S-v> <Plug>(wilfire-water)
 endif
 " }}}
 
