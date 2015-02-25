@@ -46,6 +46,9 @@ Plugin 'haya14busa/incsearch.vim'               " Improve incsearch
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-unimpaired'                   " Mnemonic mappings with braces
                                                 " ----------------------------------------------------------------
+Plugin 'jeetsukumaran/vim-indentwise'           " Paired mappings for motions based on indent
+                                                " {[,]}{-,+,=,%} previous/next lesser/greater/same/block indent
+                                                " ----------------------------------------------------------------
 Plugin 'justinmk/vim-gtfo'                      " Go to file/dir in file manager/terminal:
                                                 " gof: Go to the current file's directory in the File manager
                                                 " got: Go to the current file's directory in the Terminal
