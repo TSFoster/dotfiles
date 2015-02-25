@@ -32,6 +32,8 @@ Plugin 'gcmt/wildfire.vim'                      " Select closest text object (e.
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-jdaddy'                       " {a,i}j for dealing with JSON objects
                                                 " ----------------------------------------------------------------
+Plugin 'glts/vim-textobj-comment'               " Comment text objects {i,a}{c,C}
+                                                " ----------------------------------------------------------------
 Plugin 'godlygeek/tabular'                      " Align text with regular expressions
                                                 " ----------------------------------------------------------------
 Plugin 'tommcdo/vim-lion'                       " Align text with a motion and a single character:
