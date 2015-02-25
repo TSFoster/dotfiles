@@ -56,7 +56,7 @@ autocmd FileType md,mkd,markdown,mmd,txt,text set spell
 autocmd BufWinEnter * if &l:buftype ==# 'help' | map <buffer> q :q<CR> | endif
 
 " Make crontab work
-autocmd filetype crontab setlocal nobackup nowritebackup
+autocmd FileType crontab setlocal nobackup nowritebackup
 
 " Shortcuts for quickfix windows
 autocmd BufWinEnter * if &l:buftype ==# 'quickfix'
