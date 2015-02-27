@@ -2,8 +2,8 @@ alias g='git'
 
 alias gst='git status'
 
-alias gd='git icdiff'
-alias gdc='git icdiff --cached'
+alias gd='git diff'
+alias gdc='git diff --cached'
 
 function ga { git add ${*:-.}; }
 
