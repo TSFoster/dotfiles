@@ -1,3 +1,4 @@
+alias git='hub'
 alias g='git'
 
 alias gst='git status'
