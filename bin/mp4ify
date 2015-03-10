@@ -1,0 +1,67 @@
+#!/usr/bin/env zsh
+
+FRAMERATE=10
+WIDTH=600
+HEIGHT=-1
+
+while test $# -gt 0; do
+  case "$1" in
+    -h|--help)
+      echo "mp4ify - dir of ordered JPEGs to mp4"
+      echo " "
+      echo "mp4ify [options] [dir]"
+      echo " "
+      echo "options:"
+      echo "-h       show this help"
+      echo "-f F     set framerate (default: 10)"
+      echo "-w W     specify width of output movie (-1 for auto) (default: 600)"
+      echo "-h H     specify height of output movie (-1 for auto) (default: -1)"
+      exit 0
+      ;;
+    -f)
+      shift
+      if test $# -gt 0; then
+        export FRAMERATE=$1
+      else
+        echo "no framerate specified"
+        exit 1
+      fi
+      shift
+      ;;
+    -w)
+      shift
+      if test $# -gt 0; then
+        export WIDTH=$1
+      else
+        echo "no width specified"
+        exit 1
+      fi
+      shift
+      ;;
+    -h)
+      shift
+      if test $# -gt 0; then
+        export HEIGHT=$1
+      else
+        echo "no height specified"
+        exit 1
+      fi
+      shift
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+cd ${1-.}
+FNAME=$(basename "$(full_path .)")
+rm -f $NAME.mp4
+cat *.jpg | ffmpeg            \
+  -f       image2pipe          \
+  -r       $FRAMERATE           \
+  -vcodec  mjpeg                 \
+  -i       -                      \
+  -vcodec  libx264                 \
+  -vf      scale=${WIDTH}:${HEIGHT} \
+  $FNAME.mp4
