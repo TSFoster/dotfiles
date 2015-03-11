@@ -13,7 +13,7 @@ function gc {
   if [ $# -eq 0 ]; then
     git commit
   else
-    git commit -m "$1"
+    git commit -m "$*"
   fi
 }
 
