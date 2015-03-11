@@ -56,7 +56,7 @@ done
 
 cd ${1-.}
 FNAME=$(basename "$(full_path .)")
-rm -f $NAME.mp4
+rm -f ../$FNAME.mp4
 cat *.jpg | ffmpeg            \
   -f       image2pipe          \
   -r       $FRAMERATE           \
@@ -64,4 +64,6 @@ cat *.jpg | ffmpeg            \
   -i       -                      \
   -vcodec  libx264                 \
   -vf      scale=${WIDTH}:${HEIGHT} \
-  $FNAME.mp4
+  mp4ify_tmp.mp4
+qt-faststart mp4ify_tmp.mp4 ../$FNAME.mp4
+rm -f mp4ify_tmp.mp4
