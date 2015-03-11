@@ -17,7 +17,7 @@ My dotfiles do not (yet) check for the existence of any of these, it just assume
 * Mercurial
 * pyenv
 
-Sort of required:
+Sort of required (*very* incomplete list):
 
 * node
 * npm
@@ -30,6 +30,10 @@ Sort of required:
 * get_iplayer
 * swig, 1pass
 * pygments.rb, redcarpet, instant-markdown-d
+* ffmpeg
+* qt-faststart
+* imagemagick (+ included tools like convert, mogrify)
+* gifify
 
 ## Installation
 
