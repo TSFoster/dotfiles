@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 FRAMERATE=10
-WIDTH=600
-HEIGHT=-1
+W=600
+H=-1
 
 while test $# -gt 0; do
   case "$1" in
@@ -13,9 +13,9 @@ while test $# -gt 0; do
       echo " "
       echo "options:"
       echo "-h       show this help"
-      echo "-f F     set framerate (default: 10)"
-      echo "-w W     specify width of output movie (-1 for auto) (default: 600)"
-      echo "-h H     specify height of output movie (-1 for auto) (default: -1)"
+      echo "-f F     set framerate (default: $FRAMERATE)"
+      echo "-w W     specify width of output movie (-1 for auto) (default: $W)"
+      echo "-h H     specify height of output movie (-1 for auto) (default: $H)"
       exit 0
       ;;
     -f)
@@ -31,7 +31,7 @@ while test $# -gt 0; do
     -w)
       shift
       if test $# -gt 0; then
-        export WIDTH=$1
+        export W=$1
       else
         echo "no width specified"
         exit 1
@@ -41,7 +41,7 @@ while test $# -gt 0; do
     -h)
       shift
       if test $# -gt 0; then
-        export HEIGHT=$1
+        export H=$1
       else
         echo "no height specified"
         exit 1
@@ -57,13 +57,13 @@ done
 cd ${1-.}
 FNAME=$(basename "$(full_path .)")
 rm -f ../$FNAME.mp4
-cat *.jpg | ffmpeg            \
-  -f       image2pipe          \
-  -r       $FRAMERATE           \
-  -vcodec  mjpeg                 \
-  -i       -                      \
-  -vcodec  libx264                 \
-  -vf      scale=${WIDTH}:${HEIGHT} \
+cat *.jpg | ffmpeg       \
+  -f       image2pipe    \
+  -r       $FRAMERATE    \
+  -vcodec  mjpeg         \
+  -i       -             \
+  -vcodec  libx264       \
+  -vf      scale=${W}:$H \
   mp4ify_tmp.mp4
 qt-faststart mp4ify_tmp.mp4 ../$FNAME.mp4
 rm -f mp4ify_tmp.mp4
