@@ -1,0 +1,71 @@
+#!/usr/bin/env zsh
+
+D=10
+W=400
+H=-1
+
+while test $# -gt 0; do
+  case "$1" in
+    -h|--help)
+      echo "gifify - dir of ordered JPEGs to GIF"
+      echo " "
+      echo "gifify [options] [dir]"
+      echo " "
+      echo "options:"
+      echo "-h       show this help"
+      echo "-d D     set delay in 100ths/sec (default: $D)"
+      echo "-w W     specify width of output movie (-1 for auto) (default: $W)"
+      echo "-h H     specify height of output movie (-1 for auto) (default: $H)"
+      exit 0
+      ;;
+    -d)
+      shift
+      if test $# -gt 0; then
+        export D=$1
+      else
+        echo "no delay specified"
+        exit 1
+      fi
+      shift
+      ;;
+    -w)
+      shift
+      if test $# -gt 0; then
+        export W=$1
+      else
+        echo "no width specified"
+        exit 1
+      fi
+      shift
+      ;;
+    -h)
+      shift
+      if test $# -gt 0; then
+        export H=$1
+      else
+        echo "no height specified"
+        exit 1
+      fi
+      shift
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+cd ${1-.}
+FNAME=$(basename "$(full_path .)")
+
+convert           \
+  *.jpg           \
+  -resize ${W}x$H \
+  -delay  3       \
+  GIF:-           \
+| gifsicle        \
+  -O1             \
+  --loop          \
+  --delay     $D  \
+  --colors    256 \
+  --multifile -   \
+> "../$FNAME.gif"

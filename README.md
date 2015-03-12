@@ -33,7 +33,7 @@ Sort of required (*very* incomplete list):
 * ffmpeg
 * qt-faststart
 * imagemagick (+ included tools like convert, mogrify)
-* gifify
+* gifsicle
 
 ## Installation
 
