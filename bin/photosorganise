@@ -1,23 +1,23 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-cd /Users/toby/Dropbox/Photos
+cd ~/Dropbox/Photos
 
-/usr/bin/exiftool -F -m -overwrite_original '-DateTimeOriginal<FileName' -if 'not $DateTimeOriginal' ./
-/usr/bin/exiftool -F -m -overwrite_original '-DateTimeOriginal<FileModifyDate' -if 'not $DateTimeOriginal' ./
-/usr/bin/exiftool -F -m '-FileName<DateTimeOriginal' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.jpg' -ext jpeg -ext JPEG -if '$DateTimeOriginal' ./
-/usr/bin/exiftool -F -m '-FileName<DateTimeOriginal' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -if '$DateTimeOriginal' ./
+exiftool -F -m -overwrite_original '-DateTimeOriginal<FileName' -if 'not $DateTimeOriginal' ./
+exiftool -F -m -overwrite_original '-DateTimeOriginal<FileModifyDate' -if 'not $DateTimeOriginal' ./
+exiftool -F -m '-FileName<DateTimeOriginal' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.jpg' -ext jpeg -ext JPEG -if '$DateTimeOriginal' ./
+exiftool -F -m '-FileName<DateTimeOriginal' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -if '$DateTimeOriginal' ./
 
 
-cd /Users/toby/Dropbox/Videos
+cd ~/Dropbox/Videos
 
-/usr/bin/exiftool -F -m -overwrite_original '-MediaCreateDate<FileName' -if 'not $MediaCreateDate' -ext mov -ext mp4 ./
-/usr/bin/exiftool -F -m -overwrite_original '-MediaCreateDate<FileModifyDate' -if 'not $MediaCreateDate' -ext mov -ext mp4 ./
-/usr/bin/exiftool -F -m '-FileName<MediaCreateDate' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -if '$MediaCreateDate' -if '$MediaCreateDate gt 1980' -ext mov -ext mp4 ./
-/usr/bin/exiftool -F -m '-FileName<FileModifyDate' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -ext mov -ext mp4 ./
+exiftool -F -m -overwrite_original '-MediaCreateDate<FileName' -if 'not $MediaCreateDate' -ext mov -ext mp4 ./
+exiftool -F -m -overwrite_original '-MediaCreateDate<FileModifyDate' -if 'not $MediaCreateDate' -ext mov -ext mp4 ./
+exiftool -F -m '-FileName<MediaCreateDate' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -if '$MediaCreateDate' -if '$MediaCreateDate gt 1980' -ext mov -ext mp4 ./
+exiftool -F -m '-FileName<FileModifyDate' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -ext mov -ext mp4 ./
 
-cd /Users/toby/Dropbox/Raw
+cd ~/Dropbox/Raw
 
-/usr/bin/exiftool -overwrite_original -tagsfromfile %d%f.xmp ./
+exiftool -overwrite_original -tagsfromfile %d%f.xmp ./
 mv ./*.xmp ~/.Trash
-/usr/bin/exiftool -F -m -overwrite_original '-DateTimeOriginal<FileModifyDate' -if 'not $DateTimeOriginal' ./
-/usr/bin/exiftool -F -m '-FileName<DateTimeOriginal' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -if '$DateTimeOriginal' ./
+exiftool -F -m -overwrite_original '-DateTimeOriginal<FileModifyDate' -if 'not $DateTimeOriginal' ./
+exiftool -F -m '-FileName<DateTimeOriginal' -d '%Y/%m/%Y-%m-%d %H.%M.%S %%c.%%le' -if '$DateTimeOriginal' ./
