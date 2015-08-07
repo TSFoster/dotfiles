@@ -56,14 +56,15 @@ done
 
 cd ${1-.}
 FNAME=$(basename "$(full_path .)")
+ROTATION=$(exiftool "$(ls *.jpg | head -1)" -Orientation -n | awk '/^Orientation/ {if ($3==3) rot="1,transpose=1"; else if ($3==6) rot=1; else if ($3==8) rot=2} END {if (rot) print ",transpose=" rot}')
 rm -f ../$FNAME.mp4
-cat *.jpg | ffmpeg       \
-  -f       image2pipe    \
-  -r       $FRAMERATE    \
-  -vcodec  mjpeg         \
-  -i       -             \
-  -vcodec  libx264       \
-  -vf      scale=${W}:$H \
+cat *.jpg | ffmpeg                    \
+  -f       image2pipe                 \
+  -r       $FRAMERATE                 \
+  -vcodec  mjpeg                      \
+  -i       -                          \
+  -vcodec  libx264                    \
+  -vf      scale=${W}:${H}${ROTATION} \
   mp4ify_tmp.mp4
 qt-faststart mp4ify_tmp.mp4 ../$FNAME.mp4
 rm -f mp4ify_tmp.mp4
