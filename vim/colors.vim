@@ -21,9 +21,4 @@ noremap <F11> :ReverseBackground<CR>
 
 " Fixes Gitgutter colour issues
 " See: https://github.com/airblade/vim-gitgutter/issues/164
-autocmd ColorScheme * highlight clear SignColumn
-      \ | highlight SignColumn                           ctermbg=0
-      \ | highlight GitGutterAdd          ctermfg=green  ctermbg=0
-      \ | highlight GitGutterChange       ctermfg=yellow ctermbg=0
-      \ | highlight GitGutterDelete       ctermfg=red    ctermbg=0
-      \ | highlight GitGutterChangeDelete ctermfg=yellow ctermbg=0
+autocmd ColorScheme * highlight clear SignColumn | call gitgutter#highlight#define_highlights()
