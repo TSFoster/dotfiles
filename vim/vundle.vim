@@ -106,6 +106,8 @@ Plugin 'sheerun/vim-polyglot'                   " Syntax files for all the langu
                                                 " ----------------------------------------------------------------
 Plugin 'othree/javascript-libraries-syntax.vim' " Syntax for JavaScript libraries
                                                 " ----------------------------------------------------------------
+Plugin 'kien/rainbow_parentheses.vim'           " Different colors for pairs of parentheses
+                                                " ----------------------------------------------------------------
 Plugin 'tpope/vim-rails'                        " Rails tools
                                                 " ----------------------------------------------------------------
 Plugin 'nelstrom/vim-markdown-folding'          " Fold markdown documents by section
