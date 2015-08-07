@@ -57,10 +57,13 @@ done
 cd ${1-.}
 FNAME=$(basename "$(full_path .)")
 
+ROT=$(exiftool "$(ls *.jpg | head -1)" -Orientation -n | awk 'BEGIN {rot=0} /^Orientation/ {if ($3==3) rot=180; else if ($3==6) rot=90; else if ($3==8) rot=270} END {print rot}')
+
 convert           \
   *.jpg           \
   -resize ${W}x$H \
   -delay  3       \
+  -rotate ${ROT}  \
   GIF:-           \
 | gifsicle        \
   -O1             \
