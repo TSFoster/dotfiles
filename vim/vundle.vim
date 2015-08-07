@@ -27,6 +27,8 @@ Plugin 'kana/vim-textobj-user'                  " Create your own text objects
                                                 " ----------------------------------------------------------------
 Plugin 'kana/vim-textobj-indent'                " Text object for similarly indented lines
                                                 " ----------------------------------------------------------------
+Plugin 'reedes/vim-textobj-quote'               " Text object for smart quotes
+                                                " ----------------------------------------------------------------
 Plugin 'gcmt/wildfire.vim'                      " Select closest text object (e.g. quotes, paragraph):
                                                 " Select bigger with <Enter>, smaller with <BS>
                                                 " ----------------------------------------------------------------
