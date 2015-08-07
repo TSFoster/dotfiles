@@ -29,6 +29,8 @@ Plugin 'kana/vim-textobj-indent'                " Text object for similarly inde
                                                 " ----------------------------------------------------------------
 Plugin 'reedes/vim-textobj-quote'               " Text object for smart quotes
                                                 " ----------------------------------------------------------------
+Plugin 'reedes/vim-wordy'                       " Functions to help you write better (`:Wordy`, `:NoWordy`)
+                                                " ----------------------------------------------------------------
 Plugin 'gcmt/wildfire.vim'                      " Select closest text object (e.g. quotes, paragraph):
                                                 " Select bigger with <Enter>, smaller with <BS>
                                                 " ----------------------------------------------------------------
