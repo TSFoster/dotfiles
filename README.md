@@ -38,7 +38,7 @@ Sort of required (*very* incomplete list):
 
 ## Installation
 
-Check requirements are met, clone this repository `git clone https://github.com/TSFoster/dotfiles.git ~/.dotfiles` and run `~/.dotfiles/bin/refresh_dotfiles`.
+Check requirements are met, clone this repository `git clone https://github.com/TSFoster/dotfiles.git ~/.dotfiles` and run `~/.dotfiles/bin/install_dotfiles`.
 
 For the italic fonts (see the `italic-fonts` directory), make sure you have an italic font installed (I recommend [Triplicate]), and follow the instructions on [Alex Pearce]'s website.
 
