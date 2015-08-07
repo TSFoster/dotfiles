@@ -72,3 +72,6 @@ au BufReadPost *.vim   map K :exe ":help ".expand("<cword>")<CR>
 au BufReadPost *.vimrc map K :exe ":help ".expand("<cword>")<CR>
 
 au BufRead,BufNewFile *.html,*.html.*,*.xml,*.xml.* inoremap </ </<C-x><C-o>
+
+" Break line at cursor
+nnoremap <Return> i<Return><Esc>
