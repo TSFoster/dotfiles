@@ -34,6 +34,7 @@ Sort of required (*very* incomplete list):
 * qt-faststart
 * imagemagick (+ included tools like convert, mogrify)
 * gifsicle
+* z
 
 ## Installation
 

@@ -10,3 +10,4 @@ source $DOTDIR/aliases/git.zsh
 source $DOTDIR/aliases/fzf.zsh
 source $DOTDIR/shivs-hooks.zsh
 source $DOTDIR/completions.zsh
+source /usr/local/etc/profile.d/z.sh
