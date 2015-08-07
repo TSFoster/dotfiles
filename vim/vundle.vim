@@ -174,6 +174,8 @@ Plugin 'tpope/vim-dispatch'                     " Open Tmux (or other) window
                                                 " `:Focus global command` (:Focus! to turn off)
                                                 " `:Start command` for interactive shell (:Start! for background)
                                                 " ----------------------------------------------------------------
+Plugin 'manicmaniac/betterga'                   " More info when you type `ga`
+                                                " ----------------------------------------------------------------
 Plugin 'FredKSchott/CoVim'                      " “Think Google Docs for Vim”:
                                                 " `:CoVim start [port] [name]`
                                                 " `:CoVim connect [host address / 'localhost'] [port] [name]`
