@@ -18,4 +18,6 @@ path_if_exists $HOME/.rbenv/shims
 path_if_exists $HOME/.dotfiles/bin
 path_if_exists $HOME/.cabal/bin
 
+export PATH
+
 unset -f path_if_exists
