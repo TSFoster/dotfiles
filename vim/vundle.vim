@@ -6,7 +6,7 @@ call vundle#begin()
                                                 " ================================================================
 Plugin 'gmarik/Vundle.vim'                      " Vundle must manage itself
                                                 " ----------------------------------------------------------------
-Plugin 'altercation/vim-colors-solarized'       " Solarized colorscheme
+Plugin 'chriskempson/base16-vim'                " base15 colorschemechriskempson/base16-vim
                                                 " ----------------------------------------------------------------
 Plugin 'AndrewRadev/splitjoin.vim'              " Switch between single- and multi-line code:
                                                 " gS to go from single- to multi-line

@@ -1,7 +1,7 @@
 set background=dark
 
 let g:solarized_termtrans = 1
-colorscheme solarized
+colorscheme base16-default
 let Powerline_colorscheme = 'solarized16'
 
 function! ReverseBackground()
