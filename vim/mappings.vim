@@ -73,5 +73,6 @@ au BufReadPost *.vimrc map K :exe ":help ".expand("<cword>")<CR>
 
 au BufRead,BufNewFile *.html,*.html.*,*.xml,*.xml.* inoremap </ </<C-x><C-o>
 
-" Break line at cursor
+" Insert whitespace in normal
 nnoremap <Return> i<Return><Esc>
+nnoremap \| i<Space><Esc>
