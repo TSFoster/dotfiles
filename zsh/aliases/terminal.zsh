@@ -5,6 +5,7 @@ alias s='source $HOME/.zshenv && source $HOME/.zshrc'
 
 alias -g G='|& egrep -i'
 alias -g V='| vim -'
+alias -g §='| vipe |'
 alias -g P='| eval $PAGER'
 
 if [ "$OS" = Mac ]; then
