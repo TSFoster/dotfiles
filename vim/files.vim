@@ -4,7 +4,7 @@ set termencoding=utf-8
 set spelllang=en_gb
 
 " Sudo-write a file
-command! W w !sudo tee % > /dev/null " Sudo write file
+command! W w !sudo tee % > /dev/null
 
 " Bring up diff of current buffer to last save
 command! DiffOrig let g:diffline = line('.')
