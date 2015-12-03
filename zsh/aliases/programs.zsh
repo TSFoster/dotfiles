@@ -49,6 +49,7 @@ alias ctags_rails_bundle='ctags -R --languages=ruby --exclude=.git --exclude=log
 function pvr { echo "search0 $*" > "$HOME/.get_iplayer/pvr/$*"; v "$HOME/.get_iplayer/pvr/$*" }
 function pvr_radio { echo "type radio\nsearch0 $*" > "$HOME/.get_iplayer/pvr/$*"; v "$HOME/.get_iplayer/pvr/$*" }
 alias pvr_run='get_iplayer --pvr-run &'
+function get_pid { get_iplayer --get --pid=$1 }
 
 alias tod='t o; t d -v'
 alias toa='t o; t d -v; t a -y'
