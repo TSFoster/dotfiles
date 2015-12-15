@@ -53,3 +53,5 @@ function get_pid { get_iplayer --get --pid=$1 }
 
 alias tod='t o; t d -v'
 alias toa='t o; t d -v; t a -y'
+
+alias upgrade='brew update && brew upgrade'
