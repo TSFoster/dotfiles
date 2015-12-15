@@ -55,3 +55,5 @@ alias tod='t o; t d -v'
 alias toa='t o; t d -v; t a -y'
 
 alias upgrade='brew update && brew upgrade'
+
+function dockenv { eval $(docker-machine env ${1-default}) }
