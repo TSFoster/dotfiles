@@ -31,3 +31,5 @@
 
   exec = "!exec "
   x = "!exec "
+
+  appraise = "!${GOPATH}/bin/git-appraise"
