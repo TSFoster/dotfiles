@@ -23,7 +23,7 @@ set ttyfast                    " Smoother redrawing for modern machine …
 set lazyredraw                 " … but don't bother redrawing stuff you don't need to
 set backspace=indent,eol,start " More useful backspace
 set textwidth=0                " Don't auto-newline
-set nrformats=alpha,hex        " Include chars and hex numbers in <C-a>,<C-x>
+set nrformats=octal,hex        " Include chars and hex numbers in <C-a>,<C-x>
 
 let g:netrw_preview      = 1  " Vertical preview
 let g:netrw_liststyle    = 3  " Tree view (toggle with `i`)
