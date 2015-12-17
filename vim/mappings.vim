@@ -11,6 +11,7 @@ inoremap jj <ESC>
 " (It forwards to ; where necessary)
 nnoremap ; :
 vnoremap ; :
+nnoremap q; q:
 nmap <Leader>;         <Plug>SneakNext
 nmap <Leader><Leader>; <Plug>SneakPrevious
 
