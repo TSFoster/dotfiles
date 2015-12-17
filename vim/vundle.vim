@@ -27,6 +27,8 @@ Plugin 'kana/vim-textobj-user'                  " Create your own text objects
                                                 " ----------------------------------------------------------------
 Plugin 'kana/vim-textobj-indent'                " Text object for similarly indented lines
                                                 " ----------------------------------------------------------------
+Plugin 'kana/vim-textobj-entire'                " Text object for entire text
+                                                " ----------------------------------------------------------------
 Plugin 'reedes/vim-textobj-quote'               " Text object for smart quotes
                                                 " ----------------------------------------------------------------
 Plugin 'reedes/vim-wordy'                       " Functions to help you write better (`:Wordy`, `:NoWordy`)
