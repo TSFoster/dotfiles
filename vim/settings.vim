@@ -28,8 +28,7 @@ set nrformats=octal,hex        " Include chars and hex numbers in <C-a>,<C-x>
 let g:netrw_preview      = 1  " Vertical preview
 let g:netrw_liststyle    = 3  " Tree view (toggle with `i`)
 let g:netrw_winsize      = 70 " Large windows sizes with `o` and `v`
-let g:netrw_preview      = 1  " Preview in vertical split
-let g:netrw_browse_split = 2  " Vertical split by default
+let g:netrw_browse_split = 0  " Open in same window
 
 set scrolloff=5
 
