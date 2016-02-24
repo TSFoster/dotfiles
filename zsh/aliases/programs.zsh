@@ -30,6 +30,7 @@ alias tm='tmux'
 alias tma='tmux attach'
 alias mo='mux open'
 alias ms='mux start'
+function new_project { mux copy template $1 && mkdir ~/Dropbox/Work/$1 && mux start $1 }
 
 alias psg='pgrep -fil'
 
