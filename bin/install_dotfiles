@@ -15,6 +15,9 @@ mkdir -p .config
 mkdir -p .completion
 mkdir -p .vim/bundle
 mkdir -p .tmuxinator
+mkdir -p .hammerspoon
+
+rm .hammerspoon/*
 
 # Approximate ln -i with directory (can't symlink, powerline won't work)
 # Only ask to replace if ~/.config/powerline directory
@@ -79,14 +82,15 @@ if ! [ -f ../.machine-private.zsh ]; then
   cp zsh/machine-private.zsh ../.machine-private.zsh
 fi
 
-link_unlinked git/home.gitconfig  ../.gitconfig
-link_unlinked zsh/home.inputrc    ../.inputrc
-link_unlinked zsh/home.zshenv     ../.zshenv
-link_unlinked zsh/home.zshrc      ../.zshrc
-link_unlinked tmux/home.tmux.conf ../.tmux.conf
-link_unlinked irb/home.irbrc      ../.irbrc
-link_unlinked vim/home.vimrc      ../.vimrc
-link_unlinked vim/scripts.vim     ../.vim/scripts.vim
+link_unlinked git/home.gitconfig   ../.gitconfig
+link_unlinked zsh/home.inputrc     ../.inputrc
+link_unlinked zsh/home.zshenv      ../.zshenv
+link_unlinked zsh/home.zshrc       ../.zshrc
+link_unlinked tmux/home.tmux.conf  ../.tmux.conf
+link_unlinked irb/home.irbrc       ../.irbrc
+link_unlinked vim/home.vimrc       ../.vimrc
+link_unlinked vim/scripts.vim      ../.vim/scripts.vim
+link_unlinked hammerspoon/init.lua ../.hammerspoon/init.lua
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done
