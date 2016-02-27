@@ -11,3 +11,6 @@ source $DOTDIR/aliases/fzf.zsh
 source $DOTDIR/shivs-hooks.zsh
 source $DOTDIR/completions.zsh
 source /usr/local/etc/profile.d/z.sh
+if [[ "$OS" == "Mac" ]]; then
+  source $DOTDIR/iterm2-integration.zsh
+fi
