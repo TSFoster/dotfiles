@@ -18,4 +18,4 @@ end
 
 setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 
-hs.hotkey.bind(meta, "8", caffeineClicked)
+hs.hotkey.bind(hyper, "8", caffeineClicked)

@@ -1,1 +1,1 @@
-meta = {"cmd", "alt", "ctrl", "shift"}
+hyper = {"cmd", "alt", "ctrl", "shift"}
