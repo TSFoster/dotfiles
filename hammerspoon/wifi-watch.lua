@@ -14,10 +14,10 @@ function ssidChangedCallback()
 
   if newSSID == homeSSID and lastSSID ~= homeSSID and device:muted() then
     device.setMuted(false)
-    hs.notify.new({title="Volume unmuted", informativeText="Set to " .. device.volume}):send()
+    hs.alert.show("Volume unmuted, set to " .. device.volume)
   elseif newSSID ~= homeSSID and lastSSID == homeSSID and (thisTime - lastTime) > (60 * 5) and not device.jackConnected() then
     device:setMuted(true)
-    hs.notify.new({title="Volume muted", informativeText=""}):send()
+    hs.alert.show("Volume muted")
   end
 
   lastSSID = newSSID
