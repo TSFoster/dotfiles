@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Fn to (shift+option+command)</name>
+    <appendix>When used with {letter,number,symbol,arrow,Space,Escape,Tab}</appendix>
+    <identifier>io.tsf.fn_to_almost_hyper</identifier>
+    <include path="./wrap_various.xml">
+      <replacementdef>
+        <replacementname>BEFORE</replacementname>
+        <replacementvalue>ModifierFlag::FN</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>AFTER</replacementname>
+        <replacementvalue>ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+      </replacementdef>
+    </include>
+  </item>
+  <item>
+    <name>Fn by itself to F18</name>
+    <identifier>io.tsf.fn_to_f18</identifier>
+    <appendix>The FN key will be changed to the F18 key</appendix>
+    <appendix>when pressed and released without other keys press.</appendix>
+    <autogen>__KeyDownUpToKey__ KeyCode::FN, KeyCode::F18</autogen>
+  </item>
+</root>

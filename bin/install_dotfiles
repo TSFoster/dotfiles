@@ -94,6 +94,11 @@ link_unlinked hammerspoon/init.lua ../.hammerspoon/init.lua
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done
+if [ -d "$HOME/Library/Application Support/Karabiner" ] ; then
+  for f in karabiner/*.xml; do
+    link_unlinked "$f" "$HOME/Library/Application Support/Karabiner/$(basename "$f")"
+  done
+fi
 
 # If we're on a Mac
 if uname | grep -q 'Darwin'; then
