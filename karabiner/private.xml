@@ -1,9 +1,54 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Fn to (shift+option+command)</name>
+    <name>Fn+modifier to hyper minus modifier</name>
     <appendix>When used with {letter,number,symbol,arrow,Space,Escape,Tab}</appendix>
-    <identifier>io.tsf.fn_to_almost_hyper</identifier>
+    <identifier>io.tsf.fn_to_hyper_minus_modifier</identifier>
+    <include path="./wrap_various.xml">
+      <replacementdef>
+        <replacementname>BEFORE</replacementname>
+        <replacementvalue>ModifierFlag::FN | ModifierFlag::CONTROL_L</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>AFTER</replacementname>
+        <replacementvalue>ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+      </replacementdef>
+    </include>
+    <include path="./wrap_various.xml">
+      <replacementdef>
+        <replacementname>BEFORE</replacementname>
+        <replacementvalue>ModifierFlag::FN | ModifierFlag::OPTION_L</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>AFTER</replacementname>
+        <replacementvalue>ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+      </replacementdef>
+    </include>
+    <include path="./wrap_various.xml">
+      <replacementdef>
+        <replacementname>BEFORE</replacementname>
+        <replacementvalue>ModifierFlag::FN | ModifierFlag::COMMAND_L</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>AFTER</replacementname>
+        <replacementvalue>ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</replacementvalue>
+      </replacementdef>
+    </include>
+    <include path="./wrap_various.xml">
+      <replacementdef>
+        <replacementname>BEFORE</replacementname>
+        <replacementvalue>ModifierFlag::FN | ModifierFlag::SHIFT_L</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>AFTER</replacementname>
+        <replacementvalue>ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L</replacementvalue>
+      </replacementdef>
+    </include>
+  </item>
+  <item>
+    <name>Fn to hyper</name>
+    <appendix>When used with {letter,number,symbol,arrow,Space,Escape,Tab}</appendix>
+    <identifier>io.tsf.fn_to_hyper</identifier>
     <include path="./wrap_various.xml">
       <replacementdef>
         <replacementname>BEFORE</replacementname>
@@ -11,7 +56,7 @@
       </replacementdef>
       <replacementdef>
         <replacementname>AFTER</replacementname>
-        <replacementvalue>ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+        <replacementvalue>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
       </replacementdef>
     </include>
   </item>
