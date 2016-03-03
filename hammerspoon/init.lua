@@ -1,10 +1,11 @@
-local dir = os.getenv("HOME") .. "/.dotfiles/hammerspoon/"
-function load(file)
+dir = os.getenv("HOME") .. "/.dotfiles/hammerspoon/"
+function config(file)
   dofile(dir .. file .. ".lua")
 end
 
-load("keys")
-load("config_reload")
-load("caffeine")
-load("wifi-watch")
-load("type-clipboard")
+config("keys")
+config("command")
+config("config_reload")
+config("caffeine")
+config("wifi-watch")
+config("type-clipboard")
