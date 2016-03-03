@@ -1,5 +1,3 @@
-dofile("keys.lua")
-
 local caffeine = hs.menubar.new()
 
 function setCaffeineDisplay(state)
