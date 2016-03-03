@@ -60,11 +60,4 @@
       </replacementdef>
     </include>
   </item>
-  <item>
-    <name>Fn by itself to F18</name>
-    <identifier>io.tsf.fn_to_f18</identifier>
-    <appendix>The FN key will be changed to the F18 key</appendix>
-    <appendix>when pressed and released without other keys press.</appendix>
-    <autogen>__KeyDownUpToKey__ KeyCode::FN, KeyCode::F18</autogen>
-  </item>
 </root>
