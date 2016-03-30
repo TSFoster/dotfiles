@@ -26,6 +26,7 @@
   <autogen>__KeyToKey__ KeyCode::X               , {{ BEFORE }} , KeyCode::X               , {{ AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::Y               , {{ BEFORE }} , KeyCode::Y               , {{ AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::Z               , {{ BEFORE }} , KeyCode::Z               , {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::UK_SECTION      , {{ BEFORE }} , KeyCode::UK_SECTION      , {{ AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::ESCAPE          , {{ BEFORE }} , KeyCode::ESCAPE          , {{ AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::SPACE           , {{ BEFORE }} , KeyCode::SPACE           , {{ AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::TAB             , {{ BEFORE }} , KeyCode::TAB             , {{ AFTER }}</autogen>
