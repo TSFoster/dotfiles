@@ -8,17 +8,17 @@ function ssidChangedCallback()
   device = hs.audiodevice.defaultOutputDevice()
   thisTime = os.time()
 
-  if lastSSID == homeSSID then lastTime = os.time() end
-
-  if newSSID == homeSSID and lastSSID ~= homeSSID and device:muted() then
-    device:setMuted(false)
-    hs.alert.show("Volume unmuted, set to " .. device:volume() .. "%")
-  elseif newSSID ~= homeSSID and os.difftime(thisTime, lastTime) > 300 and not device:muted() then
+  if newSSID == homeSSID then
+    if lastSSID ~= homeSSID and device:muted() then
+      device:setMuted(false)
+      hs.alert.show("Volume unmuted, set to " .. device:volume() .. "%")
+    end
+    lastSSID = newSSID
+    lastTime = os.time()
+  elseif os.difftime(thisTime, lastTime) > 300 and not device:muted() then
     device:setMuted(true)
     hs.alert.show("Volume muted")
   end
-
-  if newSSID then lastSSID = newSSID end
 end
 
 wifiWatcher = hs.wifi.watcher.new(ssidChangedCallback)
