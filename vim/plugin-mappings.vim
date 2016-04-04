@@ -9,6 +9,8 @@ nnoremap <Leader>tt :CtrlPTag<CR>
 nnoremap <Leader>ll :CtrlPLine<CR>
 nnoremap <Leader>lc :CtrlPChange<CR>
 nnoremap <Leader>lC :CtrlPChangeAll<CR>
+nnoremap <Leader>fu :CtrlPFunky<CR>
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 " }}}
 
 " Drag Visuals {{{

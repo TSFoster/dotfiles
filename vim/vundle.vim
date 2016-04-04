@@ -67,6 +67,11 @@ Plugin 'kien/ctrlp.vim'                         " Fuzzy file finder
                                                 " ----------------------------------------------------------------
 Plugin 'd11wtq/ctrlp_bdelete.vim'               " Ctrlp plugin to delete buffers with <C-2>
                                                 " ----------------------------------------------------------------
+Plugin 'tacahiroy/ctrlp-funky'                  " Ctrlp plugin to search functions
+                                                " <Leader>fu: Search functions
+                                                " <Leader>fU: Search functions like word under cursor
+                                                " ----------------------------------------------------------------
+                                                " ----------------------------------------------------------------
 Plugin 'junegunn/fzf'                           " Fuzzy file finder based on ctrlp
                                                 " ----------------------------------------------------------------
 Plugin 'mileszs/ack.vim'                        " Ack integration:
