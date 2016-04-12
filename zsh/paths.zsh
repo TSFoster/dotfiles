@@ -17,6 +17,8 @@ path_if_exists $HOME/.pyenv/shims
 path_if_exists $HOME/.rbenv/shims
 path_if_exists $HOME/.dotfiles/bin
 path_if_exists $HOME/.cabal/bin
+path_if_exists /Applications/Karabiner.app/Contents/Library/bin/
+path_if_exists /Applications/Seil.app/Contents/Library/bin/
 
 export PATH
 
