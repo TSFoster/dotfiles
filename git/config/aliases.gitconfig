@@ -1,7 +1,7 @@
 [alias]
   h = help
   s = status
-  gr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%Creset' --abbrev-commit --date=relative
+  gr = log --graph --oneline
 
   cl = clone
   a = add
