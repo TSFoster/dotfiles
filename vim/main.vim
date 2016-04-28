@@ -15,3 +15,4 @@ runtime colors.vim
 runtime syntax.vim
 runtime search.vim
 runtime clipboard.vim
+runtime run-in-multiple.vim
