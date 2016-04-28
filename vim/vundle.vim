@@ -63,7 +63,7 @@ Plugin 'justinmk/vim-gtfo'                      " Go to file/dir in file manager
                                                 " goF: like gof for the current working directory (:pwd)
                                                 " goT: like got for the current working directory (:pwd)
                                                 " ----------------------------------------------------------------
-Plugin 'kien/ctrlp.vim'                         " Fuzzy file finder
+Plugin 'ctrlpvim/ctrlp.vim'                     " Fuzzy file finder
                                                 " ----------------------------------------------------------------
 Plugin 'd11wtq/ctrlp_bdelete.vim'               " Ctrlp plugin to delete buffers with <C-2>
                                                 " ----------------------------------------------------------------
