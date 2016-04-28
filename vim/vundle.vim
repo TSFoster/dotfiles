@@ -183,6 +183,8 @@ Plugin 'tpope/vim-dispatch'                     " Open Tmux (or other) window
                                                 " ----------------------------------------------------------------
 Plugin 'manicmaniac/betterga'                   " More info when you type `ga`
                                                 " ----------------------------------------------------------------
+Plugin 'editorconfig/editorconfig-vim'          " Editorconfig support
+                                                " ----------------------------------------------------------------
 Plugin 'FredKSchott/CoVim'                      " “Think Google Docs for Vim”:
                                                 " `:CoVim start [port] [name]`
                                                 " `:CoVim connect [host address / 'localhost'] [port] [name]`
