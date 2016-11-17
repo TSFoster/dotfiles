@@ -59,3 +59,11 @@ alias toa='t o; t d -v; t a -y'
 alias upgrade='brew update && brew upgrade'
 
 function dockenv { eval $(docker-machine env ${1-default}) }
+
+function exists {
+  if type $1 >/dev/null 2>&1; then
+    return 0
+  else
+    return 1
+  fi
+}

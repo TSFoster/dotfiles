@@ -25,7 +25,6 @@ Sort of required (*very* incomplete list):
 * Ag
 * fzf
 * terminal-notifier
-* autojump
 * gitjk
 * get_iplayer
 * swig, 1pass

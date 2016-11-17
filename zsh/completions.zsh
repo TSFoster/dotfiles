@@ -20,4 +20,3 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 for f in $HOME/.completion/*.zsh; do
   source $f
 done
-eval "$(grunt --completion=zsh)"

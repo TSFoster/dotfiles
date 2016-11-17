@@ -5,4 +5,3 @@ if [ -f "$HOME/.machine-private.zsh" ]; then
 fi
 source $HOME/.dotfiles/zsh/env.zsh
 source $HOME/.dotfiles/zsh/paths.zsh
-[ -s $HOME/.nvm/nvm.sh ] && source $HOME/.nvm/nvm.sh

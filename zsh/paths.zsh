@@ -1,25 +1,16 @@
-function path_if_exists {
-  if [ -d "$1" ]; then
-    PATH=$1:$PATH
-  fi
-}
-
-path_if_exists /usr/local/git/bin
-path_if_exists /usr/local/pear/bin
-path_if_exists /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources
-path_if_exists $GOPATH/bin
-path_if_exists /usr/local/sbin
-path_if_exists /opt/local/bin
-path_if_exists /opt/local/sbin
-path_if_exists /usr/local/bin
-path_if_exists /usr/local/heroku/bin
-path_if_exists $HOME/.pyenv/shims
-path_if_exists $HOME/.rbenv/shims
-path_if_exists $HOME/.dotfiles/bin
-path_if_exists $HOME/.cabal/bin
-path_if_exists /Applications/Karabiner.app/Contents/Library/bin/
-path_if_exists /Applications/Seil.app/Contents/Library/bin/
+PATH=/usr/local/git/bin:$PATH
+PATH=/usr/local/pear/bin:$PATH
+PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources:$PATH
+PATH=$GOPATH/bin:$PATH
+PATH=/usr/local/sbin:$PATH
+PATH=/opt/local/bin:$PATH
+PATH=/opt/local/sbin:$PATH
+PATH=/usr/local/bin:$PATH
+PATH=/usr/local/heroku/bin:$PATH
+PATH=$HOME/.pyenv/shims:$PATH
+PATH=$HOME/.rbenv/shims:$PATH
+PATH=$HOME/.dotfiles/bin:$PATH
+PATH=/Applications/Karabiner.app/Contents/Library/bin/:$PATH
+PATH=/Applications/Seil.app/Contents/Library/bin/:$PATH
 
 export PATH
-
-unset -f path_if_exists
