@@ -10,7 +10,6 @@ runtime files.vim
 runtime text-objects.vim
 runtime settings.vim
 runtime appearance.vim
-runtime powerline.vim
 runtime colors.vim
 runtime syntax.vim
 runtime search.vim
