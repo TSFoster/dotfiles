@@ -74,6 +74,9 @@ Plugin 'tacahiroy/ctrlp-funky'                  " Ctrlp plugin to search functio
                                                 " ----------------------------------------------------------------
 Plugin 'junegunn/fzf'                           " Fuzzy file finder based on ctrlp
                                                 " ----------------------------------------------------------------
+Plugin 'Arkham/vim-quickfixdo'                  " like bufdo/argdo but for files in quickfix
+                                                " :QuickFixDo :%s///
+                                                " ----------------------------------------------------------------
 Plugin 'mileszs/ack.vim'                        " Ack integration:
                                                 " :Ack [options] {pattern} [{directories}]
                                                 " In the quickfix window, you can use:
