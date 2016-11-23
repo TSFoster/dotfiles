@@ -5,6 +5,8 @@ let mapleader="\<Space>"
 " jj is a rare combination that stays on the home row and is faster than
 " hitting <C-[> or <ESC>
 inoremap jj <ESC>
+" If you want to type a j before escaping, type jkj
+inoremap jkj j<ESC>
 
 " Semi-colon is much faster to type than colon. Replace semi-color behaviour
 " with <Leader>;. SneakNext is used instead of ; because of vim-sneak plugin.
