@@ -40,7 +40,3 @@ noremap <F4> <Esc>:SetDark<CR>
 nnoremap <F11> :ReverseBackground<CR>
 nnoremap <F3> :SetLight<CR>
 nnoremap <F4> :SetDark<CR>
-
-" Fixes Gitgutter colour issues
-" See: https://github.com/airblade/vim-gitgutter/issues/164
-autocmd ColorScheme * highlight clear SignColumn | call gitgutter#highlight#define_highlights()

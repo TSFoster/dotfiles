@@ -139,8 +139,6 @@ Plugin 'tpope/vim-characterize'                 " Improve information given abou
                                                 " ----------------------------------------------------------------
 Plugin 'tpope/vim-speeddating'                  " Make <C-a> and <C-x> work with dates
                                                 " ----------------------------------------------------------------
-Plugin 'airblade/vim-gitgutter'                 " Shows git diff in gutter
-                                                " ----------------------------------------------------------------
 Plugin 'tpope/vim-fugitive'                     " Wrapper for Git
                                                 " ----------------------------------------------------------------
 Plugin 'mattn/gist-vim'                         " Post gists with :Gist (-p for private, -P for public)
