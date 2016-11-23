@@ -26,6 +26,7 @@ function vs {
   fi
 }
 
+alias mux='tmuxinator'
 alias tm='tmux'
 alias tma='tmux attach'
 alias mo='mux open'
