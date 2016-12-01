@@ -1,30 +1,7 @@
 alias wcat='wget -q -O -'
 
-alias v='vim'
-alias vi='vim'
-function vs {
-  local session=''
-  local sessionroot="$(git root 2>/dev/null)"
-  if [ -z "$sessionroot" ]; then sessionroot='.'; fi
-
-  if [ -n "$*" ]; then
-    session="$sessionroot/$*.vim"
-  else
-    if [ -s "$sessionroot/Session.vim" ]; then
-      session="$sessionroot/Session.vim"
-    elif [ -s "$sessionroot/.Session.vim" ]; then
-      session="$sessionroot/.Session.vim"
-    fi
-  fi
-
-  local escapedsession="$(printf %q $session)"
-
-  if [ -s "$session" ]; then
-    vim -S "$escapedsession"
-  else
-    vim +"Obsession $escapedsession"
-  fi
-}
+alias v='nvim'
+alias vi='nvim'
 
 alias mux='tmuxinator'
 alias tm='tmux'

@@ -11,9 +11,9 @@ cd $HOME
 touch .hushlogin
 
 # Ensure hidden directories in home folder exist
-mkdir -p .config
+mkdir -p .config/nvim/autoload
+mkdir -p .config/nvim/sessions
 mkdir -p .completion
-mkdir -p .vim/bundle
 mkdir -p .tmux/plugins
 mkdir -p .tmuxinator
 mkdir -p .hammerspoon
@@ -34,21 +34,8 @@ if ! [ -d ".config/powerline" ]; then
   cp -r .dotfiles/powerline .config
 fi
 
-# Can't think of a nice way to check if ~/.vim is dirty, so just ask if you want to reinstall every time ~/.vim/bundle exists
-if [ -d ".vim/bundle" ]; then
-  read "reply?reinstall all vim extensions? (may take a while) "
-  case $reply in
-      [Yy]* ) rm -rf .vim/bundle;;
-      * ) echo 'no change';;
-  esac
-fi
-if ! [ -d ".vim/bundle" ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
-
-if ! [ -d ".tmux/plugins/tpm" ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
-  vim -u .dotfiles/vim/vundle.vimrc +PluginInstall +qall
+if ! [ -d ".config/tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 fi
 
 if ! [ -f ".completion/npm.zsh" ]; then
@@ -93,8 +80,8 @@ link_unlinked zsh/home.zshenv      ../.zshenv
 link_unlinked zsh/home.zshrc       ../.zshrc
 link_unlinked tmux/home.tmux.conf  ../.tmux.conf
 link_unlinked irb/home.irbrc       ../.irbrc
-link_unlinked vim/home.vimrc       ../.vimrc
-link_unlinked vim/scripts.vim      ../.vim/scripts.vim
+link_unlinked nvim/init.vim        ../.config/nvim/init.vim
+link_unlinked nvim/plug.vim        ../.config/nvim/autoload/plug.vim
 link_unlinked hammerspoon/init.lua ../.hammerspoon/init.lua
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"

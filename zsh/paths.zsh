@@ -1,3 +1,4 @@
+PATH=$HOME/.composer/vendor/bin:$PATH
 PATH=/usr/local/git/bin:$PATH
 PATH=/usr/local/pear/bin:$PATH
 PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources:$PATH

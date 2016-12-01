@@ -1,7 +1,12 @@
 VIM_CRONTAB=true
 DOTDIR=$HOME/.dotfiles/zsh
 export GOPATH=$HOME/.gocode
-export EDITOR=vim
+
+if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
+  export EDITOR='nvr --remote-tab'
+else
+  export EDITOR=nvim
+fi
 
 HISTSIZE=1000
 HISTFILE=~/.history

@@ -1,5 +1,5 @@
 name: '-'
 root: ~/
 windows:
-  - editor: clear && vs .Session
+  - editor: v
   - shell: clear
