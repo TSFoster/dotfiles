@@ -63,4 +63,5 @@ command! Spaces set expandtab
 " Elm {{{
 let g:polyglot_disabled += ['elm']
 let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
 " }}}

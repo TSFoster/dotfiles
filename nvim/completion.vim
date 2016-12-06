@@ -107,9 +107,11 @@ let g:deoplete#sources.ruby = ['ruby'] + s:_
 
 " }}}
 " Elm completion {{{
+
 let g:deoplete#omni#functions.elm = ['elm#Complete']
 let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
 let g:deoplete#sources.elm = ['omni'] + s:_
+
 " }}}
 " Python completion {{{
 
