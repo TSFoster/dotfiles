@@ -87,16 +87,10 @@ let g:deoplete#sources.zsh = ['zsh'] + s:_
 " }}}
 " PHP completion {{{
 
-"Plugin 'pbogut/deoplete-padawan', { 'for': ['php'] }
-"
-"let g:deoplete#sources#padawan#server_addr = 'http://127.0.0.1:15155'
-"let g:deoplete#sources#padawan#server_command = 'padawan-server'
-"let g:deoplete#sources#padawan#log_file = '/Users/toby/padawan.log'
-"let g:deoplete#sources#padawan#server_autostart = 1
-"let g:deoplete#sources#padawan#add_parentheses = 1
+Plugin 'pbogut/deoplete-padawan', { 'for': ['php'] }
 
-let g:deoplete#omni#functions.php = ['phpcomplete#CompletePHP']
-let g:deoplete#omni_patterns.php = '[^\t ]\+'
+let g:deoplete#sources#padawan#add_parentheses = 1
+let g:deoplete#sources.php = ['padawan'] + s:_
 
 " }}}
 " Ruby completion {{{
