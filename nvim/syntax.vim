@@ -6,7 +6,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'ElmCast/elm-vim', { 'for': ['elm'] }
 Plugin 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript'] }
 
-let g:polyglot_disabled = []
+let g:polyglot_disabled = ['cryptol']
 
 " Folding {{{
 set foldlevelstart=20
