@@ -53,3 +53,25 @@ vmap § :s//g<LEFT><LEFT>
 
 
 nnoremap <Leader>hl :set hls!<CR>
+
+
+function! HelpToggle()
+  let helpIsOpen = 0
+  let currentWindow = 0
+  while (winbufnr(currentWindow) > -1)
+    if (getbufvar(winbufnr(currentWindow), '&buftype') ==# 'help')
+      let helpIsOpen = 1
+      break
+    endif
+    let currentWindow += 1
+  endwhile
+  if helpIsOpen
+    helpclose
+  elseif &ft == 'vim'
+    execute 'help ' . expand('<cword>')
+  else
+    Helptags
+  endi
+endfunction
+
+nnoremap <Leader>? :call HelpToggle()<CR>
