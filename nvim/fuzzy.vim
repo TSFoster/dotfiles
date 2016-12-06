@@ -28,8 +28,6 @@ nnoremap <Leader>a :Grepper<CR>
 if !exists('g:grepper')
   let g:grepper = {
     \ 'highlight': 1,
-    \ 'jump': 1,
-    \ 'switch': 0,
     \ 'ag': {
       \ 'escape': '\^$.*+?()[]{}|',
       \ 'grepformat': '%f:%l:%c:%m, %f:%l:%m',

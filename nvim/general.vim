@@ -15,9 +15,11 @@ set relativenumber
 set ignorecase                 " Ignore case in search …
 set smartcase                  " … unless it's a cap
 set wildignorecase             " Ignore case on command line
+set wildmode=longest,list,full " Tabs on command line
+set wildmenu                   " Hints on command line
 set hidden                     " Keep buffers of abandoned files, just hide them
 set textwidth=0                " Don't auto-newline
-set nrformats=bin,octal,hex   " Include chars and hex numbers in <C-a>,<C-x>
+set nrformats=bin,octal,hex    " Include chars and hex numbers in <C-a>,<C-x>
 
 let g:netrw_home=$HOME        " Store network files in fixed location, not current directory
 let g:netrw_preview      = 1  " Vertical preview
