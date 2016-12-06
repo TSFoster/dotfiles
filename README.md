@@ -6,16 +6,13 @@ I am in the process of moving my old dotfiles directory (which was at one point 
 
 My dotfiles do not (yet) check for the existence of any of these, it just assumes them to be installed.
 
-* UTF-8
-* Git 1.7.10+
-* Exuberant Ctags 5.8+
-* tmux 1.9+
-* Powerline beta
-* Vim 7.4 with huge features, python, ruby
+* Git
+* tmux
+* Nvim
 * Homebrew
 * rbenv
 * Mercurial
-* pyenv
+* pyenv with pyenv-virtualenv
 
 Sort of required (*very* incomplete list):
 

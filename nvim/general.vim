@@ -49,3 +49,7 @@ function! Preserve(command)
   let @/=_s
   call cursor(l, c)
 endfunction
+
+
+let g:python_host_prog = '/Users/toby/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/toby/.pyenv/versions/neovim3/bin/python'

@@ -111,8 +111,14 @@ let g:deoplete#omni#functions.elm = ['elm#Complete']
 let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
 let g:deoplete#sources.elm = ['omni'] + s:_
 " }}}
+" Python completion {{{
+
+Plugin 'zchee/deoplete-jedi'
+
+let g:deoplete#sources.python = ['jedi'] + s:_
+
+" }}}
 
 " Plugin 'Shougo/neco-syntax'
 " Plugin 'eagletmt/neco-ghc'
-" Plugin 'zchee/deoplete-jedi'
 " Plugin 'landaire/deoplete-swift'
