@@ -11,7 +11,5 @@ PATH=/usr/local/heroku/bin:$PATH
 PATH=$HOME/.pyenv/shims:$PATH
 PATH=$HOME/.rbenv/shims:$PATH
 PATH=$HOME/.dotfiles/bin:$PATH
-PATH=/Applications/Karabiner.app/Contents/Library/bin/:$PATH
-PATH=/Applications/Seil.app/Contents/Library/bin/:$PATH
 
 export PATH
