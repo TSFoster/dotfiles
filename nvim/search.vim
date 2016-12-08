@@ -33,3 +33,7 @@ let g:caniuse_no_mappings = 1
 nmap <Leader>/c :CanIUse 
 nmap <Leader>/C :CanIUse<CR>
 vmap <Leader>/c "zy:CanIUse <C-r>z<CR>
+
+if has('mac')
+  Plugin 'rizzatti/dash.vim'
+endif
