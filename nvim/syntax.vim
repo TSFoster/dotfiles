@@ -36,24 +36,22 @@ autocmd ColorScheme * highlight markdownItalic cterm=italic
 set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
 set list                      " Display whitespace
 
-" Default to 2 spaces
-set expandtab
-let &l:sts = 2
-let &l:ts = 2
-let &l:sw = 2
 
 " Set all the tab stops to the same value
 function! SetTab(tabstop)
   if a:tabstop > 0
-    let &l:sts = a:tabstop
-    let &l:ts = a:tabstop
-    let &l:sw = a:tabstop
+    let &l:softtabstop = a:tabstop
+    let &l:tabstop = a:tabstop
+    let &l:shiftwidth = a:tabstop
   endif
 endfunction
 
-" Quick way to change tab stops. Add another b to Stab to reformat file
-command! -nargs=1 Stab  call SetTab(<f-args>)
-command! -nargs=1 Stabb call SetTab(<f-args>) | normal gg=G
+call SetTab(2)
+set expandtab
+set smarttab
+
+" Quick way to change tab stops. Add bang to reformat file
+command! -bang -nargs=1 Stab call SetTab(<f-args>) | call Preserve(<bang>0 ? 'normal gg=G' : '')
 
 " Quick way to switch between tabs and spaces
 command! Tabs set noexpandtab
