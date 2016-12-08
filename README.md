@@ -4,33 +4,7 @@ I am in the process of moving my old dotfiles directory (which was at one point 
 
 ## Requirements
 
-My dotfiles do not (yet) check for the existence of any of these, it just assumes them to be installed.
-
-* Git
-* tmux
-* Nvim
-* Homebrew
-* rbenv
-* Mercurial
-* pyenv with pyenv-virtualenv
-
-Sort of required (*very* incomplete list):
-
-* node
-* npm
-* Ack >= 2
-* Ag
-* fzf
-* terminal-notifier
-* gitjk
-* get_iplayer
-* swig, 1pass
-* pygments.rb, redcarpet, instant-markdown-d
-* ffmpeg
-* qt-faststart
-* imagemagick (+ included tools like convert, mogrify)
-* gifsicle
-* z
+**TBD**. At least git, nvim, pyenv, rbenv, node, zsh
 
 ## Installation
 
