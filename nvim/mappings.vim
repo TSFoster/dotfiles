@@ -52,7 +52,7 @@ nmap § :%s//g<LEFT><LEFT>
 vmap § :s//g<LEFT><LEFT>
 
 
-nnoremap <Leader>hl :set hls!<CR>
+nnoremap <silent> <Leader>hl :set hls!<CR>
 
 
 function! HelpToggle()
@@ -74,4 +74,4 @@ function! HelpToggle()
   endi
 endfunction
 
-nnoremap <Leader>? :call HelpToggle()<CR>
+nnoremap <silent> <Leader>? :call HelpToggle()<CR>

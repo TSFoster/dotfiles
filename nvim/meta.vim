@@ -1,7 +1,7 @@
 command! -bar RefreshRC source $HOME/.config/nvim/init.vim
 
-nnoremap <Leader>rc :RefreshRC<CR>
-nnoremap <Leader>pi :RefreshRC \| PlugInstall<CR>
-nnoremap <Leader>pc :RefreshRC \| PlugClean!<CR>
-nnoremap <Leader>pu :PlugUpdate<CR>
-nnoremap <Leader>pU :PlugUpgrade<CR>
+nnoremap <silent> <Leader>rc :RefreshRC<CR>
+nnoremap <silent> <Leader>pi :RefreshRC \| PlugInstall<CR>
+nnoremap <silent> <Leader>pc :RefreshRC \| PlugClean!<CR>
+nnoremap <silent> <Leader>pu :PlugUpdate<CR>
+nnoremap <silent> <Leader>pU :PlugUpgrade<CR>

@@ -2,7 +2,7 @@ Plugin 'sjl/gundo.vim'
 
 let g:gundo_right = 1
 let g:gundo_prefer_python3 = has('python3')
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <silent> <F5> :GundoToggle<CR>
 
 set undofile                             " Store undos in a file
 set undolevels=1000                      " Maximum number of changes that can be undone

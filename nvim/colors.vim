@@ -38,4 +38,4 @@ command! ReverseBackground call ReverseBackground()
 command! SetLight call SetLight()
 command! SetDark call SetDark()
 
-nnoremap <F11> :ReverseBackground<CR>
+nnoremap <silent> <F11> :ReverseBackground<CR>
