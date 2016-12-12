@@ -1,6 +1,4 @@
 Plugin 'hkupty/iron.nvim', {'do': ':UpdateRemotePlugins'}
-
-Plugin 'vim-pandoc/vim-pandoc'
 nnoremap <silent> <Leader>re :IronRepl<CR>
 
 Plugin 'vim-utils/vim-man'
