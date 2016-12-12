@@ -1,5 +1,4 @@
 [core]
-  editor = nvim
   pager = less -FRSX
   excludesfile = ~/.dotfiles/git/global.gitignore
   autocrlf = input
