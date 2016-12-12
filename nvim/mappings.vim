@@ -33,15 +33,21 @@ cnoremap <expr> %p fnameescape(expand('%:p'))
 " %p in command line maps to current file's relative path
 cnoremap <expr> %r fnameescape(expand('%'))
 
-" Quick ways to write and quit buffers
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :qa<CR>
-nnoremap <Leader><Leader>w :wq<CR>
-nnoremap <Leader><Leader>q :wq<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>W :wa<CR>
+function! Quit()
+  if (winnr('$') == 1)
+    if confirm('Are you sure you want to quit?', "&Yes\n&No", 2, "Question") == 1
+      quit
+    endif
+  else
+    quit
+  endif
+endfunction
 
+nnoremap <silent> <Leader>q :call Quit()<CR>
+nnoremap <silent> <Leader><Leader>q :xa<CR>
 
+nnoremap <silent> <Leader>w :update<CR>
+nnoremap <silent> <Leader>W :wa<CR>
 
 " Common substitution patterns, accessible with one button press (on a Mac
 " keyboard, at least)
