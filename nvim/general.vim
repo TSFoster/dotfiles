@@ -21,11 +21,6 @@ set hidden                     " Keep buffers of abandoned files, just hide them
 set textwidth=0                " Don't auto-newline
 set nrformats=bin,octal,hex    " Include chars and hex numbers in <C-a>,<C-x>
 
-let g:netrw_home=$HOME        " Store network files in fixed location, not current directory
-let g:netrw_preview      = 1  " Vertical preview
-let g:netrw_liststyle    = 3  " Tree view (toggle with `i`)
-let g:netrw_winsize      = 70 " Large windows sizes with `o` and `v`
-let g:netrw_browse_split = 0  " Open in same window
 
 set scrolloff=5
 
