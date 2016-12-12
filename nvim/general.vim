@@ -21,6 +21,9 @@ set hidden                     " Keep buffers of abandoned files, just hide them
 set textwidth=0                " Don't auto-newline
 set nrformats=bin,octal,hex    " Include chars and hex numbers in <C-a>,<C-x>
 
+set foldlevelstart=20
+autocmd BufReadPre * setlocal foldmethod=indent
+autocmd BufReadPre * setlocal foldcolumn=4
 
 set scrolloff=5
 
