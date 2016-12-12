@@ -27,11 +27,11 @@ vnoremap    v   <C-V>
 vnoremap <C-V>     v
 
 " %% in command line maps to current file's directory
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+cnoremap <expr> %% fnameescape(expand('%:h').'/')
 " %p in command line maps to current file's path
-cnoremap %p <C-R>=fnameescape(expand('%:p'))<CR>
+cnoremap <expr> %p fnameescape(expand('%:p'))
 " %p in command line maps to current file's relative path
-cnoremap %r <C-R>=fnameescape(expand('%'))<CR>
+cnoremap <expr> %r fnameescape(expand('%'))
 
 " Quick ways to write and quit buffers
 nnoremap <Leader>q :q<CR>
