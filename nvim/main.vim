@@ -27,7 +27,10 @@ Source clipboard
 Source dispatching
 Source meta
 Source search
-Source syntax
+Source languages
+Source whitespace
+Source italics
+Source comments
 
 call plug#begin('~/.config/nvim/plugged')
 for plugin in g:plugins

@@ -41,9 +41,6 @@ nnoremap <Leader><Leader>q :wq<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>W :wa<CR>
 
-" Insert whitespace in normal mode
-nnoremap <Return> i<Return><Esc>
-nnoremap \| i<Space><Esc>
 
 
 " Common substitution patterns, accessible with one button press (on a Mac
