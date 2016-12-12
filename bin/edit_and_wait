@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+nvr --remote-tab $@ && read "?Hit enter when done"

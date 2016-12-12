@@ -3,7 +3,7 @@ DOTDIR=$HOME/.dotfiles/zsh
 export GOPATH=$HOME/.gocode
 
 if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
-  export EDITOR='nvr --remote-tab'
+  export EDITOR=edit_and_wait
 else
   export EDITOR=nvim
 fi
