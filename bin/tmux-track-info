@@ -18,10 +18,10 @@ var app = (function whichApp(iTunes, Spotify) {
 if (app) {
 	var status = {
 		stopped: "◼︎",
-		 playing: "▸",
-		 paused: "Ⅱ",
-		 "fast forwarding": "»",
-		 rewinding: "«"
+		playing: "▸",
+		paused: "Ⅱ",
+		"fast forwarding": "»",
+		rewinding: "«"
 	}[app.playerState()];
 	var track = app.currentTrack();
 	var artist = track.artist() ? " #[nobold,italics]by#[noitalics] " + track.artist() : "";
