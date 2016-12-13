@@ -34,7 +34,7 @@ cnoremap <expr> %p fnameescape(expand('%:p'))
 cnoremap <expr> %r fnameescape(expand('%'))
 
 function! Quit()
-  if (winnr('$') == 1)
+  if (winnr('$') == 1 && tabpagenr('$') == 1)
     if confirm('Are you sure you want to quit?', "&Yes\n&No", 2, "Question") == 1
       quit
     endif
