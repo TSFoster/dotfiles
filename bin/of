@@ -1,7 +1,6 @@
-#!/usr/bin/env zsh
+#!/usr/bin/osascript
 
-osascript <<EOT
-  tell application "OmniFocus"
-    parse tasks into default document with transport text "$@"
-  end tell
-EOT
+on run argv
+	set AppleScript's text item delimiters to {" "}
+	tell application "OmniFocus" to parse tasks into default document with transport text (argv as string)
+end
