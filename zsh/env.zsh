@@ -19,3 +19,5 @@ if uname | grep -q 'Darwin'; then
 fi
 
 export PAGER=less
+
+export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git --ignore elm-stuff --ignore node_modules --ignore bower_components -g ''"
