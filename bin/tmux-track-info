@@ -1,29 +1,44 @@
 #!/usr/bin/env osascript -l JavaScript
 
-var iTunes = Application("iTunes");
-var Spotify = Application("Spotify");
+function run(argv) {
+	var length = argv && argv[0] || 300;
 
-var app = (function whichApp(iTunes, Spotify) {
-	if (!iTunes.running() && !Spotify.running()) return false;
-	if (!iTunes.running()) return Spotify;
-	if (!Spotify.running()) return iTunes;
-	if (iTunes.playerState() == "playing") return iTunes;
-	if (Spotify.playerState() == "playing") return Spotify;
-	if (iTunes.playerState() == "paused") return iTunes;
-	if (Spotify.playerState() == "paused") return Spotify;
-	return iTunes;
-})(iTunes, Spotify);
+	var iTunes = Application("iTunes");
+	var Spotify = Application("Spotify");
+
+	var app = (function whichApp(iTunes, Spotify) {
+		if (!iTunes.running() && !Spotify.running()) return false;
+		if (!iTunes.running()) return Spotify;
+		if (!Spotify.running()) return iTunes;
+		if (iTunes.playerState() == "playing") return iTunes;
+		if (Spotify.playerState() == "playing") return Spotify;
+		if (iTunes.playerState() == "paused") return iTunes;
+		if (Spotify.playerState() == "paused") return Spotify;
+		return iTunes;
+	})(iTunes, Spotify);
 
 
-if (app) {
-	var status = {
-		stopped: "◼︎",
-		playing: "▸",
-		paused: "Ⅱ",
-		"fast forwarding": "»",
-		rewinding: "«"
-	}[app.playerState()];
-	var track = app.currentTrack();
-	var artist = track.artist() ? " #[nobold,italics]by#[noitalics] " + track.artist() : "";
-	status + " #[bold]" + track.name() + artist;
+	if (app) {
+		var status = {
+			stopped: "◼︎",
+			playing: "▸",
+			paused: "Ⅱ",
+			"fast forwarding": "»",
+			rewinding: "«"
+		}[app.playerState()];
+		var track = app.currentTrack();
+		var artist = track.artist() ? " #[nobold,italics]by#[noitalics] " + track.artist() : "#[nobold]";
+
+		return sliceName(length - 75, status, " #[bold]" + track.name(), artist);
+	}
+
+	function sliceName(length, ...sections) {
+		if (sections.length == 0) return "";
+
+		var remainder = length - sections[0].replace(/\[[^[]*\]/g, '').length;
+
+		if (remainder <= 0) return "";
+
+		return sections[0] + sliceName(remainder, ...sections.slice(1));
+	}
 }
