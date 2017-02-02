@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+var theFile = process.argv[2];
+
+require('child_process').exec(mvCmd(theFile));
+
+function mvCmd(filename) {
+    return mvCmdForTV(filename) || mvCmdForMovies(filename) || 'echo "No suitable command found"';
+}
+
+function mvCmdForTV(filename) {
+    var plexLocation = process.env.HOME + '/.plex/TV Shows/';
+
+    var match = filename.match('/?(\\* )?([^/]*) - \\[([0-9]+)x([0-9]+)\\]( - .*)?\\.(.*)$');
+    if (!match) return;
+
+    var show = match[2];
+    var season = match[3];
+    var seasonNoLeading = season.replace(/^0*/, '');
+    var episode = match[4];
+    var title = match[5] || '';
+    var ext = match[6];
+
+    var destination = shellEscape(plexLocation + show + '/Season ' + seasonNoLeading);
+    var newFilename = shellEscape(show + ' - s' + season + 'e' + episode + title + '.' + ext);
+
+    return('mkdir -p "' + destination + '" && mv "' + shellEscape(theFile) + '" "' + destination + '/' + newFilename + '"');
+}
+
+function mvCmdForMovies(filename) {
+    var plexLocation = process.env.HOME + '/.plex/Movies/';
+
+    var match = filename.match('/?(\\* )?([^/]+ \\([0-9][0-9][0-9][0-9]\\))\\.(.*)$');
+
+    var nameAndYear = match[2];
+    var ext = match[3];
+
+    var destination = shellEscape(plexLocation + '/' + nameAndYear);
+    var newFilename = shellEscape(nameAndYear + '.' + ext);
+
+    return('mkdir -p "' + destination + '" && mv "' + shellEscape(theFile) + '" "' + destination + '/' + newFilename + '"');
+}
+
+function shellEscape(str) {
+    return str.replace(/"/g, '"\\""');
+}
