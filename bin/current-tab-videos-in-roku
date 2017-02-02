@@ -1,0 +1,51 @@
+#!/usr/bin/env osascript -l JavaScript
+
+var tabJS = `
+	(function videosOnRoku() {
+		var videoEls = Array.prototype.slice.call(document.getElementsByTagName("video"));
+		var urls = videoEls.map(getCurrentSource);
+
+		if (urls.length === 0) return;
+		if (urls.length === 1) return launchRoku(urls[0]);
+
+		var indexedURLs = urls.map(prefixIndex).join("\\n");
+
+		var answer = parseInt(prompt("Which video?\\n\\n" + indexedURLs, "Launch in Roku"));
+
+		if(!isNaN(answer) && answer < urls.length)
+			launchRoku(urls[answer]);
+
+		function launchRoku(url) {
+			var videoFormat = url.indexOf('m3u8') >= 0 ? 'm3u8' : (url.indexOf('mp4') >= 0 ? 'mp4' : 'm3u');
+			var host = "http://192.168.0.26:8060";
+			var path = "/launch/15985";
+			var args = "?t=v&u=" + encodeURIComponent(url) + "&videoFormat=" + videoFormat + "&videoName=Video%20from%20Safari";
+
+			try {
+				var wakeReq = new XMLHttpRequest();
+				wakeReq.open("POST", host + "/keypress/home", false);
+				wakeReq.send();
+			} catch(e) {
+				var ee = e;
+			}
+
+			var req = new XMLHttpRequest();
+			req.open("POST", host + path + args, true);
+			req.send();
+		}
+
+		function getCurrentSource(el) {
+			return el.currentSrc;
+		}
+
+		function prefixIndex(str, index) {
+			return "[" + index + "] " + str;
+		}
+	})();
+`;
+
+
+var app = Application("Safari");
+var currentTab = app.windows[0].currentTab();
+
+app.doJavaScript(tabJS, { in: currentTab });
