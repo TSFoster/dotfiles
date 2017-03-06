@@ -69,6 +69,7 @@ link_unlinked irb/home.irbrc       ../.irbrc
 link_unlinked nvim/init.vim        ../.config/nvim/init.vim
 link_unlinked nvim/plug.vim        ../.config/nvim/autoload/plug.vim
 link_unlinked hammerspoon/init.lua ../.hammerspoon/init.lua
+link_unlinked home.editorconfig    ../.editorconfig
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done

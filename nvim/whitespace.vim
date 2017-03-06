@@ -1,3 +1,5 @@
+Plugin 'editorconfig/editorconfig-vim'
+
 set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
 set list                      " Display whitespace
 

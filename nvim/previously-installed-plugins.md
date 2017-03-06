@@ -82,5 +82,3 @@
     Improve information given about character with `ga`
 * **[manicmaniac/betterga](https://github.com/manicmaniac/betterga)**
     More info when you type `ga`
-* **[editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)**
-    Editorconfig support
