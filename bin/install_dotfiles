@@ -20,20 +20,6 @@ mkdir -p .hammerspoon
 
 rm .hammerspoon/*
 
-# Approximate ln -i with directory (can't symlink, powerline won't work)
-# Only ask to replace if ~/.config/powerline directory
-# exists and differs (apart from .pyc files)
-if [ -d ".config/powerline" ] && [ -n "$(diff -r --exclude='*.pyc' .dotfiles/powerline .config/powerline)" ]; then
-  read "reply?replace powerline? "
-  case $reply in
-      [Yy]* ) rm -rf .config/powerline;;
-      * ) echo 'not replaced';;
-  esac
-fi
-if ! [ -d ".config/powerline" ]; then
-  cp -r .dotfiles/powerline .config
-fi
-
 if ! [ -d ".config/tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 fi
