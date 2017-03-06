@@ -86,12 +86,3 @@ link_unlinked hammerspoon/init.lua ../.hammerspoon/init.lua
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done
-
-# If we're on a Mac
-if uname | grep -q 'Darwin'; then
-  mkdir -p ../Library/Scripts
-  cd applescript
-  for scpt in *.scpt; do
-    link_unlinked "../../Library/Scripts/$scpt" "$scpt"
-  done
-fi
