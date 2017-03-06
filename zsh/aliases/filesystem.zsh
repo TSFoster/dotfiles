@@ -26,4 +26,4 @@ alias ....='c ../../..'
 alias hist='dirs -p'
 alias size='du -hs'                                 # Human-readable summary of size of files
 
-alias vimswap_reset='rm -f ~/.local/nvim/swap/*'
+alias vimswap_reset='rm -f ~/.local/share/nvim/swap/*.swp'
