@@ -24,10 +24,10 @@ function! SetLight()
   let g:terminal_color_foreground = "#56bf8b"
 
   if v:vim_did_enter == 1
-    colorscheme base16-harmonic16-light
+    colorscheme base16-harmonic-light
     AirlineTheme base16_harmonic16
   else
-    let g:colors_name = 'base16-harmonic16-light'
+    let g:colors_name = 'base16-harmonic-light'
     let g:airline_theme = 'base16_harmonic16'
   endif
 endfunction
