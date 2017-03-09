@@ -11,5 +11,6 @@ PATH=/usr/local/heroku/bin:$PATH
 PATH=$HOME/.pyenv/shims:$PATH
 PATH=$HOME/.rbenv/shims:$PATH
 PATH=$HOME/.dotfiles/bin:$PATH
+PATH=$HOME/.yarn/bin:$PATH
 
 export PATH
