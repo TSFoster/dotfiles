@@ -4,6 +4,7 @@ function config(file)
 end
 
 config("keys")
+config("hyper-setup")
 config("command")
 config("config_reload")
 config("menu_icon")
