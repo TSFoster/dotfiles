@@ -2,6 +2,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'jeetsukumaran/vim-indentwise'
 
 " Space is a great <Leader>.
 " It is a large button that can be hit by either hand without moving.
