@@ -3,18 +3,6 @@ nnoremap <silent> <Leader>re :IronRepl<CR>
 
 Plugin 'vim-utils/vim-man'
 
-Plugin 'w0rp/ale'
-
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '×'
-let g:ale_sign_warning = '⚠️'
-
-hi! link ALEError GitGutterDeleteLine
-hi! link ALEWarning GitGutterChangeLine
-hi! link ALEErrorSign GitGutterDelete
-hi! link ALEWarningSign GitGutterChange
-
-
 Plugin 'neomake/neomake'
 
 autocmd! BufWritePost * Neomake
