@@ -18,6 +18,7 @@ Source statusbar
 Source colors
 Source files
 Source history
+Source textobjects
 Source finding
 Source mappings
 Source git

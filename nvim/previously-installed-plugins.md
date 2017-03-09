@@ -3,20 +3,9 @@
     
     * gS to go from single- to multi-line
     * gJ to go from multi- to single-line
-* **[bkad/CamelCaseMotion](https://github.com/bkad/CamelCaseMotion)**
-    `w`,`b`,`e` for camelCase and underscore_notation:
-    `,w`/`,b`/`,e` and `i,w`/`i,b`/`i,e`
-* **[kana/vim-textobj-user](https://github.com/kana/vim-textobj-user)**
-    Create your own text objects
-* **[kana/vim-textobj-indent](https://github.com/kana/vim-textobj-indent)**
-    Text object for similarly indented lines
 * **[jeetsukumaran/vim-indentwise](https://github.com/jeetsukumaran/vim-indentwise)**
     Paired mappings for motions based on indent
     {[,]}{-,+,=,%} previous/next lesser/greater/same/block indent
-* **[kana/vim-textobj-entire](https://github.com/kana/vim-textobj-entire)**
-    Text object for entire text
-* **[reedes/vim-textobj-quote](https://github.com/reedes/vim-textobj-quote)**
-    Text object for smart quotes
 * **[reedes/vim-wordy](https://github.com/reedes/vim-wordy)**
     Functions to help you write better (`:Wordy`, `:NoWordy`)
 * **[gcmt/wildfire.vim](https://github.com/gcmt/wildfire.vim)**
@@ -24,10 +13,6 @@
     Select bigger with <Enter>, smaller with <BS>
 * **[tpope/vim-jdaddy](https://github.com/tpope/vim-jdaddy)**
     {a,i}j for dealing with JSON objects
-* **[glts/vim-textobj-comment](https://github.com/glts/vim-textobj-comment)**
-    Comment text objects {i,a}{c,C}
-* **[godlygeek/tabular](https://github.com/godlygeek/tabular)**
-    Align text with regular expressions
 * **[tommcdo/vim-lion](https://github.com/tommcdo/vim-lion)**
     Align text with a motion and a single character:
     g{l,L}<motion><char>
