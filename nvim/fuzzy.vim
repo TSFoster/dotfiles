@@ -11,6 +11,7 @@ command! -bang Session
     \ })
 
 nnoremap <silent> <Leader>e :FZF<CR>
+nnoremap <silent> <Leader>E :FZF %:h<CR>
 nnoremap <silent> <Leader>A :Ag<Space>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>B :BLines<CR>
