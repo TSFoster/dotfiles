@@ -13,3 +13,5 @@ let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 
 autocmd BufNewFile,BufRead *.es6        setfiletype javascript
+
+autocmd FileType javascript set formatprg=prettier\ --stdin
