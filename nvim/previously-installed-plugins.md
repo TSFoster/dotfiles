@@ -63,7 +63,3 @@
     `:Dispatch [command]` (or b:dispatch)
     `:Focus global command` (:Focus! to turn off)
     `:Start command` for interactive shell (:Start! for background)
-* **[tpope/vim-characterize](https://github.com/tpope/vim-characterize)**
-    Improve information given about character with `ga`
-* **[manicmaniac/betterga](https://github.com/manicmaniac/betterga)**
-    More info when you type `ga`

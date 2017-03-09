@@ -1,3 +1,5 @@
+Plugin 'tpope/vim-characterize'
+
 if has('mouse')
   set mouse=a
 endif
