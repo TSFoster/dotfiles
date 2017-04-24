@@ -5,7 +5,10 @@ set -e
 
 if [ "$OS" = Mac ]; then
   sudo airport -z
-  sudo ifconfig en0 ether ${1-$MAC[1]}:${2-$MAC[2]}:${3-$MAC[3]}:${4-$MAC[4]}:${5-$MAC[5]}:${6-$MAC[6]}
+  MACSEP=":"
+  NEWMAC="${6-$MAC[1]}$MACSEP${5-$MAC[2]}$MACSEP${4-$MAC[3]}$MACSEP${3-$MAC[4]}$MACSEP${2-$MAC[5]}$MACSEP${1-$MAC[6]}"
+  echo "Attempting to change to: $NEWMAC"
+  sudo ifconfig en0 ether $NEWMAC
   ifconfig en0 | \
     grep ether | \
     awk '{print "New MAC address:",$2}'
