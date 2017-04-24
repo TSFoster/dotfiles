@@ -56,10 +56,10 @@ function! SetDark()
 
 
   if v:vim_did_enter == 1
-    colorscheme base16-harmonic16-dark
+    colorscheme base16-harmonic-dark
     AirlineTheme base16_harmonic16
   else
-    let g:colors_name = 'base16-harmonic16-dark'
+    let g:colors_name = 'base16-harmonic-dark'
     let g:airline_theme = 'base16_harmonic16'
   end
 endfunction
