@@ -11,16 +11,21 @@ cd $HOME
 touch .hushlogin
 
 # Ensure hidden directories in home folder exist
+rm -rf .hammerspoon
+rm -rf .config/fish/functions
 mkdir -p .config/nvim/autoload
 mkdir -p .config/nvim/sessions
+mkdir -p .config/fish/functions
 mkdir -p .completion
 mkdir -p .tmux/plugins
 mkdir -p .tmuxinator
 mkdir -p .hammerspoon
 
-rm .hammerspoon/*
+if ! [ -d ".config/omf" ]; then
+    curl -L https://get.oh-my.fish | fish
+fi
 
-if ! [ -d ".config/tmux/plugins/tpm" ]; then
+if ! [ -d ".tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 fi
 
@@ -70,6 +75,20 @@ link_unlinked nvim/init.vim        ../.config/nvim/init.vim
 link_unlinked nvim/plug.vim        ../.config/nvim/autoload/plug.vim
 link_unlinked hammerspoon/init.lua ../.hammerspoon/init.lua
 link_unlinked home.editorconfig    ../.editorconfig
+link_unlinked fish/config.fish     ../.config/fish/config.fish
+link_unlinked fish/fishfile        ../.config/fish/fishfile
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done
+
+if ! [ -d ~/.config/base16-shell ]; then
+    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+fi
+
+fish -c 'set -U FZF_LEGACY_KEYBINDINGS 0'
+fish -c 'set -U theme_display_ruby no'
+fish -c 'set -U theme_display_date no'
+fish -c 'set -U theme_display_cmd_duration no'
+fish -c 'set -U theme_color_scheme base16-light'
+fish -c 'set -U theme_nerd_fonts yes'
+fish -c 'fisher'

@@ -2,4 +2,4 @@ name: notes
 root: ~/Dropbox/Notes
 windows:
   - editor: v
-  - shell: clear && ls -R
+  - shell: ls -R

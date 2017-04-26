@@ -2,4 +2,4 @@ name: dotfiles
 root: ~/.dotfiles
 windows:
   - editor: v
-  - shell: clear && ls && git status
+  - shell: ls; gst
