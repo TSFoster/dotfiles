@@ -81,10 +81,6 @@ for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done
 
-if ! [ -d ~/.config/base16-shell ]; then
-    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-fi
-
 fish -c 'set -U FZF_LEGACY_KEYBINDINGS 0'
 fish -c 'set -U theme_display_ruby no'
 fish -c 'set -U theme_display_date no'
