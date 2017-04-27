@@ -1,5 +1,5 @@
 name: '-'
 root: ~/
 windows:
-  - editor: v
-  - shell: clear
+  - ~: v
+  - ~: clear

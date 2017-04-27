@@ -1,5 +1,7 @@
 name: dotfiles
 root: ~/.dotfiles
 windows:
-  - editor: v
-  - shell: ls; gst
+  - ~: v
+  - ~:
+    - ls
+    - gst

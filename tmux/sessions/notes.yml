@@ -1,5 +1,5 @@
 name: notes
 root: ~/Dropbox/Notes
 windows:
-  - editor: v
-  - shell: ls -R
+  - ~: v
+  - ~: ls -R
