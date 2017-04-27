@@ -5,6 +5,7 @@ Plugin 'sheerun/vim-polyglot'
 
 Source completion
 
+Source languages/crontab
 Source languages/css
 Source languages/elixir
 Source languages/elm
