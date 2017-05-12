@@ -1,0 +1,31 @@
+#!/usr/bin/env osascript -l JavaScript
+
+var tabJS = `
+	(function videosInPIP() {
+		var videoEls = Array.prototype.slice.call(document.getElementsByTagName("video"));
+
+		if (videoEls.length === 0) return;
+		if (videoEls.length === 1) return launchPIP(videoEls[0]);
+
+		var indexedURLs = urls.map(prefixIndex).join("\\n");
+
+		var answer = parseInt(prompt("Which video?\\n\\n" + indexedURLs, "Launch in PIP"));
+
+		if(!isNaN(answer) && answer < urls.length)
+			launchPIP(videoEls[answer]);
+
+		function launchPIP(el) {
+			el.webkitSetPresentationMode(
+				el.webkitPresentationMode === "picture-in-picture"
+					? "inline"
+					: "picture-in-picture"
+			);
+		}
+	})();
+`;
+
+
+var app = Application("Safari");
+var currentTab = app.windows[0].currentTab();
+
+app.doJavaScript(tabJS, { in: currentTab });
