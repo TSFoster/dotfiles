@@ -16,6 +16,7 @@ rm -rf .config/fish/functions
 mkdir -p .config/nvim/autoload
 mkdir -p .config/nvim/sessions
 mkdir -p .config/fish/functions
+mkdir -p .config/fish/completions
 mkdir -p .completion
 mkdir -p .tmux/plugins
 mkdir -p .tmuxinator
@@ -80,11 +81,14 @@ link_unlinked fish/fishfile        ../.config/fish/fishfile
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"
 done
+for f in fish/completions/*.fish; do
+  link_unlinked "$f" "../.config/fish/completions/$(basename "$f")"
+done
 
+fish -c 'set -U theme_color_scheme base16-light'
 fish -c 'set -U FZF_LEGACY_KEYBINDINGS 0'
 fish -c 'set -U theme_display_ruby no'
 fish -c 'set -U theme_display_date no'
 fish -c 'set -U theme_display_cmd_duration no'
-fish -c 'set -U theme_color_scheme base16-light'
 fish -c 'set -U theme_nerd_fonts yes'
 fish -c 'fisher'
