@@ -84,7 +84,11 @@ done
 for f in fish/completions/*.fish; do
   link_unlinked "$f" "../.config/fish/completions/$(basename "$f")"
 done
+if [ -f "$HOME/Dropbox/.timetrap.db" ]; then
+  link_unlinked "$HOME/Dropbox/.timetrap.db" "$HOME/.timetrap.db"
+fi
 
+fish -c 'set -Ux TIMETRAP_CONFIG_FILE ~/.dotfiles/timetrap.yml'
 fish -c 'set -U FZF_LEGACY_KEYBINDINGS 0'
 fish -c 'set -U theme_display_ruby no'
 fish -c 'set -U theme_display_date no'

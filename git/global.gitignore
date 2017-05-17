@@ -6,5 +6,6 @@ Thumbs.db
 .sass-cache
 vendor/bundle
 Session.vim
+.timetrap-sheet
 .tern-port
 *.lock
