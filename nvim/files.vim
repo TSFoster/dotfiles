@@ -34,3 +34,5 @@ let g:netrw_liststyle    = 3  " Tree view (toggle with `i`)
 let g:netrw_winsize      = 70 " Large windows sizes with `o` and `v`
 let g:netrw_browse_split = 0  " Open in same window
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
