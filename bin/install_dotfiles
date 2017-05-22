@@ -12,18 +12,18 @@ touch .hushlogin
 
 # Ensure hidden directories in home folder exist
 rm -rf .hammerspoon
-rm -rf .config/fish/functions
 mkdir -p .config/nvim/autoload
 mkdir -p .config/nvim/sessions
-mkdir -p .config/fish/functions
 mkdir -p .config/fish/completions
 mkdir -p .completion
 mkdir -p .tmux/plugins
 mkdir -p .tmuxinator
 mkdir -p .hammerspoon
 
-if ! [ -d ".config/omf" ]; then
-    curl -L https://get.oh-my.fish | fish
+if ! [ -d ".local/share/omf" ]; then
+    curl -L https://get.oh-my.fish > install_omf
+    install_omf --config=~/.dotfiles/omf --path=~/.local/share/omf
+    rm install_omf
 fi
 
 if ! [ -d ".tmux/plugins/tpm" ]; then
@@ -76,7 +76,6 @@ link_unlinked nvim/init.vim        ../.config/nvim/init.vim
 link_unlinked nvim/plug.vim        ../.config/nvim/autoload/plug.vim
 link_unlinked hammerspoon/init.lua ../.hammerspoon/init.lua
 link_unlinked home.editorconfig    ../.editorconfig
-link_unlinked fish/config.fish     ../.config/fish/config.fish
 link_unlinked fish/fishfile        ../.config/fish/fishfile
 for f in tmux/sessions/*.yml; do
   link_unlinked "$f" "../.tmuxinator/$(basename "$f")"

@@ -1,4 +1,4 @@
-set -l shell_path $fish_dotfiles/colors/base16-strange_harmony
+set -l shell_path $OMF_CONFIG/colors/base16-strange_harmony
 
 set -e fish_pager_color_prefix
 set -e theme_color_scheme
