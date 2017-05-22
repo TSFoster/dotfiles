@@ -1,3 +1,5 @@
+set -x SHELL (which fish)
+
 set -x GOPATH ~/.gocode
 
 set -x fish_user_paths \
