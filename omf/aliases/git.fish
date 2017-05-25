@@ -1,11 +1,16 @@
 alias git hub
 alias g git
-alias gst 'g status'
-alias gd 'g diff'
+
+alias gs 'g s'
+alias gd 'g d'
+alias gdc 'g d --cached'
+alias gst 'g st'
+alias gsp 'g sp'
+alias gca 'g c --amend'
 
 if [ (type -t tower) = 'file' ]
     function tow
-        if [ count $argv -eq 0 ]
+        if [ (count $argv) -gt 0 ]
             tower $argv
         else
             set -l root (g root ^/dev/null)
@@ -16,4 +21,24 @@ if [ (type -t tower) = 'file' ]
             end
         end
     end
+end
+
+function ga
+    if [ (count $argv) -eq 0 ]
+        g a .
+    else
+        g a $argv
+    end
+end
+
+function gc
+    if [ (count $argv) -eq 0 ]
+        g c
+    else
+        g c -m $argv
+    end
+end
+
+function rebase_last
+    g rebase -i HEAD~$argv
 end
