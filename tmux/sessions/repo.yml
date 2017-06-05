@@ -1,0 +1,5 @@
+name: <%= args[0].split('/').last.gsub(/[^A-Za-z0-9]/,'-') %>
+root: ~/repos/<%= args[0] %>
+windows:
+    - ~: v
+    - ~: gs
