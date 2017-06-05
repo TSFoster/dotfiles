@@ -1,7 +1,7 @@
 Plugin 'tpope/vim-obsession'
 Plugin 'dhruvasagar/vim-prosession'
 
-let g:prosession_dir = '~/.config/nvim/sessions/'
+let g:prosession_dir = '~/.local/share/nvim/sessions/'
 
 command! ProsessionDeleteAll Obsession! | silent execute
       \ "!rm -f ~/.config/nvim/sessions/*"

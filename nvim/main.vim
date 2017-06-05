@@ -33,7 +33,7 @@ Source whitespace
 Source italics
 Source comments
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 for plugin in g:plugins
   Plug plugin[0], plugin[1]
 endfor
