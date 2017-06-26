@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+read frompipe
+echo "$frompipe" | textutil -inputencoding UTF-8 -format html -convert rtf -stdin -stdout
