@@ -3,8 +3,6 @@ local delayPeriod = hs.timer.minutes(10)
 local offSwitch = nil
 local menubarUpdater = nil
 
-local logger = hs.logger.new("CaffeineLogger", "debug")
-
 function setCaffeine(shouldCaffeinate)
   if shouldCaffeinate then
     resetTimerAndMenubar()
