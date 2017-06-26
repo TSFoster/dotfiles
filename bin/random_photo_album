@@ -1,0 +1,33 @@
+#!/usr/bin/env osascript -l JavaScript
+
+const DEFAULT_ALBUM_SIZE = 30;
+const ALBUM_NAME = "Random selection";
+
+const Photos = Application("Photos");
+
+function run(argv) {
+    const count = argv && !isNaN(parseInt(argv[0]))
+        ? parseInt(argv[0])
+        : DEFAULT_ALBUM_SIZE;
+
+    if (!Photos.running()) Photos.launch();
+
+    insertPhotos(getRandomAlbum(), count);
+}
+
+function insertPhotos(album, count) {
+    const photos = Array.apply(null, {length: count})
+        .map(() => Math.floor(Math.random() * Photos.mediaItems.length))
+        .map(i => Photos.mediaItems.at(i))
+
+    Photos.add(photos, {to: album});
+}
+
+function getRandomAlbum() {
+    try { Photos.delete(Photos.albums.byName(ALBUM_NAME)); } catch (e) { }
+
+    let album = Photos.Album();
+    Photos.albums.push(album);
+    album.name = ALBUM_NAME;
+    return album;
+}
