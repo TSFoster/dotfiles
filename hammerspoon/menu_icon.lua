@@ -1,9 +1,5 @@
 function toggleMenu()
-  if hs.menuIcon() then
-    hs.menuIcon(false)
-  else
-    hs.menuIcon(true)
-  end
+  hs.menuIcon(not hs.menuIcon())
 end
 
 hs.menuIcon(false)

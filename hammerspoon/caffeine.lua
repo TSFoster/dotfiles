@@ -1,30 +1,26 @@
-local menubar = nil
+local caffeine_menubar = hs.menubar.new():removeFromMenuBar()
 local delayPeriod = hs.timer.minutes(10)
 local offSwitch = nil
 local menubarUpdater = nil
 
 function setCaffeine(shouldCaffeinate)
   if shouldCaffeinate then
-    resetTimerAndMenubar()
+    caffeine_menubar:returnToMenuBar()
+    resetTimer()
     hs.caffeinate.set("displayIdle", true, true)
-    menubar = hs.menubar.new()
-    menubar:setClickCallback(turnOff)
     updateMenubarTitle()
   else
+    caffeine_menubar:removeFromMenuBar()
     hs.caffeinate.set("displayIdle", false, false)
-    resetTimerAndMenubar()
+    resetTimer()
   end
 end
 
 
-function resetTimerAndMenubar()
+function resetTimer()
   if offSwitch ~= nil then
     offSwitch:stop()
     offSwitch = nil
-  end
-  if menubar ~= nil then
-    menubar:delete()
-    menubar = nil
   end
   if menubarUpdater ~= nil then
     menubarUpdater:stop()
@@ -48,7 +44,7 @@ end
 
 
 function extend()
-  if menubar == nil then
+  if not caffeine_menubar:isInMenubar() then
     setCaffeine(true)
   end
   if offSwitch == nil then
@@ -62,7 +58,7 @@ end
 
 
 function updateMenubarTitle()
-  if menubar ~= nil then
+  if caffeine_menubar:isInMenubar() then
     if offSwitch ~= nil then
       minsLeft = math.ceil (offSwitch:nextTrigger()/60)
       if minsLeft >= 60 then
@@ -73,11 +69,12 @@ function updateMenubarTitle()
     else
       remaining = ""
     end
-    menubar:setTitle("👁 " .. remaining)
+    caffeine_menubar:setTitle("👁 " .. remaining)
   end
 end
 
 
+caffeine_menubar:setClickCallback(turnOff)
 setCaffeine(hs.caffeinate.get("displayIdle"))
 
 hs.hotkey.bind(hyper, "8", toggle)

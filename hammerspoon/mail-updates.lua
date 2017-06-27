@@ -1,12 +1,5 @@
-local mail_menubar = nil
+local mail_menubar = hs.menubar.new():removeFromMenuBar()
 local mail_timer = nil
-
-function delete_mail_menubar()
-    if mail_menubar ~= nil then
-        mail_menubar:delete()
-        mail_menubar = nil
-    end
-end
 
 function go_to_updates()
     hs.osascript.javascript([[
@@ -17,10 +10,8 @@ function go_to_updates()
                 .mailboxes.byName('Updates');
         Mail.activate();
     ]])
-    delete_mail_menubar()
-    if mail_timer ~= nil then
-        mail_timer.setNextTrigger(60)
-    end
+    mail_menubar:removeFromMenuBar()
+    mail_timer:setNextTrigger(60)
 end
 
 function mail_menu()
@@ -34,15 +25,13 @@ function mail_menu()
     ]])
 
     if status and object > 0 then
-        if mail_menubar == nil then
-            mail_menubar = hs.menubar.new()
-            mail_menubar:setClickCallback(go_to_updates)
-            mail_menubar:setTitle("(" .. object .. ")")
-        end
+        mail_menubar:setTitle("(" .. object .. ")")
+        mail_menubar:returnToMenuBar()
     else
-        delete_mail_menubar()
+        mail_menubar:removeFromMenuBar()
     end
 end
 
-mail_menu()
 mail_timer = hs.timer.doEvery(2 * 60, mail_menu)
+mail_menubar:setClickCallback(go_to_updates)
+mail_menu()
