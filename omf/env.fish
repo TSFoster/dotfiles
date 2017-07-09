@@ -31,3 +31,7 @@ end
 set -x PAGER less
 
 set -x FZF_DEFAULT_COMMAND "ag --hidden --ignore .git --ignore elm-stuff --ignore node_modules --ignore bower_components -g ''"
+
+if [ -f ~/.machine-private.fish ]
+    source ~/.machine-private.fish
+end
