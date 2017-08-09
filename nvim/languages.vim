@@ -11,6 +11,7 @@ Source languages/elixir
 Source languages/elm
 Source languages/git
 Source languages/javascript
+Source languages/typescript
 Source languages/markdown
 Source languages/php
 Source languages/python
