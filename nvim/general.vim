@@ -53,5 +53,5 @@ function! Preserve(command)
 endfunction
 
 
-let g:python_host_prog = '/Users/toby/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/toby/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/Users/toby/.pyenv/versions/2.7.8/envs/neovim2/bin/python'
+let g:python3_host_prog = '/Users/toby/.pyenv/versions/3.5.0/envs/neovim3/bin/python'
