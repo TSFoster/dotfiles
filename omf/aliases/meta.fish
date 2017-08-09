@@ -1,1 +1,1 @@
-alias s 'source ~/.config/fish/config.fish'
+alias s 'source $OMF_CONFIG/init.fish'
