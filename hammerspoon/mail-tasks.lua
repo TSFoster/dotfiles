@@ -126,14 +126,12 @@ function processMailbox(name, onlyFlagged, toDoType)
     end
 end
 
-processInboxFlagged = processMailbox('INBOX', true, 'actionToDo')
-hs.pathwatcher.new(mailboxPath('INBOX'), processInboxFlagged):start()
-processInboxFlagged()
+function processMailboxWatcher(box, flaggedOnly, action)
+    local fn = processMailbox(box, flaggedOnly, action)
+    hs.pathwatcher.new(mailboxPath(box), fn):start()
+    fn()
+end
 
-processToReply = processMailbox('To reply', false, 'replyToDo')
-hs.pathwatcher.new(mailboxPath('To reply'), processToReply):start()
-processToReply()
-
-processWaiting = processMailbox('Waiting', false, 'waitingToDo')
-hs.pathwatcher.new(mailboxPath('Waiting'), processWaiting):start()
-processWaiting()
+processMailboxWatcher('INBOX', true, 'actionToDo')
+processMailboxWatcher('To reply', false, 'replyToDo')
+processMailboxWatcher('Waiting', false, 'waitingToDo')
