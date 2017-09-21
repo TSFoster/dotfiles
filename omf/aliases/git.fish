@@ -8,16 +8,16 @@ alias gst 'g st'
 alias gsp 'g sp'
 alias gca 'g c --amend'
 
-if [ (type -t tower) = 'file' ]
+if [ (type -t gittower 2> /dev/null) = 'file' ]
     function tower
         if [ (count $argv) -gt 0 ]
-            command tower $argv
+            command gittower $argv
         else
             set -l root (g root ^/dev/null)
             if [ $root = '\n' ]
                 echo "You are not in a git repo" >&2
             else
-                command tower $root
+                command gittower $root
             end
         end
     end
