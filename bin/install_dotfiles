@@ -27,6 +27,9 @@ if ! [ -d ".local/share/omf" ]; then
 fi
 CONFIG="$HOME/.config"
 
+# Check if given command is executable
+exists () { type "$1" >/dev/null 2>/dev/null }
+
 if ! [ -d ".tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 fi
@@ -98,6 +101,15 @@ if [ "$OS" = 'Mac' ]; then
   echo "\n"
 fi
 
+if exists fish; then
+  FISHER_FILE="$CONFIG/dotfiles/omf/functions/fisher.fish"
+  if ! [ -f "$FISHER_FILE" ]; then
+    echo "Downloading fisher…"
+    curl -L https://git.io/fisher > "$FISHER_FILE"
+    echo ""
+  fi
+else
+  echo "Warning: Fish is not installed!"
 fi
 
 fish -c 'set -Ux TIMETRAP_CONFIG_FILE ~/.dotfiles/timetrap.yml'
