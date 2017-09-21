@@ -1,6 +1,6 @@
 [core]
+  excludesfile = ~/.config/git/global.gitignore
   pager = less -FRSX
-  excludesfile = ~/.dotfiles/git/global.gitignore
   autocrlf = input
 [color]
   branch = auto
@@ -13,7 +13,7 @@
 [mergetool]
   keepBackup = false
 [init]
-  templatedir = ~/.dotfiles/git/template
+  templatedir = ~/.config/git/templatedir
 [rerere]
   enabled = true
   autoupdate = true

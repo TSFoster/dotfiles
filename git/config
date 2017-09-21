@@ -1,0 +1,8 @@
+[user]
+  name = T.S. Foster
+  email = hi@tsf.io
+  signingkey = D037C418
+[include]
+  path = credentials.gitconfig
+  path = aliases.gitconfig
+  path = misc.gitconfig
