@@ -3,8 +3,10 @@ set -l shell_path $OMF_CONFIG/colors/base16-strange_harmony
 set -e fish_pager_color_prefix
 set -e theme_color_scheme
 
-switch (cat ~/.lightdark)
-    case 'Dark'
+set -l theme_file $HOME/.local/share/theme
+[ -f $theme_file ]; or echo 'light' > $theme_file
+switch (cat $theme_file)
+    case 'dark'
         eval sh $shell_path.dark.sh
         set -U fish_pager_color_prefix brblack
         set colorfg black
