@@ -1,3 +1,5 @@
+[ (count ~/.ssh/id*) -gt 0 ]; or exit
+
 if [ -z "$SSH_AGENT_PID" -o -z "$SSH_AUTH_SOCK" ]; or echo (ssh-add -l ^&1) | grep -q "Error connecting to agent"
     fkill ssh-agent ^ /dev/null
 
