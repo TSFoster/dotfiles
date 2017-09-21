@@ -57,6 +57,8 @@ if ! [ -f ".machine.zsh" ]; then
     read "symbol?New machine '$reply' needs a phrase or symbol to identify it (leave blank for '$reply'): "
     if ! [ -n "$symbol" ]; then symbol=$reply; fi
     printf "machineName='$symbol'" > $file
+# Put OS type in $OS
+OS="$($CONFIG/dotfiles/bin/os_name)"
   fi
   ln $file .machine.zsh
 fi
@@ -85,6 +87,17 @@ for f in fish/completions/*.fish; do
 done
 if [ -f "$HOME/Dropbox/.timetrap.db" ]; then
   link_unlinked "$HOME/Dropbox/.timetrap.db" "$HOME/.timetrap.db"
+
+if [ "$OS" = 'Mac' ]; then
+  SOUNDS="$HOME/Library/Sounds"
+  echo "Installing sounds…"
+  sudo mkdir -p "$SOUNDS"
+  for f in sounds/*.aif; do
+    link_unlinked "$f" "$SOUNDS/$(basename "$f")"
+  done
+  echo "\n"
+fi
+
 fi
 
 fish -c 'set -Ux TIMETRAP_CONFIG_FILE ~/.dotfiles/timetrap.yml'
