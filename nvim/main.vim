@@ -23,12 +23,12 @@ Source finding
 Source mappings
 Source git
 Source fuzzy
-Source tmux
 Source clipboard
 Source dispatching
 Source meta
 Source search
 Source languages
+Source panes
 Source whitespace
 Source italics
 Source comments
