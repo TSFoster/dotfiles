@@ -1,4 +1,4 @@
-dir = os.getenv("HOME") .. "/.dotfiles/hammerspoon/"
+dir = os.getenv("HOME") .. "/.config/hammerspoon/"
 function config(file)
   dofile(dir .. file .. ".lua")
 end
