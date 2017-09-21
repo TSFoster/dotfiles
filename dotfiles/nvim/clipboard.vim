@@ -1,4 +1,3 @@
-Plugin 'roxma/vim-tmux-clipboard'
 set clipboard=unnamed
 set pastetoggle=<F2>
 
