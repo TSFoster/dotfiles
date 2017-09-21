@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Adapted from: https://github.com/pqrs-org/KE-complex_modifications/blob/master/scripts/update-json.sh
+
+for srcfile in src/*.json.erb; do
+  dstfile="build/`basename $srcfile .erb`"
+  if [ "$srcfile" -nt "$dstfile" ]; then
+    echo "$dstfile"
+    /usr/bin/ruby ./erb2json < "$srcfile" > "$dstfile" || exit 1
+  fi
+done
