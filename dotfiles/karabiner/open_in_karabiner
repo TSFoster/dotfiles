@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-file="`full_path $1`"
-open "karabiner://karabiner/assets/complex_modifications/import?url=file%3A%2F%2F"`osascript -l JavaScript -e "encodeURIComponent('$file')"`
