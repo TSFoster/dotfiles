@@ -25,6 +25,7 @@ if ! [ -d ".local/share/omf" ]; then
     install_omf --config=~/.dotfiles/omf --path=~/.local/share/omf
     rm install_omf
 fi
+CONFIG="$HOME/.config"
 
 if ! [ -d ".tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
@@ -66,7 +67,6 @@ if ! [ -f ../.machine-private.zsh ]; then
   cp zsh/machine-private.zsh ../.machine-private.zsh
 fi
 
-link_unlinked git/home.gitconfig   ../.gitconfig
 link_unlinked zsh/home.inputrc     ../.inputrc
 link_unlinked zsh/home.zshenv      ../.zshenv
 link_unlinked zsh/home.zshrc       ../.zshrc
@@ -94,3 +94,5 @@ fish -c 'set -U theme_display_date no'
 fish -c 'set -U theme_display_cmd_duration no'
 fish -c 'set -U theme_nerd_fonts yes'
 fish -c 'fisher'
+mkdir -p "$CONFIG/git"
+echo "[include]\n  path = $CONFIG/dotfiles/git/global.gitconfig" > "$CONFIG/git/config"
