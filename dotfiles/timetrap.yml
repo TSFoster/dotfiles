@@ -1,8 +1,0 @@
----
-round_in_seconds: 300
-append_notes_delimiter: " "
-default_formatter: text
-auto_sheet: nested_dotfiles
-default_command: s
-auto_checkout: false
-require_note: true

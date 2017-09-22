@@ -4,7 +4,7 @@ set -x GOPATH ~/.gocode
 
 set -x fish_user_paths \
     ~/bin \
-    ~/.config/dotfiles/bin \
+    ~/.config/meta/bin \
     $GOPATH/bin \
     ~/.composer/vendor/bin \
     /usr/local/pear/bin \

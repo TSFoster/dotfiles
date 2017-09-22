@@ -16,7 +16,7 @@ THEME="$(cat "$CONFIG/theme")"
 
 
 # Put OS type in $OS
-OS="$($CONFIG/dotfiles/bin/os_name)"
+OS="$($CONFIG/meta/bin/os_name)"
 # Warn about incompleteness of script for non-macOS systems
 [ "$OS" = 'Mac' ] || echo "This is not a Mac! Skipping some sections of this script. Some other assumptions about available tools may be incorrect."
 # Ensure Xcode CLI tools are setup
@@ -85,7 +85,7 @@ if [ "$OS" = 'Mac' ]; then
   echo "Installing sounds…"
   sudo mkdir -p "$SOUNDS"
   sudo chown toby "$SOUNDS"
-  for f in "$CONFIG/dotfiles/sounds/"*.aif; do
+  for f in "$CONFIG/meta/sounds/"*.aif; do
     cp -f "$f" "$SOUNDS/$(basename "$f")"
   done
   echo "\n"
@@ -186,4 +186,4 @@ echo "\n"
 
 # Set up Editorconfig
 echo "Setting up Editorconfig…\n"
-sudo cp "$CONFIG/dotfiles/editorconfig" /.editorconfig
+sudo cp "$CONFIG/meta/editorconfig" /.editorconfig

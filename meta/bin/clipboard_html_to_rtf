@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+pbpaste | ~/.config/meta/bin/html_to_rtf | LC_CTYPE=UTF-8 pbcopy
