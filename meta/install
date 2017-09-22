@@ -44,6 +44,7 @@ if [ "$OS" = 'Mac' ]; then
     python
     python3
     the_silver_searcher
+    yarn
   ); do
     grep -q "^$pkg\$" <(echo "$BREW_INSTALLED") \
       && echo "$pkg already installed" \
@@ -188,3 +189,10 @@ echo "\n"
 # Set up Editorconfig
 echo "Setting up Editorconfig…\n"
 sudo cp "$CONFIG/meta/editorconfig" /.editorconfig
+
+echo "\n"
+
+# Set up node
+echo "Setting up node"
+yarn global add fkill-cli
+[ "$OS" = 'Mac' ] && yarn global add alfred-fkill
