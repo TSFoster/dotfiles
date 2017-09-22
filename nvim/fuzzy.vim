@@ -1,6 +1,6 @@
 Plugin 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plugin 'junegunn/fzf.vim'
-Plugin 'fszymanski/fzf-gitignore.nvim', {'do': ':UpdateRemotePlugins'}
+Plugin 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
 
 command! -bang Session
     \ call fzf#run({

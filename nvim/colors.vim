@@ -1,4 +1,4 @@
-Plugin '~/.dotfiles/nvim/strange_harmony'
+Plugin '~/.config/nvim/strange_harmony'
 let g:colors_name = 'base16-strange_harmony'
 let g:airline_theme = 'base16_strange_harmony'
 
@@ -13,7 +13,7 @@ endfunction
 command! SetDark call SetDark()
 command! SetLight call SetLight()
 
-if join(readfile($HOME."/.lightdark")) == "Dark"
+if join(readfile($HOME."/.config/theme")) == "dark"
   SetDark
 else
   SetLight

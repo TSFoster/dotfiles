@@ -1,4 +1,4 @@
-command! -nargs=1 Source source ~/.dotfiles/nvim/<args>.vim
+command! -nargs=1 Source source ~/.config/nvim/<args>.vim
 
 let g:plugins = []
 function! Plugin(...)
@@ -33,7 +33,6 @@ Source whitespace
 Source italics
 Source comments
 
-" TODO: Move to k-takata/minpac?
 call plug#begin('~/.local/share/nvim/plugged')
 for plugin in g:plugins
   Plug plugin[0], plugin[1]
