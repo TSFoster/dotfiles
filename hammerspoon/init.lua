@@ -6,7 +6,6 @@ end
 config("keys")
 config("paths")
 config("hyper-setup")
-config("command")
 config("config_reload")
 config("menu_icon")
 config("caffeine")

@@ -127,8 +127,10 @@ function processMailbox(name, onlyFlagged, toDoType)
 end
 
 function processMailboxWatcher(box, flaggedOnly, action)
+    local path = mailboxPath(box)
+    if not path then return nil end
     local fn = processMailbox(box, flaggedOnly, action)
-    hs.pathwatcher.new(mailboxPath(box), fn):start()
+    hs.pathwatcher.new(path, fn):start()
     fn()
 end
 

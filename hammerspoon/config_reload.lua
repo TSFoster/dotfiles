@@ -1,14 +1,13 @@
-function reload()
-  cmd = "/usr/local/bin/luac -p " .. dir .. "*.lua"
-  result = command(cmd)
-  if result == "" then
+function reloadConfig(files)
+  doReload = false
+  for _,file in pairs(files) do
+    if file:sub(-4) == ".lua" then
+      doReload = true
+    end
+  end
+  if doReload then
     hs.reload()
-  else
-    command(cmd .. " | pbcopy")
-    hs.alert.show("Config not reloaded", 2)
-    hs.alert.show("Syntax errors copied to clipboard", 2)
   end
 end
-
-hs.pathwatcher.new(dir, reload):start()
-hs.alert.show("Config reloaded", 0.5)
+myWatcher = hs.pathwatcher.new(dir, reloadConfig):start()
+hs.alert.show("Config loaded")

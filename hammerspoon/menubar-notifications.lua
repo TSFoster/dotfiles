@@ -1,4 +1,5 @@
 function genericNotifier(icon, path, countScript, clickScript)
+    if not path then return nil end
     local menubarIcon = hs.menubar.new():setTitle(icon):removeFromMenuBar()
     local onClick = function() hs.osascript.javascript(clickScript) end
     local getCount = function()

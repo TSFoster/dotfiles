@@ -4,8 +4,14 @@ function homePath(path)
     return homeDir .. '/' .. path
 end
 
-local mailPath = os.getenv('HOME') .. '/Library/Mail/V5/0BE673C6-821F-4F84-914B-3815D51A3292'
+local mailPath = nil
+local maildir = io.open(os.getenv('HOME').. '/.config/maildir')
+if maildir ~= nil then
+    mailPath = os.getenv('HOME') .. '/Library/Mail/V' .. maildir:read()
+else
+    hs.alert.show("To enable Mail integration, setup ~/.config/maildir")
+end
 function mailboxPath(boxName)
-    if not boxName then return mailPath end
+    if not mailPath or not boxName then return mailPath end
     return mailPath .. '/' .. boxName .. '.mbox'
 end
