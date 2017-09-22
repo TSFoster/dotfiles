@@ -1,17 +1,7 @@
 set -x SHELL (which fish)
 
-set -x GOPATH ~/.gocode
-
 set -x fish_user_paths \
-    ~/bin \
     ~/.config/meta/bin \
-    $GOPATH/bin \
-    ~/.composer/vendor/bin \
-    /usr/local/pear/bin \
-    /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources \
-    /usr/local/sbin \
-    /usr/local/heroku/bin \
-    ~/.yarn/bin \
     ~/.fzf/bin \
 
 
@@ -24,6 +14,7 @@ end
 if uname | grep -q 'Darwin'
   set -x OS Mac
   set -x HOMEBREW_CASK_OPTS --appdir=/Applications
+  set -x fish_user_paths /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources $fish_user_paths
 else
   set -x OS Unknown
 end
