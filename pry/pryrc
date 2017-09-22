@@ -1,0 +1,4 @@
+require 'awesome_print'
+AwesomePrint.pry!
+Pry.config.prompt = [proc { "$ " },
+                     proc { "… " }]
