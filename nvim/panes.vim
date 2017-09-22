@@ -10,5 +10,8 @@ tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 
+nnoremap <C-S-w> :Windows<CR>
+tnoremap <C-S-w> <C-\>:Windows<CR>
+
 " Automatically enter insert mode in terminal if it's not been scrolled back
 :au BufEnter * if &buftype == 'terminal' && line('$') == line('w$') | :startinsert | endif
