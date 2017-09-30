@@ -4,7 +4,11 @@ set -x fish_user_paths \
     ~/.config/meta/bin \
     ~/.fzf/bin \
 
-set -x EDITOR nvr --remote-tab-wait-silent
+if [ "$NVIM_LISTEN_ADDRESS" ]
+  set -x EDITOR nvr --remote-tab-wait
+else
+  set -x EDITOR nvim
+end
 
 if uname | grep -q 'Darwin'
   set -x OS Mac
