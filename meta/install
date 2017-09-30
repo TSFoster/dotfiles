@@ -32,11 +32,15 @@ if [ "$OS" = 'Mac' ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     echo "\n"
   fi
+
+  echo "Setting up packages…\n"
   brew update
   brew bundle
 else
   echo "Skipping automatic installation of packages."
 fi
+
+echo "\n"
 
 curl -s https://raw.githubusercontent.com/dcreemer/1pass/master/1pass > "$CONFIG/meta/1pass.temp"
 if [ ! -x "$LBIN/1pass" ]; then
