@@ -1,1 +1,1 @@
-alias s 'source $OMF_CONFIG/init.fish'
+abbr -a s 'source $OMF_CONFIG/init.fish'

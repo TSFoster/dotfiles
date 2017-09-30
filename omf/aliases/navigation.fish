@@ -5,7 +5,7 @@ function c
         pushd $argv
     end
 end
-alias up 'c ..'
+abbr -a up 'c ..'
 
-alias l ls
-alias la 'ls -a'
+abbr -a l ls
+abbr -a la 'ls -a'
