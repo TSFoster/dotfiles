@@ -182,3 +182,8 @@ if [ "$OS" = 'Mac' ]; then
     echo "Setting up iTerm 2…\n"
     defaults write com.googlecode.iterm2 PrefsCustomFolder "$CONFIG/iterm"
 fi
+
+echo "\n"
+if exists ssh-agent; then
+    echo "If you have not already, ensure all SSH keys are added to your keychain"
+fi
