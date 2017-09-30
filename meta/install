@@ -147,7 +147,7 @@ echo "\n"
 
 # Set up Editorconfig
 echo "Setting up Editorconfig…\n"
-sudo cp "$CONFIG/meta/editorconfig" /.editorconfig
+cp -f "$CONFIG/meta/editorconfig" "$HOME/.editorconfig"
 
 echo "\n"
 
