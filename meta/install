@@ -30,51 +30,8 @@ if [ "$OS" = 'Mac' ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     echo "\n"
   fi
-
-  echo "Checking required homebrew packages are installed…\n"
-  BREW_INSTALLED="$(brew list)"
-  for pkg (
-    fish
-    fzf
-    gawk
-    git
-    hub
-    mobile-shell
-    neovim
-    python
-    python3
-    the_silver_searcher
-    yarn
-  ); do
-    grep -q "^$pkg\$" <(echo "$BREW_INSTALLED") \
-      && echo "$pkg already installed" \
-      || brew install $pkg
-  done
-  echo "\n"
-
-  echo "Checking required homebrew cask packages are installed…\n"
-  CASK_INSTALLED="$(brew cask list)"
-  for pkg (
-    alfred
-    bartender
-    beardedspice
-    coda
-    dash
-    dropbox
-    hammerspoon
-    iterm2
-    karabiner-elements
-    spotify
-    tower
-    transmission
-    transmit
-    transmit-disk
-    vyprvpn
-  ); do
-    grep -q "^$pkg\$" <(echo "$CASK_INSTALLED") \
-      && echo "$pkg already installed" \
-      || brew cask install $pkg
-  done
+  brew update
+  brew bundle
 else
   echo "Skipping automatic installation of packages."
 fi
