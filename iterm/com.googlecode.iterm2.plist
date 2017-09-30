@@ -8,6 +8,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>Default Bookmark Guid</key>
 	<string>08982623-E48D-4BB1-A4F9-0BF9987C48BA</string>
 	<key>DoubleClickPerformsSmartSelection</key>
@@ -65,9 +67,9 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>1192 582 796 473 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 2560 1413 0 0 2560 1417 </string>
+	<string>0 28 2554 1387 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>343 699 1442 707 0 0 2560 1417 </string>
+	<string>6 19 2554 1387 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -760,7 +762,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-22T16:59:57Z</date>
+	<date>2017-09-26T13:54:14Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SearchCommand</key>
@@ -776,6 +778,6 @@
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<true/>
 	<key>iTerm Version</key>
-	<string>3.1.1</string>
+	<string>3.1.2</string>
 </dict>
 </plist>
