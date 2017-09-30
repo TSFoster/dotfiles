@@ -1,1 +1,1 @@
-abbr -a v $EDITOR
+alias v "$EDITOR"
