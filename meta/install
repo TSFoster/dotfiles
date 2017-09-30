@@ -2,7 +2,9 @@
 
 CONFIG="$HOME/.config"
 DATA="$HOME/.local/share"
+LBIN="$HOME/.local/bin"
 mkdir -p "$DATA"
+mkdir -p "$LBIN"
 
 
 # Helper functions
@@ -34,6 +36,21 @@ if [ "$OS" = 'Mac' ]; then
   brew bundle
 else
   echo "Skipping automatic installation of packages."
+fi
+
+curl -s https://raw.githubusercontent.com/dcreemer/1pass/master/1pass > "$CONFIG/meta/1pass.temp"
+if [ ! -x "$LBIN/1pass" ]; then
+  echo "Installing 1pass…"
+  mv "$CONFIG/meta/1pass.temp" "$LBIN/1pass"
+  chmod +x "$LBIN/1pass"
+else
+  if ! diff -q "$LBIN/1pass" "$CONFIG/meta/1pass/temp"; then
+    echo "Updating 1pass…"
+    mv "$CONFIG/meta/1pass.temp" "$LBIN/1pass"
+    chmod +x "$LBIN/1pass"
+  else
+    rm -f "$CONFIG/meta/1pass.temp"
+  fi
 fi
 
 echo "\n"
