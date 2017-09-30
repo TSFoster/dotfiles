@@ -3,6 +3,7 @@ set -x SHELL (which fish)
 set -x fish_user_paths \
     ~/.config/meta/bin \
     ~/.fzf/bin \
+    ~/.local/bin \
 
 if [ "$NVIM_LISTEN_ADDRESS" ]
   set -x EDITOR nvr --remote-tab-wait
