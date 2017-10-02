@@ -181,9 +181,16 @@ yarn global add fkill-cli
 if [ "$OS" = 'Mac' ]; then
     echo "Setting up iTerm 2…\n"
     defaults write com.googlecode.iterm2 PrefsCustomFolder "$CONFIG/iterm"
+    echo "\n"
 fi
 
+echo "Setting up italic fonts…\n"
+
+tic "$CONFIG/meta/italic-fonts/xterm-256color-italic.terminfo"
+fish -c 'set -q TERM; and set -e TERM; set -Ux TERM xterm-256color-italic'
+
 echo "\n"
+
 if exists ssh-agent; then
     echo "If you have not already, ensure all SSH keys are added to your keychain"
 fi
