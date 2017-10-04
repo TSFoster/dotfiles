@@ -63,7 +63,7 @@ if [ "$OS" = 'Mac' ]; then
   SOUNDS="$HOME/Library/Sounds"
   echo "Installing sounds…"
   sudo mkdir -p "$SOUNDS"
-  sudo chown toby "$SOUNDS"
+  sudo chown "$USER" "$SOUNDS"
   for f in "$CONFIG/meta/sounds/"*.aif; do
     cp -f "$f" "$SOUNDS/$(basename "$f")"
   done
