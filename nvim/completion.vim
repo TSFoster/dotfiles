@@ -3,7 +3,6 @@
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'Shougo/context_filetype.vim'
 Plugin 'Shougo/echodoc.vim'
-Plugin 'Shougo/echodoc.vim'
 
 
 set completeopt=longest,menuone,preview
