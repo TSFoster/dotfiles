@@ -65,5 +65,6 @@ mas "Soulver", id: 413965349
 mas "Spillo", id: 873245660
 mas "StuffIt Expander 16", id: 919269455
 mas "Things3", id: 904280696
+mas "Trello", id: 1278508951
 mas "Tweetbot", id: 557168941
 mas "Xcode", id: 497799835
