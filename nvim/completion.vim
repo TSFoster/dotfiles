@@ -5,7 +5,7 @@ Plugin 'Shougo/context_filetype.vim'
 Plugin 'Shougo/echodoc.vim'
 
 
-set completeopt=longest,menuone,preview
+set completeopt=longest,menuone
 let g:echodoc_enable_at_startup = 1
 
 let g:deoplete#enable_at_startup = 1
