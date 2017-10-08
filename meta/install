@@ -41,9 +41,15 @@ if [ "$OS" = 'Mac' ]; then
     echo "\n"
   fi
 
-  echo "Setting up packages…\n"
   brew update
+
+  echo "\n"
+
+  cd "$CONFIG/homebrew"
+  echo "Installing CLI apps…\n"
   brew bundle
+  read "INSTALL_GUI?Install GUI apps too (y/n)? "
+  [ "$INSTALL_GUI" = "y" ] && cd apps && brew bundle
 else
   echo "Skipping automatic installation of packages."
 fi
