@@ -22,9 +22,15 @@ THEME="$(cat "$CONFIG/theme")"
 # Put OS type in $OS
 OS="$($CONFIG/meta/bin/os_name)"
 # Warn about incompleteness of script for non-macOS systems
-[ "$OS" = 'Mac' ] || echo "This is not a Mac! Skipping some sections of this script. Some other assumptions about available tools may be incorrect."
-# Ensure Xcode CLI tools are setup
-[ "$OS" = 'Mac' ] && sudo xcodebuild -license accept
+[ "$OS" = 'Mac' ] || echo "This is not a Mac! Skipping some sections of this script. Some other assumptions about available tools may be incorrect.\n"
+
+
+# Check command line tools installed
+if [ "$OS" = 'Mac' ] && [ ! -d "$(xcode-select --print-path 2> /dev/null)" ]; then
+  echo "Installing command line tools (GUI popup should appear)…\n"
+  xcode-select --install
+  read "?Press any key once tools are installed. "
+fi
 
 
 # Install homebrew and applications
