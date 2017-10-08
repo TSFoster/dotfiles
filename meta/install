@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+set -ue
+
 CONFIG="$HOME/.config"
 DATA="$HOME/.local/share"
 LBIN="$HOME/.local/bin"
