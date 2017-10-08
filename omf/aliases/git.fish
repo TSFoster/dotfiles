@@ -8,7 +8,7 @@ abbr -a gst git stash
 abbr -a gsp git stash pop
 abbr -a gca git commit --amend
 
-if [ (type -t gittower 2> /dev/null) = 'file' ]
+if [ (type -t gittower 2> /dev/null; or echo 'fail') = 'file' ]
     function tower
         if [ (count $argv) -gt 0 ]
             command gittower $argv
