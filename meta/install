@@ -84,6 +84,14 @@ if [ "$OS" = 'Mac' ]; then
   echo "\n"
 fi
 
+# Set up node
+echo "Setting up node…\n"
+yarn global add fkill-cli
+[ "$OS" = 'Mac' ] && yarn global add alfred-fkill
+
+echo "\n"
+
+
 if exists fish; then
   # Set fish as default shell
   FISH_LOCATION="$(which fish)"
@@ -96,7 +104,7 @@ if exists fish; then
   fi
 
   echo "\n"
-  
+
   # Install Oh My Fish
   if ! [ -d "$DATA/omf" ]; then
     echo "Installing Oh My Fish…"
@@ -185,11 +193,6 @@ echo "Setting up Editorconfig…\n"
 cp -f "$CONFIG/meta/editorconfig" "$HOME/.editorconfig"
 
 echo "\n"
-
-# Set up node
-echo "Setting up node"
-yarn global add fkill-cli
-[ "$OS" = 'Mac' ] && yarn global add alfred-fkill
 
 # Set up iTerm 2
 if [ "$OS" = 'Mac' ]; then
