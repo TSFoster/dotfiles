@@ -10,4 +10,4 @@ end
 alias pms '/Applications/Plex\ Media\ Server.app/Contents/MacOS/Plex\ Media\ Scanner'
 
 
-alias dbu dropbox_uploader.sh
+alias dbu 'dropbox_uploader.sh -f ~/.config/dropbox_uploader'

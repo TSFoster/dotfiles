@@ -56,20 +56,22 @@ fi
 
 echo "\n"
 
-curl -s https://raw.githubusercontent.com/dcreemer/1pass/master/1pass > "$CONFIG/meta/1pass.temp"
-if [ ! -x "$LBIN/1pass" ]; then
-  echo "Installing 1pass…"
-  mv "$CONFIG/meta/1pass.temp" "$LBIN/1pass"
-  chmod +x "$LBIN/1pass"
-else
-  if ! diff -q "$LBIN/1pass" "$CONFIG/meta/1pass.temp"; then
-    echo "Updating 1pass…"
-    mv "$CONFIG/meta/1pass.temp" "$LBIN/1pass"
-    chmod +x "$LBIN/1pass"
+for url (
+  https://raw.githubusercontent.com/dcreemer/1pass/master/1pass
+  https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
+); do
+  exe="$(echo "$url" | sed 's/^.*\///')"
+  curl -s "$url" > "$CONFIG/meta/$exe.temp"
+  if [ ! -x "$LBIN/$exe" ]; then
+    echo "Installing $exe…"
   else
-    rm -f "$CONFIG/meta/1pass.temp"
+    if ! diff -q "$LBIN/$exe" "$CONFIG/meta/$exe.temp"; then
+      echo "Updating $exe…"
+    fi
   fi
-fi
+  mv "$CONFIG/meta/$exe.temp" "$LBIN/$exe"
+  chmod +x "$LBIN/$exe"
+done
 
 echo "\n"
 
