@@ -21,7 +21,7 @@ nnoremap <Leader>tj :sp <BAR> term<CR>
 nnoremap <Leader>tk :topleft sp <BAR> term<CR>
 nnoremap <Leader>tl :vsp <BAR> term<CR>
 nnoremap <Leader>th :leftabove vsp <BAR> term<CR>
-nnoremap <Leader>t. :term<CR>
+nnoremap <Leader>tt :term<CR>
 
 " Resize windows with alt+dir or equalise with alt+=
 nnoremap <A-h> <C-w><
