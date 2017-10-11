@@ -93,6 +93,7 @@ yarn global add fkill-cli
 echo "\n"
 
 
+touch "$HOME/.hushlogin"
 if exists fish; then
   # Set fish as default shell
   FISH_LOCATION="$(which fish)"
