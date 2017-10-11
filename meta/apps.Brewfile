@@ -19,6 +19,7 @@ cask "transmission"
 cask "transmit"
 cask "transmit-disk"
 cask "typora"
+cask "virtualbox"
 cask "vyprvpn"
 mas "1Blocker", id: 1107421413
 mas "1Password", id: 443987910
