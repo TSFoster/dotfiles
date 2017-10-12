@@ -1,4 +1,5 @@
 brew "mas"
+cask "a-better-finder-rename"
 cask "alfred"
 cask "appcleaner"
 cask "bartender"
