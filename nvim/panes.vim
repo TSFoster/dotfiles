@@ -15,6 +15,7 @@ tnoremap <A-w> <C-\><C-n>:Windows<CR>
 
 tnoremap :: <C-\><C-n>:
 tnoremap ;; <C-\><C-n>
+tmap <Leader><Leader> <C-\><C-n><Leader>
 
 " Open terminal below/above/to left/to right/inside current window
 nnoremap <Leader>tj :sp <BAR> term<CR>
