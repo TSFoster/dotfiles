@@ -2,7 +2,7 @@
 
 ## Requirements
 
-These files have only been tested on macOS 10.12+. Installation should work from a fresh install of macOS, and therefore assume the following programs are available:
+These files have only been tested on macOS 10.11-10.13. Installation should work from a fresh install of macOS, and therefore assume the following programs are available:
 
 * git
 * zsh
