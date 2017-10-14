@@ -6,6 +6,10 @@ Plugin 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 " \ }
 Plugin 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
+Plugin 'prettier/vim-prettier', { 'for': ['javascript', 'javascript.jsx'] }
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
+
 let g:deoplete#sources['javascript.jsx'] =  ['ternjs'] + g:default_sources
 let g:deoplete#omni#functions.javascript = ['tern#Complete', 'jspc#omni']
 

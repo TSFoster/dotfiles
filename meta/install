@@ -89,6 +89,7 @@ fi
 echo "Setting up node…\n"
 yarn global add fkill-cli
 [ "$OS" = 'Mac' ] && yarn global add alfred-fkill
+yarn global add tern prettier eslint
 
 echo "\n"
 
