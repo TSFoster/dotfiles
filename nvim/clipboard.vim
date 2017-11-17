@@ -1,3 +1,5 @@
+Plugin 'machakann/vim-highlightedyank'
+
 set clipboard=unnamed
 set pastetoggle=<F2>
 
