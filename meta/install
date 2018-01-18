@@ -87,6 +87,7 @@ fi
 
 # Set up node
 echo "Setting up node…\n"
+yarn global add node-gyp fsevents
 yarn global add fkill-cli
 [ "$OS" = 'Mac' ] && yarn global add alfred-fkill
 yarn global add tern prettier eslint
@@ -95,7 +96,7 @@ echo "\n"
 
 # Set up elm
 echo "Setting up elm…\n"
-yarn global add elm elm-format elm-oracle
+yarn global add elm elm-format elm-oracle elm-test
 if exists fish; then
   echo "Checking elm-package completion…\n"
   mkdir -p "$CONFIG/omf/completions"

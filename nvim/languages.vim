@@ -1,8 +1,6 @@
 let g:default_sources = ['file', 'neosnippet', 'buffer']
 let g:polyglot_disabled = ['cryptol']
 
-Plugin 'sheerun/vim-polyglot'
-
 Source completion
 
 Source languages/crontab
@@ -18,5 +16,7 @@ Source languages/python
 Source languages/ruby
 Source languages/shell
 Source languages/vim
+
+Plugin 'sheerun/vim-polyglot'
 
 unlet g:default_sources
