@@ -5,10 +5,11 @@ set -x fish_user_paths \
     ~/.fzf/bin \
     ~/.local/bin \
 
+alias abduco "abduco -e '^z'"
 if [ "$NVIM_LISTEN_ADDRESS" ]
   set -x EDITOR nvr --remote-tab-wait
 else
-  set -x EDITOR nvim
+  set -x EDITOR abduco -A nvim nvim
 end
 
 if uname | grep -q 'Darwin'

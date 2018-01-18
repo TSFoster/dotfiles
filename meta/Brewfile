@@ -1,6 +1,7 @@
 tap "caskroom/cask"
 tap "homebrew/bundle"
 tap "homebrew/core"
+brew "abduco"
 brew "fish"
 brew "fd"
 brew "fzf"
