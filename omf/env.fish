@@ -16,6 +16,7 @@ if uname | grep -q 'Darwin'
   set -x OS Mac
   set -x HOMEBREW_CASK_OPTS --appdir=/Applications
   set -x fish_user_paths /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources $fish_user_paths
+  set -x ICLOUD "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 else
   set -x OS Unknown
 end
