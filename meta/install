@@ -93,6 +93,26 @@ yarn global add tern prettier eslint
 
 echo "\n"
 
+# Set up elm
+echo "Setting up elm…\n"
+yarn global add elm elm-format elm-oracle
+if exists fish; then
+  echo "Checking elm-package completion…\n"
+  mkdir -p "$CONFIG/omf/completions"
+  url="https://raw.githubusercontent.com/ohanhi/fish-elm-completions/master/elm-package.fish"
+  exe="$(echo "$url" | sed 's/^.*\///')"
+  curl -s "$url" > "$CONFIG/meta/$exe.temp"
+  if [ ! -x "$LBIN/$exe" ]; then
+    echo "Installing $exe…\n"
+  else
+    if ! diff -q "$CONFIG/omf/completions/$exe" "$CONFIG/meta/$exe.temp"; then
+      echo "Updating $exe…\n"
+    fi
+  fi
+  mv "$CONFIG/meta/$exe.temp" "$CONFIG/omf/completions/$exe"
+fi
+
+echo "\n"
 
 touch "$HOME/.hushlogin"
 if exists fish; then
