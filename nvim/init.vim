@@ -15,6 +15,7 @@ Source dragvisuals
 Source sessions
 Source snippets
 Source statusbar
+Source titlebar
 Source colors
 Source files
 Source history
