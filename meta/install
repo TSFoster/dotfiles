@@ -96,7 +96,7 @@ echo "\n"
 
 # Set up elm
 echo "Setting up elm…\n"
-yarn global add elm elm-format elm-oracle elm-test
+yarn global add elm elm-format elm-oracle elm-test elm-github-install elm-help
 
 echo "\n"
 
