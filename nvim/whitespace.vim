@@ -1,7 +1,7 @@
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'godlygeek/tabular'
 
-nnoremap <Tab> :Tabularize/
+nnoremap <S-Tab> :Tabularize/
 
 set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
 set list                      " Display whitespace
