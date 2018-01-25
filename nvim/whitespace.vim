@@ -1,5 +1,6 @@
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-sleuth'
 
 nnoremap <S-Tab> :Tabularize/
 
