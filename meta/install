@@ -87,6 +87,7 @@ fi
 
 # Set up node
 echo "Setting up node…\n"
+yarn global upgrade-interactive
 yarn global add node-gyp fsevents
 yarn global add fkill-cli
 [ "$OS" = 'Mac' ] && yarn global add alfred-fkill
