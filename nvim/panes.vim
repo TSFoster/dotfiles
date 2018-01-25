@@ -18,6 +18,13 @@ tnoremap ;; <C-\><C-n>
 tmap <A-Space> <C-\><C-n><Leader>
 nmap <A-Space> <Leader>
 
+" Open new file below/above/to left/to right/inside current window
+nnoremap <Leader>nj :rightbelow new <CR>
+nnoremap <Leader>nk :leftabove new <CR>
+nnoremap <Leader>nl :rightbelow vnew <CR>
+nnoremap <Leader>nh :leftabove vnew <CR>
+nnoremap <Leader>nn :enew<CR>
+
 " Open terminal below/above/to left/to right/inside current window
 nnoremap <Leader>tj :sp <BAR> term<CR>
 nnoremap <Leader>tk :topleft sp <BAR> term<CR>
