@@ -17,7 +17,6 @@ endfunction
 
 call SetTab(2)
 set expandtab
-set smarttab
 
 " Quick way to change tab stops. Add bang to reformat file
 command! -bang -nargs=1 Stab call SetTab(<f-args>) | call Preserve(<bang>0 ? 'normal gg=G' : '')

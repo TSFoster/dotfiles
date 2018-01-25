@@ -4,28 +4,21 @@ if has('mouse')
   set mouse=a
 endif
 
-filetype plugin indent on
-
 set exrc                                 " Enable per-directory .vimrc files
 set secure                               " Disable unsafe commands in local .vimrc files
 
+set lazyredraw " Don't slow macros down by rendering every step
+
 set termguicolors
 set number
-set numberwidth=4
 set relativenumber
 
 set ignorecase                 " Ignore case in search …
 set smartcase                  " … unless it's a cap
 set wildignorecase             " Ignore case on command line
 set wildmode=longest,list,full " Tabs on command line
-set wildmenu                   " Hints on command line
 set hidden                     " Keep buffers of abandoned files, just hide them
 set textwidth=0                " Don't auto-newline
-set nrformats=bin,octal,hex    " Include chars and hex numbers in <C-a>,<C-x>
-
-set foldlevelstart=20
-autocmd BufReadPre * setlocal foldmethod=manual
-autocmd BufReadPre * setlocal foldcolumn=4
 
 set scrolloff=5
 
