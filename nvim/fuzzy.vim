@@ -14,6 +14,7 @@ function! CreateFileIn(dir)
   endif
 endfunction
 
+let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_action = {
   \ 'ctrl-e': funcref('CreateFileIn'),
   \ 'ctrl-t': 'tab split',
@@ -25,7 +26,6 @@ command! -bang Session
     \ call fzf#run({
         \ 'source': prosession#ProsessionComplete('','',0),
         \ 'sink': 'Prosession' . (<bang>0 ? 'Delete' : ''),
-        \ 'down': '~40%',
         \ 'options': '--prompt="Session' . (<bang>0 ? ' to delete: "' : ': "')
     \ })
 
