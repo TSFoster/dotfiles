@@ -11,6 +11,7 @@ set lazyredraw " Don't slow macros down by rendering every step
 
 set termguicolors
 set number
+autocmd TermOpen * set nonumber
 set relativenumber
 
 set ignorecase                 " Ignore case in search …
