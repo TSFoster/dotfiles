@@ -24,6 +24,7 @@ nnoremap <Leader>nk :leftabove new <CR>
 nnoremap <Leader>nl :rightbelow vnew <CR>
 nnoremap <Leader>nh :leftabove vnew <CR>
 nnoremap <Leader>nn :enew<CR>
+nnoremap <Leader>nN :tabnew<CR>
 
 " Open terminal below/above/to left/to right/inside current window
 nnoremap <Leader>tj :sp <BAR> term<CR>
@@ -31,6 +32,7 @@ nnoremap <Leader>tk :topleft sp <BAR> term<CR>
 nnoremap <Leader>tl :vsp <BAR> term<CR>
 nnoremap <Leader>th :leftabove vsp <BAR> term<CR>
 nnoremap <Leader>tt :term<CR>
+nnoremap <Leader>tT :tabnew <BAR> term<CR>
 
 " Resize windows with alt+dir or equalise with alt+=
 nnoremap <A-h> <C-w><
