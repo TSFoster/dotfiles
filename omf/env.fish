@@ -23,7 +23,7 @@ end
 
 set -x PAGER less
 
-set -x FZF_DEFAULT_COMMAND "ag --hidden --ignore .git --ignore elm-stuff --ignore node_modules --ignore bower_components -g ''"
+set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden --follow -g "!{.git,node_modules,bower_components,elm-stuff}/*" ^ /dev/null'
 
 if [ -f ~/.machine-private.fish ]
     source ~/.machine-private.fish

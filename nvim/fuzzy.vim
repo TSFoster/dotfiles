@@ -33,7 +33,7 @@ command! -bang Session
 
 command! -bang -nargs=? -complete=dir Dirs
     \ call fzf#run(fzf#wrap('Dirs', {
-        \ 'source': 'find . -type d -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/elm-stuff/*" -not -path "*/bower_components/*"',
+        \ 'source': 'fd --type directory --exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs',
         \ 'dir': <q-args>
     \ }, <bang>0))
 
@@ -41,7 +41,6 @@ nnoremap <silent> <Leader>e :FZF<CR>
 nnoremap <silent> <Leader>E :FZF %:h<CR>
 nnoremap <silent> <Leader>d :Dirs<CR>
 nnoremap <silent> <Leader>D :Dirs %:h<CR>
-nnoremap <silent> <Leader>A :Ag<Space>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>B :BLines<CR>
 nnoremap <silent> <Leader>he :Helptags<CR>
@@ -55,14 +54,4 @@ nnoremap <silent> <Leader>S :Session!<CR>
 
 Plugin 'mhinz/vim-grepper'
 nnoremap <silent> <Leader>a :Grepper<CR>
-if !exists('g:grepper')
-  let g:grepper = {
-    \ 'highlight': 1,
-    \ 'ag': {
-      \ 'escape': '\^$.*+?()[]{}|',
-      \ 'grepformat': '%f:%l:%c:%m, %f:%l:%m',
-      \ 'grepprg': 'ag --vimgrep --smart-case'
-    \ },
-    \ 'tools': ['ag', 'grep', 'git']
-  \ }
-endif
+let g:grepper = { 'tools': ['rg', 'git'] }

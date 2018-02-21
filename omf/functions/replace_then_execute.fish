@@ -3,7 +3,7 @@ function replace_then_execute
         commandline \
             | sed 's/ N$/; terminal-notifier -message "Command finished"/g' \
             | sed 's/ V$/ | v -/g' \
-            | sed 's/ G / | ag -S /g' \
+            | sed 's/ G / | rg -S /g' \
     )
     commandline -r $new_command
     commandline -f execute
