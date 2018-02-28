@@ -14,6 +14,9 @@ let mapleader="\<Space>"
 inoremap jj <ESC>
 inoremap jkj j<ESC>
 
+" Use backspace to flip between two files
+nnoremap <BS> <C-^>
+
 " Semi-colon is much faster to type than colon
 nnoremap ; :
 vnoremap ; :
