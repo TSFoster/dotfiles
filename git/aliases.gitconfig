@@ -10,8 +10,10 @@
   nb = checkout -b
   b = branch
   m = merge
-  ps = push
   pl = pull
+
+  ps = push
+  psf = push --force-with-lease
 
   d = diff
   df = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
