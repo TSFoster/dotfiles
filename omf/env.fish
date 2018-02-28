@@ -25,4 +25,8 @@ set -x PAGER less
 
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden --follow -g "!{.git,node_modules,bower_components,elm-stuff}/*" ^ /dev/null'
 
+# Set up go
+set -x GOPATH ~/.local/share/go
+set -x fish_user_paths $GOPATH/bin $fish_user_paths
+
 [ -f ~/.config/omf/secrets.fish ]; and source ~/.config/omf/secrets.fish

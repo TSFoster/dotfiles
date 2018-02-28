@@ -163,6 +163,9 @@ exists yarn && yarn add global neovim
 
 echo "\n"
 
+# Set up Go
+mkdir -p "$DATA/go"
+
 # Set up Hammerspoon
 if [ "$OS" = 'Mac' ]; then
   echo "Setting up Hammerspoon…\n"
