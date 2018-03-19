@@ -1,3 +1,5 @@
+Plugin 'qpkorr/vim-bufkill'
+
 set splitbelow
 set splitright
 
