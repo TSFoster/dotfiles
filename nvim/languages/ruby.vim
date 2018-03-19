@@ -1,5 +1,3 @@
-Plugin 'fishbullet/deoplete-ruby', { 'for': ['ruby'] }
-
-let g:deoplete#sources.ruby = ['ruby'] + g:default_sources
+Plugin 'roxma/ncm-rct-complete'
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

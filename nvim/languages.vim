@@ -1,4 +1,3 @@
-let g:default_sources = ['file', 'neosnippet', 'buffer']
 let g:polyglot_disabled = ['cryptol']
 
 Source completion
@@ -12,13 +11,11 @@ Source languages/javascript
 Source languages/typescript
 Source languages/markdown
 Source languages/php
-Source languages/python
 Source languages/ruby
 Source languages/shell
 Source languages/vim
 
+Plugin 'Shougo/context_filetype.vim'
 Plugin 'sheerun/vim-polyglot'
-
-unlet g:default_sources
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

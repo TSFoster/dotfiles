@@ -83,4 +83,7 @@ endfunction
 
 nnoremap <silent> <Leader>? :call HelpToggle()<CR>
 
+" When using CTRL-C key to leave insert mode, it does not trigger the autocmd InsertLeave
+inoremap <c-c> <ESC>
+
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
