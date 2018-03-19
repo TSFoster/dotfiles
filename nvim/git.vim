@@ -1,8 +1,6 @@
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'airblade/vim-gitgutter'
-
-let g:gitgutter_override_sign_column_highlight = 0
+Plugin 'mhinz/vim-signify'
 
 nnoremap <silent> <Leader>ga :Gwrite<CR>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
