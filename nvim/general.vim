@@ -33,9 +33,9 @@ let $PAGER=''             " Let vim be the pager
 augroup cursor_position
   autocmd!
   autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
 augroup END
 
 
@@ -57,3 +57,5 @@ let g:python_host_prog = substitute(system('which python2'),'\n','','g')
 let g:python3_host_prog = substitute(system('which python3'),'\n','','g')
 
 let g:netrw_home=$HOME.'/.local/share/nvim'
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

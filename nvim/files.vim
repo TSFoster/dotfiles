@@ -18,3 +18,5 @@ let g:netrw_browse_split = 0  " Open in same window
 
 Plugin 'lambdalisue/suda.vim'
 cmap w!! w suda://%
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

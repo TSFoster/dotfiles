@@ -9,3 +9,5 @@ command! -nargs=1 ProsessionDelete silent execute
       \ "!rm -f ~/.local/share/nvim/sessions/" . substitute(<q-args>, '/', '\\%', 'g') . ".vim"
 
 nnoremap <Leader><Leader>s :Prosession ~/
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

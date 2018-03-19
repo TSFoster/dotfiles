@@ -30,8 +30,10 @@ command! Spaces set expandtab
 augroup whitespace
   autocmd!
   autocmd VimEnter,BufReadPost *
-    \ if &modifiable
-      \ | nnoremap <buffer> <CR> i<CR><Esc>
-      \ | nnoremap <buffer> \| i<Space><Esc>
-    \ | endif
+        \ if &modifiable
+        \ | nnoremap <buffer> <CR> i<CR><Esc>
+        \ | nnoremap <buffer> \| i<Space><Esc>
+        \ | endif
 augroup END
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

@@ -12,3 +12,5 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 
 let g:neomake_elm_elm_lint_maker = { 'exe': 'elm-lint', 'errorformat': '%f:%l:%c [%t] %m' }
 let g:neomake_elm_enabled_makers = ['elm_lint']
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

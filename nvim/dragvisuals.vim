@@ -8,3 +8,5 @@ vmap <expr> D       DVB_Duplicate()
 
 " Remove any introduced trailing whitespace after moving
 let g:DVB_TrimWS = 1
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

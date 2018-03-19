@@ -17,3 +17,5 @@ endfunction
 
 " Follows vim-unimpaired’s *c*hange *o*ption format
 nmap <silent><expr> coS CycleIncCommand()
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

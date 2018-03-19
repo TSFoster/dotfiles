@@ -60,3 +60,5 @@ endfor
 delfunction Plugin
 delcommand Plugin
 unlet g:plugins
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

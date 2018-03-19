@@ -23,3 +23,5 @@ augroup javascript
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierMaybe
   autocmd FileType javascript set formatprg=prettier\ --stdin
 augroup END
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

@@ -29,3 +29,5 @@ endfunction
 command! ReverseBackground call ReverseBackground()
 
 nnoremap <silent> <F11> :ReverseBackground<CR>
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

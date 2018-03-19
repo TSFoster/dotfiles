@@ -32,12 +32,14 @@ smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
 imap <expr><S-TAB>
- \ pumvisible() ? "\<C-p>" :
- \ "\<S-TAB>"
+      \ pumvisible() ? "\<C-p>" :
+      \ "\<S-TAB>"
 imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+      \ pumvisible() ? "\<C-n>" :
+      \ neosnippet#expandable_or_jumpable() ?
+      \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " Plugin 'eagletmt/neco-ghc'
 " Plugin 'landaire/deoplete-swift'
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

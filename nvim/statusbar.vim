@@ -12,3 +12,5 @@ set statusline+=%4*\ col:%03c\                            "Colnr
 set statusline+=%4*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
 
 set cmdheight=2
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

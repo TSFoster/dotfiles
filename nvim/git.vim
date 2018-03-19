@@ -11,5 +11,7 @@ nnoremap <silent> <Leader>gca :Gcommit --amend<CR>
 nnoremap <silent> <Leader>gre :<C-U>execute("terminal git rebase -i HEAD~" . v:count1)<CR>
 
 if executable('gittower')
-    nnoremap <silent> <Leader>gt :call system('tower')<CR>
+  nnoremap <silent> <Leader>gt :call system('tower')<CR>
 endif
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

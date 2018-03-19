@@ -54,3 +54,5 @@ augroup terminal_insert
   autocmd BufEnter * if &buftype == 'terminal' && line('$') == line('w$') | :startinsert | endif
   autocmd TermOpen * if &buftype == 'terminal' | :startinsert | endif
 augroup END
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

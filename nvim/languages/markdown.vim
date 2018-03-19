@@ -22,3 +22,5 @@ augroup END
 
 highlight htmlItalic cterm=italic gui=italic
 highlight htmlBold cterm=bold gui=bold
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

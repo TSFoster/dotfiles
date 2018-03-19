@@ -82,3 +82,5 @@ function! HelpToggle()
 endfunction
 
 nnoremap <silent> <Leader>? :call HelpToggle()<CR>
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

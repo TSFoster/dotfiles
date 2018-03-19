@@ -37,3 +37,5 @@ vmap <silent> <Leader>/c "zy:CanIUse <C-r>z<CR>
 if has('mac')
   Plugin 'rizzatti/dash.vim'
 endif
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

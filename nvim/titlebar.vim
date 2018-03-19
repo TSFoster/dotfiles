@@ -41,3 +41,5 @@ augroup titlebar_naming
   autocmd BufEnter * :call WatchForTermTitle()
   autocmd BufLeave * :call StopWatchingForTermTitle()
 augroup end
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

@@ -16,26 +16,26 @@ endfunction
 
 let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_action = {
-  \ 'ctrl-e': funcref('CreateFileIn'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+      \ 'ctrl-e': funcref('CreateFileIn'),
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
 
 command! -bang Session
-    \ call fzf#run({
-        \ 'source': prosession#ProsessionComplete('','',0),
-        \ 'sink': 'Prosession' . (<bang>0 ? 'Delete' : ''),
-        \ 'options': '--prompt="Session' . (<bang>0 ? ' to delete: "' : ': "')
-    \ })
+      \ call fzf#run({
+      \ 'source': prosession#ProsessionComplete('','',0),
+      \ 'sink': 'Prosession' . (<bang>0 ? 'Delete' : ''),
+      \ 'options': '--prompt="Session' . (<bang>0 ? ' to delete: "' : ': "')
+      \ })
 
 
 
 command! -bang -nargs=? -complete=dir Dirs
-    \ call fzf#run(fzf#wrap('Dirs', {
-        \ 'source': 'fd --type directory --exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs',
-        \ 'dir': <q-args>
-    \ }, <bang>0))
+      \ call fzf#run(fzf#wrap('Dirs', {
+      \ 'source': 'fd --type directory --exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs',
+      \ 'dir': <q-args>
+      \ }, <bang>0))
 
 nnoremap <silent> <Leader>e :FZF<CR>
 nnoremap <silent> <Leader>E :FZF %:h<CR>
@@ -59,3 +59,5 @@ nnoremap <Leader>a :Grep<SPACE>
 nnoremap <Leader>A :GrepAdd<SPACE>
 command! -complete=dir -nargs=* Grep silent! grep <args> <BAR> silent! botright copen
 command! -complete=dir -nargs=* GrepAdd silent! grepadd <args> <BAR> silent! botright copen
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2

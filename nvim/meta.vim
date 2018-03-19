@@ -5,3 +5,5 @@ nnoremap <silent> <Leader>pi :RefreshRC \| PlugInstall<CR>
 nnoremap <silent> <Leader>pc :RefreshRC \| PlugClean!<CR>
 nnoremap <silent> <Leader>pu :PlugUpdate<CR>
 nnoremap <silent> <Leader>pU :PlugUpgrade<CR>
+
+" vim: tabstop=2 softtabstop=2 shiftwidth=2
