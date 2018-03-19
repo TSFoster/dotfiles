@@ -4,6 +4,7 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'reedes/vim-textobj-quote'
 Plugin 'glts/vim-textobj-comment'
+Plugin 'wellle/targets.vim'
 
 
 map <silent> \w <Plug>CamelCaseMotion_w
