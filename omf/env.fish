@@ -4,6 +4,8 @@ set -x fish_user_paths \
     ~/.config/meta/bin \
     ~/.fzf/bin \
     ~/.local/bin \
+    ./bin \
+    ./node_modules/.bin
 
 alias abduco "abduco -e '^z'"
 if [ "$NVIM_LISTEN_ADDRESS" ]
