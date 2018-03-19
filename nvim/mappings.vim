@@ -20,8 +20,8 @@ nnoremap <BS> <C-^>
 " Semi-colon is much faster to type than colon
 nnoremap ; :
 vnoremap ; :
-nnoremap <Leader>; ;
-vnoremap <Leader>; ;
+nnoremap <Leader>; <Plug>Sneak_;
+vnoremap <Leader>; <Plug>Sneak_;
 nnoremap q; q:
 
 " Swap visual and visual block modes. Visual block more commonly used by me
