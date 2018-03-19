@@ -10,3 +10,5 @@ set statusline+=%5*\ %{&spelllang}\                       "Spellanguage & Highli
 set statusline+=%3*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%4*\ col:%03c\                            "Colnr
 set statusline+=%4*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+
+set cmdheight=2
