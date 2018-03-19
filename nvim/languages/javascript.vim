@@ -10,7 +10,6 @@ Plugin 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md Prettier
 
 let g:deoplete#sources['javascript.jsx'] =  ['ternjs'] + g:default_sources
 let g:deoplete#omni#functions.javascript = ['tern#Complete', 'jspc#omni']
@@ -18,6 +17,9 @@ let g:deoplete#omni#functions.javascript = ['tern#Complete', 'jspc#omni']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 
-autocmd BufNewFile,BufRead *.es6        setfiletype javascript
-
-autocmd FileType javascript set formatprg=prettier\ --stdin
+augroup javascript
+  autocmd!
+  autocmd BufNewFile,BufRead *.es6        setfiletype javascript
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierMaybe
+  autocmd FileType javascript set formatprg=prettier\ --stdin
+augroup END

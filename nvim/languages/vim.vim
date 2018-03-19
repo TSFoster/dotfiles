@@ -1,5 +1,8 @@
-autocmd BufNewFile,BufRead *.vimrc* setfiletype vim
-autocmd BufReadPre *.vim setlocal foldmethod=marker
+augroup vimscripting
+  autocmd!
+  autocmd BufNewFile,BufRead *.vimrc* setfiletype vim
+  autocmd BufReadPre *.vim setlocal foldmethod=marker
+augroup END
 
 Plugin 'tpope/vim-scriptease'
 

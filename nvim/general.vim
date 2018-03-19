@@ -11,7 +11,10 @@ set lazyredraw " Don't slow macros down by rendering every step
 
 set termguicolors
 set number
-autocmd TermOpen * set nonumber
+augroup numbering
+  autocmd!
+  autocmd TermOpen * set nonumber
+augroup END
 set relativenumber
 
 set ignorecase                 " Ignore case in search …
@@ -27,10 +30,13 @@ set formatprg=par\ rqw80j
 let $PAGER=''             " Let vim be the pager
 
 " Restore last cursor position
-autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+augroup cursor_position
+  autocmd!
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+augroup END
 
 
 " Run a command and return cursor (and last search) to original position

@@ -3,9 +3,8 @@ nnoremap <silent> <Leader>re :IronRepl<CR>
 
 Plugin 'vim-utils/vim-man'
 
-Plugin 'neomake/neomake'
+Plugin 'neomake/neomake', 'neomake#configure#automake("w")'
 
-autocmd! BufWritePost * Neomake
 
 let g:neomake_open_list = 2
 

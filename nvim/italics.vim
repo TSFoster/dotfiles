@@ -1,5 +1,8 @@
 highlight htmlItalic cterm=italic
-autocmd ColorScheme * highlight htmlItalic gui=italic
-
 highlight Comment cterm=italic
-autocmd ColorScheme * highlight Comment gui=italic
+
+augroup italics
+  autocmd!
+  autocmd ColorScheme * highlight htmlItalic gui=italic
+  autocmd ColorScheme * highlight Comment gui=italic
+augroup END

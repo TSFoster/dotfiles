@@ -1,7 +1,10 @@
-autocmd BufNewFile,BufRead *.zshrc      setfiletype zsh
-autocmd BufNewFile,BufRead *.shrc       setfiletype sh
-autocmd BufNewFile,BufRead *.zshenv     setfiletype zsh
-autocmd BufNewFile,BufRead *.bashrc*    setfiletype bash
+augroup shellscripting
+  autocmd!
+  autocmd BufNewFile,BufRead *.zshrc      setfiletype zsh
+  autocmd BufNewFile,BufRead *.shrc       setfiletype sh
+  autocmd BufNewFile,BufRead *.zshenv     setfiletype zsh
+  autocmd BufNewFile,BufRead *.bashrc*    setfiletype bash
+augroup END
 
 
 Plugin 'Valodim/vim-zsh-completion', { 'for': ['zsh'] }

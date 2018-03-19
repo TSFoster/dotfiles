@@ -49,5 +49,8 @@ tnoremap <A-l> <C-\><C-n><C-w>>i
 tnoremap <A-=> <C-\><C-n><C-w>=i
 
 " Automatically enter insert mode in terminal if it's not been scrolled back
-:au BufEnter * if &buftype == 'terminal' && line('$') == line('w$') | :startinsert | endif
-:au TermOpen * if &buftype == 'terminal' | :startinsert | endif
+augroup terminal_insert
+  autocmd!
+  autocmd BufEnter * if &buftype == 'terminal' && line('$') == line('w$') | :startinsert | endif
+  autocmd TermOpen * if &buftype == 'terminal' | :startinsert | endif
+augroup END

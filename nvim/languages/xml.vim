@@ -1,1 +1,4 @@
-autocmd BufNewFile,BufRead *.rss setfiletype xml
+augroup xml
+  autocmd!
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+augroup END

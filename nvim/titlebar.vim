@@ -1,6 +1,5 @@
 set t_ts=k
 set t_fs=\
-auto VimLeave * :set t_ts=k\
 
 function! SetTitlestring(...)
   set title
@@ -16,9 +15,6 @@ function! SetTitlestring(...)
     end
   end
 endfunction
-auto BufEnter * :call SetTitlestring()
-auto BufEnter * :call WatchForTermTitle()
-auto BufLeave * :call StopWatchingForTermTitle()
 
 let s:timerid = 0
 function! WatchForTermTitle()
@@ -37,3 +33,11 @@ function! StopWatchingForTermTitle()
     let s:timerid = 0
   end
 endfunction
+
+augroup titlebar_naming
+  autocmd!
+  autocmd VimLeave * :set t_ts=k\
+  autocmd BufEnter * :call SetTitlestring()
+  autocmd BufEnter * :call WatchForTermTitle()
+  autocmd BufLeave * :call StopWatchingForTermTitle()
+augroup end

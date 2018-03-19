@@ -1,12 +1,17 @@
 let g:polyglot_disabled += ['markdown']
 
+augroup markdown
+  autocmd!
+augroup END
+
 if has('mac')
   Plugin 'itspriddle/vim-marked'
-  autocmd FileType markdown,mkd,ghmarkdown nnoremap <silent><buffer> <Leader>/m :MarkedToggle<CR>
+  augroup markdown
+    autocmd FileType markdown,mkd,ghmarkdown nnoremap <silent><buffer> <Leader>/m :MarkedToggle<CR>
+  augroup END
 endif
 
 augroup markdown
-  autocmd!
   autocmd FileType markdown,mkd,ghmarkdown imap <buffer> <C-f> *
   autocmd FileType markdown,mkd,ghmarkdown imap <buffer> <C-d> **
   autocmd FileType markdown,mkd,ghmarkdown vmap <buffer> <C-i> S*
