@@ -346,6 +346,14 @@ call <sid>hi("SpellLocal",   "", s:gui00, "", s:cterm00, "undercurl", s:gui0C)
 call <sid>hi("SpellCap",     "", s:gui00, "", s:cterm00, "undercurl", s:gui0D)
 call <sid>hi("SpellRare",    "", s:gui00, "", s:cterm00, "undercurl", s:gui0E)
 
+
+" Standard syntax highlighting
+call <sid>hi("User1", s:gui0D, s:gui01, s:cterm0D, s:cterm01, "", "")
+call <sid>hi("User2", s:gui0A, s:gui01, s:cterm0A, s:cterm01, "", "")
+call <sid>hi("User3", s:gui0B, s:gui01, s:cterm0B, s:cterm01, "", "")
+call <sid>hi("User4", s:gui0F, s:gui01, s:cterm0F, s:cterm01, "", "")
+call <sid>hi("User5", s:gui0C, s:gui01, s:cterm0C, s:cterm01, "", "")
+
 " Remove functions
 delf <sid>hi
 delf <sid>gui

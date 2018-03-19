@@ -1,6 +1,5 @@
 Plugin '~/.config/nvim/strange_harmony'
 let g:colors_name = 'base16-strange_harmony'
-let g:airline_theme = 'base16_strange_harmony'
 
 function! SetLight()
   set background=light
