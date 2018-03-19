@@ -1,8 +1,8 @@
-Plugin 'sjl/gundo.vim'
-
-let g:gundo_right = 1
-let g:gundo_prefer_python3 = has('python3')
-nnoremap <silent> <F5> :GundoToggle<CR>
+Plugin 'mbbill/undotree'
+nnoremap <silent> <F5> :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 4
+let g:undotree_ShortIndicators = 1
+let g:undotree_SetFocusWhenToggle = 0
 
 set undofile                             " Store undos in a file
 set undolevels=1000                      " Maximum number of changes that can be undone
