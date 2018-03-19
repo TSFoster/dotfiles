@@ -52,6 +52,10 @@ nnoremap <silent> <Leader>s :Session<CR>
 nnoremap <silent> <Leader>S :Session!<CR>
 
 
-Plugin 'mhinz/vim-grepper'
-nnoremap <silent> <Leader>a :Grepper<CR>
-let g:grepper = { 'tools': ['rg', 'git'] }
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case
+endif
+nnoremap <Leader>a :Grep<SPACE>
+nnoremap <Leader>A :GrepAdd<SPACE>
+command! -complete=dir -nargs=* Grep silent! grep <args> <BAR> silent! botright copen
+command! -complete=dir -nargs=* GrepAdd silent! grepadd <args> <BAR> silent! botright copen
