@@ -1,8 +1,8 @@
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'godlygeek/tabular'
+Plugin 'tommcdo/vim-lion'
 Plugin 'tpope/vim-sleuth'
 
-nnoremap <S-Tab> :Tabularize/
+let g:lion_squeeze_spaces = 1
 
 set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
 set list                      " Display whitespace
