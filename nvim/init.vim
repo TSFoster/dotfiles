@@ -21,7 +21,6 @@ command! -nargs=1 Source source ~/.config/nvim/<args>.vim
 
 Source general
 Source dragvisuals
-Source sessions
 Source snippets
 Source statusbar
 Source titlebar

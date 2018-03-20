@@ -22,15 +22,6 @@ let g:fzf_action = {
       \ 'ctrl-v': 'vsplit' }
 
 
-command! -bang Session
-      \ call fzf#run({
-      \ 'source': prosession#ProsessionComplete('','',0),
-      \ 'sink': 'Prosession' . (<bang>0 ? 'Delete' : ''),
-      \ 'options': '--prompt="Session' . (<bang>0 ? ' to delete: "' : ': "')
-      \ })
-
-
-
 command! -bang -nargs=? -complete=dir Dirs
       \ call fzf#run(fzf#wrap('Dirs', {
       \ 'source': 'fd --type directory --exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs',
@@ -48,8 +39,6 @@ nnoremap <silent> <Leader>hi :History<CR>
 nnoremap <silent> <Leader>f :History/<CR>
 nnoremap <silent> <Leader>: :History:<CR>
 nnoremap <silent> <Leader>g<Leader> :GFiles?<CR>
-nnoremap <silent> <Leader>s :Session<CR>
-nnoremap <silent> <Leader>S :Session!<CR>
 
 
 if executable('rg')
