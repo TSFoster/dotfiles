@@ -1,16 +1,31 @@
-set statusline=
-set statusline+=%2*\[%n]                                  "buffernr
-set statusline+=%1*\ %<%F\                                "File+path
-set statusline+=%2*\ %y\                                  "FileType
-set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
-set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-set statusline+=%3*\ %{(&paste?\",PASTE\":\"\")}\         "Paste mode
-set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
-set statusline+=%5*\ %{&spelllang}\                       "Spellanguage & Highlight on?
-set statusline+=%3*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
-set statusline+=%4*\ col:%03c\                            "Colnr
-set statusline+=%4*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+set statusline=%{SetStatusColorsByMode(mode())}%1* " Hack(?) to change statusbar color based on mode
+set statusline+=\ %<%F                             " File path
+set statusline+=\ [%n]                             " Buffer number
+set statusline+=\ %y                               " File type
+set statusline+=\ %m%r%w                           " Modified? Read-only? Preview?
+set statusline+=%=                                    " ------------------------------
+set statusline+=\ [(%l:%v)/%L]                     " Row:col number/total lines (%)
+set statusline+=\ [%{''.(&fenc!=''?&fenc:&enc).''} " File encoding
+set statusline+=\%{(&bomb?\",\ BOM\":\"\")}        " Byte order mark
+set statusline+=\%{(&paste?\",\ PASTE\":\"\")}]    " Paste mode
+set statusline+=\ [%{&spelllang}]                  " Language
+set statusline+=\ [%{mode()}]                      " Mode
 
-set cmdheight=2
+set noshowmode  " This is covered by the statusline now
+
+function! SetStatusColorsByMode(mode)
+  if a:mode=='n' || a:mode=='no'
+    highlight! link User1 StatusLineNormal
+  elseif a:mode=='i'
+    highlight! link User1 StatusLineInsert
+  elseif a:mode=='v' || a:mode=='V' || a:mode==''
+    highlight! link User1 StatusLineVisual
+  elseif a:mode=='t'
+    highlight! link User1 StatusLineTerm
+  else
+    highlight! link User1 StatusLine
+  endif
+  return ''
+endfunction
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

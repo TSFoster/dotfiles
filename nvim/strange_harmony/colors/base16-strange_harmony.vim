@@ -198,7 +198,7 @@ call <sid>hi("NonText",       s:gui03, "", s:cterm03, "", "", "")
 call <sid>hi("Normal",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
 call <sid>hi("LineNr",        s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
 call <sid>hi("SignColumn",    s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
-call <sid>hi("StatusLine",    s:gui04, s:gui02, s:cterm04, s:cterm02, "none", "")
+call <sid>hi("StatusLine",    s:gui07, s:gui02, s:cterm07, s:cterm02, "none", "")
 call <sid>hi("StatusLineNC",  s:gui03, s:gui01, s:cterm03, s:cterm01, "none", "")
 call <sid>hi("VertSplit",     s:gui02, s:gui02, s:cterm02, s:cterm02, "none", "")
 call <sid>hi("ColorColumn",   "", s:gui01, "", s:cterm01, "none", "")
@@ -347,12 +347,11 @@ call <sid>hi("SpellCap",     "", s:gui00, "", s:cterm00, "undercurl", s:gui0D)
 call <sid>hi("SpellRare",    "", s:gui00, "", s:cterm00, "undercurl", s:gui0E)
 
 
-" Standard syntax highlighting
-call <sid>hi("User1", s:gui0D, s:gui01, s:cterm0D, s:cterm01, "", "")
-call <sid>hi("User2", s:gui0A, s:gui01, s:cterm0A, s:cterm01, "", "")
-call <sid>hi("User3", s:gui0B, s:gui01, s:cterm0B, s:cterm01, "", "")
-call <sid>hi("User4", s:gui0F, s:gui01, s:cterm0F, s:cterm01, "", "")
-call <sid>hi("User5", s:gui0C, s:gui01, s:cterm0C, s:cterm01, "", "")
+" Custom Statusline hightlighting
+call <sid>hi("StatusLineNormal", s:gui00, s:gui0B, s:cterm00, s:cterm0B, "", "")
+call <sid>hi("StatusLineInsert", s:gui00, s:gui0F, s:cterm00, s:cterm0F, "", "")
+call <sid>hi("StatusLineVisual", s:gui00, s:gui0D, s:cterm00, s:cterm0D, "", "")
+call <sid>hi("StatusLineTerm",   s:gui00, s:gui04, s:cterm00, s:cterm04, "", "")
 
 " Remove functions
 delf <sid>hi
