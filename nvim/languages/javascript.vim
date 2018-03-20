@@ -1,15 +1,12 @@
-Plugin 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript'] }
-Plugin 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'ternjs/tern_for_vim'
 " Plugin 'carlitux/deoplete-ternjs', {
-" \   'for': ['javascript', 'javascript.jsx'],
 " \   'do': 'npm i -g tern'
 " \ }
-Plugin 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plugin 'roxma/nvim-cm-tern',  { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install'}
+Plugin 'othree/jspc.vim'
+Plugin 'roxma/nvim-cm-tern', { 'do': 'yarn install' }
 
-Plugin 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 let g:prettier#autoformat = 0
 
 

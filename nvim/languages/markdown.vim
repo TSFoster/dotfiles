@@ -5,7 +5,7 @@ augroup markdown
 augroup END
 
 if has('mac')
-  Plugin 'itspriddle/vim-marked'
+  Plugin 'itspriddle/vim-marked', { 'for': ['markdown'] }
   augroup markdown
     autocmd FileType markdown,mkd,ghmarkdown nnoremap <silent><buffer> <Leader>/m :MarkedToggle<CR>
   augroup END

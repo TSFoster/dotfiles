@@ -1,4 +1,4 @@
-Plugin 'HerringtonDarkholme/yats.vim', {'for': ['typescript']}
-Plugin 'mhartington/nvim-typescript', {'for': ['typescript'], 'do': ':UpdateRemotePlugins'}
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins'}
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

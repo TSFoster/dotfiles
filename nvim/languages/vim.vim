@@ -6,7 +6,7 @@ augroup END
 
 Plugin 'tpope/vim-scriptease'
 
-Plugin 'Shougo/neco-vim', { 'for': ['vim'] }
-Plugin 'Shougo/neco-syntax', { 'for': ['vim'] }
+Plugin 'Shougo/neco-vim'
+Plugin 'Shougo/neco-syntax'
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

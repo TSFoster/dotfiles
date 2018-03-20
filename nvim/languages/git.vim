@@ -1,4 +1,4 @@
-Plugin 'roxma/ncm-github', { 'for': ['gitcommit'] }
+Plugin 'roxma/ncm-github'
 
 augroup git
   autocmd!
