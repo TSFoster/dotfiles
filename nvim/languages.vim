@@ -1,12 +1,11 @@
 let g:polyglot_disabled = ['cryptol']
 
-Source completion
-
 Source languages/crontab
 Source languages/css
 Source languages/elixir
 Source languages/elm
 Source languages/git
+Source languages/html
 Source languages/javascript
 Source languages/typescript
 Source languages/markdown

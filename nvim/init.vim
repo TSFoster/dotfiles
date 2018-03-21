@@ -21,7 +21,6 @@ command! -nargs=1 Source source ~/.config/nvim/<args>.vim
 
 Source general
 Source dragvisuals
-Source snippets
 Source statusbar
 Source titlebar
 Source colors
@@ -36,6 +35,7 @@ Source clipboard
 Source dispatching
 Source meta
 Source search
+Source completion
 Source languages
 Source panes
 Source whitespace
