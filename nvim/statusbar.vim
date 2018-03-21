@@ -3,7 +3,7 @@ set statusline+=\ %<%F                             " File path
 set statusline+=\ [%n]                             " Buffer number
 set statusline+=\ %y                               " File type
 set statusline+=\ %m%r%w                           " Modified? Read-only? Preview?
-set statusline+=%=                                    " ------------------------------
+set statusline+=%=                                 " ------------------------------
 set statusline+=\ [(%l:%v)/%L]                     " Row:col number/total lines (%)
 set statusline+=\ [%{''.(&fenc!=''?&fenc:&enc).''} " File encoding
 set statusline+=\%{(&bomb?\",\ BOM\":\"\")}        " Byte order mark
