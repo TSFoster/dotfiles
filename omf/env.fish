@@ -11,7 +11,7 @@ alias abduco "abduco -e '^z'"
 if [ "$NVIM_LISTEN_ADDRESS" ]
   set -x EDITOR nvr --remote-tab-wait
 else
-  set -x EDITOR abduco -A nvim nvim
+  set -x EDITOR abduco -A nvim-\(random\) nvim
 end
 
 if uname | grep -q 'Darwin'
