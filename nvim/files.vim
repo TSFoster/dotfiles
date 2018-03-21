@@ -3,10 +3,11 @@ Plugin 'tpope/vim-eunuch'
 
 set spelllang=en_gb
 
-Plugin 'Valloric/ListToggle'
+Plugin 'romainl/vim-qf'
 
-let g:lt_location_list_toggle_map = '<leader>l'
-let g:lt_quickfix_list_toggle_map = '<leader>L'
+let g:qf_mapping_ack_style = 1
+nmap <Leader>l <Plug>qf_loc_toggle
+nmap <Leader>L <Plug>qf_qf_toggle
 
 Plugin 'tpope/vim-vinegar'
 

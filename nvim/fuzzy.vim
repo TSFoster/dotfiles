@@ -44,9 +44,7 @@ nnoremap <silent> <Leader>g<Leader> :GFiles?<CR>
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --smart-case
 endif
-nnoremap <Leader>a :Grep<SPACE>
-nnoremap <Leader>A :GrepAdd<SPACE>
-command! -complete=dir -nargs=* Grep silent! grep <args> <BAR> silent! botright copen
-command! -complete=dir -nargs=* GrepAdd silent! grepadd <args> <BAR> silent! botright copen
+nnoremap <Leader>a :grep<Space>
+nnoremap <Leader>A :grepadd<Space>
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
