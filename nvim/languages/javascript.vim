@@ -1,10 +1,23 @@
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'ternjs/tern_for_vim'
-Plugin 'othree/jspc.vim'
 Plugin 'roxma/nvim-cm-tern', { 'do': 'yarn install' }
-
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 let g:prettier#autoformat = 0
+let s:shouldautoformat = 1
+function! PrettierMaybe()
+  if s:shouldautoformat
+    Prettier
+  endif
+endfunction
+function! PrettierOn()
+  let s:shouldautoformat = 1
+endfunction
+function! PrettierOff()
+  let s:shouldautoformat = 0
+endfunction
+command! PrettierMaybe call PrettierMaybe()
+command! PrettierOn call PrettierOn()
+command! PrettierOff call PrettierOff()
 
 
 let g:tern#command = ['tern']
