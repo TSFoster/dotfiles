@@ -9,3 +9,5 @@ Session.vim
 .timetrap-sheet
 .tern-port
 *.lock
+/tags
+/ctags
