@@ -39,6 +39,7 @@ nnoremap <silent> <Leader>hi :History<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
 nnoremap <silent> <Leader>: :History:<CR>
 nnoremap <silent> <Leader>g<Leader> :GFiles?<CR>
+nnoremap <silent> <Leader>T :Tags<CR>
 
 
 if executable('rg')

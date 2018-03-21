@@ -5,6 +5,7 @@ Source languages/css
 Source languages/elixir
 Source languages/elm
 Source languages/git
+Source languages/go
 Source languages/html
 Source languages/javascript
 Source languages/typescript

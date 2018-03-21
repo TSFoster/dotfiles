@@ -36,6 +36,7 @@ Source dispatching
 Source meta
 Source search
 Source completion
+Source tags
 Source languages
 Source panes
 Source whitespace
