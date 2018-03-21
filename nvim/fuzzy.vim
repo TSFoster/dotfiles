@@ -36,7 +36,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>B :BLines<CR>
 nnoremap <silent> <Leader>he :Helptags<CR>
 nnoremap <silent> <Leader>hi :History<CR>
-nnoremap <silent> <Leader>f :History/<CR>
+nnoremap <silent> <Leader>h/ :History/<CR>
 nnoremap <silent> <Leader>: :History:<CR>
 nnoremap <silent> <Leader>g<Leader> :GFiles?<CR>
 
