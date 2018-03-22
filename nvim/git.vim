@@ -1,6 +1,6 @@
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'mhinz/vim-signify'
+Plugin 'airblade/vim-gitgutter'
 
 nnoremap <silent> <Leader>ga :Gwrite<CR>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
