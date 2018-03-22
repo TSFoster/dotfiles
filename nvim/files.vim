@@ -11,8 +11,8 @@ nmap <Leader>L <Plug>qf_qf_toggle
 
 Plugin 'tpope/vim-vinegar'
 
-let g:netrw_home=$HOME        " Store network files in fixed location, not current directory
-let g:netrw_preview      = 1  " Vertical preview
+let g:netrw_home=$HOME " Store network files in fixed location, not current directory
+let g:netrw_preview = 1 " Vertical preview
 
 Plugin 'lambdalisue/suda.vim'
 cmap w!! w suda://%
