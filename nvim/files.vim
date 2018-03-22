@@ -1,4 +1,5 @@
 Plugin 'artnez/vim-wipeout'
+Plugin 'justinmk/vim-dirvish'
 Plugin 'tpope/vim-eunuch'
 
 set spelllang=en_gb
