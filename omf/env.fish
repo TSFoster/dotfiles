@@ -7,6 +7,7 @@ set -x fish_user_paths \
     ./bin \
     ./node_modules/.bin
 
+set -x ABDUCO_CMD nvim
 alias abduco "abduco -e '^z'"
 if [ "$NVIM_LISTEN_ADDRESS" ]
   set -x EDITOR nvr --remote-tab-wait
