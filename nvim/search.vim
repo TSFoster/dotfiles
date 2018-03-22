@@ -6,33 +6,68 @@ else
   let s:open_command = 'start'
 endif
 
-command! -nargs=+ DuckDuckGo call system(s:open_command.' "https://duckduckgo.com/?q=<args>"')
-nmap <Leader>/. :DuckDuckGo 
-vmap <silent> <Leader>/. "zy:DuckDuckGo <C-r>z<CR>
 
-command! -nargs=+ Github call system(s:open_command.' "https://www.github.com/<args>"')
-nmap <Leader>/g :Github 
-vmap <silent> <Leader>/g "zy:Github <C-r>z<CR>
+function! SearchCommand(str, type, ...)
+  echom a:str
+  echom '---'
+  echom a:type
+  let sel_save = &selection
+  let &selection = "inclusive"
+  let reg_save = @@
 
-command! -nargs=+ Dict call system(s:open_command.' "http://dictionary.reference.com/browse/<args>"')
-nmap <Leader>/d :Dict 
-vmap <silent> <Leader>/d "zy:Dict <C-r>z<CR>
+  if a:0
+    let @@ = a:1
+  elseif a:type == 'visual'
+    silent exe "normal! gvy"
+  elseif a:type == 'line'
+    silent exe "normal! '[V']y"
+  else
+    silent exe "normal! `[v`]y"
+  endif
 
-command! -nargs=+ Wikipedia call system(s:open_command.' "http://en.wikipedia.org/wiki/Special:Search?search=<args>"')
-nmap <Leader>/w :Wikipedia 
-vmap <silent> <Leader>/w "zy:Wikipedia <C-r>z<CR>
+  call system(s:open_command.' "'.a:str.@@.'"')
 
-command! -nargs=+ Open call system(s:open_command.' "<args>"')
-nmap <Leader>// :Open 
-vmap <silent> <Leader>// "zy:Open <C-r>z<CR>
+  let &selection = sel_save
+  let @@ = reg_save
+endfunction
+
+function! DuckDuckGo(...)
+  call function('SearchCommand', ['https://duckduckgo.com/?q='] + a:000)()
+endfunction
+command! -nargs=+ DuckDuckGo call DuckDuckGo('', '<args>')<CR>
+nmap <silent> <Leader>/. :set opfunc=DuckDuckGo<CR>g@
+vmap <silent> <Leader>/. :<C-U>call DuckDuckGo('visual')<CR>
+
+function! Github(...)
+  call function('SearchCommand', ['https://www.github.com/'] + a:000)()
+endfunction
+command! -nargs=+ Github call Github('', '<args>')<CR>
+nmap <silent> <Leader>/g :set opfunc=Github<CR>g@
+vmap <silent> <Leader>/g :<C-U>call Github('visual')<CR>
+
+function! Dict(...)
+  call function('SearchCommand', ['http://dictionary.reference.com/browse/'] + a:000)()
+endfunction
+command! -nargs=+ Dict call Dict('', '<args>')<CR>
+nmap <silent> <Leader>/d :set opfunc=Dict<CR>g@
+vmap <silent> <Leader>/d :<C-U>call Dict('visual')<CR>
+
+function! Wikipedia(...)
+  call function('SearchCommand', ['http://en.wikipedia.org/wiki/Special:Search?search='] + a:000)()
+endfunction
+command! -nargs=+ Wikipedia call Wikipedia('', '<args>')<CR>
+nmap <silent> <Leader>/w :set opfunc=Wikipedia<CR>g@
+vmap <silent> <Leader>/w :<C-U>call Wikipedia('visual')<CR>
+
+function! Open(...)
+  call function('SearchCommand', [''] + a:000)()
+endfunction
+command! -nargs=+ Open call Open('', '<args>')<CR>
+nmap <silent> <Leader>// :set opfunc=Open<CR>g@
+vmap <silent> <Leader>// :<C-U>call Open('visual')<CR>
 
 
 Plugin 'zoeesilcock/vim-caniuse'
-let g:caniuse_no_mappings = 1
-
-nmap <Leader>/c :CanIUse 
-nmap <silent> <Leader>/C :CanIUse<CR>
-vmap <silent> <Leader>/c "zy:CanIUse <C-r>z<CR>
 
 if has('mac')
   Plugin 'rizzatti/dash.vim'
