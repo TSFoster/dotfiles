@@ -59,13 +59,6 @@ command! -nargs=+ Wikipedia call Wikipedia('', '<args>')<CR>
 nmap <silent> <Leader>/w :set opfunc=Wikipedia<CR>g@
 vmap <silent> <Leader>/w :<C-U>call Wikipedia('visual')<CR>
 
-function! Open(...)
-  call function('SearchCommand', [''] + a:000)()
-endfunction
-command! -nargs=+ Open call Open('', '<args>')<CR>
-nmap <silent> <Leader>// :set opfunc=Open<CR>g@
-vmap <silent> <Leader>// :<C-U>call Open('visual')<CR>
-
 
 Plugin 'zoeesilcock/vim-caniuse'
 
