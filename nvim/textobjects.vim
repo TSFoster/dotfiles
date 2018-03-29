@@ -1,12 +1,15 @@
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
-Plugin 'bkad/CamelCaseMotion'
+Plugin 'kana/vim-textobj-line'
+Plugin 'kana/vim-textobj-syntax'
+Plugin 'lucapette/vim-textobj-underscore'
 Plugin 'reedes/vim-textobj-quote'
 Plugin 'glts/vim-textobj-comment'
 Plugin 'wellle/targets.vim'
 
 
+Plugin 'bkad/CamelCaseMotion'
 map <silent> \w <Plug>CamelCaseMotion_w
 map <silent> \b <Plug>CamelCaseMotion_b
 map <silent> \e <Plug>CamelCaseMotion_e
