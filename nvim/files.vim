@@ -2,6 +2,7 @@ Plugin 'artnez/vim-wipeout'
 Plugin 'justinmk/vim-dirvish'
 Plugin 'tpope/vim-eunuch'
 
+Plugin 'dbmrq/vim-dialect'
 set spelllang=en_gb
 
 Plugin 'romainl/vim-qf'
