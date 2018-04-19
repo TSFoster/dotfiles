@@ -86,4 +86,8 @@ nnoremap <silent> <Leader>? :call HelpToggle()<CR>
 " When using CTRL-C key to leave insert mode, it does not trigger the autocmd InsertLeave
 inoremap <c-c> <ESC>
 
+" Map C-z to M-z to allow detaching from abduco within abduco nvim
+tnoremap <M-z> <C-z>
+
+
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
