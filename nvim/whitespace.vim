@@ -6,6 +6,7 @@ let g:lion_squeeze_spaces = 1
 
 set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
 set list                      " Display whitespace
+set breakindent               " Visually indent wrapped lines to match whitespace
 
 " Set all the tab stops to the same value
 function! SetTab(tabstop)
