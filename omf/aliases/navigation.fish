@@ -8,4 +8,4 @@ end
 abbr -a up 'c ..'
 
 abbr -a l ls
-abbr -a la 'ls -a'
+abbr -a la 'ls -A'
