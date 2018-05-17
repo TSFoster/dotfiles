@@ -15,10 +15,14 @@ function p
     end
     set project_name $argv[1]
     set project_file_path ~/.local/share/projects/$project_name.txt
-    if [ (count $argv) -ge 2 ]
-        set cd_path $argv[2]
-    else if [ -f $project_file_path ]
+    if [ -f $project_file_path ]
         set cd_path (cat $project_file_path)
+        if [ (count $argv) -ge 2 ]
+            echo 'Project already exists, ignoring given path'
+            echo 'To delete existing project, use --rm'
+        end
+    else if [ (count $argv) -ge 2 ]
+        set cd_path $argv[2]
     end
     [ -d $cd_path ]; or mkdir -p $cd_path
     cd $cd_path
