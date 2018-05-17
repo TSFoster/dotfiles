@@ -1,4 +1,5 @@
 Plugin 'qpkorr/vim-bufkill'
+let g:BufKillCreateMappings = 0
 
 set splitbelow
 set splitright
