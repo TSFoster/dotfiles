@@ -19,4 +19,6 @@ let g:netrw_preview = 1 " Vertical preview
 Plugin 'lambdalisue/suda.vim'
 cmap w!! w suda://%
 
+Plugin 'jbgutierrez/vim-partial'
+
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
