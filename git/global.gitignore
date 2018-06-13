@@ -13,3 +13,4 @@ Session.vim
 /ctags
 !composer.lock
 !package.lock
+!Gemfile.lock
