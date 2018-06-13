@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+[ -z "$DOCKER_MACHINE_NAME" ] && echo 'You must setup Docker with "docker-machine env" first.' >&2 && exit 1
+
+MACHINE_IP="$(docker-machine ip "$DOCKER_MACHINE_NAME")"
+
+command -v sudo >/dev/null 2>&1 || { echo >&2 "sudo is required. Aborting."; exit 1; }
+command -v hostile >/dev/null 2>&1 || { echo >&2 "hostile is required. Aborting."; exit 1; }
+
+sudo hostile set "$MACHINE_IP" "$DOCKER_MACHINE_NAME"
+for subdomain in $*; do
+    sudo hostile set "$MACHINE_IP" "$subdomain.$DOCKER_MACHINE_NAME"
+done
