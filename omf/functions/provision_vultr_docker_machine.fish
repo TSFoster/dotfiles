@@ -41,7 +41,7 @@ function provision_vultr_docker_machine
   $swarmFlags \
   $argv
 
-  if not set -q _flag_no-swarm
+  if not set -q _flag_no_swarm
     dmenv $argv[1]
     set machineIP (docker-machine inspect $machineName --format '{{.Driver.PrivateIP}}')
     docker swarm init --advertise-addr $machineIP
