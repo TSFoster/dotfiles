@@ -6,6 +6,7 @@ function c
     end
 end
 abbr -a up 'c ..'
+abbr -a -- - 'c -'
 
 abbr -a l ls
 abbr -a la 'ls -A'
