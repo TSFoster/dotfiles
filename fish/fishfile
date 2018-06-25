@@ -1,5 +1,6 @@
 fisherman/await
 barnybug/docker-fish-completion
+TSFoster/docker-tools
 ohanhi/fish-elm-completions
 fisherman/fishkit
 fisherman/fzf
