@@ -1,7 +1,9 @@
 fisherman/await
 barnybug/docker-fish-completion
 ohanhi/fish-elm-completions
+fisherman/fishkit
 fisherman/fzf
 fisherman/get
 fisherman/getopts
 fisherman/last_job_id
+fisherman/menu
