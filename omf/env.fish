@@ -26,7 +26,7 @@ end
 
 set -x PAGER less
 
-set -x FZF_DEFAULT_COMMAND 'rg -S --files --no-ignore-vcs --hidden --follow -g "!**/{.git,node_modules,bower_components,elm-stuff}/" ^ /dev/null'
+set -x FZF_DEFAULT_COMMAND 'rg --smart-case --files --no-ignore-vcs --hidden --follow --glob \'!**/{.git,node_modules,bower_components,elm-stuff}/\' --glob \'!/{tags,tags.temp}\' ^ /dev/null'
 
 # Set up go
 set -x GOPATH ~/.local/share/go
