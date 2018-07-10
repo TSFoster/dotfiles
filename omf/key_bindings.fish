@@ -1,4 +1,4 @@
-bind -M insert \co 'clear; commandline -f repaint'
+bind -M insert \cp 'clear; commandline -f repaint'
 bind -M insert \r 'replace_then_execute'
 bind -M visual \r 'replace_then_execute'
 bind \r 'replace_then_execute'
