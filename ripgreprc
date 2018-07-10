@@ -1,0 +1,6 @@
+--smart-case
+--no-ignore-vcs
+--hidden
+--follow
+--glob=!/**/{.git,node_modules,bower_components,elm-stuff}/
+--glob=!/{tags,tags.temp}

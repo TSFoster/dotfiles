@@ -24,7 +24,7 @@ let g:fzf_action = {
 
 command! -bang -nargs=? -complete=dir Dirs
       \ call fzf#run(fzf#wrap('Dirs', {
-      \ 'source': 'fd --type directory --exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs',
+      \ 'source': "fd $FD_DEFAULT_FLAGS --type directory",
       \ 'dir': <q-args>
       \ }, <bang>0))
 
@@ -43,7 +43,7 @@ nnoremap <silent> <Leader>T :Tags<CR>
 
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ --smart-case
+  set grepprg=rg\ --vimgrep
 endif
 nnoremap <Leader>a :silent! grep<Space>
 nnoremap <Leader>A :silent! grepadd<Space>
