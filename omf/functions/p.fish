@@ -21,7 +21,7 @@ function p
     echo '    Start project NAME, optionally (force re-)setting project root.'
     echo ''
     echo "$cmd [ -d | --delete ] [ -f | --force ] NAME..."
-    echo '    Delete project NAME. Use -f/--force to supress non-existance warnings.'
+    echo '    Delete project NAME. Use -f/--force to supress non-existence warnings.'
     return 0
   end
 
