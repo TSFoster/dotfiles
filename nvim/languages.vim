@@ -1,3 +1,7 @@
+Plugin 'Shougo/context_filetype.vim'
+let g:context_filetype#filetypes = {}
+
+Plugin 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['cryptol']
 
 Source languages/crontab
@@ -16,7 +20,5 @@ Source languages/ruby
 Source languages/shell
 Source languages/vim
 
-Plugin 'Shougo/context_filetype.vim'
-Plugin 'sheerun/vim-polyglot'
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
