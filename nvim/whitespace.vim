@@ -17,7 +17,6 @@ function! SetTab(tabstop)
   endif
 endfunction
 
-call SetTab(2)
 set expandtab
 
 " Quick way to change tab stops. Add bang to reformat file

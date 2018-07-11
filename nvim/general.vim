@@ -4,8 +4,8 @@ if has('mouse')
   set mouse=a
 endif
 
-set exrc                                 " Enable per-directory .vimrc files
-set secure                               " Disable unsafe commands in local .vimrc files
+set exrc   " Enable per-directory .vimrc files
+set secure " Disable unsafe commands in local .vimrc files
 
 set lazyredraw " Don't slow macros down by rendering every step
 

@@ -32,6 +32,7 @@ Source git
 Source fuzzy
 Source clipboard
 Source dispatching
+Source linting
 Source meta
 Source search
 Source completion

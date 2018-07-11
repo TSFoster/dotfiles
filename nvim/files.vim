@@ -5,7 +5,6 @@ Plugin 'dbmrq/vim-dialect'
 set spelllang=en_gb
 
 Plugin 'romainl/vim-qf'
-
 let g:qf_mapping_ack_style = 1
 nmap <Leader>l <Plug>qf_loc_toggle
 nmap <Leader>L <Plug>qf_qf_toggle
