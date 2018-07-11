@@ -1,4 +1,4 @@
 Plugin 'phpactor/phpactor' ,  {'do': 'composer install'}
-Plugin 'roxma/ncm-phpactor'
+Plugin 'kristijanhusak/deoplete-phpactor'
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

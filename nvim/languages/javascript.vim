@@ -1,5 +1,5 @@
 Plugin 'ternjs/tern_for_vim'
-Plugin 'roxma/nvim-cm-tern', { 'do': 'yarn install' }
+Plugin 'carlitux/deoplete-ternjs'
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 let g:prettier#autoformat = 0

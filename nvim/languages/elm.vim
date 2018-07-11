@@ -1,7 +1,7 @@
 let g:polyglot_disabled += ['elm']
 
 Plugin 'ElmCast/elm-vim'
-Plugin 'roxma/ncm-elm-oracle'
+Plugin 'pbogut/deoplete-elm'
 Plugin 'kbsymanz/ctags-elm'
 
 let g:elm_setup_keybindings = 0

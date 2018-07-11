@@ -1,4 +1,6 @@
 Plugin 'Shougo/context_filetype.vim'
+Plugin 'Shougo/neco-syntax'
+Plugin 'fszymanski/deoplete-emoji'
 let g:context_filetype#filetypes = {}
 
 Plugin 'sheerun/vim-polyglot'
@@ -13,11 +15,10 @@ Source languages/git
 Source languages/go
 Source languages/html
 Source languages/javascript
-Source languages/typescript
 Source languages/markdown
 Source languages/php
-Source languages/ruby
 Source languages/shell
+Source languages/swift
 Source languages/vim
 
 

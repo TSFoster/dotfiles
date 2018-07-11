@@ -1,4 +1,4 @@
-Plugin 'roxma/ncm-github'
+Plugin 'SevereOverfl0w/deoplete-github'
 
 augroup git
   autocmd!
