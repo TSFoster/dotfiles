@@ -1,8 +1,6 @@
 Plugin 'hkupty/iron.nvim', {'do': ':UpdateRemotePlugins'}
 nnoremap <silent> <Leader>re :IronRepl<CR>
 
-Plugin 'vim-utils/vim-man'
-
 Plugin 'neomake/neomake', 'neomake#configure#automake("w")'
 
 let g:neomake_open_list = 2

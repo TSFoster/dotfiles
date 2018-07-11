@@ -20,7 +20,6 @@ command! -nargs=+ Plugin call Plugin(<args>)
 command! -nargs=1 Source source ~/.config/nvim/<args>.vim
 
 Source general
-Source dragvisuals
 Source statusbar
 Source titlebar
 Source colors
