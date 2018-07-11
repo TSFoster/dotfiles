@@ -30,4 +30,11 @@ augroup javascript
   autocmd FileType javascript set formatprg=prettier\ --stdin
 augroup END
 
+
+Plugin 'mogelbrod/vim-jsonpath'
+
+au FileType json nnoremap <buffer> <silent> <expr> <leader>jp jsonpath#echo()
+au FileType json nnoremap <buffer> <silent> <expr> <leader>jg jsonpath#goto()
+
+
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
