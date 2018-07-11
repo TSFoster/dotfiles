@@ -18,5 +18,6 @@ Plugin 'lambdalisue/suda.vim'
 cmap w!! w suda://%
 
 Plugin 'jbgutierrez/vim-partial'
+let g:partial_templates={}
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
