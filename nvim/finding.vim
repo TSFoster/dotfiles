@@ -3,7 +3,7 @@ let g:sneak#label = 1
 
 Plugin 'tpope/vim-abolish'
 
-set inccommand=split
+set inccommand=nosplit
 
 function! CycleIncCommand()
   if &inccommand == 'nosplit'
