@@ -1,6 +1,0 @@
-#!/usr/bin/osascript
-
-on run argv
-	set AppleScript's text item delimiters to {" "}
-	tell application "OmniFocus" to parse tasks into default document with transport text (argv as string)
-end
