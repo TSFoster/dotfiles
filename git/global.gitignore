@@ -18,3 +18,4 @@ Session.vim
 !composer.lock
 !package.lock
 !Gemfile.lock
+!yarn.lock
