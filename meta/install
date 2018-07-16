@@ -195,6 +195,7 @@ for pkg (
   awesome_print
   pry
   neovim
+  solargraph
 ); do
   grep -q "^$pkg (" <(echo "$GEM_INSTALLED") \
     && echo "$pkg already installed" \

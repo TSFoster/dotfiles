@@ -25,6 +25,7 @@ Source languages/html
 Source languages/javascript
 Source languages/markdown
 Source languages/php
+Source languages/ruby
 Source languages/shell
 Source languages/swift
 Source languages/vim
