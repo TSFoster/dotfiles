@@ -30,6 +30,7 @@ Source languages/ruby
 Source languages/shell
 Source languages/swift
 Source languages/vim
+Source languages/yaml
 
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
