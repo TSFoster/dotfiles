@@ -6,8 +6,3 @@
 /mps
 /mps-youtube
 /theme
-/yarn/*
-!/yarn/global
-/yarn/global/*
-!/yarn/global/package.json
-!/yarn/global/yarn.lock

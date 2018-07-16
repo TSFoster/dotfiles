@@ -88,7 +88,33 @@ fi
 
 # Set up node
 echo "Setting up node…\n"
-yarn global upgrade-interactive
+npm update -g
+packages=(
+  tldr
+  node-gyp
+  fsevents
+  fkill-cli
+  tern
+  prettier
+  esline
+)
+npm install --global "${packages[@]}"
+[ "$OS" = 'Mac' ] && npm install --global alfred-fkill
+
+echo "\n"
+
+# Set up elm
+echo "Setting up elm…\n"
+packages=(
+  elm
+  elm-format
+  elm-oracle
+  elm-test
+  elm-github-install
+  elm-help
+  elm-live
+)
+npm install --global "${packages[@]}"
 
 echo "\n"
 
@@ -148,6 +174,7 @@ echo "Setting up neovim…\n"
 mkdir -p "$DATA/nvim/sessions"
 exists pip3 && pip3 install neovim && pip3 install neovim-remote
 exists pip2 && pip2 install neovim
+npm install --global neovim
 [ -f "$DATA/nvim/site/autoload/plug.vim" ] || curl -fLo "$DATA/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 [ -d "$DATA/nvim/plugged" ] || nvim +PlugInstall
 
