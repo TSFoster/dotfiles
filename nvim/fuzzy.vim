@@ -24,7 +24,7 @@ let g:fzf_action = {
 
 command! -bang -nargs=? -complete=dir Dirs
       \ call fzf#run(fzf#wrap('Dirs', {
-      \ 'source': "fd $FD_DEFAULT_FLAGS --type directory",
+      \ 'source': "fd --type directory $FD_DEFAULT_FLAGS",
       \ 'dir': <q-args>
       \ }, <bang>0))
 

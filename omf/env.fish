@@ -26,9 +26,9 @@ end
 
 set -x PAGER less
 
-set -x FD_DEFAULT_FLAGS '--exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs'
+set -x FD_DEFAULT_FLAGS '--exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs --hidden'
 set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgreprc
-set -x FZF_DEFAULT_COMMAND "fd $FD_DEFAULT_FLAGS --type file"
+set -x FZF_DEFAULT_COMMAND "fd --type file $FD_DEFAULT_FLAGS"
 
 # Set up go
 set -x GOPATH ~/.local/share/go
