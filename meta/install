@@ -90,13 +90,20 @@ fi
 echo "Setting up node…\n"
 npm update -g
 packages=(
-  tldr
-  node-gyp
-  fsevents
+  eslint
   fkill-cli
-  tern
+  fsevents
+  git-open
+  hostile
+  htmlhint
+  machine-share
+  node-gyp
+  postcss
   prettier
-  esline
+  tern
+  tldr
+  uglify-js
+  yo
 )
 npm install --global "${packages[@]}"
 [ "$OS" = 'Mac' ] && npm install --global alfred-fkill
@@ -107,12 +114,13 @@ echo "\n"
 echo "Setting up elm…\n"
 packages=(
   elm
+  elm-analyse
   elm-format
-  elm-oracle
-  elm-test
   elm-github-install
   elm-help
   elm-live
+  elm-oracle
+  elm-test
 )
 npm install --global "${packages[@]}"
 
