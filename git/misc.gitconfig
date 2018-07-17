@@ -1,5 +1,4 @@
 [core]
-  excludesfile = ~/.config/git/global.gitignore
   pager = less -FRSX
   autocrlf = input
   editor = nvr --remote-tab-wait-silent
