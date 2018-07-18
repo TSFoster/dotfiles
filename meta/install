@@ -98,6 +98,7 @@ packages=(
   htmlhint
   machine-share
   node-gyp
+  now
   postcss
   prettier
   tern
