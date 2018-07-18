@@ -239,6 +239,11 @@ echo "\n"
 echo "Setting up Editorconfig…\n"
 cp -f "$CONFIG/meta/editorconfig" "$HOME/.editorconfig"
 
+# Set up lexicon
+if ! exists lexicon; then
+  pip3 && pip3 install dns-lexicon
+fi
+
 echo "\n"
 
 # Set up iTerm 2
