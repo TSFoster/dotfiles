@@ -35,3 +35,6 @@ set -x GOPATH ~/.local/share/go
 set -x fish_user_paths $GOPATH/bin $fish_user_paths
 
 [ -f ~/.config/omf/secrets.fish ]; and source ~/.config/omf/secrets.fish
+
+set workspace ~/workspace
+set projectsDir ~/.local/share/projects
