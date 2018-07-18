@@ -15,7 +15,9 @@ function p
     echo '    List all projects.'
     echo ''
     echo "$cmd NAME [ PATH [ -f  --force ] ]"
-    echo '    Start project NAME, optionally (force re-)setting project root.'
+    echo '    Start project NAME, optionally (force re-)setting project root. If the'
+    echo '    function is called from within a command substitution, print the path'
+    echo '    to the project.'
     echo ''
     echo "$cmd [ -d | --delete ] [ -f | --force ] NAME..."
     echo '    Delete project NAME. Use -f/--force to supress non-existence warnings.'
@@ -44,10 +46,10 @@ function p
     return 0
   end
 
-  if [ "$NVIM_LISTEN_ADDRESS" ]
-    echo "Will not run nvim from within nvim" >&2
-    return 1
-  end
+  [ "$NVIM_LISTEN_ADDRESS" ]
+  and not status --is-command-substitution
+  and echo "Will not run nvim from within nvim" >&2
+  and return 1
 
   set projectName $argv[1]
   set projectInfo $projectsDir/$projectName.txt
@@ -94,6 +96,10 @@ function p
     end
   end
 
-  cd $projectPath
-  abduco -A nvim-$projectName nvim
+  if status --is-command-substitution
+    echo $projectPath
+  else
+    cd $projectPath
+    abduco -A nvim-$projectName nvim
+  end
 end
