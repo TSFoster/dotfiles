@@ -197,6 +197,7 @@ echo "\n"
 
 # Set up Go
 mkdir -p "$DATA/go"
+go get -u github.com/arial7/golorem
 
 # Set up Hammerspoon
 if [ "$OS" = 'Mac' ]; then
