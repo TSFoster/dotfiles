@@ -97,10 +97,12 @@ packages=(
   hostile
   htmlhint
   machine-share
+  ndb
   node-gyp
   now
   postcss
   prettier
+  svgo
   tern
   tldr
   uglify-js
