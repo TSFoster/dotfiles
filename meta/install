@@ -263,6 +263,10 @@ fish -c 'set -q TERM; and set -e TERM; set -Ux TERM xterm-256color-italic'
 
 echo "\n"
 
+# Set up ctags
+mkdir -p $HOME/.ctags.d
+echo "--options=$CONFIG/ctags/" > $HOME/.ctags.d/config.ctags
+
 if exists ssh-agent; then
     echo "If you have not already, ensure all SSH keys are added to your keychain"
 fi
