@@ -45,4 +45,5 @@ brew "tvnamer"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "vultr"
 brew "watchexec"
+brew "zaquestion/tap/lab"
 cask "java"
