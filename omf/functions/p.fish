@@ -82,7 +82,7 @@ function p
     if [ -d $workspace/$projectName ]
       set projectPath $workspace/$projectName
     else
-      if set -q $argv[2]
+      if set -q argv[2]
         set newPath $argv[2]
       else
         set newPath (pwd)
