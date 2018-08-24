@@ -66,4 +66,18 @@ if has('mac')
   Plugin 'rizzatti/dash.vim'
 endif
 
+function! Keywordprg(word)
+  if exists('g:LanguageClient_serverCommands.'.&filetype)
+    call LanguageClient#textDocument_hover()
+  elseif count(['shell', 'sh', 'bash', 'zsh', 'fish'], &filetype)
+    Man a:word
+  else
+    call system('search '.a:word)
+  endif
+endfunction
+
+command! -nargs=+ Keywordprg call Keywordprg('<args>')<CR>
+
+set keywordprg=:Keywordprg
+
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

@@ -6,7 +6,6 @@ let g:context_filetype#filetypes = {}
 Plugin 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 let g:LanguageClient_serverCommands = {}
 nnoremap <F6> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F7> :call LanguageClient#textDocument_rename()<CR>
 
