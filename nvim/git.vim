@@ -1,6 +1,9 @@
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'shumphrey/fugitive-gitlab.vim'
 Plugin 'airblade/vim-gitgutter'
+
+let g:fugitive_git_executable='command git'
 
 nnoremap <silent> <Leader>ga :Gwrite<CR>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
