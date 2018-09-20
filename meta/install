@@ -145,7 +145,7 @@ if exists fish; then
 
   # Install Oh My Fish
   if ! [ -d "$DATA/omf" ]; then
-    echo "Installing Oh My Fish…"
+    echo "Installing Oh My Fish (you will need to hit Ctrl+D once installed)…"
     fish <(curl -L https://get.oh-my.fish) --config="$CONFIG/omf" --path="$DATA/omf"
   fi
 
