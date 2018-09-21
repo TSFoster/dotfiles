@@ -7,6 +7,7 @@ abbr -a gdc git diff --cached
 abbr -a gst git stash
 abbr -a gsp git stash pop
 abbr -a gca git commit --amend
+abbr -a gcane git commit --amend --no-edit
 
 if [ (type -t gittower 2> /dev/null; or echo 'fail') = 'file' ]
   function tower
