@@ -31,7 +31,7 @@ if [ $OS = Mac ]
   set -x HOMEBREW_CASK_OPTS --appdir=/Applications
   # Put the airport command in PATH
   set -x fish_user_paths /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources $fish_user_paths
-  set -x ICLOUD "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
+  set -x iCloudDir "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 end
 
 set -x PAGER less
