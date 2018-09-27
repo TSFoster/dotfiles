@@ -1,3 +1,10 @@
 #!/usr/bin/env fish
 
-
+if [ $OS = Mac ]
+  brew update
+  brew bundle --file=$configDir/meta/Brewfile
+  read -p 'Install GUI apps (y/n)? ' -n 1 installGui
+  [ $installGui = y ]; and brew bundle --file=$configDir/meta/apps.Brewfile
+else
+  echo 'Skipped automatic installation of packages' >&2
+end
