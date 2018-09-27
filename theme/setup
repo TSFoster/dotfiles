@@ -1,0 +1,22 @@
+#!/usr/bin/env fish
+
+set dir (dirname (status filename))
+
+if [ $OS = Mac ]
+  set isDark (
+    osascript \
+      -l JavaScript \
+      -e 'Application("System Events").appearancePreferences.darkMode()'
+  )
+  echo $lightDark > $dataDir/dark_mode
+end
+
+[ -f $dataDir/dark_mode ]; or echo true > $dataDir/dark_mode
+
+set isDark (cat $dataDir/dark_mode)
+
+if [ $isDark = 'true' ]
+  echo 'Dark mode is on' >&2
+else
+  echo 'Dark mode is off' >&2
+end
