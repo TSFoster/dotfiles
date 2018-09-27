@@ -12,7 +12,7 @@ endfunction
 command! SetDark call SetDark()
 command! SetLight call SetLight()
 
-if join(readfile($configDir/theme/is_dark")) == "true"
+if join(readfile($dataDir . "/is_dark")) == "true"
   SetDark
 else
   SetLight

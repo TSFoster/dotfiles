@@ -15,7 +15,7 @@ set -x SHELL (which fish)
 set -x OS (os_name)
 
 # If nvim’s been installed, let’s assume nvr and abduco have been, too
-if command -s nvim
+if command -s nvim > /dev/null
   set -x ABDUCO_CMD nvim
   alias abduco "abduco -e '^z'"
   if [ "$NVIM_LISTEN_ADDRESS" ]
