@@ -12,7 +12,9 @@ set -x fish_user_paths \
     ./node_modules/.bin
 
 set -x SHELL (which fish)
-set -x OS (os_name)
+
+set -x OS Unknown
+uname | grep -q Darwin; and set -x OS Mac
 
 # If nvim’s been installed, let’s assume nvr and abduco have been, too
 if command -s nvim > /dev/null
