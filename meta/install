@@ -269,3 +269,8 @@ echo "--options=$CONFIG/ctags/" > $HOME/.ctags.d/config.ctags
 if exists ssh-agent; then
     echo "If you have not already, ensure all SSH keys are added to your keychain"
 fi
+
+# Set up defaults
+if [ "$OS" = 'Mac' ]; then
+  defaults write com.apple.dock autohide -int 1; killall Dock
+fi
