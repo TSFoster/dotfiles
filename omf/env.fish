@@ -1,40 +1,47 @@
-set -x SHELL (which fish)
+set -x configDir $HOME/.config
+set -x dataDir $HOME/.local/share
+set -x localBinDir $HOME/.local/bin
+set -x workspaceDir $HOME/workspace
+set -x projectsDir $dataDir/projects
 
 set -x fish_user_paths \
-    ~/.config/meta/bin \
+    $configDir/meta/bin \
+    $localBinDir \
     ~/.fzf/bin \
-    ~/.local/bin \
     ./bin \
     ./node_modules/.bin
 
-set -x ABDUCO_CMD nvim
-alias abduco "abduco -e '^z'"
-if [ "$NVIM_LISTEN_ADDRESS" ]
-  set -x EDITOR nvr --remote-tab-wait
+set -x SHELL (which fish)
+set -x OS (os_name)
+
+# If nvim’s been installed, let’s assume nvr and abduco have been, too
+if command -s nvim
+  set -x ABDUCO_CMD nvim
+  alias abduco "abduco -e '^z'"
+  if [ "$NVIM_LISTEN_ADDRESS" ]
+    set -x EDITOR nvr --remote-tab-wait
+  else
+    set -x EDITOR abduco -A nvim-\(random\) nvim
+  end
 else
-  set -x EDITOR abduco -A nvim-\(random\) nvim
+  set -x EDITOR vim
 end
 
-if uname | grep -q 'Darwin'
-  set -x OS Mac
+if [ $OS = Mac ]
   set -x HOMEBREW_CASK_OPTS --appdir=/Applications
+  # Put the airport command in PATH
   set -x fish_user_paths /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources $fish_user_paths
   set -x ICLOUD "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
-else
-  set -x OS Unknown
 end
 
 set -x PAGER less
 
 set -x FD_DEFAULT_FLAGS '--exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs --hidden'
-set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgreprc
+set -x RIPGREP_CONFIG_PATH $configDir/ripgreprc
 set -x FZF_DEFAULT_COMMAND "fd --type file $FD_DEFAULT_FLAGS"
 
 # Set up go
-set -x GOPATH ~/.local/share/go
+set -x GOPATH $dataDir/go
 set -x fish_user_paths $GOPATH/bin $fish_user_paths
 
-[ -f ~/.config/omf/secrets.fish ]; and source ~/.config/omf/secrets.fish
-
-set workspace ~/workspace
-set projectsDir ~/.local/share/projects
+[ -f $configDir/omf/secrets.fish ]; and source $configDir/omf/secrets.fish

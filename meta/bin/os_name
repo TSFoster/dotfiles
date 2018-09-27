@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-OS='Unknown'
-if uname | grep -q 'Darwin'; then OS='Mac'; fi
-
-echo "$OS"

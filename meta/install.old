@@ -1,38 +1,3 @@
-#!/usr/bin/env zsh
-
-set -ue
-
-CONFIG="$HOME/.config"
-DATA="$HOME/.local/share"
-LBIN="$HOME/.local/bin"
-mkdir -p "$DATA"
-mkdir -p "$LBIN"
-
-
-# Helper functions
-# Check if given command is executable
-exists () { type "$1" >/dev/null 2>/dev/null }
-
-
-# Set theme file (light/dark)
-[ -f "$CONFIG/theme" ] || echo 'light' > "$CONFIG/theme"
-THEME="$(cat "$CONFIG/theme")"
-
-
-# Put OS type in $OS
-OS="$($CONFIG/meta/bin/os_name)"
-# Warn about incompleteness of script for non-macOS systems
-[ "$OS" = 'Mac' ] || echo "This is not a Mac! Skipping some sections of this script. Some other assumptions about available tools may be incorrect.\n"
-
-
-# Check command line tools installed
-if [ "$OS" = 'Mac' ] && [ ! -d "$(xcode-select --print-path 2> /dev/null)" ]; then
-  echo "Installing command line tools (GUI popup should appear)…\n"
-  xcode-select --install
-  read "?Press any key once tools are installed. "
-fi
-
-
 # Install homebrew and applications
 if [ "$OS" = 'Mac' ]; then
   if ! exists brew; then
@@ -273,4 +238,5 @@ fi
 # Set up defaults
 if [ "$OS" = 'Mac' ]; then
   defaults write com.apple.dock autohide -int 1; killall Dock
+  defaults write com.apple.ScriptEditor2 DefaultLanguageType -int 1785946994
 fi

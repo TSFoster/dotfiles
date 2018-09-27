@@ -2,24 +2,29 @@
 
 ## Requirements
 
-These files have only been tested on macOS 10.11-10.13. Installation should work from a fresh install of macOS, and therefore assume the following programs are available:
+These files are primarily designed for macOS 10.11+. Installation should work from a fresh install of macOS, and assumes the following programs are available:
+
+* curl
+* grep
+* sh
+
+Some packages are installed automatically if on a Mac, but will have to be installed manually **beforehand** if not:
 
 * git
-* zsh
-* grep
-
-Some packages are installed automatically with homebrew if on a Mac, so will have to be installed manually **beforehand** if not.
+* fish
 
 ## Installation
 
-This repo assumes it is located in $HOME/.config and has control over itself.
+**NOTE:** This repo assumes it is located in $HOME/.config and has control over itself.
 
-```bash
-git clone https://github.com/TSFoster/dotfiles.git ~/.config
-~/.config/meta/install
+```sh
+curl -fsSL https://raw.githubusercontent.com/TSFoster/dotfiles/master/meta/install/install.sh | sh
 ```
 
-For the italic fonts (see [`./meta/italic-fonts`](./meta/italic-fonts)), make sure you have an italic font installed (I recommend [Triplicate]), and follow the instructions on [Alex Pearce]'s website.
+## Italic fonts
+
+For the italic fonts (see [`./meta/italic-fonts`][italics]), make sure you have an italic font installed (I recommend [Triplicate]), and follow the instructions on [Alex Pearce]'s website.
 
 [Triplicate]:  http://practicaltypography.com/triplicate.html            "Triplicate font by Matthew Butterick"
 [Alex Pearce]: https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/ "Enabling italic fonts in iTerm2, tmux, and vim"
+[italics]:     ./meta/italic-fonts                                       "./meta/italic-fonts"
