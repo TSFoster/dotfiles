@@ -26,7 +26,6 @@ and git remote set-url origin git@github.com:TSFoster/dotfiles.git
 
 source omf/env.fish
 
-mkdir -p $configDir
 mkdir -p $dataDir
 mkdir -p $localBinDir
 mkdir -p $workspaceDir
