@@ -1,5 +1,10 @@
 #!/usr/bin/env fish
 
+if not set -q OS; or not set -q dataDir
+  echo 'Expected environment variables are not present!' >&2
+end
+
+
 set dir (dirname (status filename))
 
 if [ $OS = Mac ]
