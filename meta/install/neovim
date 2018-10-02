@@ -15,7 +15,7 @@ if command -s npm > /dev/null
   echo '-> Install supporting npm packages'
   npm install --global \
     neovim \
-    dockerfile-langauge-server-nodejs \
+    dockerfile-language-server-nodejs \
     bash-language-server \
     yaml-language-server
 else
