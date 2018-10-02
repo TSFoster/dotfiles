@@ -5,9 +5,20 @@ end
 
 set dotfilesDir $HOME/.config
 
+if [ -d $dotfilesDir ]
+  if not [ -d $dotfilesDir/.git ]; or not string match --quiet --regex 'TSFoster/dotfiles' (cd $dotfilesDir; git remote get-url origin)
+    read -p '!!> Delete .config and start again? ' -n 1 deleteConfig
+    if [ $deleteConfig = y ]
+      rm -rf $dotfilesDir
+    else
+      echo '!!> Aborting' >&2
+      exit 1
+    end
+  end
+end
+
 [ -d $dotfilesDir ]
 or git clone https://github.com/TSFoster/dotfiles.git $dotfilesDir
-
 cd $dotfilesDir
 
 [ (git remote get-url origin) = 'https://github.com/TSFoster/dotfiles.git' ]
