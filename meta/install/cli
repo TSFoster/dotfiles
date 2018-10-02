@@ -4,7 +4,7 @@ if [ $OS = Mac ]
   echo '-> Homebrew'
   brew update
   brew bundle --file=$configDir/meta/Brewfile
-  read --prompt-str='Install GUI apps (y/n)? ' --n-chars=1 installGui
+  read --prompt-str='Install GUI apps (y/n)? ' --nchars=1 installGui
   [ $installGui = y ]; and brew bundle --file=$configDir/meta/apps.Brewfile
 else
   echo 'Skipped homebrew packages' >&2
