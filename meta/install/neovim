@@ -33,14 +33,14 @@ if command -s pip2 > /dev/null
   echo '-> Install supporting pip2 packages'
   pip2 install neovim
 else
-  echo 'Skipped neovim supporting packages from pip2' > &2
+  echo 'Skipped neovim supporting packages from pip2' >&2
 end
 
 if command -s gem > /dev/null
   echo '-> Install supporting Ruby packages'
   gem install --conservative neovim solargraph
 else
-  echo 'Skipped neovim supporting packages from gem' > &2
+  echo 'Skipped neovim supporting packages from gem' >&2
 end
 
 mkdir -p $dataDir/nvim/sessions
