@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+if not [ $OS = Mac ]
+  echo 'No defaults for this system' >&2
+  exit 1
+end
+
+defaults write com.googlecode.iterm2 PrefsCustomFolder $configDir/iterm
+defaults write com.apple.dock autohide -int 1; killall Dock
+defaults write com.apple.ScriptEditor2 DefaultLanguageType -int 1785946994

@@ -1,0 +1,60 @@
+#!/usr/bin/env fish
+
+if not command -s nvim > /dev/null
+  if [ $OS = Mac ]
+    echo '-> Install neovim'
+    brew install neovim
+  else
+    echo 'Install Neovim first!' >&2
+    exit 1
+  end
+end
+
+
+if command -s npm > /dev/null
+  echo '-> Install supporting npm packages'
+  npm install --global \
+    neovim \
+    dockerfile-langauge-server-nodejs \
+    bash-language-server \
+    yaml-language-server
+else
+  echo 'Skipped neovim supporting packages from npm' >&2
+end
+
+if command -s pip3 > /dev/null
+  echo '-> Install supporting pip3 packages'
+  pip3 install neovim neovim-remote
+else
+  echo 'Skipped neovim supporting packages from pip3' >&2
+end
+
+if command -s pip2 > /dev/null
+  echo '-> Install supporting pip2 packages'
+  pip2 install neovim
+else
+  echo 'Skipped neovim supporting packages from pip2' > &2
+end
+
+if command -s gem > /dev/null
+  echo '-> Install supporting Ruby packages'
+  gem install --conservative neovim solargraph
+else
+  echo 'Skipped neovim supporting packages from gem' > &2
+end
+
+mkdir -p $dataDir/nvim/sessions
+
+if not [ -f $dataDir/nvim/site/autoload/plug.vim ]
+  echo '-> Install vim-plug'
+  curl -fL --create-dirs \
+    -o $dataDir/nvim/site/autoload/plug.vim \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+end
+if not [ -d $dataDir/nvim/plugged ]
+  echo '-> Install plugins'
+  nvim +PlugInstall
+end
+
+echo '-> Editorconfig'
+cp -f $configDir/meta/editorconfig $HOME/.editorconfig

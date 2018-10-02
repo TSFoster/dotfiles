@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+if [ $OS = Mac ]
+  set soundsDir $HOME/Library/Sounds
+  sudo mkdir -p $soundsDir
+  sudo chown $USER $soundsDir
+  cp -f $configDir/meta/sounds/*.aif $soundsDir
+else
+  echo 'No action taken' >&2
+end

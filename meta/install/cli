@@ -1,10 +1,107 @@
 #!/usr/bin/env fish
 
 if [ $OS = Mac ]
+  echo '-> Homebrew'
   brew update
   brew bundle --file=$configDir/meta/Brewfile
   read -p 'Install GUI apps (y/n)? ' -n 1 installGui
   [ $installGui = y ]; and brew bundle --file=$configDir/meta/apps.Brewfile
 else
-  echo 'Skipped automatic installation of packages' >&2
+  echo 'Skipped homebrew packages' >&2
 end
+
+
+if command -s npm > /dev/null
+  echo '-> Node'
+  npm update -g
+  set npmPackages \
+    eslint \
+    fkill-cli \
+    fsevents \
+    git-open \
+    hostile \
+    htmlhint \
+    machine-share \
+    ndb \
+    node-gyp \
+    now \
+    postcss \
+    prettier \
+    svgo \
+    tern \
+    tldr \
+    uglify-js \
+    yo
+  [ -d '/Applications/Alfred 3.app/' ]; and set npmPackages alfred-fkill $npmPackages
+  npm install --global $npmPackages
+else
+  echo 'Skipped node packages' >&2
+end
+
+
+[ $OS = Mac ]
+and [ -d /Application/Tower.app ]
+and not command -s gittower > /dev/null
+and echo '-> Git'
+and echo 'gittower still needs to be installed (you can do this from the app’s preferences)' >&2
+
+[ -f $configDir/git/credentials.gitconfig ]
+or touch $configDir/git/credentials.gitconfig
+
+
+echo '-> Go'
+if command -s go > /dev/null
+  mkdir -p "$dataDir/go"
+  go get -u github.com/arial7/golorem
+else
+  echo 'Skipped go setup and go packages' >&2
+end
+
+
+echo '-> Elm'
+if command -s npm > /dev/null
+  npm install --global \
+    elm \
+    elm-analyse \
+    elm-format \
+    elm-github-install \
+    elm-help \
+    elm-live \
+    elm-oracle \
+    elm-test
+else
+  echo 'Skipped elm packages' >&2
+end
+
+
+echo '-> Python'
+
+if command -s pip3  > /dev/null
+  pip3 install \
+    dns-lexicon
+else
+  echo 'Skipped pip3 packages' >&2
+end
+
+
+echo '-> Ruby'
+
+set --universal --export IRBRC $configDir/irb/irbrc ^/dev/null
+set --universal --export PRYRC $configDir/pry/pryrc ^/dev/null
+
+[ $OS = Mac ]
+and [ -d /Library/Ruby/Gems ]
+and sudo chown -R $USER /Library/Ruby/Gems
+
+if command -s gem > /dev/null
+  gem install --conservative \
+    awesome_print \
+    pry
+else
+  echo 'Skipped Ruby packages' >&2
+end
+
+
+# -> Ctags
+mkdir -p $HOME/.ctags.d
+echo "--options=$configDir/ctags/" > $HOME/.ctags.d/config.ctags
