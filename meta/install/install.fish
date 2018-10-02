@@ -1,4 +1,17 @@
-cd (dirname (status filename))
+if not command -s git > /dev/null
+  echo '!!> You need to install git first!' >&2
+  exit 1
+end
+
+set dotfilesDir $HOME/.config
+
+[ -d $dotfilesDir ]
+or git clone https://github.com/TSFoster/dotfiles.git $dotfilesDir
+
+cd $dotfilesDir
+
+[ (git remote get-url origin) = 'https://github.com/TSFoster/dotfiles.git' ]
+and git remote set-url origin git@github.com:TSFoster/dotfiles.git
 
 source omf/env.fish
 
@@ -7,19 +20,6 @@ mkdir -p $dataDir
 mkdir -p $localBinDir
 mkdir -p $workspaceDir
 mkdir -p $projectsDir
-
-if not command -s git > /dev/null
-  echo '!!> You need to install git first!' >&2
-  exit 1
-end
-
-[ -d $configDir ]
-or git clone https://github.com/TSFoster/dotfiles.git $configDir
-
-cd $configDir
-
-[ (git remote get-url origin) = 'https://github.com/TSFoster/dotfiles.git' ]
-and git remote set-url origin git@github.com:TSFoster/dotfiles.git
 
 [ $OS = Mac ]
 or echo '!!> This is not a Mac! Let’s see how well this goes…'
