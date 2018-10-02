@@ -37,9 +37,6 @@ or echo '!!> This is not a Mac! Let’s see how well this goes…'
 echo '--> Fish setup'
 ./meta/install/fish
 
-echo '--> Theme setup'
-./theme/setup
-
 echo '--> CLI apps'
 ./meta/install/cli
 
