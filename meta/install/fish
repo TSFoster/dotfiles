@@ -16,7 +16,7 @@ end
 if not [ -d $dataDir/omf ]
   echo '-> Oh My Fish (you will need to hit Ctrl+D once installed)'
   fish (curl -L https://get.oh-my.fish | psub) --config=$configDir/omf --path=$dataDir/omf
-fi
+end
 
 set fisherFile $configDir/omf/functions/fisher.fish
 if not [ -f $fisherFile ]

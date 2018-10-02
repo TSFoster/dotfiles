@@ -8,7 +8,7 @@ if [ $OS = Mac ]
       -l JavaScript \
       -e 'Application("System Events").appearancePreferences.darkMode()'
   )
-  echo $lightDark > $dataDir/dark_mode
+  echo $isDark > $dataDir/dark_mode
 end
 
 [ -f $dataDir/dark_mode ]; or echo true > $dataDir/dark_mode
