@@ -12,7 +12,7 @@ endfunction
 command! SetDark call SetDark()
 command! SetLight call SetLight()
 
-if join(readfile($dataDir . "/is_dark")) == "true"
+if join(readfile($dataDir . "/dark_mode")) == "true"
   SetDark
 else
   SetLight
