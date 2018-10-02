@@ -4,6 +4,8 @@ set --export localBinDir $HOME/.local/bin
 set --export workspaceDir $HOME/workspace
 set --export projectsDir $dataDir/projects
 
+set --export fish_key_bindings fish_vi_key_bindings
+
 set --export fish_user_paths \
     $configDir/meta/bin \
     $localBinDir \
