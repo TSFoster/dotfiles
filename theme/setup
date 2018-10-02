@@ -1,26 +1,11 @@
 #!/usr/bin/env fish
 
-if not set -q OS; or not set -q dataDir
-  echo 'Expected environment variables are not present!' >&2
-end
-
-
-set dir (dirname (status filename))
-
-if [ $OS = Mac ]
-  set isDark (
-    osascript \
-      -l JavaScript \
-      -e 'Application("System Events").appearancePreferences.darkMode()'
-  )
-  echo $isDark > $dataDir/dark_mode
-end
-
+[ $OS = Mac ]; and osascript -l JavaScript -e 'Application("System Events").appearancePreferences.darkMode()' > $dataDir/dark_mode
 [ -f $dataDir/dark_mode ]; or echo true > $dataDir/dark_mode
 
 set isDark (cat $dataDir/dark_mode)
 
-if [ $isDark = 'true' ]
+if [ $isDark = true ]
   echo 'Dark mode is on' >&2
 else
   echo 'Dark mode is off' >&2
