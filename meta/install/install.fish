@@ -7,7 +7,7 @@ set dotfilesDir $HOME/.config
 
 if [ -d $dotfilesDir ]
   if not [ -d $dotfilesDir/.git ]; or not string match --quiet --regex 'TSFoster/dotfiles' (cd $dotfilesDir; git remote get-url origin)
-    read -p '!!> Delete .config and start again? ' -n 1 deleteConfig
+    read --prompt-str='!!> Delete .config and start again (y/n)? ' --nchars=1 deleteConfig
     if [ $deleteConfig = y ]
       rm -rf $dotfilesDir
     else
