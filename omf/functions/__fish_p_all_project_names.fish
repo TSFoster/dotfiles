@@ -1,6 +1,6 @@
 function __fish_p_all_project_names
   mkdir -p $projectsDir
-  mkdir -p $workspace
+  mkdir -p $workspaceDir
 
   set projectDefs (string replace -r ".*/([^/]*).txt" '$1' $projectsDir/*.txt)
   set workspaceDirs (ls -p $workspace | grep '/$' | sed 's/\///')

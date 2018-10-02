@@ -79,8 +79,8 @@ function p
       end
     end
   else
-    if [ -d $workspace/$projectName ]
-      set projectPath $workspace/$projectName
+    if [ -d $workspaceDir/$projectName ]
+      set projectPath $workspaceDir/$projectName
     else
       if set -q argv[2]
         set newPath $argv[2]
