@@ -27,7 +27,7 @@ augroup javascript
   autocmd!
   autocmd BufNewFile,BufRead *.es6 setfiletype javascript
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierMaybe
-  autocmd FileType javascript set formatprg=prettier\ --stdin
+  autocmd FileType javascript setlocal formatprg=prettier\ --stdin
 augroup END
 
 
