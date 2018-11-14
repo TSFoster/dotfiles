@@ -10,7 +10,6 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F7> :call LanguageClient#textDocument_rename()<CR>
 
 
-Plugin 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['cryptol']
 
 Source languages/crontab
@@ -30,6 +29,8 @@ Source languages/shell
 Source languages/swift
 Source languages/vim
 Source languages/yaml
+
+Plugin 'sheerun/vim-polyglot'
 
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

@@ -1,4 +1,7 @@
+let g:polyglot_disabled += ['elm']
+
 Plugin 'pbogut/deoplete-elm'
+Plugin 'ElmCast/elm-vim'
 
 let g:elm_jump_to_error = 1
 let g:elm_make_show_warnings = 1
