@@ -8,6 +8,7 @@ tap "zored/homebrew-brew"
 cask "java"
 brew "abduco"
 brew "closure-compiler"
+brew "dhall-json"
 brew "docker", link: false
 brew "docker-compose", link: false
 brew "docker-machine-driver-vultr"
