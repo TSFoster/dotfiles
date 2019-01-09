@@ -63,6 +63,7 @@ if command -s npm > /dev/null
   npm install --global \
     elm \
     elm-analyse \
+    elm-doc-preview \
     elm-format \
     elm-github-install \
     elm-help \
