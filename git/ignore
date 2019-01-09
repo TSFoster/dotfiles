@@ -8,14 +8,9 @@ vendor/bundle
 Session.vim
 .timetrap-sheet
 .tern-port
-*.lock
 /tags
 /tags.temp
 /tags.temp.tmp
 /ctags
 /ctags.temp
 /ctags.temp.tmp
-!composer.lock
-!package.lock
-!Gemfile.lock
-!yarn.lock
