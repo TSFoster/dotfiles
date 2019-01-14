@@ -5,7 +5,7 @@ if [ -n "$1" ]; then
   DOMAINS_TO_USE=$*
 else
   [ -z "$DOCKER_MACHINE_NAME" ] && echo 'You must setup Docker with "docker-machine env" first, or provide domains to remove as arguments.' >&2 && exit 1
-  DOMAINS_TO_USE="$DOCKER_MACHINE_NAME"
+  DOMAINS_TO_USE="$DOCKER_MACHINE_NAME ${DOCKER_MACHINE_NAME//-/.}"
 fi
 
 command -v sudo >/dev/null 2>&1 || { echo >&2 "sudo is required. Aborting."; exit 1; }
