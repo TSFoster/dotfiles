@@ -10,6 +10,7 @@ set --export fish_user_paths \
     $configDir/meta/bin \
     $localBinDir \
     ~/.fzf/bin \
+    ~/.cargo/bin \
     ./bin \
     ./node_modules/.bin
 
