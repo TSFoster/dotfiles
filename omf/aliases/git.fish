@@ -1,4 +1,4 @@
-alias git lab
+alias git hub
 abbr -a g git
 
 abbr -a gs git status
