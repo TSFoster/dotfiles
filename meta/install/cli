@@ -10,6 +10,14 @@ else
   echo 'Skipped homebrew packages' >&2
 end
 
+if command -s rustup > /dev/null
+  echo '-> Rust'
+  rustup update
+  rustup component add rls rust-analysis rust-src rustfmt
+else
+  echo 'Skipped Rust packages' >&2
+end
+
 
 if command -s npm > /dev/null
   echo '-> Node'
