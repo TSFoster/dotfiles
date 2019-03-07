@@ -16,7 +16,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 nnoremap <A-w> :Windows<CR>
 tnoremap <A-w> <C-\><C-n>:Windows<CR>
 
-tnoremap :: <C-\><C-n>:
+tnoremap ;; <C-\><C-n>:
 tnoremap jj <C-\><C-n>
 tmap <A-Space> <C-\><C-n><Leader>
 nmap <A-Space> <Leader>
