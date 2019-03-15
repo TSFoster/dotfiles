@@ -12,7 +12,7 @@ nnoremap <silent> <Leader>gps :Gpush<CR>
 nnoremap <silent> <Leader>gpl :Gpull<CR>
 nnoremap <silent> <Leader>gco :Gcommit<CR>
 nnoremap <silent> <Leader>gca :Gcommit --amend<CR>
-nnoremap <silent> <Leader>gre :<C-U>execute("terminal git rebase -i HEAD~" . v:count1)<CR>
+nnoremap <silent> <Leader>gre :<C-U>execute("Grebase -i HEAD~" . v:count1)<CR>
 
 if executable('gittower')
   nnoremap <silent> <Leader>gt :call system('tower')<CR>
