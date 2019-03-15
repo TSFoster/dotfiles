@@ -71,13 +71,15 @@ if command -s npm > /dev/null
   npm install --global \
     elm \
     elm-analyse \
+    elm-doc \
     elm-doc-preview \
     elm-format \
     elm-github-install \
     elm-help \
     elm-live \
     elm-oracle \
-    elm-test
+    elm-test \
+    elm-xref
 else
   echo 'Skipped elm packages' >&2
 end
