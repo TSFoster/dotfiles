@@ -17,7 +17,7 @@ end
 
 function mailboxNotifier(icon, name, location, count)
     genericNotifier(
-        icon, mailboxPath(name),
+        icon, homePath('Library/Mail'),
         [[
             var Mail = Application('Mail');
             !(Mail.running()) ? 0 :
