@@ -6,5 +6,11 @@ if not [ $OS = Mac ]
 end
 
 defaults write com.googlecode.iterm2 PrefsCustomFolder $configDir/iterm
-defaults write com.apple.dock autohide -int 1; killall Dock
+
+defaults write com.apple.dock autohide -int 1
+
 defaults write com.apple.ScriptEditor2 DefaultLanguageType -int 1785946994
+
+defaults write org.m0k.transmission proxy-port 8888
+defaults write org.m0k.transmission proxy-server 127.0.0.1
+defaults write org.m0k.transmission proxy-server-enabled -bool yes
