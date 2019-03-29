@@ -63,7 +63,6 @@ mas "Reeder", id: 880001334
 mas "Sim Daltonism", id: 693112260
 mas "Soulver", id: 413965349
 mas "Spillo", id: 873245660
-mas "StuffIt Expander", id: 919269455
 mas "Things3", id: 904280696
 mas "Trello", id: 1278508951
 mas "Tweetbot", id: 1384080005
