@@ -43,7 +43,6 @@ cask "xquartz"
 mas "1Blocker", id: 1107421413
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
-mas "Airmail 3", id: 918858936
 mas "Apple Configurator 2", id: 1037126344
 mas "Cardhop", id: 1290358394
 mas "Day One", id: 1055511498
