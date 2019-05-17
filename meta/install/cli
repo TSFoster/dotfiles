@@ -76,6 +76,7 @@ if command -s npm > /dev/null
     elm-format \
     elm-github-install \
     elm-help \
+    elm-json \
     elm-live \
     elm-oracle \
     elm-test \
