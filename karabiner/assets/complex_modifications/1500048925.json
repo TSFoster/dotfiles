@@ -9,62 +9,19 @@
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "optional": [
-                "a",
-                "b",
-                "c",
-                "d",
-                "e",
-                "f",
-                "g",
-                "h",
-                "i",
-                "j",
-                "k",
-                "l",
-                "m",
-                "n",
-                "o",
-                "p",
-                "q",
-                "r",
-                "s",
-                "t",
-                "u",
-                "v",
-                "w",
-                "x",
-                "y",
-                "z",
-                "0",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_shift",
-              "modifiers": [
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
+              "modifiers": ["left_command", "left_control", "left_option"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "spacebar",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ]
         }
@@ -78,29 +35,20 @@
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "mandatory": [
-                "left_command"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["left_command"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_control",
-              "modifiers": [
-                "left_option",
-                "left_shift"
-              ]
+              "modifiers": ["left_option", "left_shift"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ]
         },
@@ -109,29 +57,20 @@
           "from": {
             "key_code": "left_command",
             "modifiers": {
-              "mandatory": [
-                "caps_lock"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["caps_lock"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_control",
-              "modifiers": [
-                "left_option",
-                "left_shift"
-              ]
+              "modifiers": ["left_option", "left_shift"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ]
         },
@@ -140,29 +79,20 @@
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "mandatory": [
-                "left_control"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["left_control"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_command",
-              "modifiers": [
-                "left_option",
-                "left_shift"
-              ]
+              "modifiers": ["left_option", "left_shift"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             }
           ]
         },
@@ -171,29 +101,20 @@
           "from": {
             "key_code": "left_control",
             "modifiers": {
-              "mandatory": [
-                "caps_lock"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["caps_lock"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_command",
-              "modifiers": [
-                "left_option",
-                "left_shift"
-              ]
+              "modifiers": ["left_option", "left_shift"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             }
           ]
         },
@@ -202,29 +123,20 @@
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "mandatory": [
-                "left_option"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["left_option"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_command",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_option"
-              ]
+              "modifiers": ["left_option"]
             }
           ]
         },
@@ -233,29 +145,20 @@
           "from": {
             "key_code": "left_option",
             "modifiers": {
-              "mandatory": [
-                "caps_lock"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["caps_lock"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_command",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_option"
-              ]
+              "modifiers": ["left_option"]
             }
           ]
         },
@@ -264,29 +167,20 @@
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "mandatory": [
-                "left_shift"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["left_shift"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_command",
-              "modifiers": [
-                "left_control",
-                "left_option"
-              ]
+              "modifiers": ["left_control", "left_option"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_shift"
-              ]
+              "modifiers": ["left_shift"]
             }
           ]
         },
@@ -295,29 +189,20 @@
           "from": {
             "key_code": "left_shift",
             "modifiers": {
-              "mandatory": [
-                "caps_lock"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["caps_lock"],
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_command",
-              "modifiers": [
-                "left_control",
-                "left_option"
-              ]
+              "modifiers": ["left_control", "left_option"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "f18",
-              "modifiers": [
-                "left_shift"
-              ]
+              "modifiers": ["left_shift"]
             }
           ]
         }
