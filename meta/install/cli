@@ -10,8 +10,13 @@ else
   echo 'Skipped homebrew packages' >&2
 end
 
+echo '-> Rust'
+
+not command -s rustup > /dev/null
+and command -s rustup-init > /dev/null
+and rustup-init
+
 if command -s rustup > /dev/null
-  echo '-> Rust'
   rustup update
   rustup component add rls rust-analysis rust-src rustfmt clippy
 else
