@@ -177,6 +177,20 @@ hs.hotkey.bind(hypers["cmd"], "8", extend)
 hs.hotkey.bind(hypers["all"], "v", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
 
 
+-- RESTART BROKEN PROXY CONTAINER
+
+function if_system_did_wake(event)
+  if event == hs.caffeinate.watcher.systemDidWake or event == hs.caffeinate.watcher.screensDidWake then
+    restart_proxy()
+  end
+end
+function restart_proxy()
+  hs.execute(homePath('.config/meta/bin/check_proxy_health'))
+end
+hs.caffeinate.watcher.new(if_system_did_wake):start()
+hs.wifi.watcher.new(restart_proxy):watchingFor({"SSIDChange"}):start()
+
+
 -- MAIL TO THINGS
 
 
