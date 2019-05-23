@@ -1,5 +1,3 @@
-Plugin 'SevereOverfl0w/deoplete-github'
-
 augroup git
   autocmd!
   autocmd BufNewFile,BufRead *.gitconfig* setfiletype gitconfig
