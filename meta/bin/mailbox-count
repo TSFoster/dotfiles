@@ -1,0 +1,61 @@
+#!/usr/bin/env osascript -l JavaScript
+
+var Mail = Application('Mail');
+
+function run(argv) {
+  if (!Mail.running()) return 0;
+
+  let account = Mail.accounts.byName('Strange Bureau');
+
+  let shouldActivate = false;
+  let unreadOnly = false;
+  let mailbox = false;
+
+  while (argv.length > 0) {
+    let arg = argv.shift();
+    switch (arg.toLowerCase()) {
+      case '--activate':
+      case '-a':
+        shouldActivate = true;
+        break;
+      case '--unread':
+      case '-u':
+        unreadOnly = true;
+        break;
+      case 'inbox':
+        mailbox = Mail.inbox;
+        break;
+      case 'outbox':
+        mailbox = Mail.outbox;
+        break;
+      case 'drafts':
+        mailbox = Mail.draftsMailbox;
+        break;
+      case 'junk':
+        mailbox = Mail.junkMailbox;
+        break;
+      case 'trash':
+        mailbox = Mail.trashMailbox;
+        break;
+      case 'sent':
+        mailbox = Mail.sentMailbox;
+        break;
+      default:
+        try {
+          mailbox = Mail.accounts
+            .byName('Strange Bureau')
+            .mailboxes.byName(arg)();
+        } catch (e) {}
+    }
+  }
+
+  if (!mailbox) return '!';
+
+  if (shouldActivate) {
+    Mail.messageViewers.first().selectedMailboxes = mailbox;
+    Mail.activate();
+  }
+
+  if (unreadOnly) return mailbox.unreadCount();
+  return mailbox.messages.where({deletedStatus: false}).length;
+}

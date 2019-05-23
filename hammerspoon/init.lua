@@ -196,149 +196,10 @@ hs.wifi.watcher.new(restart_proxy):watchingFor({"SSIDChange"}):start()
 
 function processMailboxes()
     local lastTime = os.time({year = 1979, month = 1, day = 1})
-    local code = [[
-      (function processMailboxes(app) {
-        var Mail = app('Mail');
-        var Things = app('Things');
-
-        if (!Mail.running() || !Things.running()) return;
-
-        var mailboxes = Mail.accounts.byName('Strange Bureau').mailboxes;
-        var archiveMailbox = mailboxes.byName('In Things');
-        var thingsInbox = Things.lists.byName('Inbox');
-
-        getMessagesIn('INBOX', {flaggedStatus: true})
-          .map(actionToDo)
-          .map(addToDosToInbox)
-          .map(archiveMessage);
-        getMessagesIn('To reply')
-          .map(replyToDo)
-          .map(addToDosToInbox)
-          .map(archiveMessage);
-        getMessagesIn('Waiting')
-          .map(waitingToDo)
-          .map(addToDosToInbox)
-          .map(archiveMessage);
-
-        function waitingToDo(model) {
-          const name = isSelf(model.message.sender())
-            ? thirdParties(model.message) + ' replied?'
-            : 'Waiting on ' + thirdParties(model.message);
-          return addToDo(model, {
-            name: name,
-            notes: makeNote(model.message),
-            tagNames: ['@Waiting'],
-          });
-        }
-
-        function replyToDo(model) {
-          return addToDo(model, {
-            name: 'Reply to ' + thirdParties(model.message),
-            notes: makeNote(model.message),
-            tagNames: ['Correspondence'],
-          });
-        }
-
-        function actionToDo(model) {
-          return addToDo(model, {
-            name: 'Action email ‘' + model.message.subject() + '’',
-            notes: makeNote(model.message),
-          });
-        }
-
-        function addToDo(model, toDo) {
-          model.toDos.push(toDo);
-          return model;
-        }
-
-        function thirdParties(message) {
-          if (isSelf(message.sender())) return extractNames(message.recipients());
-          return extractName(message.sender());
-        }
-
-        function isSelf(sender) {
-          return /Toby Foster|<.*toby.*(millk|strangebureau|efex|tsf|mor-far)>/.test(
-            sender,
-          );
-        }
-
-        function extractNames(recipients) {
-          return recipients.map(getName).join(', ');
-        }
-
-        function extractName(sender) {
-          var match = sender.match(/((.*) )?<(.*)>/);
-          return match[2] || match[3];
-        }
-
-        function makeNote(message) {
-          const recipients = message
-            .recipients()
-            .map(getFullName)
-            .join(', ');
-          return `
-                          From: ${message.sender()}
-                          To: ${recipients}
-                          Subject: ${message.subject()}
-                          Message ID: ${message.id()}
-
-                          message://${encodeURIComponent(
-                            '<' + message.messageId() + '>',
-                          )}
-                      `
-            .trim()
-            .replace(/\n\t+/g, '\n');
-        }
-
-        function getName(recipient) {
-          var name = recipient.name();
-          if (name && name.length > 0) return name;
-          return recipient.address();
-        }
-
-        function getFullName(recipient) {
-          return recipient.name() + ' <' + recipient.address() + '>';
-        }
-
-        function addToDosToInbox(model) {
-          model.toDos.forEach(addToDoToInbox);
-          return model;
-        }
-
-        function addToDoToInbox(toDo) {
-          thingsInbox.toDos.push(Things.ToDo(toDo));
-        }
-
-        function archiveMessage(model) {
-          model.message.flaggedStatus = false;
-          Mail.move(model.message, {to: archiveMailbox});
-          return model;
-        }
-
-        function getMessagesIn(mailboxName, extraConditions = {}) {
-          const conditions = Object.assign(
-            {
-              deletedStatus: false,
-            },
-            extraConditions,
-          );
-          return mailboxes
-            .byName(mailboxName)
-            .messages.where(conditions)()
-            .map(function(message) {
-              return {
-                message: message,
-                toDos: [],
-              };
-            });
-        }
-      })(Application);
-    ]]
-
     return function()
         local thisTime = os.time()
         if math.abs(os.difftime(lastTime, thisTime)) > 10 then
-          hs.osascript.javascript(code)
+          hs.execute(homePath('.config/meta/bin/sort_mail'))
         end
         lastTime = os.time()
     end
@@ -358,10 +219,11 @@ end
 function genericNotifier(icon, path, countScript, clickScript)
     if not path then return nil end
     local menubarIcon = hs.menubar.new():setTitle(icon):removeFromMenuBar()
-    local onClick = function() hs.osascript.javascript(clickScript) end
+    local onClick = function() hs.execute(clickScript) end
     local getCount = function()
-        successful, count = hs.osascript.javascript(countScript)
-        if successful and count > 0 then
+        output,status,type_,rc = hs.execute(countScript)
+        count = tonumber(string.gsub(output, "[^0-9]",""),10)
+        if count ~= nil and count > 0 then
             menubarIcon:returnToMenuBar()
         else
             menubarIcon:removeFromMenuBar()
@@ -372,39 +234,20 @@ function genericNotifier(icon, path, countScript, clickScript)
     getCount()
 end
 
-function mailboxNotifier(icon, name, location, count)
+function mailboxNotifier(icon, name)
     genericNotifier(
-        icon, homePath('Library/Mail'),
-        [[
-            var Mail = Application('Mail');
-            !(Mail.running()) ? 0 :
-                Mail.accounts.byName('Strange Bureau')
-                    .mailboxes.byName(']] .. name .. "')." .. count .. ";",
-        [[
-            var Mail = Application('Mail');
-            if (!Mail.running()) Mail.launch();
-            Mail.messageViewers.first().selectedMailboxes = Mail.]] .. location .. [[;
-            Mail.activate();
-        ]]
+      icon,
+      homePath('Library/Mail'),
+      homePath('.config/meta/bin/mailbox-count') .. ' ' .. name,
+      homePath('.config/meta/bin/mailbox-count') .. ' ' .. name .. ' --activate'
     )
 end
 
-mailboxNotifier(
-    "↘︎", "Drafts",
-    "draftsMailbox",
-    "messages.where({deletedStatus: false}).length"
-)
-mailboxNotifier(
-    "↑", "Updates",
-    "accounts.byName('Strange Bureau').mailboxes.byName('Updates')",
-    "unreadCount()"
-)
+mailboxNotifier("↘︎", "Drafts")
+mailboxNotifier("↑", "Updates --unread")
 genericNotifier(
-    "↓", homePath("Downloads"),
-    "Application('Finder').home.folders.byName('Downloads').items.length;",
-    [[
-        var Finder = Application('Finder');
-        Finder.home.folders.byName('Downloads').open();
-        Finder.activate();
-    ]]
+  "↓",
+  homePath("Downloads"),
+  "ls -1 " .. homePath("Downloads") .. " | wc -l",
+  'osascript -e "var finder=Application(\'Finder\');Finder.home.folders.byName(\'Downloads\').open();Finder.activate();"'
 )
