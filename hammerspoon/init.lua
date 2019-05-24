@@ -231,6 +231,7 @@ function genericNotifier(icon, path, countScript, clickScript)
     end
     menubarIcon:setClickCallback(onClick)
     hs.pathwatcher.new(path, getCount):start()
+    hs.timer.doEvery(60, getCount):start()
     getCount()
 end
 
