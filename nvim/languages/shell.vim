@@ -1,3 +1,5 @@
+Plugin 'itspriddle/vim-shellcheck'
+
 augroup shellscripting
   autocmd!
   autocmd BufNewFile,BufRead *.zshrc      setfiletype zsh
