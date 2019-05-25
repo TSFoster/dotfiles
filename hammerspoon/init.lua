@@ -7,6 +7,10 @@ function homePath(path)
     return homeDir .. '/' .. path
 end
 
+function bin(name)
+  return homePath('.config/meta/bin/') .. name
+end
+
 
 -- CONFIG RELOAD
 
@@ -185,7 +189,7 @@ function if_system_did_wake(event)
   end
 end
 function restart_proxy()
-  hs.execute(homePath('.config/meta/bin/check_proxy_health'))
+  hs.execute(bin('check_proxy_health'))
 end
 hs.caffeinate.watcher.new(if_system_did_wake):start()
 hs.wifi.watcher.new(restart_proxy):watchingFor({"SSIDChange"}):start()
@@ -199,7 +203,7 @@ function processMailboxes()
     return function()
         local thisTime = os.time()
         if math.abs(os.difftime(lastTime, thisTime)) > 10 then
-          hs.execute(homePath('.config/meta/bin/sort_mail'))
+          hs.execute(bin('sort_mail'))
         end
         lastTime = os.time()
     end
@@ -216,7 +220,7 @@ end
 
 -- MENUBAR NOTIFICATIONS
 
-function genericNotifier(icon, path, countScript, clickScript)
+function menubarNotifier(icon, path, countScript, clickScript)
     if not path then return nil end
     local menubarIcon = hs.menubar.new():setTitle(icon):removeFromMenuBar()
     local onClick = function() hs.execute(clickScript) end
@@ -235,20 +239,6 @@ function genericNotifier(icon, path, countScript, clickScript)
     getCount()
 end
 
-function mailboxNotifier(icon, name)
-    genericNotifier(
-      icon,
-      homePath('Library/Mail'),
-      homePath('.config/meta/bin/mailbox-count') .. ' ' .. name,
-      homePath('.config/meta/bin/mailbox-count') .. ' ' .. name .. ' --activate'
-    )
-end
-
-mailboxNotifier("↘︎", "Drafts")
-mailboxNotifier("↑", "Updates --unread")
-genericNotifier(
-  "↓",
-  homePath("Downloads"),
-  "ls -1 " .. homePath("Downloads") .. " | wc -l",
-  'osascript -e "var finder=Application(\'Finder\');Finder.home.folders.byName(\'Downloads\').open();Finder.activate();"'
-)
+menubarNotifier("↘︎", homePath('Library/Mail'), bin('mailbox-count Drafts') , bin('mailbox-count Drafts --unread --activate'))
+menubarNotifier("↑", homePath('Library/Mail'), bin('mailbox-count Updates --unread') , bin('mailbox-count Updates --unread --activate'))
+menubarNotifier("↓", homePath("Downloads") , "ls -1 " .. homePath("Downloads") .. " | wc -l", 'osascript -e "var finder=Application(\'Finder\');Finder.home.folders.byName(\'Downloads\').open();Finder.activate();"')
