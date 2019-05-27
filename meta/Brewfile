@@ -8,6 +8,7 @@ tap "zored/homebrew-brew"
 cask "java"
 brew "abduco"
 brew "bat"
+brew "cloc"
 brew "closure-compiler"
 brew "dhall-json"
 brew "docker", link: false
