@@ -1,7 +1,15 @@
---langdef=Elm
---langmap=Elm:.elm
---regex-Elm=/^ *([[:lower:]][[:alnum:]_]+)[[:blank:]]*:[^:].*->.*/\1/f,function,functions/
---regex-Elm=/^ *([[:lower:]][[:alnum:]_]+)[[:blank:]]*:[^:][^-]+$/\1/c,constant,constants/
---regex-Elm=/^port +([[:lower:]][[:alnum:]_]+)[[:blank:]]*:[^:]/\1/p,port,ports/
---regex-Elm=/^type +([[:upper:]][[:alnum:]_]+)/\1/t,type,types/
---regex-Elm=/^type[[:blank:]]+alias[[:blank:]]+([[:upper:]][[:alnum:]_]+)/\1/a,type-alias,type-aliases/
+--languages=-Elm
+--langdef=ElmCustom
+--langmap=ElmCustom:.elm
+--regex-ElmCustom=/^([[:lower:]_][[:alnum:]_]*)[[:blank:]]*:[^:][^-]+$/\1/c,constant,constants/
+--regex-ElmCustom=/^([[:lower:]_][[:alnum:]_]+)[[:blank:]]*:[^:].*->.*/\1/f,function,functions/{scope=set}
+--regex-ElmCustom=/^[[:blank:]]+([[:lower:]_][[:alnum:]_]*)[^=]*=$/\1/f,function,Functions/{scope=ref}
+--regex-ElmCustom=/^[[:blank:]]+[|=][[:blank:]]+([[:upper:]][[:alnum:]_]*.*)$/\1/y,constructor,Type Constructor/{scope=ref}{exclusive}
+--regex-ElmCustom=/^import[[:blank:]]+([[:alnum:]_.]+)/\1/i,import,Import/{scope=clear}{exclusive}
+--regex-ElmCustom=/^import[[:blank:]]+([[:alnum:]_.]+)[[:blank:]]exposing/\1/i,import,Import/{scope=clear}{exclusive}
+--regex-ElmCustom=/^import[[:blank:]]+([[:alnum:]_.]+[[:blank:]]+as[[:blank:]]+.+)/\1/i,import,Import/{scope=clear}{exclusive}
+--regex-ElmCustom=/^port[[:blank:]]+([[:lower:]][[:alnum:]_]*).*/\1/p,port,Port/{scope=clear}{exclusive}
+--regex-ElmCustom=/^type +([[:upper:]][[:alnum:]_]*.*)/\1/t,type,Type Definition/{scope=set}{exclusive}
+--regex-ElmCustom=/^type[[:blank:]]+alias[[:blank:]]+([[:upper:]][[:alnum:]_]*[[:blank:][:alnum:]_]*)/\1/a,alias,Type Alias/{scope=set}{exclusive}
+--regex-ElmCustom=/^[[:blank:]]+[,{][[:blank:]]+([[:lower:]][[:alnum:]_])*[[:blank:]]*:[^:]/\1/r,field,Record Field/{scope=ref}{exclusive}
+--regex-ElmCustom=/^(port[[:blank:]]+)?module[[:blank:]]+([[:upper:]][[:alnum:]_.]*)/\2/m,module,Module/{scope=push}{exclusive}
