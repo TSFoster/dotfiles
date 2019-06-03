@@ -214,7 +214,7 @@ if mailPath then
   local mailTasksFn = processMailboxes()
   mailTasksFn()
   hs.pathwatcher.new(mailPath, mailTasksFn):start()
-  hs.timer.doEvery(60, mailTasksFn):start()
+  hs.timer.doEvery(60, mailTasksFn)
 end
 
 
@@ -234,7 +234,7 @@ function menubarNotifier(icon, seconds, path, countScript, clickScript)
     end
     menubarIcon:setClickCallback(onClick)
     if path then hs.pathwatcher.new(path, getCount):start() end
-    if seconds then hs.timer.doEvery(seconds, getCount):start() end
+    if seconds then hs.timer.doEvery(seconds, getCount) end
     getCount()
 end
 
