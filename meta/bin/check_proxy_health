@@ -1,7 +1,12 @@
 #!/usr/bin/env fish
 
 [ (docker ps --quiet --filter 'name=home-servers_torrents_1') = '' ]
-or exit 0
+and exit 0
 
 curl --proxy http://0.0.0.0:8888 --connect-timeout 1 https://duckduckgo.com 2>&1 > /dev/null
 or docker exec home-servers_torrents_1 /opt/tinyproxy/start.sh
+
+sleep 3
+
+curl --proxy http://0.0.0.0:8888 --connect-timeout 1 https://duckduckgo.com 2>&1 > /dev/null
+or docker restart home-servers_torrents_1
