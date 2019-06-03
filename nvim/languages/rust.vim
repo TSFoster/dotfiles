@@ -1,5 +1,6 @@
 let g:rustfmt_autosave = 1
-let g:LanguageClient_serverCommands.rust = ['rls', '--cli']
+let g:LanguageClient_serverCommands.rust = ['rls']
+let g:ale_linters.rust = ['rls']
 
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
