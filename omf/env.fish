@@ -41,7 +41,7 @@ end
 
 set --export PAGER less
 
-set --export FD_DEFAULT_FLAGS '--exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --no-ignore-vcs --hidden'
+set --export FD_DEFAULT_FLAGS '--exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --exclude target --no-ignore-vcs --hidden'
 set --export RIPGREP_CONFIG_PATH $configDir/ripgreprc
 set --export FZF_DEFAULT_COMMAND "fd --type file $FD_DEFAULT_FLAGS"
 

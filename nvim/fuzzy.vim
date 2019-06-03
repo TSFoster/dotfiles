@@ -21,15 +21,24 @@ let g:fzf_action = {
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 
+function! BatConfig()
+  return 'bat --color=always --decorations=always --theme=ansi-' . &background . ' {}'
+endfunction
+
+command! -bang -nargs=? -complete=file Files
+      \ call fzf#run(fzf#wrap('ProjectFiles', {
+      \   'options': "--preview '" . BatConfig() . "'",
+      \   'dir': <q-args>
+      \ }, <bang>0))
 
 command! -bang -nargs=? -complete=dir Dirs
       \ call fzf#run(fzf#wrap('Dirs', {
-      \ 'source': "fd --type directory $FD_DEFAULT_FLAGS",
-      \ 'dir': <q-args>
+      \   'source': "fd --type directory $FD_DEFAULT_FLAGS",
+      \   'dir': <q-args>
       \ }, <bang>0))
 
-nnoremap <silent> <Leader>e :FZF<CR>
-nnoremap <silent> <Leader>E :FZF %:h<CR>
+nnoremap <silent> <Leader>e :Files<CR>
+nnoremap <silent> <Leader>E :Files %:h<CR>
 nnoremap <silent> <Leader>d :Dirs<CR>
 nnoremap <silent> <Leader>D :Dirs %:h<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
