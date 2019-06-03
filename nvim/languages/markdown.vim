@@ -16,6 +16,7 @@ augroup markdown
   autocmd FileType markdown,mkd,ghmarkdown imap <buffer> <C-d> **
   autocmd FileType markdown,mkd,ghmarkdown vmap <buffer> <C-i> S*
   autocmd FileType markdown,mkd,ghmarkdown vmap <buffer> <C-b> S*gvS*
+  autocmd FileType markdown,mkd,ghmarkdown inoremap <buffer> ;` ```<CR><CR>```<Up><Up>
   autocmd ColorScheme * highlight htmlItalic cterm=italic gui=italic
   autocmd ColorScheme * highlight htmlBold cterm=bold gui=bold
 augroup END

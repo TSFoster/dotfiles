@@ -8,6 +8,11 @@ Plugin 'reedes/vim-textobj-quote'
 Plugin 'glts/vim-textobj-comment'
 Plugin 'wellle/targets.vim'
 
+Plugin 'machakann/vim-swap'
+let g:swap_no_default_key_mappings = 1
+nmap g<Left> <Plug>(swap-prev)
+nmap g<Right> <Plug>(swap-next)
+nmap gs <Plug>(swap-interactive)
 
 Plugin 'bkad/CamelCaseMotion'
 map <silent> \w <Plug>CamelCaseMotion_w
