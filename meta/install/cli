@@ -86,6 +86,7 @@ if command -s npm > /dev/null
     elm-help \
     elm-json \
     elm-live \
+    elm-markup \
     elm-oracle \
     elm-test \
     elm-xref
