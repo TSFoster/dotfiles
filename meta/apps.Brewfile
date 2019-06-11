@@ -30,6 +30,7 @@ cask "sf-symbols"
 cask "signal"
 cask "sketch"
 cask "sketch-toolbox"
+cask "soulver"
 cask "spotify"
 cask "swiftdefaultappsprefpane"
 cask "tower2"
@@ -63,7 +64,6 @@ mas "Paste", id: 967805235
 mas "Pixelmator", id: 407963104
 mas "Reeder", id: 880001334
 mas "Sim Daltonism", id: 693112260
-mas "Soulver", id: 413965349
 mas "Spillo", id: 873245660
 mas "Things3", id: 904280696
 mas "Trello", id: 1278508951
