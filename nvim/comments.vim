@@ -1,4 +1,4 @@
-Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
 
 highlight Comment cterm=italic gui=italic
 
