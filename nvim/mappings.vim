@@ -62,6 +62,49 @@ nmap § :%s//g<LEFT><LEFT>
 vmap § :s//g<LEFT><LEFT>
 
 
+" Toggle list windows
+" Adapted from https://github.com/tpope/vim-unimpaired/issues/97#issuecomment-371219365
+
+function! QuickFix_toggle()
+  for i in range(1, winnr('$'))
+    let bnum = winbufnr(i)
+    if getbufvar(bnum, '&buftype') == 'quickfix'
+      cclose
+      return
+    endif
+  endfor
+  copen
+endfunction
+
+
+
+function! s:BufferCount() abort
+    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+endfunction
+function! Location_toggle()
+  " https://github.com/Valloric/ListToggle/blob/master/plugin/listtoggle.vim
+  let buffer_count_before = s:BufferCount()
+
+  " Location list can't be closed if there's cursor in it, so we need
+  " to call lclose twice to move cursor to the main pane
+  silent! lclose
+  silent! lclose
+
+  if s:BufferCount() == buffer_count_before
+    silent! lopen
+    if s:BufferCount() == buffer_count_before
+      echo 'No items in location list'
+    endif
+  endif
+endfunction
+
+
+" Do this after launching, to make sure it overrides unimpaired mappings
+augroup toggle_lists
+  autocmd!
+  autocmd VimEnter * :nnoremap <silent> yoq :call QuickFix_toggle()<CR>
+  autocmd VimEnter * :nnoremap <silent> yol :call Location_toggle()<CR>
+augroup end
 
 
 function! HelpToggle()

@@ -8,11 +8,6 @@ Plugin 'fcpg/vim-kickfix'
 let g:kickfix_zebra=0
 
 
-Plugin 'romainl/vim-qf'
-let g:qf_mapping_ack_style = 1
-nmap <Leader>l <Plug>qf_loc_toggle
-nmap <Leader>L <Plug>qf_qf_toggle
-
 Plugin 'tpope/vim-vinegar'
 
 let g:netrw_home=$HOME " Store network files in fixed location, not current directory
