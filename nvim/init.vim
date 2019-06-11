@@ -45,6 +45,9 @@ Source comments
 
 delcommand Source
 
+delfunction Plugin
+delcommand Plugin
+
 
 call plug#begin('~/.local/share/nvim/plugged')
 for plugin in g:plugins
@@ -53,12 +56,9 @@ endfor
 call plug#end()
 for plugin in g:plugins
   if type(plugin[2]) == type("")
-    call eval(plugin[2])
+    call execute(plugin[2])
   endif
 endfor
-
-delfunction Plugin
-delcommand Plugin
 unlet g:plugins
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
