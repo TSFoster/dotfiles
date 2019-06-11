@@ -62,7 +62,6 @@ nmap § :%s//g<LEFT><LEFT>
 vmap § :s//g<LEFT><LEFT>
 
 
-nnoremap <silent> <Leader>hl :set hls!<CR>
 
 
 function! HelpToggle()
