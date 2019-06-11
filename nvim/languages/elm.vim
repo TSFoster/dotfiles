@@ -1,14 +1,15 @@
 let g:polyglot_disabled += ['elm']
 
-Plugin 'pbogut/deoplete-elm'
 Plugin 'ElmCast/elm-vim'
+Plugin 'antew/vim-elm-analyse'
+
+let g:ale_elm_analyse_use_global = 1
 
 let g:elm_jump_to_error = 1
-let g:elm_make_show_warnings = 1
-let g:elm_syntastic_show_warnings = 1
 let g:elm_format_autosave = 1
 let g:elm_format_fail_silently = 0
 let g:elm_setup_keybindings = 0
+
 
 let g:tagbar_type_elm = {
     \ 'ctagstype' : 'ElmCustom',
