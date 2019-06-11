@@ -70,6 +70,7 @@ echo '-> Go'
 if command -s go > /dev/null
   mkdir -p "$dataDir/go"
   go get -u github.com/arial7/golorem
+  go get -u github.com/mrtazz/checkmake
 else
   echo 'Skipped go setup and go packages' >&2
 end
