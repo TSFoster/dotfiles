@@ -39,6 +39,7 @@ if command -s npm > /dev/null
     htmlhint \
     machine-share \
     ndb \
+    netlify-cli \
     node-gyp \
     now \
     postcss \
