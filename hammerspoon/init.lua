@@ -195,29 +195,6 @@ hs.caffeinate.watcher.new(if_system_did_wake):start()
 hs.wifi.watcher.new(restart_proxy):watchingFor({"SSIDChange"}):start()
 
 
--- MAIL TO THINGS
-
-
-function processMailboxes()
-    local lastTime = os.time({year = 1979, month = 1, day = 1})
-    return function()
-        local thisTime = os.time()
-        if math.abs(os.difftime(lastTime, thisTime)) > 10 then
-          hs.execute(bin('sort_mail'))
-        end
-        lastTime = os.time()
-    end
-end
-
-local mailPath = homePath('Library/Mail')
-if mailPath then
-  local mailTasksFn = processMailboxes()
-  mailTasksFn()
-  hs.pathwatcher.new(mailPath, mailTasksFn):start()
-  hs.timer.doEvery(60, mailTasksFn)
-end
-
-
 -- MENUBAR NOTIFICATIONS
 
 function menubarNotifier(icon, seconds, path, countScript, clickScript)
