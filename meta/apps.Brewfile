@@ -40,7 +40,6 @@ cask "transmit-disk"
 cask "typora"
 cask "vagrant"
 cask "virtualbox"
-cask "vlc"
 cask "vyprvpn"
 cask "xquartz"
 mas "1Blocker", id: 1107421413
