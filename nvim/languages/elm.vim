@@ -1,7 +1,7 @@
 let g:polyglot_disabled += ['elm']
 
 Plugin 'ElmCast/elm-vim'
-Plugin 'antew/vim-elm-analyse'
+Plugin 'antew/vim-elm-language-server'
 
 let g:ale_elm_analyse_use_global = 1
 

@@ -91,7 +91,8 @@ if command -s npm > /dev/null
     elm-markup \
     elm-oracle \
     elm-test \
-    elm-xref
+    elm-xref \
+    @elm-tooling/elm-language-server
 else
   echo 'Skipped elm packages' >&2
 end
