@@ -36,6 +36,7 @@ if [ $OS = Mac ]
   set --export HOMEBREW_CASK_OPTS --appdir=/Applications
   # Put the airport command in PATH
   set --export fish_user_paths /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources $fish_user_paths
+  set --export fish_user_paths $HOME/Library/Python/3.7/bin $fish_user_paths
   set --export iCloudDir "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 end
 

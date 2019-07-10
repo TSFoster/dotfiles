@@ -103,6 +103,10 @@ echo '-> Python'
 if command -s pip3  > /dev/null
   pip3 install \
     dns-lexicon
+  pip3 install --user \
+    ansible \
+    ansible-lint \
+    yamllint
 else
   echo 'Skipped pip3 packages' >&2
 end
