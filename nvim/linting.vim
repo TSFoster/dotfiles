@@ -1,4 +1,4 @@
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 let g:ale_linters = {}
 let g:ale_lint_delay = 2000
 
