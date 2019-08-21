@@ -1,6 +1,3 @@
-Plugin 'justinmk/vim-sneak'
-let g:sneak#label = 1
-
 Plugin 'tpope/vim-abolish'
 
 set inccommand=nosplit
