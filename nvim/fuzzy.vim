@@ -27,7 +27,7 @@ endfunction
 
 command! -bang -nargs=? -complete=file Files
       \ call fzf#run(fzf#wrap('ProjectFiles', {
-      \   'options': "--preview '" . BatConfig() . "'",
+      \   'options': "--multi --preview '" . BatConfig() . "'",
       \   'dir': <q-args>
       \ }, <bang>0))
 
