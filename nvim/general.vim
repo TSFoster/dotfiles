@@ -26,7 +26,7 @@ set textwidth=0                " Don't auto-newline
 
 set scrolloff=5
 
-set formatprg=par\ rqw80j
+set formatprg=par\ rqw80
 let $PAGER=''             " Let vim be the pager
 
 " Restore last cursor position
