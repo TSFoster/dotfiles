@@ -7,12 +7,16 @@ set --export projectsDir $dataDir/projects
 set --export fish_key_bindings fish_vi_key_bindings
 
 set --export fish_user_paths \
+    /usr/local/bin \
+    /usr/local/sbin \
     $configDir/meta/bin \
     $localBinDir \
     ~/.fzf/bin \
     ~/.cargo/bin \
     ./bin \
     ./node_modules/.bin
+
+[ -d /usr/local/opt/node@10/bin ]; and set --export fish_user_paths $fish_user_paths /usr/local/opt/node@10/bin
 
 set --export SHELL (which fish)
 
