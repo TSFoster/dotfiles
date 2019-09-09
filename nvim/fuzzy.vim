@@ -61,5 +61,7 @@ if executable('rg')
 endif
 nnoremap <Leader>a :silent! grep<Space>
 nnoremap <Leader>A :silent! grepadd<Space>
+nnoremap <Leader><Leader>a :silent! lgrep<Space>
+nnoremap <Leader><Leader>A :silent! lgrepadd<Space>
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
