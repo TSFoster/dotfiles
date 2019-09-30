@@ -1,9 +1,12 @@
 let g:polyglot_disabled += ['elm']
 
 Plugin 'ElmCast/elm-vim'
-Plugin 'antew/vim-elm-language-server'
 
+let g:ale_linters.elm = ['elm_ls']
 let g:ale_elm_analyse_use_global = 1
+
+let g:LanguageClient_serverCommands.elm = ['elm-language-server', '--stdio']
+let g:LanguageClient_rootMarkers.elm = ['elm.json']
 
 let g:elm_jump_to_error = 1
 let g:elm_format_autosave = 1
