@@ -1,7 +1,3 @@
-let g:polyglot_disabled += ['elm']
-
-Plugin 'ElmCast/elm-vim'
-
 let g:ale_linters.elm = ['elm_ls']
 let g:ale_elm_analyse_use_global = 1
 
