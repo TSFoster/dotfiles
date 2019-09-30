@@ -16,6 +16,8 @@
 	<string>08982623-E48D-4BB1-A4F9-0BF9987C48BA</string>
 	<key>DoubleClickPerformsSmartSelection</key>
 	<true/>
+	<key>EnableRendezvous</key>
+	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>JobName</key>
@@ -69,12 +71,14 @@
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
 	<string>972 932 616 174 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 769 620 392 0 0 2560 1417 </string>
+	<string>970 768 620 392 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1192 477 1018 447 0 0 2560 1417 </string>
+	<string>551 725 796 486 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1280 0 1274 1417 0 0 2560 1417 </string>
+	<string>0 0 2560 1417 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
+	<string>0 24 2554 1387 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 0 2560 1417 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
 	<array>
@@ -749,6 +753,8 @@
 	<true/>
 	<key>PassOnControlClick</key>
 	<true/>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>4</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -767,9 +773,9 @@
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>SUAutomaticallyUpdate</key>
-	<false/>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
-	<false/>
+	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
@@ -777,12 +783,14 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-02-20T14:08:51Z</date>
+	<date>2019-09-30T15:56:18Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SearchCommand</key>
 	<string>https://duckduckgo.com/?q=%@</string>
 	<key>Secure Input</key>
+	<true/>
+	<key>Selection Respects Soft Boundaries</key>
 	<true/>
 	<key>ShowBookmarkName</key>
 	<false/>
