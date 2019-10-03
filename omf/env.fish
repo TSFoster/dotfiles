@@ -54,4 +54,7 @@ set --export FZF_DEFAULT_COMMAND "fd --type file $FD_DEFAULT_FLAGS"
 set --export GOPATH $dataDir/go
 set --export fish_user_paths $GOPATH/bin $fish_user_paths
 
+# Set up Java
+set --export JAVA_HOME (/usr/libexec/java_home)
+
 [ -f $configDir/omf/secrets.fish ]; and source $configDir/omf/secrets.fish
