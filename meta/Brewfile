@@ -61,5 +61,6 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "vultr"
 brew "watchexec"
 brew "wrk"
+brew "yarn"
 brew "zaquestion/tap/lab"
 brew "zored/homebrew-brew/docker-machine-ipconfig"
