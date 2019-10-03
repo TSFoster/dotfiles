@@ -1,1 +1,0 @@
-Plugin 'landaire/deoplete-swift'

@@ -1,15 +1,3 @@
-let g:ale_linters.elm = ['elm_ls']
-let g:ale_elm_analyse_use_global = 1
-
-let g:LanguageClient_serverCommands.elm = ['elm-language-server', '--stdio']
-let g:LanguageClient_rootMarkers.elm = ['elm.json']
-
-let g:elm_jump_to_error = 1
-let g:elm_format_autosave = 1
-let g:elm_format_fail_silently = 0
-let g:elm_setup_keybindings = 0
-
-
 let g:tagbar_type_elm = {
     \ 'ctagstype' : 'ElmCustom',
     \ 'ctagsargs' : [ '--options='.$HOME.'/.config/ctags/', '-o-'],

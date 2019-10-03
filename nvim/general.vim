@@ -24,10 +24,19 @@ set wildmode=longest,list,full " Tabs on command line
 set hidden                     " Keep buffers of abandoned files, just hide them
 set textwidth=0                " Don't auto-newline
 
+" Suggested settings for coc.nvim
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
+" Don’t give |ins-completion-message| messages.
+set shortmess+=c
+
 set scrolloff=5
 
 set formatprg=par\ rqw80
 let $PAGER=''             " Let vim be the pager
+
 
 " Restore last cursor position
 augroup cursor_position

@@ -1,5 +1,7 @@
 set statusline=%{SetStatusColorsByMode(mode())}%1* " Hack(?) to change statusbar color based on mode
+set statusline+=\%{CocStatus()}                    " coc.nvim
 set statusline+=\ %<%F                             " File path
+set statusline+=\%{CurrentFunction()}              " coc.nvim
 set statusline+=\ [%n]                             " Buffer number
 set statusline+=\ %y                               " File type
 set statusline+=\ %m%r%w                           " Modified? Read-only? Preview?
@@ -12,6 +14,21 @@ set statusline+=\ [%{&spelllang}]                  " Language
 set statusline+=\ [%{mode()}]                      " Mode
 
 set noshowmode  " This is covered by the statusline now
+
+function! CocStatus()
+  if coc#status() == ''
+    return ''
+  endif
+  return ' [' . coc#status() . ']'
+endfunction
+
+function! CurrentFunction()
+  let cf = get(b:, 'coc_current_function', '')
+  if cf == ''
+    return ''
+  endif
+  return ':' . cf . ''
+endfunction
 
 function! SetStatusColorsByMode(mode)
   if a:mode=='n' || a:mode=='no'

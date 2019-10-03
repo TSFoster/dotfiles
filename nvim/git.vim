@@ -1,7 +1,6 @@
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'shumphrey/fugitive-gitlab.vim'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'rbong/vim-flog'
 
 let g:fugitive_git_executable='command git'

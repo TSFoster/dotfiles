@@ -67,8 +67,10 @@ if has('mac')
 endif
 
 function! Keywordprg(word)
-  if exists('g:LanguageClient_serverCommands.'.&filetype)
-    call LanguageClient#textDocument_hover()
+  if CocHasProvider('hover')
+    call CocAction('doHover')
+  elseif count(['vim','help'], &filetype)
+    execute 'h '.expand('<cword>')
   elseif count(['shell', 'sh', 'bash', 'zsh', 'fish'], &filetype)
     Man a:word
   else
@@ -79,5 +81,6 @@ endfunction
 command! -nargs=+ Keywordprg call Keywordprg('<args>')<CR>
 
 set keywordprg=:Keywordprg
+
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

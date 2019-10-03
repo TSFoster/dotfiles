@@ -8,6 +8,4 @@ augroup shellscripting
   autocmd BufNewFile,BufRead *.bashrc*    setfiletype sh
 augroup END
 
-let g:LanguageClient_serverCommands.sh = ['bash-language-server', 'start']
-
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
