@@ -3,19 +3,21 @@ augroup formatting
 augroup END
 
 function! s:maybe_format()
-  if (!exists("b:no_autoformat") || !b:no_autoformat) && CocHasProvider("format")
+  if (!exists("g:no_autoformat") || !g:no_autoformat) && CocHasProvider("format")
+    echom "Formatting…"
     call CocAction("format")
+    echom ""
   endif
 endfunction
 
 nnoremap <silent> yof :call <SID>toggle_auto_format()<CR>
 
 function! s:toggle_auto_format()
-  if !exists('b:no_autoformat')
-    let b:no_autoformat = 0
+  if !exists('g:no_autoformat')
+    let g:no_autoformat = 0
   endif
-  let b:no_autoformat = !b:no_autoformat
-  if b:no_autoformat
+  let g:no_autoformat = !g:no_autoformat
+  if g:no_autoformat
     echom "Don’t fix on save"
   else
     echom "Fix on save"
