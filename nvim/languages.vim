@@ -9,7 +9,6 @@ Source languages/git
 Source languages/html
 Source languages/javascript
 Source languages/markdown
-Source languages/php
 Source languages/rust
 Source languages/shell
 Source languages/vim
