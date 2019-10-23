@@ -2,7 +2,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tommcdo/vim-lion'
 Plugin 'tpope/vim-sleuth'
 
-let g:lion_squeeze_spaces = 0
+let g:lion_squeeze_spaces = 1
 nnoremap <silent> <Leader>gl :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
 
 set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
