@@ -13,5 +13,18 @@ nnoremap <silent> <Leader>gco :Gcommit<CR>
 nnoremap <silent> <Leader>gca :Gcommit --amend<CR>
 nnoremap <silent> <Leader>gre :<C-U>execute("Grebase -i HEAD~" . v:count1)<CR>
 
+" navigate hunks of current buffer
+nmap [h <Plug>(coc-git-prevchunk)
+nmap ]h <Plug>(coc-git-nextchunk)
+nmap <Leader>hp <Plug>(coc-git-chunkinfo)
+nmap <Leader>ha :CocCommand git.chunkStage<CR>
+nmap <Leader>hu :CocCommand git.chunkUndo<CR>
+" show commit contains current position
+nmap <Leader>cp <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ic <Plug>(coc-text-object-inner)
+xmap ic <Plug>(coc-text-object-inner)
+omap ac <Plug>(coc-text-object-outer)
+xmap ac <Plug>(coc-text-object-outer)
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
