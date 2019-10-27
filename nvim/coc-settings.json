@@ -15,5 +15,6 @@
     }
   },
   "codeLens.enable": true,
-  "git.gitlab.hosts": ["gitlab.com"]
+  "git.gitlab.hosts": ["gitlab.com"],
+  "eslint.autoFixOnSave": true
 }
