@@ -6,7 +6,6 @@ function! s:maybe_format()
   if (!exists("g:no_autoformat") || !g:no_autoformat) && CocHasProvider("format")
     echom "Formatting…"
     call CocAction("format")
-    echom ""
   endif
 endfunction
 
