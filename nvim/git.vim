@@ -13,6 +13,11 @@ nnoremap <silent> <Leader>gco :Gcommit<CR>
 nnoremap <silent> <Leader>gca :Gcommit --amend<CR>
 nnoremap <silent> <Leader>gre :<C-U>execute("Grebase -i HEAD~" . v:count1)<CR>
 
+nnoremap <silent> <Leader>gi :CocList gitignore<CR>
+nnoremap <silent> <Leader>ge :CocList gstatus<CR>
+nnoremap <silent> <Leader>gE :CocList gfiles<CR>
+nnoremap <silent> <Leader>gC :CocList commits<CR>
+
 " navigate hunks of current buffer
 nmap [h <Plug>(coc-git-prevchunk)
 nmap ]h <Plug>(coc-git-nextchunk)

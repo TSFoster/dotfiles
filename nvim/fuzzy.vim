@@ -1,6 +1,5 @@
 Plugin 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plugin 'junegunn/fzf.vim'
-Plugin 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
 
 function! CreateFileIn(dir)
   if type(a:dir) == v:t_list
@@ -46,15 +45,14 @@ nnoremap <silent> <Leader>e :Files<CR>
 nnoremap <silent> <Leader>E :Files %:h<CR>
 nnoremap <silent> <Leader>d :Dirs<CR>
 nnoremap <silent> <Leader>D :Dirs %:h<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>B :BLines<CR>
-nnoremap <silent> <Leader>he :Helptags<CR>
-nnoremap <silent> <Leader>hi :History<CR>
-nnoremap <silent> <Leader>h/ :History/<CR>
-nnoremap <silent> <Leader>: :History:<CR>
-nnoremap <silent> <Leader>g<Leader> :GFiles?<CR>
-nnoremap <silent> <Leader>T :Tags<CR>
 
+nnoremap <silent> <Leader>h: :CocList cmdhistory<CR>
+nnoremap <silent> <Leader>h/ :CocList searchhistory<CR>
+nnoremap <silent> <Leader>mr :CocList mru<CR>
+nnoremap <silent> <Leader>he :CocList helptags<CR>
+nnoremap <silent> <Leader>ta :CocList tags<CR>
+nnoremap <silent> <Leader>b :CocList buffers<CR>
+nnoremap <silent> <Leader>B :CocList lines<CR>
 
 if executable('rg')
   set grepprg=rg\ --vimgrep
