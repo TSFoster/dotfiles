@@ -16,7 +16,7 @@ set statusline+=\ [%{mode()}]                      " Mode
 set noshowmode  " This is covered by the statusline now
 
 function! CocStatus()
-  if coc#status() == ''
+  if !exists('*coc#status') || coc#status() == ''
     return ''
   endif
   return ' [' . coc#status() . ']'

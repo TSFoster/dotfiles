@@ -3,7 +3,7 @@ augroup formatting
 augroup END
 
 function! s:maybe_format()
-  if (!exists("g:no_autoformat") || !g:no_autoformat) && CocHasProvider("format")
+  if (!exists("g:no_autoformat") || !g:no_autoformat) && exists('*CocHasProvider') && CocHasProvider("format")
     echom "Formatting…"
     call CocAction("format")
   endif

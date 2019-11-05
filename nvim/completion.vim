@@ -23,9 +23,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Remap for rename current word
 nmap <Leader>rn <Plug>(coc-rename)
 
@@ -35,6 +32,8 @@ nmap <silent> <Leader>f  <Plug>(coc-format)
 
 augroup cocnvim
   autocmd!
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
   " Setup formatexpr specified filetype(s).
   autocmd FileType * call <SID>setup_formatexpr()
   " Update signature help on jump placeholder
@@ -42,7 +41,7 @@ augroup cocnvim
 augroup END
 
 function s:setup_formatexpr()
-  if CocHasProvider('formatSelected')
+  if exists('*CocHasProvider') && CocHasProvider('formatSelected')
     setlocal formatexpr=CocAction('formatSelected')
   endif
 endfunction

@@ -67,7 +67,7 @@ if has('mac')
 endif
 
 function! Keywordprg(word)
-  if CocHasProvider('hover')
+  if exists('*CocHasProvider') && CocHasProvider('hover')
     call CocAction('doHover')
   elseif count(['vim','help'], &filetype)
     execute 'h '.expand('<cword>')
