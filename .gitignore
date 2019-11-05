@@ -11,5 +11,7 @@
 /exercism/
 /karabiner/automatic_backups/
 /mac-cli/
-/coc/
+/coc/*
+!/coc/extensions/
+/coc/extensions/*
 !/coc/extensions/package.json
