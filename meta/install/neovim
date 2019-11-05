@@ -13,11 +13,7 @@ end
 
 if command -s npm > /dev/null
   echo '-> Install supporting npm packages'
-  npm install --global \
-    neovim \
-    dockerfile-language-server-nodejs \
-    bash-language-server \
-    yaml-language-server
+  npm install --global neovim
 else
   echo 'Skipped neovim supporting packages from npm' >&2
 end
@@ -54,6 +50,10 @@ end
 if not [ -d $dataDir/nvim/plugged ]
   echo '-> Install plugins'
   nvim +PlugInstall
+end
+if not [ -d $configDir/coc/extensions/node_modules ]
+  echo '-> Install coc.nvim plugins'
+  nvim +PlugRebuild
 end
 
 echo '-> Editorconfig'
