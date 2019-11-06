@@ -85,6 +85,8 @@ function p
       if set -q argv[2]
         set newPath $argv[2]
       else
+        read --prompt-str="Create new project called $projectName (y/n)? " --nchars=1 shouldCreate
+        [ $shouldCreate != 'y' ]; and return 0
         set newPath (pwd)
       end
       [ -d $newPath ]; or echo 'Creating new directory.' >&2
