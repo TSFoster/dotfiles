@@ -135,4 +135,8 @@ inoremap <c-c> <ESC>
 tnoremap <M-z> <C-z>
 
 
+" Convert bases. This overrides builtin gh (select mode), but I never use that.
+nnoremap <silent> gh ciw<C-r>=printf('0x%x', <C-r>")<CR><Esc>
+
+
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
