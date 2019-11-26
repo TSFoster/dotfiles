@@ -37,13 +37,7 @@ hs.alert.show("Config loaded")
 
 -- Definitions
 
-hypers = { ["all"]   = {"cmd", "alt", "ctrl", "shift"}
-         , ["cmd"]   = {       "alt", "ctrl", "shift"}
-         , ["alt"]   = {"cmd",        "ctrl", "shift"}
-         , ["ctrl"]  = {"cmd", "alt",         "shift"}
-         , ["shift"] = {"cmd", "alt", "ctrl"         }
-         }
-
+hyper = {"cmd", "alt", "ctrl", "shift"}
 hyper_for = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0","-","=","§","`",",",".","/",";","'","\\","[","]","space","tab","delete","return","left","right","up","down"}
 
 
@@ -52,16 +46,10 @@ hyper_for = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"
 modal_hotkey = hs.hotkey.modal.new({}, "F17")
 
 for k1, key in pairs(hyper_for) do
-  for kind, hyper in pairs(hypers) do
-    local kind_table = {}
-    if kind ~= "all" then
-      kind_table = { kind }
-    end
-    modal_hotkey:bind(kind_table, key, nil, function()
-        modal_hotkey.triggered = true
-        hs.eventtap.keyStroke(hyper, key)
-    end)
-  end
+  modal_hotkey:bind({}, key, nil, function()
+      modal_hotkey.triggered = true
+      hs.eventtap.keyStroke(hyper, key)
+  end)
 end
 
 pressedF18 = function()
@@ -88,7 +76,7 @@ function toggleMenu()
 end
 
 hs.menuIcon(false)
-hs.hotkey.bind(hypers["all"], "7", toggleMenu)
+hs.hotkey.bind(hyper, "7", toggleMenu)
 
 
 -- CAFFEINE
@@ -172,13 +160,13 @@ end
 caffeine_menubar:setClickCallback(turnOff)
 setCaffeine(hs.caffeinate.get("displayIdle"))
 
-hs.hotkey.bind(hypers["all"], "8", toggle)
-hs.hotkey.bind(hypers["cmd"], "8", extend)
+hs.hotkey.bind(hyper, "8", toggle)
+hs.hotkey.bind(hyper, "9", extend)
 
 
 -- TYPE CLIPBOARD
 
-hs.hotkey.bind(hypers["all"], "v", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
+hs.hotkey.bind(hyper, "v", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
 
 
 -- RESTART BROKEN PROXY CONTAINER
