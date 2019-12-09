@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+cd /Users/toby/Library/Mobile\ Documents/com~apple~CloudDocs/Data/Alfred\ Backups
+
+/usr/bin/tar -zcf alfred.(date +%Y-%m-%d).tar.gz ../Alfred.alfredpreferences
+
+/usr/local/bin/fdupes --quiet --delete --reverse --noprompt .
+
+ls -tp alfred.*.tar.gz | grep -v '/$' | tail -n+14 | xargs -I {} rm -- {}
