@@ -87,6 +87,7 @@ if command -s npm > /dev/null
     elm-github-install \
     elm-help \
     elm-json \
+    elm-license-finder \
     elm-live \
     elm-markup \
     elm-oracle \
