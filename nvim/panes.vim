@@ -1,14 +1,7 @@
 Plugin 'wellle/visual-split.vim'
-Plugin 'wellle/context.vim'
 
 set splitbelow
 set splitright
-
-" Manually add most mappings defined by context.vim
-let g:context_add_mappings = 0
-nnoremap <silent> zz     zzzz:call context#update(0, 0)<CR>
-nnoremap <silent> zt     ztzt:call context#update(0, 0)<CR>
-nnoremap <silent> zb     zbzb:call context#update(0, 0)<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
