@@ -56,12 +56,6 @@ else
 end
 
 
-[ $OS = Mac ]
-and [ -d /Application/Tower.app ]
-and not command -s gittower > /dev/null
-and echo '-> Git'
-and echo 'gittower still needs to be installed (you can do this from the app’s preferences)' >&2
-
 [ -f $configDir/git/credentials.gitconfig ]
 or touch $configDir/git/credentials.gitconfig
 
