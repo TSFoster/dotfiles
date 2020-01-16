@@ -1,5 +1,4 @@
-Plugin 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plugin 'neoclide/coc-sources', {'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <A-TAB> coc#refresh()
