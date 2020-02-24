@@ -187,7 +187,6 @@ hs.wifi.watcher.new(restart_proxy):watchingFor({"SSIDChange"}):start()
 
 function menubarNotifier(icon, seconds, path, countScript, clickScript)
     local menubarIcon = hs.menubar.new():setTitle(icon):removeFromMenuBar()
-    local onClick = function() hs.execute(clickScript) end
     local getCount = function()
         output,status,type_,rc = hs.execute(countScript)
         count = tonumber(string.gsub(output, "[^0-9]",""),10)
@@ -197,6 +196,10 @@ function menubarNotifier(icon, seconds, path, countScript, clickScript)
             menubarIcon:removeFromMenuBar()
         end
     end
+    local onClick = function()
+        hs.execute(clickScript)
+        getCount()
+    end
     menubarIcon:setClickCallback(onClick)
     if path then hs.pathwatcher.new(path, getCount):start() end
     if seconds then hs.timer.doEvery(seconds, getCount) end
@@ -205,4 +208,4 @@ end
 
 menubarNotifier("↘︎", 30, nil, bin('mailbox-count Drafts') , bin('mailbox-count Drafts --unread --activate'))
 menubarNotifier("↑", 30, nil, bin('mailbox-count Updates --unread') , bin('mailbox-count Updates --unread --activate'))
-menubarNotifier("↓", nil, homePath("Downloads"), "ls -1 " .. homePath("Downloads") .. " | wc -l", 'osascript -e "var finder=Application(\'Finder\');Finder.home.folders.byName(\'Downloads\').open();Finder.activate();"')
+menubarNotifier("↓", 30, homePath("Downloads"), "ls -1 " .. homePath("Downloads") .. " | wc -l", 'osascript -e "var finder=Application(\'Finder\');Finder.home.folders.byName(\'Downloads\').open();Finder.activate();"')
