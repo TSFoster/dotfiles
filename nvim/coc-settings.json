@@ -16,5 +16,30 @@
   },
   "codeLens.enable": true,
   "git.gitlab.hosts": ["gitlab.com"],
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "list.insertMappings": {
+    "<C-v>": "action:vsplit",
+    "<C-x>": "action:split",
+    "<C-t>": "action:tabe",
+    "<C-e>": "call:CreateFile",
+    "<C-a>": "call:PopulateArgs",
+    "<C-l>": "do:toggle"
+  },
+  "list.normalMappings": {
+    "e": "call:CreateFile",
+    "a": "call:PopulateArgs"
+  },
+  "list.source.files.command": "fd",
+  "list.source.files.args": [
+    "--color=never",
+    "--exclude=node_modules",
+    "--exclude=.git",
+    "--exclude=elm-stuff",
+    "--exclude=bower_components",
+    "--exclude=target",
+    "--exclude=.DS_Store",
+    "--no-ignore-vcs",
+    "--hidden"
+  ],
+  "list.maxHeight": 50
 }
