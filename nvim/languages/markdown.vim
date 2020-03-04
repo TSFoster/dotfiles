@@ -4,7 +4,7 @@ augroup markdown
   autocmd!
 augroup END
 
-if has('mac')
+if has('mac') && isdirectory("/Applications/Marked 2.app")
   Plugin 'itspriddle/vim-marked', { 'for': ['markdown'] }
   augroup markdown
     autocmd FileType markdown,mkd,ghmarkdown nnoremap <silent><buffer> <Leader>/m :MarkedToggle<CR>
