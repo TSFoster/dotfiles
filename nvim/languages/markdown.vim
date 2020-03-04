@@ -12,11 +12,12 @@ if has('mac')
 endif
 
 augroup markdown
-  autocmd FileType markdown,mkd,ghmarkdown imap <buffer> <C-f> *
-  autocmd FileType markdown,mkd,ghmarkdown imap <buffer> <C-d> **
-  autocmd FileType markdown,mkd,ghmarkdown vmap <buffer> <C-i> S*
-  autocmd FileType markdown,mkd,ghmarkdown vmap <buffer> <C-b> S*gvS*
-  autocmd FileType markdown,mkd,ghmarkdown inoremap <buffer> ;` ```<CR><CR>```<Up><Up>
+  autocmd FileType markdown,mkd,ghmarkdown,md imap <buffer> <C-f> *
+  autocmd FileType markdown,mkd,ghmarkdown,md imap <buffer> <C-d> **
+  autocmd FileType markdown,mkd,ghmarkdown,md vmap <buffer> <C-i> S*
+  autocmd FileType markdown,mkd,ghmarkdown,md vmap <buffer> <C-b> S*gvS*
+  autocmd FileType markdown,mkd,ghmarkdown,md inoremap <buffer> ;` ```<CR><CR>```<Up><Up>
+  autocmd FileType markdown,mkd,ghmarkdown,md setlocal spell spelllang=en_gb
   autocmd ColorScheme * highlight htmlItalic cterm=italic gui=italic
   autocmd ColorScheme * highlight htmlBold cterm=bold gui=bold
 augroup END
