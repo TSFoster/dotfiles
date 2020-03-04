@@ -1,7 +1,7 @@
-nnoremap <silent> <Leader>d :CocList files <C-R>=getcwd()<CR> --type=directory<CR>
+nnoremap <silent> <Leader>d :CocList files --type=directory<CR>
 nnoremap <silent> <Leader>D :CocList files %:h:p --type=directory<CR>
-nnoremap <silent> <Leader>e :CocList files<CR>
-nnoremap <silent> <Leader>E :CocList files %:h:p<CR>
+nnoremap <silent> <Leader>e :CocList files --type=file<CR>
+nnoremap <silent> <Leader>E :CocList files %:h:p --type=file<CR>
 nnoremap <silent> <Leader>h: :CocList cmdhistory<CR>
 nnoremap <silent> <Leader>h/ :CocList searchhistory<CR>
 nnoremap <silent> <Leader>mr :CocList mru<CR>
