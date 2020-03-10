@@ -41,5 +41,9 @@
     "--no-ignore-vcs",
     "--hidden"
   ],
-  "list.maxHeight": 50
+  "list.maxHeight": 50,
+  "yaml.schemas": {
+    "http://json.schemastore.org/ansible-stable-2.9": "/(playbooks|roles|tasks|handlers|defaults|vars|ansible)/*.(yml|yaml)"
+  },
+  "yaml.format.enable": true
 }
