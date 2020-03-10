@@ -27,8 +27,8 @@ else
 end
 
 
+echo '-> Node'
 if command -s npm > /dev/null
-  echo '-> Node'
   npm update -g
   set npmPackages \
     eslint \
