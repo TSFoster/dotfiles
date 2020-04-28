@@ -1,7 +1,7 @@
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'shumphrey/fugitive-gitlab.vim'
-Plugin 'rbong/vim-flog'
+Plugin 'junegunn/gv.vim'
 
 let g:fugitive_git_executable='command git'
 
