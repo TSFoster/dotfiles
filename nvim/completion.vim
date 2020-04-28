@@ -40,7 +40,7 @@ augroup cocnvim
 augroup END
 
 function s:setup_formatexpr()
-  if exists('*CocHasProvider') && CocHasProvider('format') && !&ro
+  if exists('*CocHasProvider') && CocHasProvider('format')
     setlocal formatexpr=CocAction('formatSelected')
   endif
 endfunction
