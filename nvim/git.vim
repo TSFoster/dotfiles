@@ -32,4 +32,9 @@ xmap ic <Plug>(coc-text-object-inner)
 omap ac <Plug>(coc-text-object-outer)
 xmap ac <Plug>(coc-text-object-outer)
 
+augroup gitremote
+  autocmd!
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+augroup END
+
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
