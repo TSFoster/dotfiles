@@ -23,12 +23,18 @@ set --export SHELL (which fish)
 set --export OS Unknown
 uname | grep -q Darwin; and set --export OS Mac
 
+set --export PAGER less
+
 # If nvim’s been installed, let’s assume nvr and abduco have been, too
 if command -s nvim > /dev/null
   set --export ABDUCO_CMD nvim
   alias abduco "abduco -e '^z'"
   if [ "$NVIM_LISTEN_ADDRESS" ]
     set --export EDITOR nvr --remote-tab-wait
+    set --export PAGER nvr +\'set bufhidden=delete\' +\'let b:pager=v:true\' --remote-wait -
+    function man
+      nvr +'tabe +Man\\ '$argv[1]'|only'
+    end
   else
     set --export EDITOR abduco -A nvim-\(random\) nvim
   end
@@ -46,8 +52,6 @@ if [ $OS = Mac ]
   set --export workDir "$documentsDir/Work"
   set --export clientsDir "$workDir/Clients"
 end
-
-set --export PAGER less
 
 set --export FD_DEFAULT_FLAGS '--exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --exclude target --exclude .DS_Store --no-ignore-vcs --hidden'
 set --export RIPGREP_CONFIG_PATH $configDir/ripgreprc

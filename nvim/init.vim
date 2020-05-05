@@ -37,8 +37,6 @@ set shortmess+=c
 set scrolloff=5
 
 set formatprg=par\ rqw80
-let $PAGER=''             " Let vim be the pager
-
 
 " Restore last cursor position
 augroup cursor_position
