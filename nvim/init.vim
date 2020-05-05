@@ -54,11 +54,6 @@ for plugin in g:plugins
   Plug plugin[0], plugin[1]
 endfor
 call plug#end()
-for plugin in g:plugins
-  if type(plugin[2]) == type("")
-    call execute(plugin[2])
-  endif
-endfor
 unlet g:plugins
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
