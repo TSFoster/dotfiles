@@ -1,4 +1,4 @@
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'tpope/vim-characterize'
 
@@ -66,8 +66,6 @@ endfunction
 
 let g:python_host_prog = substitute(system('which python2'),'\n','','g')
 let g:python3_host_prog = substitute(system('which python3'),'\n','','g')
-
-let g:netrw_home=$HOME.'/.local/share/nvim'
 
 
 set statusline=%{SetStatusColorsByMode(mode())}%1* " Hack(?) to change statusbar color based on mode
@@ -163,7 +161,7 @@ augroup titlebar_naming
 augroup end
 
 
-Plug '~/.config/nvim/strange_harmony'
+Plug stdpath('config') . '/strange_harmony'
 let g:colors_name = 'base16-strange_harmony'
 
 function! SetLight()
@@ -532,7 +530,7 @@ tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 Plug 'tpope/vim-dadbod'
 
 
-command! -bar RefreshRC source ~/.config/nvim/init.vim
+command! -bar RefreshRC execute 'source ' . stdpath('config') . '/init.vim'
 
 nnoremap <silent> <Leader>rc :RefreshRC<CR>
 nnoremap <silent> <Leader>pi :RefreshRC \| PlugInstall<CR>
