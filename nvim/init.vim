@@ -2,36 +2,60 @@ call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'tpope/vim-characterize'
 
+" Mouse in all modes
 if has('mouse')
   set mouse=a
 endif
 
-set lazyredraw " Don't slow macros down by rendering every step
+" Don't slow macros down by rendering every step
+set lazyredraw
 
+" Set 24 bit color TODO investigate turning off permanently or selectively turn on
 set termguicolors
+
+" Show line numbers except in terminals
 set number
+set relativenumber
 augroup numbering
   autocmd!
   autocmd TermOpen * set nonumber
 augroup END
-set relativenumber
 
-set ignorecase                 " Ignore case in search …
-set smartcase                  " … unless it's a cap
-set wildignorecase             " Ignore case on command line
-set wildmode=longest,list,full " Tabs on command line
-set hidden                     " Keep buffers of abandoned files, just hide them
-set textwidth=0                " Don't auto-newline
+" Use smart case sensitivity in searches
+set ignorecase
+set smartcase
 
-" Suggested settings for coc.nvim
+" Make command line complete case insensitive
+set wildignorecase
+
+" On first <tab>, show all available options, cycle through options on subsequent <tab>s
+set wildmode=list,full
+
+" Don't unload hidden buffers
+set hidden
+
+" Don't write backups to same directory, to avoid issues with coc.nvim issue 649
+set backupdir-=.
+
+" Give messages more space to display
 set cmdheight=2
+
+" Write to swap file quickly so that coc.nvim can update faster
 set updatetime=300
-" Don’t give |ins-completion-message| messages.
+
+" Don’t show messages related to completion menu in command line
 set shortmess+=c
 
+" Start scrolling when cursur reaches x lines from edge
 set scrolloff=5
 
+" Use par by default to format text
 set formatprg=par\ rqw80
+
+" Use "*" clipboard by default (for OS integration)
+set clipboard=unnamed
+set pastetoggle=<F2>
+
 
 " Restore last cursor position
 augroup cursor_position
@@ -505,9 +529,6 @@ nnoremap <Leader><Leader>A :silent! lgrepadd<Space>
 
 
 Plug 'machakann/vim-highlightedyank'
-
-set clipboard=unnamed
-set pastetoggle=<F2>
 
 Plug 'bfredl/nvim-miniyank'
 map p <Plug>(miniyank-autoput)
