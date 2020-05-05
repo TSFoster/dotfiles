@@ -1,59 +1,1006 @@
-let g:plugins = []
-function! Plugin(...)
-  let opts = {}
-  let post = v:null
-  if a:0 > 1
-    if type(a:2) == type("")
-      let post = a:2
-    elseif type(a:2) == type({})
-      let opts = a:2
-      if a:0 > 2 && type(a:3) == type("")
-        let post = a:3
-      endif
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'tpope/vim-characterize'
+
+if has('mouse')
+  set mouse=a
+endif
+
+set exrc   " Enable per-directory .vimrc files
+set secure " Disable unsafe commands in local .vimrc files
+
+set lazyredraw " Don't slow macros down by rendering every step
+
+set termguicolors
+set number
+augroup numbering
+  autocmd!
+  autocmd TermOpen * set nonumber
+augroup END
+set relativenumber
+
+set ignorecase                 " Ignore case in search …
+set smartcase                  " … unless it's a cap
+set wildignorecase             " Ignore case on command line
+set wildmode=longest,list,full " Tabs on command line
+set hidden                     " Keep buffers of abandoned files, just hide them
+set textwidth=0                " Don't auto-newline
+
+" Suggested settings for coc.nvim
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
+" Don’t give |ins-completion-message| messages.
+set shortmess+=c
+
+set scrolloff=5
+
+set formatprg=par\ rqw80
+let $PAGER=''             " Let vim be the pager
+
+
+" Restore last cursor position
+augroup cursor_position
+  autocmd!
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+augroup END
+
+
+" Run a command and return cursor (and last search) to original position
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+
+let g:python_host_prog = substitute(system('which python2'),'\n','','g')
+let g:python3_host_prog = substitute(system('which python3'),'\n','','g')
+
+let g:netrw_home=$HOME.'/.local/share/nvim'
+
+
+set statusline=%{SetStatusColorsByMode(mode())}%1* " Hack(?) to change statusbar color based on mode
+set statusline+=\%{CocStatus()}                    " coc.nvim
+set statusline+=\ %<%F                             " File path
+set statusline+=\%{CurrentFunction()}              " coc.nvim
+set statusline+=\ [%n]                             " Buffer number
+set statusline+=\ %y                               " File type
+set statusline+=\ %m%r%w                           " Modified? Read-only? Preview?
+set statusline+=%=                                 " ------------------------------
+set statusline+=\ [(%l:%v)/%L]                     " Row:col number/total lines (%)
+set statusline+=\ [%{''.(&fenc!=''?&fenc:&enc).''} " File encoding
+set statusline+=\%{(&bomb?\",\ BOM\":\"\")}        " Byte order mark
+set statusline+=\%{(&paste?\",\ PASTE\":\"\")}]    " Paste mode
+set statusline+=\ [%{&spelllang}]                  " Language
+set statusline+=\ [%{mode()}]                      " Mode
+
+set noshowmode  " This is covered by the statusline now
+
+function! CocStatus()
+  if !exists('*coc#status') || coc#status() == ''
+    return ''
+  endif
+  return ' [' . coc#status() . ']'
+endfunction
+
+function! CurrentFunction()
+  let cf = get(b:, 'coc_current_function', '')
+  if cf == ''
+    return ''
+  endif
+  return ':' . cf . ''
+endfunction
+
+function! SetStatusColorsByMode(mode)
+  if a:mode=='n' || a:mode=='no'
+    highlight! link User1 StatusLineNormal
+  elseif a:mode=='i'
+    highlight! link User1 StatusLineInsert
+  elseif a:mode=='v' || a:mode=='V' || a:mode==''
+    highlight! link User1 StatusLineVisual
+  elseif a:mode=='t'
+    highlight! link User1 StatusLineTerm
+  else
+    highlight! link User1 StatusLine
+  endif
+  return ''
+endfunction
+
+
+set t_ts=k
+set t_fs=\
+
+function! SetTitlestring(...)
+  set title
+  if &buftype == 'terminal'
+    let &titlestring = b:term_title
+  else
+    let cwd = getcwd()
+    let fp = expand('%:p')
+    if fp == '' || fp =~? '^'.$VIMRUNTIME
+      let &titlestring = cwd
+    else
+      let &titlestring = fp
+    end
+  end
+endfunction
+
+let s:timerid = 0
+function! WatchForTermTitle()
+  if s:timerid > 0
+    call timer_stop(s:timerid)
+    let s:timerid = 0
+  end
+  if &buftype == 'terminal'
+    let s:timerid = timer_start(5000, 'SetTitlestring', {'repeat': -1})
+  end
+endfunction
+
+function! StopWatchingForTermTitle()
+  if s:timerid > 0
+    call timer_stop(s:timerid)
+    let s:timerid = 0
+  end
+endfunction
+
+augroup titlebar_naming
+  autocmd!
+  autocmd VimLeave * :set t_ts=k\
+  autocmd BufEnter * :call SetTitlestring()
+  autocmd BufEnter * :call WatchForTermTitle()
+  autocmd BufLeave * :call StopWatchingForTermTitle()
+augroup end
+
+
+Plug '~/.config/nvim/strange_harmony'
+let g:colors_name = 'base16-strange_harmony'
+
+function! SetLight()
+  set background=light
+endfunction
+
+function! SetDark()
+  set background=dark
+endfunction
+
+command! SetDark call SetDark()
+command! SetLight call SetLight()
+
+if join(readfile($dataDir . "/dark_mode")) == "true"
+  SetDark
+else
+  SetLight
+endif
+
+function! ReverseBackground()
+  if &background=="light"
+    SetDark
+  else
+    SetLight
+  endif
+endfunction
+
+command! ReverseBackground call ReverseBackground()
+
+nnoremap <silent> <F11> :ReverseBackground<CR>
+
+
+Plug 'artnez/vim-wipeout'
+Plug 'tpope/vim-eunuch'
+Plug 'dbmrq/vim-dialect'
+
+set spelllang=en_gb
+
+Plug 'fcpg/vim-kickfix'
+let g:kickfix_zebra=0
+
+
+Plug 'tpope/vim-vinegar'
+
+let g:netrw_home=$HOME " Store network files in fixed location, not current directory
+let g:netrw_preview = 1 " Vertical preview
+
+Plug 'lambdalisue/suda.vim'
+cmap w!! w suda://%
+
+Plug 'jbgutierrez/vim-partial'
+let g:partial_templates={}
+
+
+Plug 'mbbill/undotree'
+nnoremap <silent> <F5> :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 4
+let g:undotree_ShortIndicators = 1
+let g:undotree_SetFocusWhenToggle = 0
+
+set undofile                             " Store undos in a file
+set undolevels=1000                      " Maximum number of changes that can be undone
+set undoreload=10000                     " Maximum number lines to save for undo on a buffer reload
+set viminfo='1000,f1,<500                " Keep marks for 1000 files, store global marks, limit viminfo to 500 lines
+
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-syntax'
+Plug 'lucapette/vim-textobj-underscore'
+Plug 'reedes/vim-textobj-quote'
+Plug 'glts/vim-textobj-comment'
+Plug 'wellle/targets.vim'
+
+Plug 'machakann/vim-swap'
+let g:swap_no_default_key_mappings = 1
+nmap g<Left> <Plug>(swap-prev)
+nmap g<Right> <Plug>(swap-next)
+nmap gs <Plug>(swap-interactive)
+
+Plug 'bkad/CamelCaseMotion'
+map <silent> \w <Plug>CamelCaseMotion_w
+map <silent> \b <Plug>CamelCaseMotion_b
+map <silent> \e <Plug>CamelCaseMotion_e
+map <silent> \ge <Plug>CamelCaseMotion_ge
+
+
+Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" ÷ is opt + / on macOS
+nmap ÷ <Plug>(AerojumpBolt)
+
+let g:aerojump_keymaps = {
+  \ "<C-h>": "AerojumpSelPrev",
+  \ "<Left>": "AerojumpSelPrev",
+  \ "<C-j>": "AerojumpDown",
+  \ "<Down>": "AerojumpDown",
+  \ "<C-k>": "AerojumpUp",
+  \ "<Up>": "AerojumpUp",
+  \ "<C-l>": "AerojumpSelNext",
+  \ "<Right>": "AerojumpSelNext",
+  \ "<ESC>": "AerojumpExit",
+  \ "<CR>": "AerojumpSelect"
+\ }
+
+
+Plug 'tpope/vim-abolish'
+
+set inccommand=nosplit
+
+function! CycleIncCommand()
+  if &inccommand == 'nosplit'
+    set inccommand=split
+  elseif &inccommand == 'split'
+    set inccommand=
+  else
+    set inccommand=nosplit
+  endif
+endfunction
+
+" Follows vim-unimpaired’s *c*hange *o*ption format
+nmap <silent><expr> coS CycleIncCommand()
+
+
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-unimpaired'
+Plug 'jeetsukumaran/vim-indentwise'
+
+" Space is a great <Leader>.
+" It is a large button that can be hit by either hand without moving.
+let mapleader="\<Space>"
+
+" jj is a rare combination that stays on the home row and is faster than
+" hitting <C-[> or <ESC>. Only common clash is when the last character you
+" insert is a j, in which case you can type "jkj".
+inoremap jj <ESC>
+inoremap jkj j<ESC>
+
+" Use backspace to flip between two files
+nnoremap <BS> <C-^>
+
+" Semi-colon is much faster to type than colon
+nnoremap ; :
+vnoremap ; :
+nmap <Leader>; <Plug>Sneak_;
+vmap <Leader>; <Plug>Sneak_;
+nnoremap q; q:
+
+" Use gQ if wanting to go into ex mode. Q for repeating last macro
+nnoremap Q @@
+
+" Swap visual and visual block modes. Visual block more commonly used by me
+nnoremap    v   <C-V>
+nnoremap <C-V>     v
+vnoremap    v   <C-V>
+vnoremap <C-V>     v
+
+" %% in command line maps to current file's directory
+cnoremap <expr> %% fnameescape(expand('%:h').'/')
+" %p in command line maps to current file's path
+cnoremap <expr> %p fnameescape(expand('%:p'))
+" %p in command line maps to current file's relative path
+cnoremap <expr> %r fnameescape(expand('%'))
+
+function! Quit()
+  if (winnr('$') == 1 && tabpagenr('$') == 1)
+    if confirm('Are you sure you want to quit?', "&Yes\n&No", 2, "Question") == 1
+      quit
+    endif
+  else
+    quit
+  endif
+endfunction
+
+nnoremap <silent> <Leader>q :call Quit()<CR>
+nnoremap <silent> <Leader><Leader>q :xa<CR>
+
+nnoremap <silent> <Leader>w :update<CR>
+nnoremap <silent> <Leader>W :wa<CR>
+
+" Common substitution patterns, accessible with one button press (on a Mac
+" keyboard, at least)
+nmap § :%s//g<LEFT><LEFT>
+vmap § :s//g<LEFT><LEFT>
+
+
+" Toggle list windows
+" Adapted from https://github.com/tpope/vim-unimpaired/issues/97#issuecomment-371219365
+
+function! QuickFix_toggle()
+  for i in range(1, winnr('$'))
+    let bnum = winbufnr(i)
+    if getbufvar(bnum, '&buftype') == 'quickfix'
+      cclose
+      return
+    endif
+  endfor
+  copen
+endfunction
+
+
+function! s:BufferCount() abort
+    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+endfunction
+function! Location_toggle()
+  " https://github.com/Valloric/ListToggle/blob/master/plugin/listtoggle.vim
+  let buffer_count_before = s:BufferCount()
+
+  " Location list can't be closed if there's cursor in it, so we need
+  " to call lclose twice to move cursor to the main pane
+  silent! lclose
+  silent! lclose
+
+  if s:BufferCount() == buffer_count_before
+    silent! lopen
+    if s:BufferCount() == buffer_count_before
+      echo 'No items in location list'
     endif
   endif
-  let g:plugins += [[a:1, opts, post]]
 endfunction
-command! -nargs=+ Plugin call Plugin(<args>)
 
 
-command! -nargs=1 Source source ~/.config/nvim/<args>.vim
-
-Source general
-Source statusbar
-Source titlebar
-Source colors
-Source files
-Source history
-Source textobjects
-Source finding
-Source mappings
-Source git
-Source fuzzy
-Source clipboard
-Source dispatching
-Source meta
-Source search
-Source completion
-Source formatting
-Source tags
-Source languages
-Source panes
-Source whitespace
-Source italics
-Source comments
-
-delcommand Source
-
-delfunction Plugin
-delcommand Plugin
+" Do this after launching, to make sure it overrides unimpaired mappings
+augroup toggle_lists
+  autocmd!
+  autocmd VimEnter * :nnoremap <silent> yoq :call QuickFix_toggle()<CR>
+  autocmd VimEnter * :nnoremap <silent> yol :call Location_toggle()<CR>
+augroup end
 
 
-call plug#begin('~/.local/share/nvim/plugged')
-for plugin in g:plugins
-  Plug plugin[0], plugin[1]
-endfor
+function! HelpToggle()
+  let helpIsOpen = 0
+  let currentWindow = 0
+  while (winbufnr(currentWindow) > -1)
+    if (getbufvar(winbufnr(currentWindow), '&buftype') ==# 'help')
+      let helpIsOpen = 1
+      break
+    endif
+    let currentWindow += 1
+  endwhile
+  if helpIsOpen
+    helpclose
+  elseif &ft == 'vim'
+    execute 'help ' . expand('<cword>')
+  else
+    Helptags
+  endi
+endfunction
+
+nnoremap <silent> <Leader>? :call HelpToggle()<CR>
+
+" When using CTRL-C key to leave insert mode, it does not trigger the autocmd InsertLeave
+inoremap <c-c> <ESC>
+
+" Map C-z to M-z to allow detaching from abduco within abduco nvim
+tnoremap <M-z> <C-z>
+
+
+" Convert bases. This overrides builtin gh (select mode), but I never use that.
+nnoremap <silent> gh ciw<C-r>=printf('0x%x', <C-r>")<CR><Esc>
+
+
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'junegunn/gv.vim'
+
+let g:fugitive_git_executable='command git'
+
+nnoremap <silent> <Leader>ga :Gwrite<CR>
+nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>gps :Gpush<CR>
+nnoremap <silent> <Leader>gpl :Gpull<CR>
+nnoremap <silent> <Leader>gco :Gcommit<CR>
+nnoremap <silent> <Leader>gca :Gcommit --amend<CR>
+nnoremap <silent> <Leader>gre :<C-U>execute("Grebase -i HEAD~" . v:count1)<CR>
+
+nnoremap <silent> <Leader>gi :CocList gitignore<CR>
+nnoremap <silent> <Leader>ge :CocList gstatus<CR>
+nnoremap <silent> <Leader>gE :CocList gfiles<CR>
+nnoremap <silent> <Leader>gC :CocList commits<CR>
+
+" navigate hunks of current buffer
+nmap [h <Plug>(coc-git-prevchunk)
+nmap ]h <Plug>(coc-git-nextchunk)
+nmap <Leader>hp <Plug>(coc-git-chunkinfo)
+nmap <Leader>ha :CocCommand git.chunkStage<CR>
+nmap <Leader>hu :CocCommand git.chunkUndo<CR>
+" show commit contains current position
+nmap <Leader>cp <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ic <Plug>(coc-text-object-inner)
+xmap ic <Plug>(coc-text-object-inner)
+omap ac <Plug>(coc-text-object-outer)
+xmap ac <Plug>(coc-text-object-outer)
+
+augroup gitremote
+  autocmd!
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+augroup END
+
+
+nnoremap <silent> <Leader>d :CocList files --type=directory<CR>
+nnoremap <silent> <Leader>D :CocList files %:p:h --type=directory<CR>
+nnoremap <silent> <Leader>e :CocList files --type=file<CR>
+nnoremap <silent> <Leader>E :CocList files %:p:h --type=file<CR>
+nnoremap <silent> <Leader>h: :CocList cmdhistory<CR>
+nnoremap <silent> <Leader>h/ :CocList searchhistory<CR>
+nnoremap <silent> <Leader>mr :CocList mru<CR>
+nnoremap <silent> <Leader>he :CocList helptags<CR>
+nnoremap <silent> <Leader>ta :CocList tags<CR>
+nnoremap <silent> <Leader>b :CocList buffers<CR>
+nnoremap <silent> <Leader>B :CocList lines<CR>
+
+function! CreateFile(path)
+  if type(a:path) == v:t_dict
+    if a:path["name"] == "files"
+      call CreateFile(a:path["targets"])
+    else
+      return
+    end
+  elseif type(a:path) == v:t_list
+    for i in a:path
+      call CreateFile(i.location.uri)
+    endfor
+  else
+    let filename = input('Enter filename: ')
+    let fullpath = fnamemodify(a:path, ':p:h') . '/' . filename
+    execute "normal \<Esc>:edit " . fullpath . "\<CR>"
+  endif
+endfunction
+
+function! PopulateArgs(ctx)
+  let paths = map(a:ctx["targets"], 'v:val["location"]["uri"]')
+  execute "normal \<Esc>:args " . join(paths, ' ') . "\<CR>"
+endfunction
+
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+endif
+nnoremap <Leader>a :silent! grep<Space>
+nnoremap <Leader>A :silent! grepadd<Space>
+nnoremap <Leader><Leader>a :silent! lgrep<Space>
+nnoremap <Leader><Leader>A :silent! lgrepadd<Space>
+
+
+Plug 'machakann/vim-highlightedyank'
+
+set clipboard=unnamed
+set pastetoggle=<F2>
+
+Plug 'bfredl/nvim-miniyank'
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+map <Leader>y <Plug>(miniyank-cycle)
+
+" Alt-R to paste buffer in terminal mode
+tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
+
+Plug 'tpope/vim-dadbod'
+
+
+command! -bar RefreshRC source ~/.config/nvim/init.vim
+
+nnoremap <silent> <Leader>rc :RefreshRC<CR>
+nnoremap <silent> <Leader>pi :RefreshRC \| PlugInstall<CR>
+nnoremap <silent> <Leader>pc :RefreshRC \| PlugClean!<CR>
+nnoremap <silent> <Leader>pu :PlugUpdate<CR>
+nnoremap <silent> <Leader>pU :PlugUpgrade<CR>
+nnoremap <silent> <Leader>cu :CocUpdate<CR>
+nnoremap <silent> <Leader>cc :CocConfig<CR>
+
+
+if has('mac')
+  let s:open_command = 'open'
+elseif has('unix')
+  let s:open_command = 'xdg-open'
+else
+  let s:open_command = 'start'
+endif
+
+
+function! SearchCommand(str, type, ...)
+  echom a:str
+  echom '---'
+  echom a:type
+  let sel_save = &selection
+  let &selection = "inclusive"
+  let reg_save = @@
+
+  if a:0
+    let @@ = a:1
+  elseif a:type == 'visual'
+    silent exe "normal! gvy"
+  elseif a:type == 'line'
+    silent exe "normal! '[V']y"
+  else
+    silent exe "normal! `[v`]y"
+  endif
+
+  call system(s:open_command.' "'.a:str.@@.'"')
+
+  let &selection = sel_save
+  let @@ = reg_save
+endfunction
+
+function! DuckDuckGo(...)
+  call function('SearchCommand', ['https://duckduckgo.com/?q='] + a:000)()
+endfunction
+command! -nargs=+ DuckDuckGo call DuckDuckGo('', '<args>')<CR>
+nmap <silent> <Leader>/. :set opfunc=DuckDuckGo<CR>g@
+vmap <silent> <Leader>/. :<C-U>call DuckDuckGo('visual')<CR>
+
+function! Github(...)
+  call function('SearchCommand', ['https://www.github.com/'] + a:000)()
+endfunction
+command! -nargs=+ Github call Github('', '<args>')<CR>
+nmap <silent> <Leader>/g :set opfunc=Github<CR>g@
+vmap <silent> <Leader>/g :<C-U>call Github('visual')<CR>
+
+function! Dict(...)
+  call function('SearchCommand', ['http://dictionary.reference.com/browse/'] + a:000)()
+endfunction
+command! -nargs=+ Dict call Dict('', '<args>')<CR>
+nmap <silent> <Leader>/d :set opfunc=Dict<CR>g@
+vmap <silent> <Leader>/d :<C-U>call Dict('visual')<CR>
+
+function! Wikipedia(...)
+  call function('SearchCommand', ['http://en.wikipedia.org/wiki/Special:Search?search='] + a:000)()
+endfunction
+command! -nargs=+ Wikipedia call Wikipedia('', '<args>')<CR>
+nmap <silent> <Leader>/w :set opfunc=Wikipedia<CR>g@
+vmap <silent> <Leader>/w :<C-U>call Wikipedia('visual')<CR>
+
+
+Plug 'zoeesilcock/vim-caniuse'
+
+if has('mac')
+  Plug 'rizzatti/dash.vim'
+endif
+
+function! Keywordprg(word)
+  if exists('*CocHasProvider') && CocHasProvider('hover')
+    call CocAction('doHover')
+  elseif count(['vim','help'], &filetype)
+    execute 'h '.expand('<cword>')
+  elseif count(['shell', 'sh', 'bash', 'zsh', 'fish'], &filetype)
+    Man a:word
+  else
+    call system('search '.a:word)
+  endif
+endfunction
+
+command! -nargs=+ Keywordprg call Keywordprg('<args>')<CR>
+
+set keywordprg=:Keywordprg
+
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <A-TAB> coc#refresh()
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+" Use <CR> to confirm completion, <C-g>u means break undo chain at current position.
+inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <Leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <silent> <Leader>f  <Plug>(coc-format-selected)
+nmap <silent> <Leader>f  <Plug>(coc-format)
+
+augroup cocnvim
+  autocmd!
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType * call <SID>setup_formatexpr()
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup END
+
+function s:setup_formatexpr()
+  if exists('*CocHasProvider') && CocHasProvider('format')
+    setlocal formatexpr=CocAction('formatSelected')
+  endif
+endfunction
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+" xmap <Leader>a  <Plug>(coc-codeaction-selected)
+" nmap <Leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+" nmap <Leader>ac  <Plug>(coc-codeaction)
+
+" Fix autofix problem of current line
+nmap <Leader>cf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+
+Plug 'honza/vim-snippets'
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+
+augroup formatting
+  autocmd BufWritePre * call <SID>maybe_format()
+augroup END
+
+function! s:maybe_format()
+  if (!exists("g:no_autoformat") || !g:no_autoformat) && exists('*CocHasProvider') && CocHasProvider("format")
+    echom "Formatting…"
+    call CocAction("format")
+  endif
+endfunction
+
+nnoremap <silent> yof :call <SID>toggle_auto_format()<CR>
+
+function! s:toggle_auto_format()
+  if !exists('g:no_autoformat')
+    let g:no_autoformat = 0
+  endif
+  let g:no_autoformat = !g:no_autoformat
+  if g:no_autoformat
+    echom "Don’t fix on save"
+  else
+    echom "Fix on save"
+  end
+endfunction
+
+
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
+nnoremap <F8> :TagbarToggle<CR>
+
+nnoremap <Leader>] :tag<Space>
+
+
+let g:polyglot_disabled = ['cryptol']
+
+
+augroup crontab
+  autocmd!
+  autocmd filetype crontab setlocal nobackup nowritebackup
+augroup END
+
+
+Plug 'ap/vim-css-color'
+Plug 'amadeus/vim-convert-color-to'
+
+
+Plug 'chrisbra/csv.vim'
+
+
+augroup doc
+  autocmd!
+  autocmd BufReadPost *.doc,*.docx,*.odp,*.odt silent %!pandoc "%" --to=markdown -o /dev/stdout
+  autocmd BufReadPost *.rtf silent %!textutil "%" -convert html -stdout | pandoc --from=html --to=markdown
+augroup END
+
+
+Plug 'slashmili/alchemist.vim'
+
+
+let g:tagbar_type_elm = {
+    \ 'ctagstype' : 'ElmCustom',
+    \ 'ctagsargs' : [ '--options='.$HOME.'/.config/ctags/', '-o-'],
+    \ 'kinds'     : [
+        \ 'm:Modules:0:0',
+        \ 'i:Imports:0:0',
+        \ 't:Types:0:0',
+        \ 'a:Aliases:0:0',
+        \ 'c:Constants:0:0',
+        \ 'p:Ports:0:0',
+        \ 'f:Functions:0:0',
+        \ 'r:Records:0:0',
+        \ 'y:Type constructors:0:0'
+        \ ],
+    \ 'sro'      : ':',
+    \ 'kind2scope' : {},
+    \ 'scope2kind' : {}
+\ }
+
+
+augroup git
+  autocmd!
+  autocmd BufNewFile,BufRead *.gitconfig* setfiletype gitconfig
+augroup END
+
+
+Plug 'mattn/emmet-vim'
+
+augroup checkgotmpl
+  autocmd!
+  autocmd FileType html
+        \ if filereadable(getcwd() . '/config.toml')
+        \ | set ft=gohtmltmpl
+        \ | endif
+augroup END
+
+
+augroup javascript
+  autocmd!
+  autocmd BufNewFile,BufRead *.es6 setfiletype javascript
+augroup END
+
+
+Plug 'mogelbrod/vim-jsonpath'
+
+augroup json
+  autocmd!
+  autocmd FileType json nnoremap <buffer> <silent> <expr> <leader>jp jsonpath#echo()
+  autocmd FileType json nnoremap <buffer> <silent> <expr> <leader>jg jsonpath#goto()
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+augroup END
+
+
+let g:polyglot_disabled += ['markdown']
+
+augroup markdown
+  autocmd!
+augroup END
+
+if has('mac') && isdirectory("/Applications/Marked 2.app")
+  Plug 'itspriddle/vim-marked', { 'for': ['markdown'] }
+  augroup markdown
+    autocmd FileType markdown,mkd,ghmarkdown nnoremap <silent><buffer> <Leader>/m :MarkedToggle<CR>
+  augroup END
+endif
+
+augroup markdown
+  autocmd FileType markdown,mkd,ghmarkdown,md imap <buffer> <C-f> *
+  autocmd FileType markdown,mkd,ghmarkdown,md imap <buffer> <C-d> **
+  autocmd FileType markdown,mkd,ghmarkdown,md vmap <buffer> <C-i> S*
+  autocmd FileType markdown,mkd,ghmarkdown,md vmap <buffer> <C-b> S*gvS*
+  autocmd FileType markdown,mkd,ghmarkdown,md inoremap <buffer> ;` ```<CR><CR>```<Up><Up>
+  autocmd FileType markdown,mkd,ghmarkdown,md setlocal spell spelllang=en_gb
+  autocmd ColorScheme * highlight htmlItalic cterm=italic gui=italic
+  autocmd ColorScheme * highlight htmlBold cterm=bold gui=bold
+augroup END
+
+highlight htmlItalic cterm=italic gui=italic
+highlight htmlBold cterm=bold gui=bold
+
+
+let g:rustfmt_autosave = 1
+
+
+Plug 'itspriddle/vim-shellcheck'
+
+augroup shellscripting
+  autocmd!
+  autocmd BufNewFile,BufRead *.zshrc      setfiletype zsh
+  autocmd BufNewFile,BufRead *.zshenv     setfiletype zsh
+  autocmd BufNewFile,BufRead *.shrc       setfiletype sh
+  autocmd BufNewFile,BufRead *.bashrc*    setfiletype sh
+augroup END
+
+
+augroup vimscripting
+  autocmd!
+  autocmd BufNewFile,BufRead *.vimrc* setfiletype vim
+augroup END
+
+Plug 'tpope/vim-scriptease'
+
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
+Plug 'neoclide/coc-neco'
+
+
+Plug 'sheerun/vim-polyglot'
+
+
+Plug 'wellle/visual-split.vim'
+
+set splitbelow
+set splitright
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+nnoremap <A-w> :Windows<CR>
+tnoremap <A-w> <C-\><C-n>:Windows<CR>
+
+tnoremap ;; <C-\><C-n>:
+tnoremap jj <C-\><C-n>
+tmap <A-Space> <C-\><C-n><Leader>
+nmap <A-Space> <Leader>
+
+" Open new file below/above/to left/to right/inside current window
+nnoremap <Leader>nj :rightbelow new <CR>
+nnoremap <Leader>nk :leftabove new <CR>
+nnoremap <Leader>nl :rightbelow vnew <CR>
+nnoremap <Leader>nh :leftabove vnew <CR>
+nnoremap <Leader>nn :enew<CR>
+nnoremap <Leader>nN :tabnew<CR>
+
+" Open terminal below/above/to left/to right/inside current window
+nnoremap <Leader>tj :sp <BAR> term<CR>
+nnoremap <Leader>tk :topleft sp <BAR> term<CR>
+nnoremap <Leader>tl :vsp <BAR> term<CR>
+nnoremap <Leader>th :leftabove vsp <BAR> term<CR>
+nnoremap <Leader>tt :term<CR>
+nnoremap <Leader>tT :tabnew <BAR> term<CR>
+
+" Resize windows with alt+dir or equalise with alt+=
+nnoremap <A-h> <C-w><
+nnoremap <A-j> <C-w>-
+nnoremap <A-k> <C-w>+
+nnoremap <A-l> <C-w>>
+nnoremap <A-=> <C-w>=
+tnoremap <A-h> <C-\><C-n><C-w><i
+tnoremap <A-j> <C-\><C-n><C-w>-i
+tnoremap <A-k> <C-\><C-n><C-w>+i
+tnoremap <A-l> <C-\><C-n><C-w>>i
+tnoremap <A-=> <C-\><C-n><C-w>=i
+
+" Automatically enter insert mode in terminal if it's not been scrolled back
+augroup terminal_insert
+  autocmd!
+  autocmd BufEnter * if &buftype == 'terminal' && line('$') == line('w$') | :startinsert | endif
+  autocmd TermOpen * if &buftype == 'terminal' | :startinsert | endif
+augroup END
+
+
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/vim-sleuth'
+
+let g:lion_squeeze_spaces = 1
+nnoremap <silent> <Leader>gl :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
+
+set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
+set list                      " Display whitespace
+set breakindent               " Visually indent wrapped lines to match whitespace
+
+" Set all the tab stops to the same value
+function! SetTab(tabstop)
+  if a:tabstop > 0
+    let &l:softtabstop = a:tabstop
+    let &l:tabstop = a:tabstop
+    let &l:shiftwidth = a:tabstop
+  endif
+endfunction
+
+set expandtab
+
+" Quick way to change tab stops. Add bang to reformat file
+command! -bang -nargs=1 Stab call SetTab(<f-args>) | call Preserve(<bang>0 ? 'normal gg=G' : '')
+
+" Quick way to switch between tabs and spaces
+command! Tabs set noexpandtab
+command! Spaces set expandtab
+
+" Insert whitespace in normal mode
+augroup whitespace
+  autocmd!
+  autocmd VimEnter,BufReadPost *
+        \ if &modifiable
+        \ | nnoremap <buffer> <CR> i<CR><Esc>
+        \ | nnoremap <buffer> \| i<Space><Esc>
+        \ | endif
+augroup END
+
+
+highlight htmlItalic cterm=italic
+highlight Comment cterm=italic
+
+augroup italics
+  autocmd!
+  autocmd ColorScheme * highlight htmlItalic gui=italic
+  autocmd ColorScheme * highlight Comment gui=italic
+augroup END
+
+
+Plug 'tpope/vim-commentary'
+
+highlight Comment cterm=italic gui=italic
+
+augroup comments
+  autocmd!
+  autocmd ColorScheme * highlight Comment cterm=italic gui=italic
+augroup END
+
+
 call plug#end()
-unlet g:plugins
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
