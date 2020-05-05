@@ -6,9 +6,6 @@ if has('mouse')
   set mouse=a
 endif
 
-set exrc   " Enable per-directory .vimrc files
-set secure " Disable unsafe commands in local .vimrc files
-
 set lazyredraw " Don't slow macros down by rendering every step
 
 set termguicolors
@@ -27,10 +24,8 @@ set hidden                     " Keep buffers of abandoned files, just hide them
 set textwidth=0                " Don't auto-newline
 
 " Suggested settings for coc.nvim
-set nowritebackup
 set cmdheight=2
 set updatetime=300
-set signcolumn=yes
 " Don’t give |ins-completion-message| messages.
 set shortmess+=c
 
@@ -203,8 +198,7 @@ let g:kickfix_zebra=0
 
 Plug 'tpope/vim-vinegar'
 
-let g:netrw_home=$HOME " Store network files in fixed location, not current directory
-let g:netrw_preview = 1 " Vertical preview
+let g:netrw_preview=1 " Vertical preview
 
 Plug 'lambdalisue/suda.vim'
 cmap w!! w suda://%
