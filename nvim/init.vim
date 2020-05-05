@@ -410,6 +410,15 @@ augroup toggle_lists
   autocmd VimEnter * :nnoremap <silent> yol :call Location_toggle()<CR>
 augroup end
 
+nnoremap <silent> <q :<c-u>for _ in range(v:count1) \| colder \| endfor<CR>
+nnoremap <silent> >q :<c-u>for _ in range(v:count1) \| cnewer \| endfor<CR>
+nnoremap <silent> <l :<c-u>for _ in range(v:count1) \| lolder \| endfor<CR>
+nnoremap <silent> >l :<c-u>for _ in range(v:count1) \| lnewer \| endfor<CR>
+nnoremap <silent> <Q :try \| while 1 > 0 \| silent colder \| endwhile \| catch // \| endtry<CR>
+nnoremap <silent> >Q :try \| while 1 > 0 \| silent cnewer \| endwhile \| catch // \| endtry<CR>
+nnoremap <silent> <L :try \| while 1 > 0 \| silent lolder \| endwhile \| catch // \| endtry<CR>
+nnoremap <silent> >L :try \| while 1 > 0 \| silent lnewer \| endwhile \| catch // \| endtry<CR>
+
 
 function! HelpToggle()
   let helpIsOpen = 0
