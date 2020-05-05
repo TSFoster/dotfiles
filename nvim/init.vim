@@ -161,7 +161,6 @@ augroup titlebar_naming
 augroup end
 
 
-Plug stdpath('config') . '/strange_harmony'
 let g:colors_name = 'base16-strange_harmony'
 
 function! SetLight()
