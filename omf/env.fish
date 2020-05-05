@@ -32,11 +32,13 @@ if command -s nvim > /dev/null
   if [ "$NVIM_LISTEN_ADDRESS" ]
     set --export EDITOR nvr --remote-tab-wait
     set --export PAGER nvr +\'set bufhidden=delete\' +\'let b:pager=v:true\' --remote-wait -
+  else
+    set --export EDITOR abduco -A nvim-\(random\) nvim
+  end
+  if [ "$NVIM_LISTEN_ADDRESS" ]; and [ -z "$COLORTERM" ] # for some reason $COLORTERM is not set in nvim term://
     function man
       nvr +'tabe +Man\\ '$argv[1]'|only'
     end
-  else
-    set --export EDITOR abduco -A nvim-\(random\) nvim
   end
 else
   set --export EDITOR vim

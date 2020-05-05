@@ -626,10 +626,14 @@ function! Keywordprg(word)
     call CocAction('doHover')
   elseif count(['vim','help'], &filetype)
     execute 'h '.expand('<cword>')
-  elseif count(['shell', 'sh', 'bash', 'zsh', 'fish'], &filetype)
-    Man a:word
+  elseif &filetype == 'fish'
+    " Fish uses a function for man, which includes more manpages. `:Man` doesn't
+    " use fish's `man` by default, so use this to get manpage location
+    execute 'Man ' . system('man -w ' . expand('<cword>'))
+  elseif count(['shell', 'sh', 'bash', 'zsh'], &filetype)
+    execute 'Man ' . expand('<cword>')
   else
-    call system('search '.a:word)
+    call system('search ' . a:word)
   endif
 endfunction
 
@@ -875,6 +879,8 @@ augroup shellscripting
   autocmd BufNewFile,BufRead *.zshenv     setfiletype zsh
   autocmd BufNewFile,BufRead *.shrc       setfiletype sh
   autocmd BufNewFile,BufRead *.bashrc*    setfiletype sh
+  " Don't use the broken keywordprg in vim-polyglot
+  autocmd FileType fish setlocal keywordprg=:Keywordprg
 augroup END
 
 
