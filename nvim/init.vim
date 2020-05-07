@@ -850,9 +850,7 @@ command! -bang -nargs=1 Stab call SetTab(<f-args>) | call Preserve(<bang>0 ? 'no
 " Spaces by default
 set expandtab
 " Quick way to switch between tabs and spaces
-command! Tabs set noexpandtab
-command! Spaces set expandtab
-
+nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>
 
 Plug 'tpope/vim-commentary'
 
