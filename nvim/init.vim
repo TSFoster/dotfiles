@@ -266,25 +266,6 @@ map <silent> \e <Plug>CamelCaseMotion_e
 map <silent> \ge <Plug>CamelCaseMotion_ge
 
 
-Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" ÷ is opt + / on macOS
-nmap ÷ <Plug>(AerojumpBolt)
-
-let g:aerojump_keymaps = {
-  \ "<C-h>": "AerojumpSelPrev",
-  \ "<Left>": "AerojumpSelPrev",
-  \ "<C-j>": "AerojumpDown",
-  \ "<Down>": "AerojumpDown",
-  \ "<C-k>": "AerojumpUp",
-  \ "<Up>": "AerojumpUp",
-  \ "<C-l>": "AerojumpSelNext",
-  \ "<Right>": "AerojumpSelNext",
-  \ "<ESC>": "AerojumpExit",
-  \ "<CR>": "AerojumpSelect"
-\ }
-
-
 Plug 'tpope/vim-abolish'
 
 set inccommand=nosplit
@@ -325,8 +306,6 @@ nnoremap <BS> <C-^>
 " Semi-colon is much faster to type than colon
 nnoremap ; :
 vnoremap ; :
-nmap <Leader>; <Plug>Sneak_;
-vmap <Leader>; <Plug>Sneak_;
 nnoremap q; q:
 
 " Use gQ if wanting to go into ex mode. Q for repeating last macro
