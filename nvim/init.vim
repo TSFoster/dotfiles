@@ -133,9 +133,6 @@ function! SetStatusColorsByMode(mode)
 endfunction
 
 
-set t_ts=k
-set t_fs=\
-
 function! SetTitlestring(...)
   set title
   if &buftype == 'terminal'
@@ -168,6 +165,9 @@ function! StopWatchingForTermTitle()
     let s:timerid = 0
   end
 endfunction
+
+set t_ts=k
+set t_fs=\
 
 augroup titlebar_naming
   autocmd!
@@ -345,49 +345,6 @@ nnoremap <silent> <Leader>W :wa<CR>
 nmap § :%s//g<LEFT><LEFT>
 vmap § :s//g<LEFT><LEFT>
 
-
-" Toggle list windows
-" Adapted from https://github.com/tpope/vim-unimpaired/issues/97#issuecomment-371219365
-
-function! QuickFix_toggle()
-  for i in range(1, winnr('$'))
-    let bnum = winbufnr(i)
-    if getbufvar(bnum, '&buftype') == 'quickfix'
-      cclose
-      return
-    endif
-  endfor
-  copen
-endfunction
-
-
-function! s:BufferCount() abort
-    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-endfunction
-function! Location_toggle()
-  " https://github.com/Valloric/ListToggle/blob/master/plugin/listtoggle.vim
-  let buffer_count_before = s:BufferCount()
-
-  " Location list can't be closed if there's cursor in it, so we need
-  " to call lclose twice to move cursor to the main pane
-  silent! lclose
-  silent! lclose
-
-  if s:BufferCount() == buffer_count_before
-    silent! lopen
-    if s:BufferCount() == buffer_count_before
-      echo 'No items in location list'
-    endif
-  endif
-endfunction
-
-
-" Do this after launching, to make sure it overrides unimpaired mappings
-augroup toggle_lists
-  autocmd!
-  autocmd VimEnter * :nnoremap <silent> yoq :call QuickFix_toggle()<CR>
-  autocmd VimEnter * :nnoremap <silent> yol :call Location_toggle()<CR>
-augroup end
 
 nnoremap <silent> <q :<c-u>for _ in range(v:count1) \| colder \| endfor<CR>
 nnoremap <silent> >q :<c-u>for _ in range(v:count1) \| cnewer \| endfor<CR>
@@ -577,7 +534,7 @@ nmap <silent> <Leader>/. :set opfunc=DuckDuckGo<CR>g@
 vmap <silent> <Leader>/. :<C-U>call DuckDuckGo('visual')<CR>
 
 function! Github(...)
-  call function('SearchCommand', ['https://www.github.com/'] + a:000)()
+  call function('SearchCommand', ['https://github.com/'] + a:000)()
 endfunction
 command! -nargs=+ Github call Github('', '<args>')<CR>
 nmap <silent> <Leader>/g :set opfunc=Github<CR>g@
@@ -666,7 +623,7 @@ augroup cocnvim
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
 
-function s:setup_formatexpr()
+function! s:setup_formatexpr()
   if exists('*CocHasProvider') && CocHasProvider('format')
     setlocal formatexpr=CocAction('formatSelected')
   endif
@@ -712,7 +669,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 
 augroup formatting
-  autocmd BufWritePre * call <SID>maybe_format()
+  autocmd! BufWritePre * call <SID>maybe_format()
 augroup END
 
 function! s:maybe_format()
@@ -744,7 +701,7 @@ nnoremap <F8> :TagbarToggle<CR>
 nnoremap <Leader>] :tag<Space>
 
 
-let g:polyglot_disabled = ['cryptol']
+let g:polyglot_disabled = ['cryptol', 'markdown']
 
 
 Plug 'ap/vim-css-color'
@@ -789,30 +746,23 @@ Plug 'mattn/emmet-vim'
 Plug 'mogelbrod/vim-jsonpath'
 
 
-let g:polyglot_disabled += ['markdown']
-
 if has('mac') && isdirectory("/Applications/Marked 2.app")
   Plug 'itspriddle/vim-marked', { 'for': ['markdown'] }
 endif
 
 highlight htmlItalic cterm=italic gui=italic
 highlight htmlBold cterm=bold gui=bold
+highlight Comment cterm=italic gui=italic
 
 
 let g:rustfmt_autosave = 1
 
-
 Plug 'itspriddle/vim-shellcheck'
 Plug 'tpope/vim-scriptease'
-
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 Plug 'neoclide/coc-neco'
-
-
 Plug 'sheerun/vim-polyglot'
-
-
 Plug 'wellle/visual-split.vim'
 
 set splitbelow
@@ -891,11 +841,11 @@ function! SetTab(tabstop)
   endif
 endfunction
 
-set expandtab
-
 " Quick way to change tab stops. Add bang to reformat file
 command! -bang -nargs=1 Stab call SetTab(<f-args>) | call Preserve(<bang>0 ? 'normal gg=G' : '')
 
+" Spaces by default
+set expandtab
 " Quick way to switch between tabs and spaces
 command! Tabs set noexpandtab
 command! Spaces set expandtab
@@ -910,27 +860,47 @@ augroup whitespace
         \ | endif
 augroup END
 
-
-highlight htmlItalic cterm=italic
-highlight Comment cterm=italic
-
-augroup italics
-  autocmd!
-  autocmd ColorScheme * highlight htmlItalic gui=italic
-  autocmd ColorScheme * highlight Comment gui=italic
-augroup END
-
-
 Plug 'tpope/vim-commentary'
 
-highlight Comment cterm=italic gui=italic
-
-augroup comments
-  autocmd!
-  autocmd ColorScheme * highlight Comment cterm=italic gui=italic
-augroup END
-
-
 call plug#end()
+
+" Toggle list windows
+" Adapted from https://github.com/tpope/vim-unimpaired/issues/97#issuecomment-371219365
+
+function! QuickFix_toggle()
+  for i in range(1, winnr('$'))
+    let bnum = winbufnr(i)
+    if getbufvar(bnum, '&buftype') == 'quickfix'
+      cclose
+      return
+    endif
+  endfor
+  copen
+endfunction
+
+
+function! s:BufferCount() abort
+    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+endfunction
+function! Location_toggle()
+  " https://github.com/Valloric/ListToggle/blob/master/plugin/listtoggle.vim
+  let buffer_count_before = s:BufferCount()
+
+  " Location list can't be closed if there's cursor in it, so we need
+  " to call lclose twice to move cursor to the main pane
+  silent! lclose
+  silent! lclose
+
+  if s:BufferCount() == buffer_count_before
+    silent! lopen
+    if s:BufferCount() == buffer_count_before
+      echo 'No items in location list'
+    endif
+  endif
+endfunction
+
+" These have to be put after plug#end to ensure that they override unimpaired mappings
+nnoremap <silent> yoq :call QuickFix_toggle()<CR>
+nnoremap <silent> yol :call Location_toggle()<CR>
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2
