@@ -1,6 +1,71 @@
 call plug#begin(stdpath('config') . '/plugged')
 
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neco-vim'
+Plug 'amadeus/vim-convert-color-to'
+Plug 'ap/vim-css-color'
+Plug 'artnez/vim-wipeout'
+Plug 'bfredl/nvim-miniyank'
+Plug 'bkad/CamelCaseMotion'
+Plug 'chrisbra/csv.vim'
+Plug 'dbmrq/vim-dialect'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'fcpg/vim-kickfix'
+Plug 'glts/vim-textobj-comment'
+Plug 'honza/vim-snippets'
+Plug 'itspriddle/vim-shellcheck'
+Plug 'jbgutierrez/vim-partial'
+Plug 'jeetsukumaran/vim-indentwise'
+Plug 'junegunn/gv.vim'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-user'
+Plug 'lambdalisue/suda.vim'
+Plug 'lucapette/vim-textobj-underscore'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'machakann/vim-highlightedyank'
+Plug 'machakann/vim-swap'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
+Plug 'mbbill/undotree'
+Plug 'mogelbrod/vim-jsonpath'
+Plug 'neoclide/coc-neco'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'reedes/vim-textobj-quote'
+Plug 'sheerun/vim-polyglot'
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'slashmili/alchemist.vim'
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'wellle/targets.vim'
+Plug 'wellle/visual-split.vim'
+Plug 'zoeesilcock/vim-caniuse'
+
+if has('mac')
+  if isdirectory("/Applications/Marked 2.app")
+    Plug 'itspriddle/vim-marked', { 'for': ['markdown'] }
+  endif
+  if isdirectory("/Applications/Dash.app")
+    Plug 'rizzatti/dash.vim'
+  endif
+endif
+
+call plug#end()
 
 " Mouse in all modes
 if has('mouse')
@@ -213,28 +278,20 @@ command! ReverseBackground call ReverseBackground()
 nnoremap <silent> <F11> :ReverseBackground<CR>
 
 
-Plug 'artnez/vim-wipeout'
-Plug 'tpope/vim-eunuch'
-Plug 'dbmrq/vim-dialect'
 
 set spelllang=en_gb
 
-Plug 'fcpg/vim-kickfix'
 let g:kickfix_zebra=0
 
 
-Plug 'tpope/vim-vinegar'
 
 let g:netrw_preview=1 " Vertical preview
 
-Plug 'lambdalisue/suda.vim'
 cmap w!! w suda://%
 
-Plug 'jbgutierrez/vim-partial'
 let g:partial_templates={}
 
 
-Plug 'mbbill/undotree'
 nnoremap <silent> <F5> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
@@ -246,30 +303,18 @@ set undoreload=10000                     " Maximum number lines to save for undo
 set viminfo='1000,f1,<500                " Keep marks for 1000 files, store global marks, limit viminfo to 500 lines
 
 
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-syntax'
-Plug 'lucapette/vim-textobj-underscore'
-Plug 'reedes/vim-textobj-quote'
-Plug 'glts/vim-textobj-comment'
-Plug 'wellle/targets.vim'
 
-Plug 'machakann/vim-swap'
 let g:swap_no_default_key_mappings = 1
 nmap g<Left> <Plug>(swap-prev)
 nmap g<Right> <Plug>(swap-next)
 nmap gs <Plug>(swap-interactive)
 
-Plug 'bkad/CamelCaseMotion'
 map <silent> \w <Plug>CamelCaseMotion_w
 map <silent> \b <Plug>CamelCaseMotion_b
 map <silent> \e <Plug>CamelCaseMotion_e
 map <silent> \ge <Plug>CamelCaseMotion_ge
 
 
-Plug 'tpope/vim-abolish'
 
 set inccommand=nosplit
 
@@ -287,11 +332,6 @@ endfunction
 nmap <silent><expr> coS CycleIncCommand()
 
 
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-unimpaired'
-Plug 'jeetsukumaran/vim-indentwise'
 
 " Space is a great <Leader>.
 " It is a large button that can be hit by either hand without moving.
@@ -391,10 +431,6 @@ tnoremap <M-z> <C-z>
 nnoremap <silent> gh ciw<C-r>=printf('0x%x', <C-r>")<CR><Esc>
 
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'junegunn/gv.vim'
 
 let g:fugitive_git_executable='command git'
 
@@ -471,9 +507,7 @@ nnoremap <Leader><Leader>a :silent! lgrep<Space>
 nnoremap <Leader><Leader>A :silent! lgrepadd<Space>
 
 
-Plug 'machakann/vim-highlightedyank'
 
-Plug 'bfredl/nvim-miniyank'
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 map <Leader>y <Plug>(miniyank-cycle)
@@ -482,7 +516,6 @@ map <Leader>y <Plug>(miniyank-cycle)
 tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 
-Plug 'tpope/vim-dadbod'
 
 
 command! -bar RefreshRC execute 'source ' . stdpath('config') . '/init.vim'
@@ -557,13 +590,6 @@ command! -nargs=+ Wikipedia call Wikipedia('', '<args>')<CR>
 nmap <silent> <Leader>/w :set opfunc=Wikipedia<CR>g@
 vmap <silent> <Leader>/w :<C-U>call Wikipedia('visual')<CR>
 
-
-Plug 'zoeesilcock/vim-caniuse'
-
-if has('mac')
-  Plug 'rizzatti/dash.vim'
-endif
-
 function! Keywordprg(word)
   if exists('*CocHasProvider') && CocHasProvider('hover')
     call CocAction('doHover')
@@ -584,8 +610,6 @@ command! -nargs=+ Keywordprg call Keywordprg('<args>')<CR>
 
 set keywordprg=:Keywordprg
 
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <A-TAB> coc#refresh()
@@ -653,8 +677,6 @@ nmap <silent> <C-d> <Plug>(coc-range-select)
 xmap <silent> <C-d> <Plug>(coc-range-select)
 
 
-Plug 'honza/vim-snippets'
-
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -697,8 +719,6 @@ function! s:toggle_auto_format()
 endfunction
 
 
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
 nnoremap <F8> :TagbarToggle<CR>
 
 nnoremap <Leader>] :tag<Space>
@@ -706,23 +726,11 @@ nnoremap <Leader>] :tag<Space>
 
 let g:polyglot_disabled = ['cryptol', 'markdown']
 
-
-Plug 'ap/vim-css-color'
-Plug 'amadeus/vim-convert-color-to'
-
-
-Plug 'chrisbra/csv.vim'
-
-
 augroup doc
   autocmd!
   autocmd BufReadPost *.doc,*.docx,*.odp,*.odt silent %!pandoc "%" --to=markdown -o /dev/stdout
   autocmd BufReadPost *.rtf silent %!textutil "%" -convert html -stdout | pandoc --from=html --to=markdown
 augroup END
-
-
-Plug 'slashmili/alchemist.vim'
-
 
 let g:tagbar_type_elm = {
     \ 'ctagstype' : 'ElmCustom',
@@ -744,15 +752,6 @@ let g:tagbar_type_elm = {
 \ }
 
 
-Plug 'mattn/emmet-vim'
-
-Plug 'mogelbrod/vim-jsonpath'
-
-
-if has('mac') && isdirectory("/Applications/Marked 2.app")
-  Plug 'itspriddle/vim-marked', { 'for': ['markdown'] }
-endif
-
 highlight htmlItalic cterm=italic gui=italic
 highlight htmlBold cterm=bold gui=bold
 highlight Comment cterm=italic gui=italic
@@ -760,13 +759,6 @@ highlight Comment cterm=italic gui=italic
 
 let g:rustfmt_autosave = 1
 
-Plug 'itspriddle/vim-shellcheck'
-Plug 'tpope/vim-scriptease'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neco-syntax'
-Plug 'neoclide/coc-neco'
-Plug 'sheerun/vim-polyglot'
-Plug 'wellle/visual-split.vim'
 
 set splitbelow
 set splitright
@@ -824,10 +816,6 @@ augroup terminal_insert
 augroup END
 
 
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-sleuth'
-
 let g:lion_squeeze_spaces = 1
 nnoremap <silent> <Leader>gl :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
 
@@ -852,9 +840,6 @@ set expandtab
 " Quick way to switch between tabs and spaces
 nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>
 
-Plug 'tpope/vim-commentary'
-
-call plug#end()
 
 " Toggle list windows
 " Adapted from https://github.com/tpope/vim-unimpaired/issues/97#issuecomment-371219365
