@@ -853,15 +853,6 @@ set expandtab
 command! Tabs set noexpandtab
 command! Spaces set expandtab
 
-" Insert whitespace in normal mode
-augroup whitespace
-  autocmd!
-  autocmd VimEnter,BufReadPost *
-        \ if &modifiable
-        \ | nnoremap <buffer> <CR> i<CR><Esc>
-        \ | nnoremap <buffer> \| i<Space><Esc>
-        \ | endif
-augroup END
 
 Plug 'tpope/vim-commentary'
 
