@@ -486,11 +486,6 @@ xmap ic <Plug>(coc-text-object-inner)
 omap ac <Plug>(coc-text-object-outer)
 xmap ac <Plug>(coc-text-object-outer)
 
-augroup gitremote
-  autocmd!
-  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
-augroup END
-
 
 nnoremap <silent> <Leader>d :CocList files --type=directory<CR>
 nnoremap <silent> <Leader>D :CocList files %:p:h --type=directory<CR>
@@ -773,12 +768,6 @@ nnoremap <Leader>] :tag<Space>
 let g:polyglot_disabled = ['cryptol']
 
 
-augroup crontab
-  autocmd!
-  autocmd filetype crontab setlocal nobackup nowritebackup
-augroup END
-
-
 Plug 'ap/vim-css-color'
 Plug 'amadeus/vim-convert-color-to'
 
@@ -816,62 +805,16 @@ let g:tagbar_type_elm = {
 \ }
 
 
-augroup git
-  autocmd!
-  autocmd BufNewFile,BufRead *.gitconfig* setfiletype gitconfig
-augroup END
-
-
 Plug 'mattn/emmet-vim'
 
-augroup checkgotmpl
-  autocmd!
-  autocmd FileType html
-        \ if filereadable(getcwd() . '/config.toml')
-        \ | set ft=gohtmltmpl
-        \ | endif
-augroup END
-
-
-augroup javascript
-  autocmd!
-  autocmd BufNewFile,BufRead *.es6 setfiletype javascript
-augroup END
-
-
 Plug 'mogelbrod/vim-jsonpath'
-
-augroup json
-  autocmd!
-  autocmd FileType json nnoremap <buffer> <silent> <expr> <leader>jp jsonpath#echo()
-  autocmd FileType json nnoremap <buffer> <silent> <expr> <leader>jg jsonpath#goto()
-  autocmd FileType json syntax match Comment +\/\/.\+$+
-augroup END
 
 
 let g:polyglot_disabled += ['markdown']
 
-augroup markdown
-  autocmd!
-augroup END
-
 if has('mac') && isdirectory("/Applications/Marked 2.app")
   Plug 'itspriddle/vim-marked', { 'for': ['markdown'] }
-  augroup markdown
-    autocmd FileType markdown,mkd,ghmarkdown nnoremap <silent><buffer> <Leader>/m :MarkedToggle<CR>
-  augroup END
 endif
-
-augroup markdown
-  autocmd FileType markdown,mkd,ghmarkdown,md imap <buffer> <C-f> *
-  autocmd FileType markdown,mkd,ghmarkdown,md imap <buffer> <C-d> **
-  autocmd FileType markdown,mkd,ghmarkdown,md vmap <buffer> <C-i> S*
-  autocmd FileType markdown,mkd,ghmarkdown,md vmap <buffer> <C-b> S*gvS*
-  autocmd FileType markdown,mkd,ghmarkdown,md inoremap <buffer> ;` ```<CR><CR>```<Up><Up>
-  autocmd FileType markdown,mkd,ghmarkdown,md setlocal spell spelllang=en_gb
-  autocmd ColorScheme * highlight htmlItalic cterm=italic gui=italic
-  autocmd ColorScheme * highlight htmlBold cterm=bold gui=bold
-augroup END
 
 highlight htmlItalic cterm=italic gui=italic
 highlight htmlBold cterm=bold gui=bold
@@ -881,23 +824,6 @@ let g:rustfmt_autosave = 1
 
 
 Plug 'itspriddle/vim-shellcheck'
-
-augroup shellscripting
-  autocmd!
-  autocmd BufNewFile,BufRead *.zshrc      setfiletype zsh
-  autocmd BufNewFile,BufRead *.zshenv     setfiletype zsh
-  autocmd BufNewFile,BufRead *.shrc       setfiletype sh
-  autocmd BufNewFile,BufRead *.bashrc*    setfiletype sh
-  " Don't use the broken keywordprg in vim-polyglot
-  autocmd FileType fish setlocal keywordprg=:Keywordprg
-augroup END
-
-
-augroup vimscripting
-  autocmd!
-  autocmd BufNewFile,BufRead *.vimrc* setfiletype vim
-augroup END
-
 Plug 'tpope/vim-scriptease'
 
 Plug 'Shougo/neco-vim'
