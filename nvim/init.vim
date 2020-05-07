@@ -25,6 +25,9 @@ augroup END
 set ignorecase
 set smartcase
 
+" Stop wrapping searches around end of file
+set nowrapscan
+
 " Make command line complete case insensitive
 set wildignorecase
 
