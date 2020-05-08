@@ -14,7 +14,7 @@ Plug 'fcpg/vim-kickfix'
 Plug 'glts/vim-textobj-comment'
 Plug 'honza/vim-snippets'
 Plug 'itspriddle/vim-shellcheck'
-Plug 'jbgutierrez/vim-partial'
+Plug 'jbgutierrez/vim-partial' " TODO implement more languages with g:partial_templates
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'junegunn/gv.vim'
 Plug 'kana/vim-textobj-entire'
@@ -136,7 +136,7 @@ augroup END
 
 
 " Run a command and return cursor (and last search) to original position
-function! Preserve(command)
+function! PreserveCursor(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
   let l = line(".")
@@ -148,149 +148,23 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
+command! -nargs=1 PreserveCursor call PreserveCursor(<f-args>)
+
 
 let g:python_host_prog = substitute(system('which python2'),'\n','','g')
 let g:python3_host_prog = substitute(system('which python3'),'\n','','g')
 
-
-set statusline=%{SetStatusColorsByMode(mode())}%1* " Hack(?) to change statusbar color based on mode
-set statusline+=\%{CocStatus()}                    " coc.nvim
-set statusline+=\ %<%F                             " File path
-set statusline+=\%{CurrentFunction()}              " coc.nvim
-set statusline+=\ [%n]                             " Buffer number
-set statusline+=\ %y                               " File type
-set statusline+=\ %m%r%w                           " Modified? Read-only? Preview?
-set statusline+=%=                                 " ------------------------------
-set statusline+=\ [(%l:%v)/%L]                     " Row:col number/total lines (%)
-set statusline+=\ [%{''.(&fenc!=''?&fenc:&enc).''} " File encoding
-set statusline+=\%{(&bomb?\",\ BOM\":\"\")}        " Byte order mark
-set statusline+=\%{(&paste?\",\ PASTE\":\"\")}]    " Paste mode
-set statusline+=\ [%{&spelllang}]                  " Language
-set statusline+=\ [%{mode()}]                      " Mode
-
-set noshowmode  " This is covered by the statusline now
-
-function! CocStatus()
-  if !exists('*coc#status') || coc#status() == ''
-    return ''
-  endif
-  return ' [' . coc#status() . ']'
-endfunction
-
-function! CurrentFunction()
-  let cf = get(b:, 'coc_current_function', '')
-  if cf == ''
-    return ''
-  endif
-  return ':' . cf . ''
-endfunction
-
-function! SetStatusColorsByMode(mode)
-  if a:mode=='n' || a:mode=='no'
-    highlight! link User1 StatusLineNormal
-  elseif a:mode=='i'
-    highlight! link User1 StatusLineInsert
-  elseif a:mode=='v' || a:mode=='V' || a:mode==''
-    highlight! link User1 StatusLineVisual
-  elseif a:mode=='t'
-    highlight! link User1 StatusLineTerm
-  else
-    highlight! link User1 StatusLine
-  endif
-  return ''
-endfunction
-
-
-function! SetTitlestring(...)
-  set title
-  if &buftype == 'terminal'
-    let &titlestring = b:term_title
-  else
-    let cwd = getcwd()
-    let fp = expand('%:p')
-    if fp == '' || fp =~? '^'.$VIMRUNTIME
-      let &titlestring = cwd
-    else
-      let &titlestring = fp
-    end
-  end
-endfunction
-
-let s:timerid = 0
-function! WatchForTermTitle()
-  if s:timerid > 0
-    call timer_stop(s:timerid)
-    let s:timerid = 0
-  end
-  if &buftype == 'terminal'
-    let s:timerid = timer_start(5000, 'SetTitlestring', {'repeat': -1})
-  end
-endfunction
-
-function! StopWatchingForTermTitle()
-  if s:timerid > 0
-    call timer_stop(s:timerid)
-    let s:timerid = 0
-  end
-endfunction
-
-set t_ts=k
-set t_fs=\
-
-augroup titlebar_naming
-  autocmd!
-  autocmd VimLeave * :set t_ts=k\
-  autocmd BufEnter * :call SetTitlestring()
-  autocmd BufEnter * :call WatchForTermTitle()
-  autocmd BufLeave * :call StopWatchingForTermTitle()
-augroup end
-
-
-let g:colors_name = 'base16-strange_harmony'
-
-function! SetLight()
-  set background=light
-endfunction
-
-function! SetDark()
-  set background=dark
-endfunction
-
-command! SetDark call SetDark()
-command! SetLight call SetLight()
-
-if join(readfile($dataDir . "/dark_mode")) == "true"
-  SetDark
-else
-  SetLight
-endif
-
-function! ReverseBackground()
-  if &background=="light"
-    SetDark
-  else
-    SetLight
-  endif
-endfunction
-
-command! ReverseBackground call ReverseBackground()
-
-nnoremap <silent> <F11> :ReverseBackground<CR>
-
-
+call statusline#init()
+call titlebar#init()
+call colors#init()
 
 set spelllang=en_gb
 
 let g:kickfix_zebra=0
 
-
-
 let g:netrw_preview=1 " Vertical preview
 
 cmap w!! w suda://%
-
-let g:partial_templates={}
-
 
 nnoremap <silent> <F5> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
@@ -317,7 +191,6 @@ map <silent> \ge <Plug>CamelCaseMotion_ge
 
 
 set inccommand=nosplit
-
 function! CycleIncCommand()
   if &inccommand == 'nosplit'
     set inccommand=split
@@ -328,8 +201,7 @@ function! CycleIncCommand()
   endif
 endfunction
 
-" Follows vim-unimpaired’s *c*hange *o*ption format
-nmap <silent><expr> coS CycleIncCommand()
+nnoremap <silent><expr> yoS CycleIncCommand()
 
 
 
@@ -399,27 +271,6 @@ nnoremap <silent> <L :try \| while 1 > 0 \| silent lolder \| endwhile \| catch /
 nnoremap <silent> >L :try \| while 1 > 0 \| silent lnewer \| endwhile \| catch // \| endtry<CR>
 
 
-function! HelpToggle()
-  let helpIsOpen = 0
-  let currentWindow = 0
-  while (winbufnr(currentWindow) > -1)
-    if (getbufvar(winbufnr(currentWindow), '&buftype') ==# 'help')
-      let helpIsOpen = 1
-      break
-    endif
-    let currentWindow += 1
-  endwhile
-  if helpIsOpen
-    helpclose
-  elseif &ft == 'vim'
-    execute 'help ' . expand('<cword>')
-  else
-    Helptags
-  endi
-endfunction
-
-nnoremap <silent> <Leader>? :call HelpToggle()<CR>
-
 " When using CTRL-C key to leave insert mode, it does not trigger the autocmd InsertLeave
 inoremap <c-c> <ESC>
 
@@ -474,30 +325,6 @@ nnoremap <silent> <Leader>ta :CocList tags<CR>
 nnoremap <silent> <Leader>b :CocList buffers<CR>
 nnoremap <silent> <Leader>B :CocList lines<CR>
 
-function! CreateFile(path)
-  if type(a:path) == v:t_dict
-    if a:path["name"] == "files"
-      call CreateFile(a:path["targets"])
-    else
-      return
-    end
-  elseif type(a:path) == v:t_list
-    for i in a:path
-      call CreateFile(i.location.uri)
-    endfor
-  else
-    let filename = input('Enter filename: ')
-    let fullpath = fnamemodify(a:path, ':p:h') . '/' . filename
-    execute "normal \<Esc>:edit " . fullpath . "\<CR>"
-  endif
-endfunction
-
-function! PopulateArgs(ctx)
-  let paths = map(a:ctx["targets"], 'v:val["location"]["uri"]')
-  execute "normal \<Esc>:args " . join(paths, ' ') . "\<CR>"
-endfunction
-
-
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
@@ -506,8 +333,6 @@ nnoremap <Leader>A :silent! grepadd<Space>
 nnoremap <Leader><Leader>a :silent! lgrep<Space>
 nnoremap <Leader><Leader>A :silent! lgrepadd<Space>
 
-
-
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 map <Leader>y <Plug>(miniyank-cycle)
@@ -515,14 +340,10 @@ map <Leader>y <Plug>(miniyank-cycle)
 " Alt-R to paste buffer in terminal mode
 tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
+command! -bar ReloadConfig execute 'source ' . stdpath('config') . '/init.vim'
 
-
-
-command! -bar RefreshRC execute 'source ' . stdpath('config') . '/init.vim'
-
-nnoremap <silent> <Leader>rc :RefreshRC<CR>
-nnoremap <silent> <Leader>pi :RefreshRC \| PlugInstall<CR>
-nnoremap <silent> <Leader>pc :RefreshRC \| PlugClean!<CR>
+nnoremap <silent> <Leader>pi :ReloadConfig \| PlugInstall<CR>
+nnoremap <silent> <Leader>pc :ReloadConfig \| PlugClean!<CR>
 nnoremap <silent> <Leader>pu :PlugUpdate<CR>
 nnoremap <silent> <Leader>pU :PlugUpgrade<CR>
 nnoremap <silent> <Leader>cu :CocUpdate<CR>
@@ -634,7 +455,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Remap for rename current word
-nmap <Leader>rn <Plug>(coc-rename)
+nmap <Leader>r <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <silent> <Leader>f  <Plug>(coc-format-selected)
@@ -833,51 +654,16 @@ function! SetTab(tabstop)
 endfunction
 
 " Quick way to change tab stops. Add bang to reformat file
-command! -bang -nargs=1 Stab call SetTab(<f-args>) | call Preserve(<bang>0 ? 'normal gg=G' : '')
+command! -bang -nargs=1 Stab call SetTab(<f-args>) | call PreserveCursor(<bang>0 ? 'normal gg=G' : '')
 
 " Spaces by default
 set expandtab
+" These have to be put after plug#end to ensure that they override unimpaired mappings
+
 " Quick way to switch between tabs and spaces
 nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>
 
-
-" Toggle list windows
-" Adapted from https://github.com/tpope/vim-unimpaired/issues/97#issuecomment-371219365
-
-function! QuickFix_toggle()
-  for i in range(1, winnr('$'))
-    let bnum = winbufnr(i)
-    if getbufvar(bnum, '&buftype') == 'quickfix'
-      cclose
-      return
-    endif
-  endfor
-  copen
-endfunction
-
-
-function! s:BufferCount() abort
-    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-endfunction
-function! Location_toggle()
-  " https://github.com/Valloric/ListToggle/blob/master/plugin/listtoggle.vim
-  let buffer_count_before = s:BufferCount()
-
-  " Location list can't be closed if there's cursor in it, so we need
-  " to call lclose twice to move cursor to the main pane
-  silent! lclose
-  silent! lclose
-
-  if s:BufferCount() == buffer_count_before
-    silent! lopen
-    if s:BufferCount() == buffer_count_before
-      echo 'No items in location list'
-    endif
-  endif
-endfunction
-
-" These have to be put after plug#end to ensure that they override unimpaired mappings
-nnoremap <silent> yoq :call QuickFix_toggle()<CR>
-nnoremap <silent> yol :call Location_toggle()<CR>
+nnoremap <silent> yoq :call toggle#quickfixList()<CR>
+nnoremap <silent> yol :call toggle#locationList()<CR>
 
 " vim: tabstop=2 softtabstop=2 shiftwidth=2

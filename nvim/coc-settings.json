@@ -15,13 +15,13 @@
     "<C-v>": "action:vsplit",
     "<C-x>": "action:split",
     "<C-t>": "action:tabe",
-    "<C-e>": "call:CreateFile",
-    "<C-a>": "call:PopulateArgs",
+    "<C-e>": "call:coc#custom_actions#create_file",
+    "<C-a>": "call:coc#custom_actions#populate_args",
     "<C-l>": "do:toggle"
   },
   "list.normalMappings": {
-    "e": "call:CreateFile",
-    "a": "call:PopulateArgs"
+    "e": "call:coc#custom_actions#create_file",
+    "a": "call:coc#custom_actions#populate_args"
   },
   "list.source.files.command": "fd",
   "list.source.files.args": [
