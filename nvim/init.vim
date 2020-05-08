@@ -252,6 +252,8 @@ nnoremap <silent> <Leader>W :wa<CR>
 nmap § :%s//g<LEFT><LEFT>
 vmap § :s//g<LEFT><LEFT>
 
+" https://stackoverflow.com/questions/4668623/show-count-of-matches-in-vim#4671112
+nnoremap ,c :%s/<C-R>=&ignorecase ? '\c' : '\C'<CR><C-R>///gn<CR>
 
 nnoremap <silent> <q :<c-u>for _ in range(v:count1) \| colder \| endfor<CR>
 nnoremap <silent> >q :<c-u>for _ in range(v:count1) \| cnewer \| endfor<CR>
