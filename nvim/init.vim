@@ -79,19 +79,13 @@ set lazyredraw
 set termguicolors
 
 " Show line numbers except in terminals
-set number
-set relativenumber
+set number relativenumber
 augroup numbering
-  autocmd!
-  autocmd TermOpen * set nonumber
+  autocmd! TermOpen * set nonumber
 augroup END
 
 " Use smart case sensitivity in searches
-set ignorecase
-set smartcase
-
-" Stop wrapping searches around end of file
-set nowrapscan
+set ignorecase smartcase
 
 " Make command line complete case insensitive
 set wildignorecase
@@ -171,10 +165,8 @@ let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_SetFocusWhenToggle = 0
 
-set undofile                             " Store undos in a file
-set undolevels=1000                      " Maximum number of changes that can be undone
-set undoreload=10000                     " Maximum number lines to save for undo on a buffer reload
-set viminfo='1000,f1,<500                " Keep marks for 1000 files, store global marks, limit viminfo to 500 lines
+set undofile undolevels=1000 undoreload=1000 " Store 1000 undos in a file and keep them on buffer reload
+set viminfo='1000,f1,<500 " Keep marks for 1000 files, store global marks, limit viminfo to 500 lines
 
 
 
@@ -504,12 +496,6 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
 
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
@@ -541,7 +527,6 @@ endfunction
 
 
 nnoremap <F8> :TagbarToggle<CR>
-
 nnoremap <Leader>] :tag<Space>
 
 
@@ -577,12 +562,9 @@ highlight htmlItalic cterm=italic gui=italic
 highlight htmlBold cterm=bold gui=bold
 highlight Comment cterm=italic gui=italic
 
-
 let g:rustfmt_autosave = 1
 
-
-set splitbelow
-set splitright
+set splitbelow splitright
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -640,9 +622,8 @@ augroup END
 let g:lion_squeeze_spaces = 1
 nnoremap <silent> <Leader>gl :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
 
-set listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
-set list                      " Display whitespace
-set breakindent               " Visually indent wrapped lines to match whitespace
+set list listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
+set breakindent " Visually indent wrapped lines to match whitespace
 
 " Set all the tab stops to the same value
 function! SetTab(tabstop)
