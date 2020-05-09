@@ -2,6 +2,8 @@ function titlebar#init()
   set t_ts=k
   set t_fs=\
 
+  let s:timerid = 0
+
   augroup titlebar_naming
     autocmd!
     autocmd VimLeave * :set t_ts=k\
@@ -26,14 +28,13 @@ function s:SetTitlestring(...)
   end
 endfunction
 
-let s:timerid = 0
 function s:WatchForTermTitle()
   if s:timerid > 0
     call timer_stop(s:timerid)
     let s:timerid = 0
   end
   if &buftype == 'terminal'
-    let s:timerid = timer_start(5000, 'SetTitlestring', {'repeat': -1})
+    let s:timerid = timer_start(5000, funcref('s:SetTitlestring'), {'repeat': -1})
   end
 endfunction
 
