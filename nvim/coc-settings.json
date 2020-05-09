@@ -6,6 +6,11 @@
       "filetypes": [ "elm" ],
       "rootPatterns": [ "elm.json" ],
       "initializationOptions": { "elmAnalyseTrigger": "change" }
+    },
+    "efm": {
+      "command": "efm-langserver",
+      "args": [],
+      "filetypes": ["vim", "eruby", "markdown"]
     }
   },
   "codeLens.enable": true,

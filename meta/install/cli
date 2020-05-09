@@ -38,6 +38,7 @@ if command -s npm > /dev/null
     hostile \
     htmlhint \
     machine-share \
+    markdownlint \
     ndb \
     netlify-cli \
     node-gyp \
@@ -65,6 +66,7 @@ if command -s go > /dev/null
   mkdir -p "$dataDir/go"
   go get -u github.com/arial7/golorem
   go get -u github.com/mrtazz/checkmake
+  go get -u github.com/mattn/efm-langserver
 else
   echo 'Skipped go setup and go packages' >&2
 end
@@ -101,7 +103,8 @@ if command -s pip3  > /dev/null
   pip3 install --user \
     ansible \
     ansible-lint \
-    yamllint
+    yamllint \
+    vint
 else
   echo 'Skipped pip3 packages' >&2
 end
@@ -119,7 +122,8 @@ and sudo chown -R $USER /Library/Ruby/Gems
 if command -s gem > /dev/null
   gem install --conservative \
     awesome_print \
-    pry
+    pry \
+    htmlbeautifier
 else
   echo 'Skipped Ruby packages' >&2
 end

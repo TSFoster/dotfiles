@@ -1,7 +1,5 @@
 call plug#begin(stdpath('config') . '/plugged')
 
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neco-vim'
 Plug 'amadeus/vim-convert-color-to'
 Plug 'ap/vim-css-color'
 Plug 'artnez/vim-wipeout'
@@ -31,7 +29,6 @@ Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'mbbill/undotree'
 Plug 'mogelbrod/vim-jsonpath'
-Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'reedes/vim-textobj-quote'
 Plug 'sheerun/vim-polyglot'
