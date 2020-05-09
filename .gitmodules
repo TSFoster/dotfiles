@@ -1,0 +1,3 @@
+[submodule "alfred"]
+	path = alfred
+	url = git@github.com:TSFoster/alfred.git
