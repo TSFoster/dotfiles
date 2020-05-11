@@ -1,6 +1,5 @@
 call plug#begin(stdpath('config') . '/plugged')
 
-Plug 'amadeus/vim-convert-color-to'
 Plug 'ap/vim-css-color'
 Plug 'artnez/vim-wipeout'
 Plug 'bfredl/nvim-miniyank'
@@ -8,11 +7,9 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'chrisbra/csv.vim'
 Plug 'dbmrq/vim-dialect'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fcpg/vim-kickfix'
 Plug 'glts/vim-textobj-comment'
 Plug 'honza/vim-snippets'
 Plug 'itspriddle/vim-shellcheck'
-Plug 'jbgutierrez/vim-partial' " TODO implement more languages with g:partial_templates
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'junegunn/gv.vim'
 Plug 'kana/vim-textobj-entire'
@@ -46,7 +43,6 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
@@ -149,8 +145,6 @@ call colors#init()
 
 set spelllang=en_gb
 
-let g:kickfix_zebra=0
-
 let g:netrw_preview=1 " Vertical preview
 
 nnoremap <silent> <F5> :UndotreeToggle<CR>
@@ -173,6 +167,8 @@ map <silent> \b <Plug>CamelCaseMotion_b
 map <silent> \e <Plug>CamelCaseMotion_e
 map <silent> \ge <Plug>CamelCaseMotion_ge
 
+
+let g:kickfix_zebra=0
 
 
 set inccommand=nosplit
@@ -631,6 +627,7 @@ augroup terminal_insert
   autocmd TermOpen * if &buftype == 'terminal' | :startinsert | endif
 augroup END
 
+let g:partial_templates = {} " TODO add defitions of how to break out code into partials
 
 let g:lion_squeeze_spaces = 1
 nnoremap <silent> <Leader>gl :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
@@ -652,7 +649,6 @@ command! -bang -nargs=1 Stab call SetTab(<f-args>) | call PreserveCursor(<bang>0
 
 " Spaces by default
 set expandtab
-" These have to be put after plug#end to ensure that they override unimpaired mappings
 
 " Quick way to switch between tabs and spaces
 nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>

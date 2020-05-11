@@ -1,3 +1,18 @@
 [submodule "alfred"]
 	path = alfred
 	url = git@github.com:TSFoster/alfred.git
+[submodule "nvim/vim-convert-color-to"]
+	path = nvim/pack/main/opt/vim-convert-color-to
+	url = https://github.com/amadeus/vim-convert-color-to
+	ignore = dirty
+[submodule "nvim/vim-unimpaired"]
+	path = nvim/pack/main/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+	ignore = dirty
+[submodule "nvim/vim-kickfix"]
+	path = nvim/pack/main/start/vim-kickfix
+	url = https://github.com/fcpg/vim-kickfix
+	ignore = dirty
+[submodule "nvim/vim-partial"]
+	path = nvim/pack/trialling/start/vim-partial
+	url = https://github.com/jbgutierrez/vim-partial
