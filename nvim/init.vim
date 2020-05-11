@@ -20,7 +20,6 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-user'
-Plug 'lambdalisue/suda.vim'
 Plug 'lucapette/vim-textobj-underscore'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
@@ -153,8 +152,6 @@ set spelllang=en_gb
 let g:kickfix_zebra=0
 
 let g:netrw_preview=1 " Vertical preview
-
-cmap w!! w suda://%
 
 nnoremap <silent> <F5> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
