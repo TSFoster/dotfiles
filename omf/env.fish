@@ -35,11 +35,6 @@ if command -s nvim > /dev/null
   else
     set --export EDITOR abduco -A nvim-\(random\) nvim
   end
-  if [ "$NVIM_LISTEN_ADDRESS" ]; and [ -z "$COLORTERM" ] # for some reason $COLORTERM is not set in nvim term://
-    function man
-      nvr +'tabe +Man\\ '$argv[1]'|only'
-    end
-  end
 else
   set --export EDITOR vim
 end
