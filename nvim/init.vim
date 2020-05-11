@@ -51,7 +51,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
-Plug 'zoeesilcock/vim-caniuse'
 
 if has('mac')
   if isdirectory("/Applications/Marked 2.app")
@@ -405,6 +404,13 @@ endfunction
 command! -nargs=+ Dict call Dict('', '<args>')<CR>
 nmap <silent> <Leader>/d :set opfunc=Dict<CR>g@
 vmap <silent> <Leader>/d :<C-U>call Dict('visual')<CR>
+
+function! CanIUse(...)
+  call function('SearchCommand', ['https://caniuse.com/#search='] + a:000)()
+endfunction
+command! -nargs=+ CanIUse call CanIUse('', '<args>')<CR>
+nmap <silent> <Leader>/c :set opfunc=CanIUse<CR>g@
+vmap <silent> <Leader>/c :<C-U>call CanIUse('visual')<CR>
 
 function! Wikipedia(...)
   call function('SearchCommand', ['http://en.wikipedia.org/wiki/Special:Search?search='] + a:000)()
