@@ -16,3 +16,15 @@
 [submodule "nvim/vim-partial"]
 	path = nvim/pack/trialling/start/vim-partial
 	url = https://github.com/jbgutierrez/vim-partial
+[submodule "nvim/vim-commentary"]
+	path = nvim/pack/main/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "nvim/vim-fugitive"]
+	path = nvim/pack/main/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "nvim/vim-scriptease"]
+	path = nvim/pack/main/opt/vim-scriptease
+	url = https://github.com/tpope/vim-scriptease
+[submodule "nvim/vim-repeat"]
+	path = nvim/pack/main/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat
