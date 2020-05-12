@@ -27,6 +27,7 @@ set --export PAGER less
 
 # If nvim’s been installed, let’s assume nvr and abduco have been, too
 if command -s nvim > /dev/null
+  set --export VIMPACK_BUNDLE main
   set --export ABDUCO_CMD nvim
   alias abduco "abduco -e '^z'"
   if [ "$NVIM_LISTEN_ADDRESS" ]
