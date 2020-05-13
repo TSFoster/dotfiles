@@ -1,2 +1,2 @@
-abbr -a an ansible
-abbr -a ap ansible-playbook
+abbr --add --global an ansible
+abbr --add --global ap ansible-playbook

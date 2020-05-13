@@ -1,2 +1,2 @@
-abbr -a qmv qmv --editor=\"\$EDITOR\"
-abbr -a qcp qcp --editor=\"\$EDITOR\"
+abbr --add --global qmv qmv --editor=\"\$EDITOR\"
+abbr --add --global qcp qcp --editor=\"\$EDITOR\"

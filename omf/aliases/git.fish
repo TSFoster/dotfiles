@@ -1,13 +1,13 @@
 alias git hub
-abbr -a g git
+abbr --add --global g git
 
-abbr -a gs git status
-abbr -a gd git diff
-abbr -a gdc git diff --cached
-abbr -a gst git stash
-abbr -a gsp git stash pop
-abbr -a gca git commit --amend
-abbr -a gcane git commit --amend --no-edit
+abbr --add --global gs git status
+abbr --add --global gd git diff
+abbr --add --global gdc git diff --cached
+abbr --add --global gst git stash
+abbr --add --global gsp git stash pop
+abbr --add --global gca git commit --amend
+abbr --add --global gcane git commit --amend --no-edit
 
 function ga
   if [ (count $argv) -eq 0 ]

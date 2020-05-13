@@ -5,8 +5,8 @@ function c
         pushd $argv
     end
 end
-abbr -a up 'c ..'
-abbr -a -- - 'c -'
+abbr --add --global up 'c ..'
+abbr --add --global -- - 'c -'
 
-abbr -a l ls
-abbr -a la 'ls -A'
+abbr --add --global l ls
+abbr --add --global la 'ls -A'

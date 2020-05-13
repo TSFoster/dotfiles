@@ -1,1 +1,1 @@
-abbr -a 1pp 1pass -p
+abbr --add --global 1pp 1pass -p
