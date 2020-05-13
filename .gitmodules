@@ -37,3 +37,7 @@
 	path = nvim/pack/main/start/gv.vim
 	url = https://github.com/junegunn/gv.vim
 	ignore = dirty
+[submodule "nvim/vim-textobj-variable-segment"]
+	path = nvim/pack/main/start/vim-textobj-variable-segment
+	url = https://github.com/Julian/vim-textobj-variable-segment
+	ignore = dirty
