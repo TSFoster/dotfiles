@@ -69,6 +69,7 @@ function vimpack --description 'Functions for working with vim’s native packag
       for dir in $dirs
         cd (dirname $dir)
         command git pull origin master &> /tmp/vimpack-update-(random) &
+        while [ (count (jobs)) -ge 10 ]; sleep 0.5; end
       end
 
       await
