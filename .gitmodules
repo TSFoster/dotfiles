@@ -12,18 +12,23 @@
 [submodule "nvim/vim-partial"]
 	path = nvim/pack/trialling/start/vim-partial
 	url = https://github.com/jbgutierrez/vim-partial
+	ignore = dirty
 [submodule "nvim/vim-commentary"]
 	path = nvim/pack/main/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+	ignore = dirty
 [submodule "nvim/vim-fugitive"]
 	path = nvim/pack/main/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+	ignore = dirty
 [submodule "nvim/vim-scriptease"]
 	path = nvim/pack/main/opt/vim-scriptease
 	url = https://github.com/tpope/vim-scriptease
+	ignore = dirty
 [submodule "nvim/vim-repeat"]
 	path = nvim/pack/main/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+	ignore = dirty
 [submodule "nvim/vim-convert-color-to"]
 	path = nvim/pack/main/opt/vim-convert-color-to
 	url = https://github.com/amadeus/vim-convert-color-to
@@ -31,3 +36,4 @@
 [submodule "nvim/gv.vim"]
 	path = nvim/pack/main/start/gv.vim
 	url = https://github.com/junegunn/gv.vim
+	ignore = dirty

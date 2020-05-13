@@ -40,6 +40,12 @@ function vimpack --description 'Functions for working with vim’s native packag
 
       [ -d doc ]; and nvim -u /dev/null -es +'helptags doc' +q
 
+      cd $HOME/.config
+
+      cp .gitmodules gitmodules.bak
+      awk /(string replace --all '/' '\\/' $url)/'{print;print "\tignore = dirty";next}1' gitmodules.bak > .gitmodules
+      and rm gitmodules.bak
+
       cd $owd
     case update
       set -e argv[1]
