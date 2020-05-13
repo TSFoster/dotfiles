@@ -18,7 +18,7 @@ if [ -d $dotfilesDir ]
 end
 
 [ -d $dotfilesDir ]
-or git clone https://github.com/TSFoster/dotfiles.git $dotfilesDir
+or git clone --recurse-submodules --jobs 10 https://github.com/TSFoster/dotfiles.git $dotfilesDir
 cd $dotfilesDir
 
 [ (git remote get-url origin) = 'https://github.com/TSFoster/dotfiles.git' ]
