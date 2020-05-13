@@ -28,3 +28,6 @@
 	path = nvim/pack/main/opt/vim-convert-color-to
 	url = https://github.com/amadeus/vim-convert-color-to
 	ignore = dirty
+[submodule "nvim/gv.vim"]
+	path = nvim/pack/main/start/gv.vim
+	url = https://github.com/junegunn/gv.vim
