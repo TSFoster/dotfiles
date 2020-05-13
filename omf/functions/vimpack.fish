@@ -41,6 +41,36 @@ function vimpack --description 'Functions for working with vim’s native packag
       [ -d doc ]; and nvim -u /dev/null -es +'helptags doc' +q
 
       cd $owd
+    case update
+      set -e argv[1]
+      set -l dirs
+
+      if count $argv > /dev/null
+        set dirs $HOME/.config/nvim/pack/*/{opt,start}/$argv/.git
+      else
+        set dirs $HOME/.config/nvim/pack/*/{opt,start}/*/.git
+      end
+
+      if not count $dirs > /dev/null
+        echo 'No plugins found' >&2
+        return 1
+      end
+
+      set -l owd (pwd)
+
+      count /tmp/vimpack-update-* > /dev/null; and rm /tmp/vimpack-update-*
+
+      for dir in $dirs
+        cd (dirname $dir)
+        command git pull origin master &> /tmp/vimpack-update-(random) &
+      end
+
+      await
+
+      cat /tmp/vimpack-update-*
+      rm /tmp/vimpack-update-*
+
+      cd $owd
     case '*'
       echo Command $argv[1] not recognised >&2
       return 1
