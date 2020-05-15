@@ -1,5 +1,8 @@
 if exists("b:did_ftplugin") | finish | endif
 
+packadd vim-css-color
+packadd vim-jsonpath
+
 nnoremap <buffer> <silent> <expr> <Leader>jp jsonpath#echo()
 nnoremap <buffer> <silent> <expr> <Leader>jg jsonpath#goto()
 

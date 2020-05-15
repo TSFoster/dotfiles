@@ -1,30 +1,16 @@
 call plug#begin(stdpath('config') . '/plugged')
 
-Plug 'ap/vim-css-color'
-Plug 'artnez/vim-wipeout'
 Plug 'bfredl/nvim-miniyank'
 Plug 'bkad/CamelCaseMotion'
-Plug 'chrisbra/csv.vim'
 Plug 'dbmrq/vim-dialect'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'glts/vim-textobj-comment'
 Plug 'honza/vim-snippets'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-syntax'
-Plug 'kana/vim-textobj-user'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'machakann/vim-highlightedyank'
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
-Plug 'mbbill/undotree'
-Plug 'mogelbrod/vim-jsonpath'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'reedes/vim-textobj-quote'
 Plug 'sheerun/vim-polyglot'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'slashmili/alchemist.vim'
@@ -38,8 +24,22 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
+
+" Textobjects
+Plug 'wellle/targets.vim'
+Plug 'glts/vim-textobj-comment'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-user'
+Plug 'reedes/vim-textobj-quote'
+Plug 'sgur/vim-textobj-parameter'
+
+" TODO investigate https://github.com/tracyone/neomake-multiprocess and https://github.com/neomake/neomake
+" TODO investigate https://github.com/coachshea/neo-pipe
+" TODO investigate https://github.com/tpope/vim-projectionist
 
 if has('mac')
   if isdirectory("/Applications/Marked 2.app")

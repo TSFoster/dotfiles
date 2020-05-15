@@ -41,3 +41,27 @@
 	path = nvim/pack/main/start/vim-textobj-variable-segment
 	url = https://github.com/Julian/vim-textobj-variable-segment
 	ignore = dirty
+[submodule "nvim/vim-css-color"]
+	path = nvim/pack/main/opt/vim-css-color
+	url = https://github.com/ap/vim-css-color
+	ignore = dirty
+[submodule "nvim/csv.vim"]
+	path = nvim/pack/main/opt/csv.vim
+	url = https://github.com/chrisbra/csv.vim
+	ignore = dirty
+[submodule "nvim/vim-highlightedyank"]
+	path = nvim/pack/main/start/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank
+	ignore = dirty
+[submodule "nvim/emmet-vim"]
+	path = nvim/pack/main/opt/emmet-vim
+	url = https://github.com/mattn/emmet-vim
+	ignore = dirty
+[submodule "nvim/undotree"]
+	path = nvim/pack/main/start/undotree
+	url = https://github.com/mbbill/undotree
+	ignore = dirty
+[submodule "nvim/vim-jsonpath"]
+	path = nvim/pack/main/start/vim-jsonpath
+	url = https://github.com/mogelbrod/vim-jsonpath
+	ignore = dirty
