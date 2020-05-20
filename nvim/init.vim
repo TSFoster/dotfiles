@@ -1,6 +1,5 @@
 call plug#begin(stdpath('config') . '/plugged')
 
-Plug 'bfredl/nvim-miniyank'
 Plug 'bkad/CamelCaseMotion'
 Plug 'dbmrq/vim-dialect'
 Plug 'editorconfig/editorconfig-vim'
@@ -12,18 +11,13 @@ Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
-Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-dadbod'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
 Plug 'wellle/visual-split.vim'
 
 " Textobjects
@@ -35,7 +29,6 @@ Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
-Plug 'sgur/vim-textobj-parameter'
 
 " TODO investigate https://github.com/tracyone/neomake-multiprocess and https://github.com/neomake/neomake
 " TODO investigate https://github.com/coachshea/neo-pipe
@@ -156,10 +149,7 @@ nmap g<Left> <Plug>(swap-prev)
 nmap g<Right> <Plug>(swap-next)
 nmap gs <Plug>(swap-interactive)
 
-map <silent> \w <Plug>CamelCaseMotion_w
-map <silent> \b <Plug>CamelCaseMotion_b
-map <silent> \e <Plug>CamelCaseMotion_e
-map <silent> \ge <Plug>CamelCaseMotion_ge
+let g:camelcasemotion_key = '\'
 
 
 let g:kickfix_zebra=0
@@ -321,9 +311,14 @@ nnoremap <Leader>A :silent! grepadd<Space>
 nnoremap <Leader><Leader>a :silent! lgrep<Space>
 nnoremap <Leader><Leader>A :silent! lgrepadd<Space>
 
+" TODO: Consider removing miniyank
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 map <Leader>y <Plug>(miniyank-cycle)
+map <Leader>Y <Plug>(miniyank-cycleback)
+map <Leader>c <Plug>(miniyank-tochar)
+map <Leader>l <Plug>(miniyank-toline)
+
 
 " Alt-R to paste buffer in terminal mode
 tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
@@ -482,11 +477,26 @@ endfunction
 " Fix autofix problem of current line
 nmap <Leader>cf  <Plug>(coc-fix-current)
 
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
+" Create mappings for function and class text objects, requires document symbols feature of languageserver.
+xmap <silent> if <Plug>(coc-funcobj-i)
+xmap <silent> af <Plug>(coc-funcobj-a)
+omap <silent> if <Plug>(coc-funcobj-i)
+omap <silent> af <Plug>(coc-funcobj-a)
+xmap <silent> ic <Plug>(coc-classobj-i)
+xmap <silent> ac <Plug>(coc-classobj-a)
+omap <silent> ic <Plug>(coc-classobj-i)
+omap <silent> ac <Plug>(coc-classobj-a)
+
+" Mappings for argument text object
+omap <silent> aa <Plug>SidewaysArgumentTextobjA
+xmap <silent> aa <Plug>SidewaysArgumentTextobjA
+omap <silent> ia <Plug>SidewaysArgumentTextobjI
+xmap <silent> ia <Plug>SidewaysArgumentTextobjI
+
+nnoremap <Leader>< :SidewaysLeft<CR>
+nnoremap <Leader>> :SidewaysRight<CR>
+nnoremap <A-b> :SidewaysJumpLeft<CR>
+nnoremap <A-w> :SidewaysJumpRight<CR>
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <C-d> <Plug>(coc-range-select)
@@ -577,9 +587,6 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
-
-nnoremap <A-w> :Windows<CR>
-tnoremap <A-w> <C-\><C-n>:Windows<CR>
 
 tnoremap ;; <C-\><C-n>:
 tnoremap jj <C-\><C-n>

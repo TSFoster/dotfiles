@@ -65,3 +65,31 @@
 	path = nvim/pack/main/start/vim-jsonpath
 	url = https://github.com/mogelbrod/vim-jsonpath
 	ignore = dirty
+[submodule "nvim/fugitive-gitlab.vim"]
+	path = nvim/pack/main/start/fugitive-gitlab.vim
+	url = https://github.com/shumphrey/fugitive-gitlab.vim
+	ignore = dirty
+[submodule "nvim/vim-rhubarb"]
+	path = nvim/pack/main/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb
+	ignore = dirty
+[submodule "nvim/vim-eunuch"]
+	path = nvim/pack/main/start/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch
+	ignore = dirty
+[submodule "nvim/vim-abolish"]
+	path = nvim/pack/main/start/vim-abolish
+	url = https://github.com/tpope/vim-abolish
+	ignore = dirty
+[submodule "nvim/vim-vinegar"]
+	path = nvim/pack/main/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar
+	ignore = dirty
+[submodule "nvim/sideways.vim"]
+	path = nvim/pack/main/start/sideways.vim
+	url = https://github.com/AndrewRadev/sideways.vim
+	ignore = dirty
+[submodule "nvim/nvim-miniyank"]
+	path = nvim/pack/main/start/nvim-miniyank
+	url = https://github.com/bfredl/nvim-miniyank
+	ignore = dirty
