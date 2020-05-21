@@ -305,6 +305,8 @@ tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 command! -bar ReloadConfig execute 'source ' . stdpath('config') . '/init.vim'
 
+set path+=**
+
 nnoremap <silent> <Leader>pi :ReloadConfig \| PlugInstall<CR>
 nnoremap <silent> <Leader>pc :ReloadConfig \| PlugClean!<CR>
 nnoremap <silent> <Leader>pu :PlugUpdate<CR>
