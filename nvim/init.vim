@@ -106,22 +106,6 @@ augroup cursor_position
 augroup END
 
 
-" Run a command and return cursor (and last search) to original position
-function! PreserveCursor(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-command! -nargs=1 PreserveCursor call PreserveCursor(<f-args>)
-
-
 let g:python_host_prog = substitute(system('which python2'),'\n','','g')
 let g:python3_host_prog = substitute(system('which python3'),'\n','','g')
 
@@ -645,7 +629,7 @@ function! SetTab(tabstop)
 endfunction
 
 " Quick way to change tab stops. Add bang to reformat file
-command! -bang -nargs=1 Stab call SetTab(<f-args>) | call PreserveCursor(<bang>0 ? 'normal gg=G' : '')
+command! -bang -nargs=1 Stab call SetTab(<f-args>) | call cursor#preserve(<bang>0 ? 'normal gg=G' : '')
 
 " Spaces by default
 set expandtab
