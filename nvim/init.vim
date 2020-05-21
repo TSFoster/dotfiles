@@ -32,6 +32,7 @@ Plug 'reedes/vim-textobj-quote'
 " TODO investigate https://github.com/tracyone/neomake-multiprocess and https://github.com/neomake/neomake
 " TODO investigate https://github.com/coachshea/neo-pipe
 " TODO investigate https://github.com/tpope/vim-projectionist
+" TODO make own collection of snippets (crib from honza/vim-snippets)
 
 if has('mac')
   if isdirectory("/Applications/Marked 2.app")

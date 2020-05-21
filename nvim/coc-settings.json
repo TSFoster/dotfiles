@@ -1,5 +1,8 @@
 {
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "snippets.ultisnips.directories": [
+    "~/.config/snippets/UltiSnips"
+  ],
   "languageserver": {
     "elmLS": {
       "command": "elm-language-server",
