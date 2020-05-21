@@ -268,6 +268,9 @@ omap ac <Plug>(coc-text-object-outer)
 xmap ac <Plug>(coc-text-object-outer)
 
 
+let g:targets_nl = 'nN'
+
+
 nnoremap <silent> <Leader>d :CocList files --type=directory<CR>
 nnoremap <silent> <Leader>D :CocList files %:p:h --type=directory<CR>
 nnoremap <silent> <Leader>e :CocList files --type=file<CR>
