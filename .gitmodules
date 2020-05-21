@@ -93,3 +93,7 @@
 	path = nvim/pack/main/start/nvim-miniyank
 	url = https://github.com/bfredl/nvim-miniyank
 	ignore = dirty
+[submodule "nvim/CamelCaseMotion"]
+	path = nvim/pack/main/start/CamelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion
+	ignore = dirty

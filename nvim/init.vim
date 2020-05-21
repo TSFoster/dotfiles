@@ -1,6 +1,5 @@
 call plug#begin(stdpath('config') . '/plugged')
 
-Plug 'bkad/CamelCaseMotion'
 Plug 'dbmrq/vim-dialect'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
