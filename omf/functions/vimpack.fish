@@ -1,6 +1,6 @@
 function vimpack --description 'Functions for working with vim’s native package system'
   switch $argv[1]
-    case add
+    case add install i a
       set -e argv[1]
 
       set -l options \
@@ -47,7 +47,7 @@ function vimpack --description 'Functions for working with vim’s native packag
       and rm gitmodules.bak
 
       cd $owd
-    case update
+    case update u up upgrade
       set -e argv[1]
       set -l dirs
 
