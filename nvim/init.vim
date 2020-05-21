@@ -57,7 +57,7 @@ set lazyredraw
 set termguicolors
 
 " Show line numbers except in terminals
-set number relativenumber
+set number
 augroup numbering
   autocmd! TermOpen * set nonumber
 augroup END
