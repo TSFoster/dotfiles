@@ -78,6 +78,40 @@ function vimpack --description 'Functions for working with vim’s native packag
       rm /tmp/vimpack-update-*
 
       cd $owd
+    case list ls l
+      set -e argv[1]
+
+      set -l options \
+        (fish_opt --short=o --long=opt) \
+        (fish_opt --short=s --long=start) \
+        (fish_opt --short=b --long=bundle --required-val)
+      argparse $options -- $argv
+
+      set -l dirs
+      if set -q _flag_bundle
+        set dirs $HOME/.config/nvim/pack/$_flag_bundle
+      else
+        set dirs $HOME/.config/nvim/pack/*
+      end
+
+      if set -q _flag_opt
+        set dirs $dirs/opt/
+      else if set -q _flag_start
+        set dirs $dirs/start/
+      else
+        set dirs $dirs/{opt,start}/
+      end
+
+      if count $argv > /dev/null
+        set dirs $dirs/*$argv*/.git
+      else
+        set dirs $dirs/*/.git
+      end
+
+      for dir in $dirs
+        basename (dirname $dir)
+      end
+      cd $owd
     case '*'
       echo Command $argv[1] not recognised >&2
       return 1
