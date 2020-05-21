@@ -655,5 +655,3 @@ nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &sh
 
 nnoremap <silent> yoq :call toggle#quickfixList()<CR>
 nnoremap <silent> yol :call toggle#locationList()<CR>
-
-" vim: tabstop=2 softtabstop=2 shiftwidth=2

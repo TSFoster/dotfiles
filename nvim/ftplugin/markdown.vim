@@ -11,5 +11,3 @@ vmap <buffer> <C-b> S*gvS*
 inoremap <buffer> ;` ```<CR><CR>```<Up><Up>
 
 setlocal spell
-
-" vim: tabstop=2 softtabstop=2 shiftwidth=2
