@@ -469,12 +469,8 @@ xmap <silent> ac <Plug>(coc-classobj-a)
 omap <silent> ic <Plug>(coc-classobj-i)
 omap <silent> ac <Plug>(coc-classobj-a)
 
-" Mappings for argument text object
-omap <silent> aa <Plug>SidewaysArgumentTextobjA
-xmap <silent> aa <Plug>SidewaysArgumentTextobjA
-omap <silent> ia <Plug>SidewaysArgumentTextobjI
-xmap <silent> ia <Plug>SidewaysArgumentTextobjI
-
+" This could be done in theory with some clever mappings + wellle/targets.vim,
+" but Sideways' argument detection works better
 nnoremap <Leader>< :SidewaysLeft<CR>
 nnoremap <Leader>> :SidewaysRight<CR>
 nnoremap <A-b> :SidewaysJumpLeft<CR>
