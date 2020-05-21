@@ -111,6 +111,25 @@ function vimpack --description 'Functions for working with vim’s native packag
       for dir in $dirs
         basename (dirname $dir)
       end
+    case rm remove delete d r
+      set -e argv[1]
+
+      if not count $argv > /dev/null
+        echo 'You must list which plugin to remove' >&2
+        return 1
+      end
+
+      set -l owd (pwd)
+      cd $HOME/.config
+
+      for module in $argv
+        git config --file .git/config --remove-section "submodule.nvim/$module"
+        git config --file .gitmodules --remove-section "submodule.nvim/$module"
+      end
+      git rm --cached nvim/pack/*/{opt,start}/$argv
+      rm -rf nvim/pack/*/{opt,start}/$argv
+      rm -rf .git/modules/nvim/$argv
+
       cd $owd
     case '*'
       echo Command $argv[1] not recognised >&2
