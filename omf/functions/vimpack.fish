@@ -22,28 +22,40 @@ function vimpack --description 'Functions for working with vim’s native packag
         end
       end
 
+      set -q _flag_opt; and set -l kind opt; or set -l kind start
+
+      set -l dir $HOME/.config/nvim/pack/$bundle/$kind
+      mkdir -p $dir
+      cd $dir
+
+      set -l names
+      set -l urls
       for url in $argv
         string match --quiet --regex '^(http|git@)' $url
         or set -l url https://github.com/$url
 
         set -l name (string replace --regex '\.git$' '' (basename $url))
 
-        set -q _flag_opt; and set -l kind opt; or set -l kind start
+        set names $names $name
+        set urls $urls $url
+      end
 
-        set -l dir $HOME/.config/nvim/pack/$bundle/$kind
-        mkdir -p $dir
+      echo Cloning repositories… >&2
 
-        cd $dir
+      for i in (seq (count $urls))
+        command git submodule add --name nvim/$names[$i] -- $urls[$i] ./$names[$i]
+      end
 
-        git submodule add --name "nvim/$name" -- $url ./$name
+      echo Generating helptags… >&2
 
-        cd $name
+      nvim -u /dev/null -es +helptags\ (find $names -type d -depth 1 -name doc) +q
 
-        [ -d doc ]; and nvim -u /dev/null -es +'helptags doc' +q
+      cd $HOME/.config
 
-        cd $HOME/.config
+      echo Setting submodule config… >&2
 
-        git config --file .gitmodules --add "submodule.nvim/$name.ignore" dirty
+      for name in $names
+        git config --file .gitmodules --add submodule.nvim/$name.ignore dirty
       end
 
       cd $owd
@@ -65,14 +77,15 @@ function vimpack --description 'Functions for working with vim’s native packag
       set -l owd (pwd)
 
       count /tmp/vimpack-update-* > /dev/null; and rm /tmp/vimpack-update-*
+      set -l rand (random)
 
-      for dir in $dirs
-        cd (dirname $dir)
-        command git pull origin master &> /tmp/vimpack-update-(random) &
+      for i in (seq (count $dirs))
+        cd (dirname $dirs[$i])
+        command git pull origin master &> /tmp/vimpack-update-(expr $rand + $i) &
         while [ (count (jobs)) -ge 10 ]; sleep 0.5; end
       end
 
-      await
+      wait
 
       cat /tmp/vimpack-update-*
       rm /tmp/vimpack-update-*
