@@ -97,3 +97,39 @@
 	path = nvim/pack/main/start/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion
 	ignore = dirty
+[submodule "nvim/visual-split.vim"]
+	path = nvim/pack/trialling/start/visual-split.vim
+	url = https://github.com/wellle/visual-split.vim
+	ignore = dirty
+[submodule "nvim/targets.vim"]
+	path = nvim/pack/main/start/targets.vim
+	url = https://github.com/wellle/targets.vim
+	ignore = dirty
+[submodule "nvim/vim-textobj-comment"]
+	path = nvim/pack/main/start/vim-textobj-comment
+	url = https://github.com/glts/vim-textobj-comment
+	ignore = dirty
+[submodule "nvim/vim-textobj-entire"]
+	path = nvim/pack/main/start/vim-textobj-entire
+	url = https://github.com/kana/vim-textobj-entire
+	ignore = dirty
+[submodule "nvim/vim-textobj-indent"]
+	path = nvim/pack/main/start/vim-textobj-indent
+	url = https://github.com/kana/vim-textobj-indent
+	ignore = dirty
+[submodule "nvim/vim-textobj-line"]
+	path = nvim/pack/main/start/vim-textobj-line
+	url = https://github.com/kana/vim-textobj-line
+	ignore = dirty
+[submodule "nvim/vim-textobj-user"]
+	path = nvim/pack/main/start/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user
+	ignore = dirty
+[submodule "nvim/vim-speeddating"]
+	path = nvim/pack/main/start/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating
+	ignore = dirty
+[submodule "nvim/vim-surround"]
+	path = nvim/pack/main/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+	ignore = dirty

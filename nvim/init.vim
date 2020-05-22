@@ -15,19 +15,9 @@ Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'wellle/visual-split.vim'
 
 " Textobjects
-Plug 'wellle/targets.vim'
-Plug 'glts/vim-textobj-comment'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-syntax'
-Plug 'kana/vim-textobj-user'
-Plug 'reedes/vim-textobj-quote'
 
 " TODO investigate https://github.com/tracyone/neomake-multiprocess and https://github.com/neomake/neomake
 " TODO investigate https://github.com/coachshea/neo-pipe
@@ -635,3 +625,7 @@ nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &sh
 
 nnoremap <silent> yoq :call toggle#quickfixList()<CR>
 nnoremap <silent> yol :call toggle#locationList()<CR>
+
+" Avoid conflicting with matchit.vim (see https://github.com/jeetsukumaran/vim-indentwise/issues/6)
+map [<BS> <Plug>(IndentWiseBlockScopeBoundaryBegin)
+map ]<BS> <Plug>(IndentWiseBlockScopeBoundaryEnd)
