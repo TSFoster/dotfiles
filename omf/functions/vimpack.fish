@@ -124,7 +124,7 @@ function vimpack --description 'Functions for working with vim’s native packag
       for dir in $dirs
         basename (dirname $dir)
       end
-    case rm remove delete d r
+    case rm remove delete d r uninstall u
       set -e argv[1]
 
       if not count $argv > /dev/null
