@@ -577,17 +577,8 @@ let g:partial_templates = {} " TODO add defitions of how to break out code into 
 set list listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
 set breakindent " Visually indent wrapped lines to match whitespace
 
-" Set all the tab stops to the same value
-function! SetTab(tabstop)
-  if a:tabstop > 0
-    let &l:softtabstop = a:tabstop
-    let &l:tabstop = a:tabstop
-    let &l:shiftwidth = a:tabstop
-  endif
-endfunction
-
 " Quick way to change tab stops. Add bang to reformat file
-command! -bang -nargs=1 Stab call SetTab(<f-args>) | call cursor#preserve(<bang>0 ? 'normal gg=G' : '')
+command! -bang -nargs=1 Stab call whitespace#set(<f-args>) | call cursor#preserve(<bang>0 ? 'normal gg=G' : '')
 
 " Spaces by default
 set expandtab
