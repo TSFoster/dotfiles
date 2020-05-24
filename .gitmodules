@@ -137,3 +137,23 @@
 	path = nvim/pack/main/start/vim-gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags
 	ignore = dirty
+[submodule "nvim/vim-characterize"]
+	path = nvim/pack/main/start/vim-characterize
+	url = https://github.com/tpope/vim-characterize
+	ignore = dirty
+[submodule "nvim/vim-marked"]
+	path = nvim/pack/main/opt/vim-marked
+	url = https://github.com/itspriddle/vim-marked
+	ignore = dirty
+[submodule "nvim/dash.vim"]
+	path = nvim/pack/main/opt/dash.vim
+	url = https://github.com/rizzatti/dash.vim
+	ignore = dirty
+[submodule "nvim/vim-shellcheck"]
+	path = nvim/pack/main/start/vim-shellcheck
+	url = https://github.com/itspriddle/vim-shellcheck
+	ignore = dirty
+[submodule "nvim/vim-indentwise"]
+	path = nvim/pack/main/start/vim-indentwise
+	url = https://github.com/jeetsukumaran/vim-indentwise
+	ignore = dirty

@@ -1,6 +1,7 @@
 if exists("b:did_ftplugin") | finish | endif
 
-if has('mac') && isdirectory("/Applications/Marked 2.app")
+if isdirectory("/Applications/Marked 2.app")
+  packadd vim-marked
   nnoremap <buffer> <silent> <Leader>/m :MarkedToggle<CR>
 endif
 

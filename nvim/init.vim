@@ -1,42 +1,32 @@
 call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'dbmrq/vim-dialect'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
-Plug 'itspriddle/vim-shellcheck'
-Plug 'jeetsukumaran/vim-indentwise'
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'sheerun/vim-polyglot'
-Plug 'slashmili/alchemist.vim'
-Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-dadbod'
+
+Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-sleuth'
 
-" Textobjects
 Plug 'kana/vim-textobj-syntax'
+
+call plug#end()
 
 " TODO investigate https://github.com/tracyone/neomake-multiprocess and https://github.com/neomake/neomake
 " TODO investigate https://github.com/coachshea/neo-pipe
 " TODO investigate https://github.com/tpope/vim-projectionist
 " TODO make own collection of snippets (crib from honza/vim-snippets)
+" TODO decide how/whether to use editorconfig/vim-sleuth/ftplugin/projectionist
+" TODO remove vim-polyglot?
 
-if has('mac')
-  if isdirectory("/Applications/Marked 2.app")
-    Plug 'itspriddle/vim-marked', { 'for': ['markdown'] }
-  endif
-  if isdirectory("/Applications/Dash.app")
-    Plug 'rizzatti/dash.vim'
-  endif
-endif
+if isdirectory("/Applications/Dash.app") | packadd dash.vim | endif
 
-call plug#end()
 
 " Mouse in all modes
-if has('mouse')
-  set mouse=a
-endif
+if has('mouse') | set mouse=a | endif
 
 " Don't slow macros down by rendering every step
 set lazyredraw
@@ -234,7 +224,7 @@ omap ac <Plug>(coc-text-object-outer)
 xmap ac <Plug>(coc-text-object-outer)
 
 
-let g:targets_nl = 'nN'
+let g:targets_nl = ['n', 'N']
 
 
 nnoremap <silent> <Leader>d :CocList files --type=directory<CR>
@@ -371,12 +361,12 @@ set keywordprg=:Keywordprg
 
 
 " Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <A-TAB> coc#refresh()
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <A-Tab> coc#refresh()
+inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -416,8 +406,8 @@ function! s:setup_formatexpr()
 endfunction
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-" xmap <Leader>a  <Plug>(coc-codeaction-selected)
-" nmap <Leader>a  <Plug>(coc-codeaction-selected)
+xmap <Leader>a  <Plug>(coc-codeaction-selected)
+nmap <Leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 " nmap <Leader>ac  <Plug>(coc-codeaction)
