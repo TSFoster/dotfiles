@@ -400,12 +400,10 @@ function! s:setup_formatexpr()
   endif
 endfunction
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <Leader>a  <Plug>(coc-codeaction-selected)
-nmap <Leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-" nmap <Leader>ac  <Plug>(coc-codeaction)
+" Remap for do codeAction of selected region (or line), ex: `<leader>aap` for current paragraph
+xmap <Leader>;  <Plug>(coc-codeaction-selected)
+nmap <Leader>;  <Plug>(coc-codeaction-selected)
+nmap <Leader>;c  <Plug>(coc-codeaction)
 
 " Fix autofix problem of current line
 nmap <Leader>cf  <Plug>(coc-fix-current)
