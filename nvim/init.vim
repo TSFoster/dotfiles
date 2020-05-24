@@ -1,3 +1,14 @@
+" TODO investigate https://github.com/tracyone/neomake-multiprocess and https://github.com/neomake/neomake
+" TODO investigate https://github.com/coachshea/neo-pipe
+" TODO investigate https://github.com/tpope/vim-projectionist
+" TODO make own collection of snippets (crib from honza/vim-snippets)
+" TODO decide how/whether to use editorconfig/vim-sleuth/ftplugin/projectionist
+" TODO remove vim-polyglot?
+" TODO remove miniyank?
+" TODO switch.vim
+" TODO investigate turning off termguicolors permanently or selectively turn on
+" TODO add definitions for vim-partial
+
 call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'dbmrq/vim-dialect'
@@ -15,13 +26,6 @@ Plug 'kana/vim-textobj-syntax'
 
 call plug#end()
 
-" TODO investigate https://github.com/tracyone/neomake-multiprocess and https://github.com/neomake/neomake
-" TODO investigate https://github.com/coachshea/neo-pipe
-" TODO investigate https://github.com/tpope/vim-projectionist
-" TODO make own collection of snippets (crib from honza/vim-snippets)
-" TODO decide how/whether to use editorconfig/vim-sleuth/ftplugin/projectionist
-" TODO remove vim-polyglot?
-
 if isdirectory('/Applications/Dash.app') && !exists('$SSH_CLIENT') | packadd dash.vim | endif
 
 " Mouse in all modes
@@ -30,7 +34,7 @@ if has('mouse') | set mouse=a | endif
 " Don't slow macros down by rendering every step
 set lazyredraw
 
-" Set 24 bit color TODO investigate turning off permanently or selectively turn on
+" Set 24 bit color
 set termguicolors
 
 " Show line numbers except in terminals
@@ -54,6 +58,9 @@ set hidden
 " Don't write backups to same directory, to avoid issues with coc.nvim issue 649
 set backupdir-=.
 
+" Look through entire project for files
+set path+=**
+
 " Give messages more space to display
 set cmdheight=2
 
@@ -73,6 +80,19 @@ set formatprg=par\ rqw80
 set clipboard=unnamed
 set pastetoggle=<F2>
 
+set list listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
+set breakindent " Visually indent wrapped lines to match whitespace
+
+" Spaces by default
+set expandtab
+
+" Default split positions
+set splitbelow splitright
+
+set spelllang=en_gb
+
+set undofile undolevels=1000 undoreload=1000 " Store 1000 undos in a file and keep them on buffer reload
+set viminfo='1000,f1,<500 " Keep marks for 1000 files, store global marks, limit viminfo to 500 lines
 
 " Restore last cursor position
 augroup cursor_position
@@ -83,15 +103,12 @@ augroup cursor_position
         \ endif
 augroup END
 
-
 let g:python_host_prog = substitute(system('which python2'),'\n','','g')
 let g:python3_host_prog = substitute(system('which python3'),'\n','','g')
 
 call statusline#init()
 call titlebar#init()
 call colors#init()
-
-set spelllang=en_gb
 
 let g:netrw_preview=1 " Vertical preview
 
@@ -100,11 +117,6 @@ let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_SetFocusWhenToggle = 0
 
-set undofile undolevels=1000 undoreload=1000 " Store 1000 undos in a file and keep them on buffer reload
-set viminfo='1000,f1,<500 " Keep marks for 1000 files, store global marks, limit viminfo to 500 lines
-
-
-
 let g:swap_no_default_key_mappings = 1
 nmap g<Left> <Plug>(swap-prev)
 nmap g<Right> <Plug>(swap-next)
@@ -112,9 +124,7 @@ nmap gs <Plug>(swap-interactive)
 
 let g:camelcasemotion_key = '\'
 
-
 let g:kickfix_zebra=0
-
 
 set inccommand=nosplit
 function! CycleIncCommand()
@@ -128,8 +138,6 @@ function! CycleIncCommand()
 endfunction
 
 nnoremap <silent><expr> yoS CycleIncCommand()
-
-
 
 " Space is a great <Leader>.
 " It is a large button that can be hit by either hand without moving.
@@ -180,18 +188,14 @@ nnoremap <silent> >Q :try <Bar> while 1 > 0 <Bar> silent cnewer <Bar> endwhile <
 nnoremap <silent> <L :try <Bar> while 1 > 0 <Bar> silent lolder <Bar> endwhile <Bar> catch // <Bar> endtry<CR>
 nnoremap <silent> >L :try <Bar> while 1 > 0 <Bar> silent lnewer <Bar> endwhile <Bar> catch // <Bar> endtry<CR>
 
-
 " When using CTRL-C key to leave insert mode, it does not trigger the autocmd InsertLeave
 inoremap <c-c> <ESC>
 
 " Map C-z to M-z to allow detaching from abduco within abduco nvim
 tnoremap <M-z> <C-z>
 
-
 " Convert bases. This overrides builtin gh (select mode), but I never use that.
 nnoremap <silent> gh ciw<C-r>=printf('0x%x', <C-r>")<CR><Esc>
-
-
 
 let g:fugitive_git_executable='command git'
 
@@ -222,9 +226,7 @@ xmap ic <Plug>(coc-text-object-inner)
 omap ac <Plug>(coc-text-object-outer)
 xmap ac <Plug>(coc-text-object-outer)
 
-
 let g:targets_nl = ['n', 'N']
-
 
 nnoremap <silent> <Leader>d :CocList files --type=directory<CR>
 nnoremap <silent> <Leader>D :CocList files %:p:h --type=directory<CR>
@@ -246,7 +248,6 @@ nnoremap <Leader>A :silent! grepadd<Space>
 nnoremap <Leader><Leader>a :silent! lgrep<Space>
 nnoremap <Leader><Leader>A :silent! lgrepadd<Space>
 
-" TODO: Consider removing miniyank
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 map <Leader>y <Plug>(miniyank-cycle)
@@ -254,13 +255,10 @@ map <Leader>Y <Plug>(miniyank-cycleback)
 map <Leader>c <Plug>(miniyank-tochar)
 map <Leader>l <Plug>(miniyank-toline)
 
-
 " Alt-R to paste buffer in terminal mode
 tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 command! -bar ReloadConfig execute 'source ' . stdpath('config') . '/init.vim'
-
-set path+=**
 
 nnoremap <silent> <Leader>pi :ReloadConfig <Bar> PlugInstall<CR>
 nnoremap <silent> <Leader>pc :ReloadConfig <Bar> PlugClean!<CR>
@@ -268,7 +266,6 @@ nnoremap <silent> <Leader>pu :PlugUpdate<CR>
 nnoremap <silent> <Leader>pU :PlugUpgrade<CR>
 nnoremap <silent> <Leader>cu :CocUpdate<CR>
 nnoremap <silent> <Leader>cc :CocConfig<CR>
-
 
 if has('mac')
   let s:open_command = 'open'
@@ -354,7 +351,6 @@ command! -nargs=+ Keywordprg call Keywordprg('<args>')<CR>
 
 set keywordprg=:Keywordprg
 
-
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <A-Tab> coc#refresh()
 inoremap <silent><expr> <Tab>
@@ -366,7 +362,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 
 " Use <CR> to confirm completion, <C-g>u means break undo chain at current position.
 inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -429,7 +424,6 @@ nnoremap <A-w> :SidewaysJumpRight<CR>
 nmap <silent> <C-d> <Plug>(coc-range-select)
 xmap <silent> <C-d> <Plug>(coc-range-select)
 
-
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -438,7 +432,6 @@ vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-
 
 augroup formatting
   autocmd! BufWritePre * call <SID>maybe_format()
@@ -465,10 +458,8 @@ function! s:toggle_auto_format()
   end
 endfunction
 
-
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <Leader>] :tag<Space>
-
 
 let g:polyglot_disabled = ['cryptol', 'markdown']
 
@@ -497,14 +488,11 @@ let g:tagbar_type_elm = {
     \ 'scope2kind' : {}
 \ }
 
-
 highlight htmlItalic cterm=italic gui=italic
 highlight htmlBold cterm=bold gui=bold
 highlight Comment cterm=italic gui=italic
 
 let g:rustfmt_autosave = 1
-
-set splitbelow splitright
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -555,16 +543,8 @@ augroup terminal_insert
   autocmd TermOpen * if &buftype == 'terminal' | :startinsert | endif
 augroup END
 
-let g:partial_templates = {} " TODO add defitions of how to break out code into partials
-
-set list listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
-set breakindent " Visually indent wrapped lines to match whitespace
-
 " Quick way to change tab stops. Add bang to reformat file
 command! -bang -nargs=1 Stab call whitespace#set(<f-args>) | call cursor#preserve(<bang>0 ? 'normal gg=G' : '')
-
-" Spaces by default
-set expandtab
 
 " Quick way to switch between tabs and spaces
 nnoremap <silent> yo<Tab> :set expandtab! <Bar> echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>
