@@ -170,32 +170,9 @@ cnoremap <expr> %p fnameescape(expand('%:p'))
 " %p in command line maps to current file's relative path
 cnoremap <expr> %r fnameescape(expand('%'))
 
-function! Quit()
-  if (winnr('$') == 1 && tabpagenr('$') == 1)
-    if confirm('Are you sure you want to quit?', "&Yes\n&No", 2, "Question") == 1
-      quit
-    endif
-  else
-    quit
-  endif
-endfunction
-
-nnoremap <silent> <Leader>q :call Quit()<CR>
-nnoremap <silent> <Leader><Leader>q :xa<CR>
-
-function! Update()
-  try
-    update
-  catch /E212/
-    if confirm('Directory doesn’t exist, should it be created?', "&Yes\n&No", 2, "question") == 1
-      silent !mkdir -p %:h
-      write
-    endif
-  endtry
-endfunction
-
-nnoremap <silent> <Leader>w :call Update()<CR>
-nnoremap <silent> <Leader>W :wa<CR>
+nnoremap <silent> <Leader>q :call buffer#quit()<CR>
+nnoremap <silent> <Leader><Leader>q write <Bar> call buffer#quit()<CR>
+nnoremap <silent> <Leader>w :call buffer#update()<CR>
 
 " Common substitution patterns, accessible with one button press (on a Mac
 " keyboard, at least)

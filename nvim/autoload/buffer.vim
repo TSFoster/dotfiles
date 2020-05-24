@@ -1,5 +1,26 @@
+function buffer#update()
+  try
+    update
+  catch /E212/
+    if confirm('Directory doesn’t exist, should it be created?', "&Yes\n&No", 2, "question") == 1
+      silent !mkdir -p %:h
+      write
+    endif
+  endtry
+endfunction
+
+function buffer#quit()
+  if (winnr('$') == 1 && tabpagenr('$') == 1)
+    if confirm('Are you sure you want to quit?', "&Yes\n&No", 2, "Question") == 1
+      quit
+    endif
+  else
+    quit
+  endif
+endfunction
+
 " from https://github.com/artnez/vim-wipeout/blob/master/plugin/wipeout.vim
-function buffers#wipeout(bang)
+function buffer#wipeout(bang)
   " figure out which buffers are visible in any tab
   let visible = {}
   for t in range(1, tabpagenr('$'))
