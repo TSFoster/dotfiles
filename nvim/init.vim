@@ -22,8 +22,7 @@ call plug#end()
 " TODO decide how/whether to use editorconfig/vim-sleuth/ftplugin/projectionist
 " TODO remove vim-polyglot?
 
-if isdirectory("/Applications/Dash.app") | packadd dash.vim | endif
-
+if isdirectory('/Applications/Dash.app') && !exists('$SSH_CLIENT') | packadd dash.vim | endif
 
 " Mouse in all modes
 if has('mouse') | set mouse=a | endif
@@ -279,11 +278,7 @@ else
   let s:open_command = 'start'
 endif
 
-
 function! SearchCommand(str, type, ...)
-  echom a:str
-  echom '---'
-  echom a:type
   let sel_save = &selection
   let &selection = "inclusive"
   let reg_save = @@
@@ -307,37 +302,35 @@ endfunction
 function! DuckDuckGo(...)
   call function('SearchCommand', ['https://duckduckgo.com/?q='] + a:000)()
 endfunction
-command! -nargs=+ DuckDuckGo call DuckDuckGo('', '<args>')<CR>
-nmap <silent> <Leader>/. :set opfunc=DuckDuckGo<CR>g@
-vmap <silent> <Leader>/. :<C-U>call DuckDuckGo('visual')<CR>
 
 function! Github(...)
   call function('SearchCommand', ['https://github.com/'] + a:000)()
 endfunction
-command! -nargs=+ Github call Github('', '<args>')<CR>
-nmap <silent> <Leader>/g :set opfunc=Github<CR>g@
-vmap <silent> <Leader>/g :<C-U>call Github('visual')<CR>
 
 function! Dict(...)
   call function('SearchCommand', ['http://dictionary.reference.com/browse/'] + a:000)()
 endfunction
-command! -nargs=+ Dict call Dict('', '<args>')<CR>
-nmap <silent> <Leader>/d :set opfunc=Dict<CR>g@
-vmap <silent> <Leader>/d :<C-U>call Dict('visual')<CR>
 
 function! CanIUse(...)
   call function('SearchCommand', ['https://caniuse.com/#search='] + a:000)()
 endfunction
-command! -nargs=+ CanIUse call CanIUse('', '<args>')<CR>
-nmap <silent> <Leader>/c :set opfunc=CanIUse<CR>g@
-vmap <silent> <Leader>/c :<C-U>call CanIUse('visual')<CR>
 
 function! Wikipedia(...)
   call function('SearchCommand', ['http://en.wikipedia.org/wiki/Special:Search?search='] + a:000)()
 endfunction
-command! -nargs=+ Wikipedia call Wikipedia('', '<args>')<CR>
-nmap <silent> <Leader>/w :set opfunc=Wikipedia<CR>g@
-vmap <silent> <Leader>/w :<C-U>call Wikipedia('visual')<CR>
+
+if !exists('$SSH_CLIENT')
+  nmap <silent> <Leader>/. :set opfunc=DuckDuckGo<CR>g@
+  vmap <silent> <Leader>/. :<C-U>call DuckDuckGo('visual')<CR>
+  nmap <silent> <Leader>/g :set opfunc=Github<CR>g@
+  vmap <silent> <Leader>/g :<C-U>call Github('visual')<CR>
+  nmap <silent> <Leader>/d :set opfunc=Dict<CR>g@
+  vmap <silent> <Leader>/d :<C-U>call Dict('visual')<CR>
+  nmap <silent> <Leader>/c :set opfunc=CanIUse<CR>g@
+  vmap <silent> <Leader>/c :<C-U>call CanIUse('visual')<CR>
+  nmap <silent> <Leader>/w :set opfunc=Wikipedia<CR>g@
+  vmap <silent> <Leader>/w :<C-U>call Wikipedia('visual')<CR>
+endif
 
 function! Keywordprg(word)
   if exists('*CocHasProvider') && CocHasProvider('hover')
@@ -350,8 +343,10 @@ function! Keywordprg(word)
     execute 'Man ' . system('man -w ' . expand('<cword>'))
   elseif count(['shell', 'sh', 'bash', 'zsh'], &filetype)
     execute 'Man ' . expand('<cword>')
-  else
+  elseif !exists('$SSH_CLIENT')
     call system('search ' . a:word)
+  else
+    echoerr 'Don’t know what keyword program to use'
   endif
 endfunction
 

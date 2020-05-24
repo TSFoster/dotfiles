@@ -1,6 +1,6 @@
 if exists("b:did_ftplugin") | finish | endif
 
-if isdirectory("/Applications/Marked 2.app")
+if isdirectory("/Applications/Marked 2.app") && !exists('$SSH_CLIENT')
   packadd vim-marked
   nnoremap <buffer> <silent> <Leader>/m :MarkedToggle<CR>
 endif
