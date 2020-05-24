@@ -182,14 +182,14 @@ vmap § :s//g<LEFT><LEFT>
 " https://stackoverflow.com/questions/4668623/show-count-of-matches-in-vim#4671112
 nnoremap ,c :%s/<C-R>=&ignorecase ? '\c' : '\C'<CR><C-R>///gn<CR>
 
-nnoremap <silent> <q :<c-u>for _ in range(v:count1) \| colder \| endfor<CR>
-nnoremap <silent> >q :<c-u>for _ in range(v:count1) \| cnewer \| endfor<CR>
-nnoremap <silent> <l :<c-u>for _ in range(v:count1) \| lolder \| endfor<CR>
-nnoremap <silent> >l :<c-u>for _ in range(v:count1) \| lnewer \| endfor<CR>
-nnoremap <silent> <Q :try \| while 1 > 0 \| silent colder \| endwhile \| catch // \| endtry<CR>
-nnoremap <silent> >Q :try \| while 1 > 0 \| silent cnewer \| endwhile \| catch // \| endtry<CR>
-nnoremap <silent> <L :try \| while 1 > 0 \| silent lolder \| endwhile \| catch // \| endtry<CR>
-nnoremap <silent> >L :try \| while 1 > 0 \| silent lnewer \| endwhile \| catch // \| endtry<CR>
+nnoremap <silent> <q :<c-u>for _ in range(v:count1) <Bar> colder <Bar> endfor<CR>
+nnoremap <silent> >q :<c-u>for _ in range(v:count1) <Bar> cnewer <Bar> endfor<CR>
+nnoremap <silent> <l :<c-u>for _ in range(v:count1) <Bar> lolder <Bar> endfor<CR>
+nnoremap <silent> >l :<c-u>for _ in range(v:count1) <Bar> lnewer <Bar> endfor<CR>
+nnoremap <silent> <Q :try <Bar> while 1 > 0 <Bar> silent colder <Bar> endwhile <Bar> catch // <Bar> endtry<CR>
+nnoremap <silent> >Q :try <Bar> while 1 > 0 <Bar> silent cnewer <Bar> endwhile <Bar> catch // <Bar> endtry<CR>
+nnoremap <silent> <L :try <Bar> while 1 > 0 <Bar> silent lolder <Bar> endwhile <Bar> catch // <Bar> endtry<CR>
+nnoremap <silent> >L :try <Bar> while 1 > 0 <Bar> silent lnewer <Bar> endwhile <Bar> catch // <Bar> endtry<CR>
 
 
 " When using CTRL-C key to leave insert mode, it does not trigger the autocmd InsertLeave
@@ -273,8 +273,8 @@ command! -bar ReloadConfig execute 'source ' . stdpath('config') . '/init.vim'
 
 set path+=**
 
-nnoremap <silent> <Leader>pi :ReloadConfig \| PlugInstall<CR>
-nnoremap <silent> <Leader>pc :ReloadConfig \| PlugClean!<CR>
+nnoremap <silent> <Leader>pi :ReloadConfig <Bar> PlugInstall<CR>
+nnoremap <silent> <Leader>pc :ReloadConfig <Bar> PlugClean!<CR>
 nnoremap <silent> <Leader>pu :PlugUpdate<CR>
 nnoremap <silent> <Leader>pU :PlugUpgrade<CR>
 nnoremap <silent> <Leader>cu :CocUpdate<CR>
@@ -593,7 +593,7 @@ command! -bang -nargs=1 Stab call SetTab(<f-args>) | call cursor#preserve(<bang>
 set expandtab
 
 " Quick way to switch between tabs and spaces
-nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>
+nnoremap <silent> yo<Tab> :set expandtab! <Bar> echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>
 
 nnoremap <silent> yoq :call toggle#quickfixList()<CR>
 nnoremap <silent> yol :call toggle#locationList()<CR>
