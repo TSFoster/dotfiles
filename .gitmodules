@@ -133,3 +133,11 @@
 	path = nvim/pack/main/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 	ignore = dirty
+[submodule "nvim/vim-lion"]
+	path = nvim/pack/main/start/vim-lion
+	url = https://github.com/tommcdo/vim-lion
+	ignore = dirty
+[submodule "nvim/vim-gutentags"]
+	path = nvim/pack/main/start/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags
+	ignore = dirty

@@ -5,13 +5,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim'
-Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-sleuth'
@@ -599,9 +597,6 @@ augroup END
 
 let g:partial_templates = {} " TODO add defitions of how to break out code into partials
 
-let g:lion_squeeze_spaces = 1
-nnoremap <silent> <Leader>gl :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
-
 set list listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
 set breakindent " Visually indent wrapped lines to match whitespace
 
@@ -625,6 +620,9 @@ nnoremap <silent> yo<Tab> :set expandtab! \| echo (&expandtab ? 'Spaces (' . &sh
 
 nnoremap <silent> yoq :call toggle#quickfixList()<CR>
 nnoremap <silent> yol :call toggle#locationList()<CR>
+
+let g:lion_squeeze_spaces = 1
+nnoremap <silent> yo<Bar> :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
 
 " Avoid conflicting with matchit.vim (see https://github.com/jeetsukumaran/vim-indentwise/issues/6)
 map [<BS> <Plug>(IndentWiseBlockScopeBoundaryBegin)
