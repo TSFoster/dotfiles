@@ -5,7 +5,8 @@ function vimpack --description 'Functions for working with vim’s native packag
 
       set -l options \
         (fish_opt --short=o --long=opt) \
-        (fish_opt --short=b --long=bundle --required-val)
+        (fish_opt --short=b --long=bundle --required-val) \
+        (fish_opt --short=d --long=do --required-val)
       argparse $options -- $argv
 
       set -l owd (pwd)
@@ -44,6 +45,11 @@ function vimpack --description 'Functions for working with vim’s native packag
 
       for i in (seq (count $urls))
         command git submodule add --name nvim/$names[$i] -- $urls[$i] ./$names[$i]
+        if set -q _flag_do
+          cd $names[$i]
+          eval $_flag_do
+          cd ..
+        end
       end
 
       echo Generating helptags… >&2
@@ -56,10 +62,12 @@ function vimpack --description 'Functions for working with vim’s native packag
 
       for name in $names
         git config --file .gitmodules --add submodule.nvim/$name.ignore dirty
+        set -q _flag_do
+        and git config --file .gitmodules --add submodule.nvim/$name.do $_flag_do
       end
 
       cd $owd
-    case update u up upgrade
+    case update up upgrade
       set -e argv[1]
       set -l dirs
 
@@ -124,7 +132,7 @@ function vimpack --description 'Functions for working with vim’s native packag
       for dir in $dirs
         basename (dirname $dir)
       end
-    case rm remove delete d r uninstall u
+    case rm remove delete d r uninstall un
       set -e argv[1]
 
       if not count $argv > /dev/null
@@ -144,6 +152,9 @@ function vimpack --description 'Functions for working with vim’s native packag
       rm -rf .git/modules/nvim/$argv
 
       cd $owd
+    case u
+      echo Unclear whether ‘u’ is update or uninstall >&2
+      return 1
     case '*'
       echo Command $argv[1] not recognised >&2
       return 1
