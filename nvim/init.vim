@@ -15,7 +15,6 @@ Plug 'dbmrq/vim-dialect'
 Plug 'honza/vim-snippets'
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-dadbod'
 

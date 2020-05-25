@@ -157,3 +157,8 @@
 	path = nvim/pack/main/start/vim-indentwise
 	url = https://github.com/jeetsukumaran/vim-indentwise
 	ignore = dirty
+[submodule "nvim/coc.nvim"]
+	path = nvim/pack/main/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+	ignore = dirty
+	do = yarn install --frozen-lockfile
