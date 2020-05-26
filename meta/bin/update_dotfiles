@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+# TODO add more automated updates
+
+nvim -es +CocUpdateSync +'sleep 500m' +'w /dev/stdout'
+vimpack update
