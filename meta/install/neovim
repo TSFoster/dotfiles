@@ -41,20 +41,5 @@ end
 
 mkdir -p $dataDir/nvim/sessions
 
-if not [ -f $dataDir/nvim/site/autoload/plug.vim ]
-  echo '-> Install vim-plug'
-  curl -fL --create-dirs \
-    -o $dataDir/nvim/site/autoload/plug.vim \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-end
-if not [ -d $dataDir/nvim/plugged ]
-  echo '-> Install plugins'
-  nvim +PlugInstall
-end
-if not [ -d $configDir/coc/extensions/node_modules ]
-  echo '-> Install coc.nvim plugins'
-  nvim +PlugRebuild
-end
-
 echo '-> Editorconfig'
-cp -f $configDir/meta/editorconfig $HOME/.editorconfig
+ln $configDir/meta/editorconfig $HOME/.editorconfig

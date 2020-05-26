@@ -2,28 +2,13 @@
 " TODO investigate https://github.com/coachshea/neo-pipe
 " TODO investigate https://github.com/tpope/vim-projectionist
 " TODO make own collection of snippets (crib from honza/vim-snippets)
-" TODO decide how/whether to use editorconfig/vim-sleuth/ftplugin/projectionist
-" TODO remove vim-polyglot?
+" TODO decide how/whether to use vim-sleuth/projectionist
+" TODO go through pack/trialling
 " TODO remove miniyank?
 " TODO switch.vim
 " TODO investigate turning off termguicolors permanently or selectively turn on
 " TODO add definitions for vim-partial
-
-call plug#begin(stdpath('config') . '/plugged')
-
-Plug 'dbmrq/vim-dialect'
-Plug 'honza/vim-snippets'
-Plug 'machakann/vim-swap'
-Plug 'majutsushi/tagbar'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-dadbod'
-
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-sleuth'
-
-Plug 'kana/vim-textobj-syntax'
-
-call plug#end()
+" TODO :term clipboard/fish clipboard/vim clipboard/system clipboard
 
 if isdirectory('/Applications/Dash.app') && !exists('$SSH_CLIENT') | packadd dash.vim | endif
 
@@ -115,11 +100,6 @@ nnoremap <silent> <F5> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_SetFocusWhenToggle = 0
-
-let g:swap_no_default_key_mappings = 1
-nmap g<Left> <Plug>(swap-prev)
-nmap g<Right> <Plug>(swap-next)
-nmap gs <Plug>(swap-interactive)
 
 let g:camelcasemotion_key = '\'
 
@@ -259,10 +239,6 @@ tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 command! -bar ReloadConfig execute 'source ' . stdpath('config') . '/init.vim'
 
-nnoremap <silent> <Leader>pi :ReloadConfig <Bar> PlugInstall<CR>
-nnoremap <silent> <Leader>pc :ReloadConfig <Bar> PlugClean!<CR>
-nnoremap <silent> <Leader>pu :PlugUpdate<CR>
-nnoremap <silent> <Leader>pU :PlugUpgrade<CR>
 nnoremap <silent> <Leader>cu :CocUpdate<CR>
 nnoremap <silent> <Leader>cc :CocConfig<CR>
 
@@ -412,13 +388,6 @@ xmap <silent> ac <Plug>(coc-classobj-a)
 omap <silent> ic <Plug>(coc-classobj-i)
 omap <silent> ac <Plug>(coc-classobj-a)
 
-" This could be done in theory with some clever mappings + wellle/targets.vim,
-" but Sideways' argument detection works better
-nnoremap <Leader>< :SidewaysLeft<CR>
-nnoremap <Leader>> :SidewaysRight<CR>
-nnoremap <A-b> :SidewaysJumpLeft<CR>
-nnoremap <A-w> :SidewaysJumpRight<CR>
-
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <C-d> <Plug>(coc-range-select)
 xmap <silent> <C-d> <Plug>(coc-range-select)
@@ -468,30 +437,13 @@ augroup doc
   autocmd BufReadPost *.rtf silent %!textutil "%" -convert html -stdout | pandoc --from=html --to=markdown
 augroup END
 
-let g:tagbar_type_elm = {
-    \ 'ctagstype' : 'ElmCustom',
-    \ 'ctagsargs' : [ '--options='.$HOME.'/.config/ctags/', '-o-'],
-    \ 'kinds'     : [
-        \ 'm:Modules:0:0',
-        \ 'i:Imports:0:0',
-        \ 't:Types:0:0',
-        \ 'a:Aliases:0:0',
-        \ 'c:Constants:0:0',
-        \ 'p:Ports:0:0',
-        \ 'f:Functions:0:0',
-        \ 'r:Records:0:0',
-        \ 'y:Type constructors:0:0'
-        \ ],
-    \ 'sro'      : ':',
-    \ 'kind2scope' : {},
-    \ 'scope2kind' : {}
-\ }
-
 highlight htmlItalic cterm=italic gui=italic
 highlight htmlBold cterm=bold gui=bold
 highlight Comment cterm=italic gui=italic
 
 let g:rustfmt_autosave = 1
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
