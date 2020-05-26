@@ -101,7 +101,8 @@ call colors#init()
 
 let g:netrw_preview=1 " Vertical preview
 
-nnoremap <silent> <F5> :UndotreeToggle<CR>
+" Overrides vim-unimpaired’s map for toggling cursorcolumn
+nnoremap <silent> you :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_SetFocusWhenToggle = 0
@@ -315,7 +316,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 call formatting#init()
 
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap yot :TagbarToggle<CR>
 nnoremap <Leader>] :tag<Space>
 
 let g:polyglot_disabled = ['cryptol', 'markdown']
