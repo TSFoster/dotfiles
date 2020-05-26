@@ -85,17 +85,34 @@ function vimpack --description 'Functions for working with vim’s native packag
       set -l owd (pwd)
 
       count /tmp/vimpack-update-* > /dev/null; and rm /tmp/vimpack-update-*
-      set -l rand (random)
 
       for i in (seq (count $dirs))
         cd (dirname $dirs[$i])
-        command git pull origin master &> /tmp/vimpack-update-(expr $rand + $i) &
+        command git pull origin master &> /tmp/vimpack-update-(basename $PWD) &
         while [ (count (jobs)) -ge 10 ]; sleep 0.5; end
       end
 
       wait
 
-      cat /tmp/vimpack-update-*
+      set -l updated (grep -L 'Already up to date.' /tmp/vimpack-update-*)
+      set -l updatedCount (count $updated)
+      set -l updatedPlural s
+      test $updatedCount -eq 1; and set updatedPlural ''
+      test $updatedCount -gt 0
+      and echo "$updatedCount package$updatedPlural updated:"\n
+      and cat $updated
+
+      set -l upToDate (grep -l 'Already up to date.' /tmp/vimpack-update-*)
+      set -l upToDateCount (count $upToDate)
+      set -l upToDatePlural s
+      test $upToDateCount -eq 1; and set upToDatePlural ''
+      test $upToDateCount -gt 0
+      and test $updatedCount -gt 0
+      and echo \n\n
+      test $upToDateCount -gt 0
+      and echo "$upToDateCount package$upToDatePlural already up to date:"\n
+      and string replace '/tmp/vimpack-update-' '★ ' $upToDate
+
       rm /tmp/vimpack-update-*
 
       cd $owd
