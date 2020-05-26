@@ -1,3 +1,4 @@
+" TODO switch.vim definitions for elm
 if exists("b:did_ftplugin") | finish | endif
 
 if !exists("g:tagbar_type_elm")

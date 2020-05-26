@@ -5,7 +5,6 @@
 " TODO decide how/whether to use vim-sleuth/projectionist
 " TODO go through pack/trialling
 " TODO remove miniyank?
-" TODO switch.vim
 " TODO investigate turning off termguicolors permanently or selectively turn on
 " TODO add definitions for vim-partial
 " TODO :term clipboard/fish clipboard/vim clipboard/system clipboard
@@ -503,8 +502,12 @@ nnoremap <silent> yo<Tab> :set expandtab! <Bar> echo (&expandtab ? 'Spaces (' . 
 nnoremap <silent> yoq :call toggle#quickfixList()<CR>
 nnoremap <silent> yol :call toggle#locationList()<CR>
 
+
 let g:lion_squeeze_spaces = 1
 nnoremap <silent> yo<Bar> :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
+
+let g:switch_mapping = "<Tab>"
+let g:switch_reverse_mapping = "<S-Tab>"
 
 " Avoid conflicting with matchit.vim (see https://github.com/jeetsukumaran/vim-indentwise/issues/6)
 map [<BS> <Plug>(IndentWiseBlockScopeBoundaryBegin)
