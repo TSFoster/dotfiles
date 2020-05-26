@@ -19,6 +19,11 @@ function buffer#quit()
   endif
 endfunction
 
+function buffer#init_pager()
+  set bufhidden=delete
+  filetype detect
+endfunction
+
 " from https://github.com/artnez/vim-wipeout/blob/master/plugin/wipeout.vim
 function buffer#wipeout(bang)
   " figure out which buffers are visible in any tab

@@ -1,12 +1,20 @@
-" Run a command and return cursor (and last search) to original position
+let s:_s = ''
+let s:l = ''
+let s:c = ''
+
 function cursor#preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
+  call cursor#save()
   execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
+  call cursor#restore()
+endfunction
+
+function cursor#save()
+  let s:_s=@/
+  let s:l = line(".")
+  let s:c = col(".")
+endfunction
+
+function cursor#restore()
+  let @/=s:_s
+  call cursor(s:l, s:c)
 endfunction

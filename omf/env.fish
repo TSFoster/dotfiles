@@ -32,7 +32,7 @@ if command -s nvim > /dev/null
   alias abduco "abduco -e '^z'"
   if [ "$NVIM_LISTEN_ADDRESS" ]
     set --export EDITOR nvr --remote-tab-wait
-    set --export PAGER nvr +\'set bufhidden=delete\' +\'let b:pager=v:true\' --remote-wait -
+    set --export PAGER nvr '\'+call buffer#init_pager()\'' --remote-wait -
   else
     set --export EDITOR abduco -A nvim-\(random\) nvim
   end
