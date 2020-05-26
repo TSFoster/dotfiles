@@ -21,9 +21,9 @@ set lazyredraw
 set termguicolors
 
 " Show line numbers except in terminals
-set number
+set number relativenumber
 augroup numbering
-  autocmd! TermOpen * set nonumber
+  autocmd! TermOpen * set nonumber norelativenumber
 augroup END
 
 " Use smart case sensitivity in searches
@@ -37,6 +37,9 @@ set wildmode=list,full
 
 " Don't unload hidden buffers
 set hidden
+
+" Highlight both column and row
+set cursorline cursorcolumn
 
 " Don't write backups to same directory, to avoid issues with coc.nvim issue 649
 set backupdir-=.
@@ -64,10 +67,13 @@ set clipboard=unnamed
 set pastetoggle=<F2>
 
 set list listchars=tab:▸\ ,trail:· " Show trailing tabs and spaces
-set breakindent " Visually indent wrapped lines to match whitespace
+set breakindent showbreak=…\  " Visually indent wrapped lines to match whitespace and prepend with ‘… ’
 
 " Spaces by default
 set expandtab
+
+" Don’t fix missing EOL at EOF (for when editing others’ code)
+set nofixendofline
 
 " Default split positions
 set splitbelow splitright
