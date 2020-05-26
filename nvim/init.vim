@@ -150,9 +150,6 @@ nnoremap <silent> <Leader>w :call buffer#update()<CR>
 nmap § :%s//g<LEFT><LEFT>
 vmap § :s//g<LEFT><LEFT>
 
-" https://stackoverflow.com/questions/4668623/show-count-of-matches-in-vim#4671112
-nnoremap ,c :%s/<C-R>=&ignorecase ? '\c' : '\C'<CR><C-R>///gn<CR>
-
 nnoremap <silent> <q :<c-u>for _ in range(v:count1) <Bar> colder <Bar> endfor<CR>
 nnoremap <silent> >q :<c-u>for _ in range(v:count1) <Bar> cnewer <Bar> endfor<CR>
 nnoremap <silent> <l :<c-u>for _ in range(v:count1) <Bar> lolder <Bar> endfor<CR>
