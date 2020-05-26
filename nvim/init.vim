@@ -105,17 +105,7 @@ let g:camelcasemotion_key = '\'
 let g:kickfix_zebra=0
 
 set inccommand=nosplit
-function! CycleIncCommand()
-  if &inccommand == 'nosplit'
-    set inccommand=split
-  elseif &inccommand == 'split'
-    set inccommand=
-  else
-    set inccommand=nosplit
-  endif
-endfunction
-
-nnoremap <silent><expr> yoS CycleIncCommand()
+nnoremap <silent> yoS :call toggle#inccommand()<CR>
 
 " Space is a great <Leader>.
 " It is a large button that can be hit by either hand without moving.
@@ -241,101 +231,29 @@ command! -bar ReloadConfig execute 'source ' . stdpath('config') . '/init.vim'
 nnoremap <silent> <Leader>cu :CocUpdate<CR>
 nnoremap <silent> <Leader>cc :CocConfig<CR>
 
-if has('mac')
-  let s:open_command = 'open'
-elseif has('unix')
-  let s:open_command = 'xdg-open'
-else
-  let s:open_command = 'start'
-endif
-
-function! SearchCommand(str, type, ...)
-  let sel_save = &selection
-  let &selection = "inclusive"
-  let reg_save = @@
-
-  if a:0
-    let @@ = a:1
-  elseif a:type == 'visual'
-    silent exe "normal! gvy"
-  elseif a:type == 'line'
-    silent exe "normal! '[V']y"
-  else
-    silent exe "normal! `[v`]y"
-  endif
-
-  call system(s:open_command.' "'.a:str.@@.'"')
-
-  let &selection = sel_save
-  let @@ = reg_save
-endfunction
-
-function! DuckDuckGo(...)
-  call function('SearchCommand', ['https://duckduckgo.com/?q='] + a:000)()
-endfunction
-
-function! Github(...)
-  call function('SearchCommand', ['https://github.com/'] + a:000)()
-endfunction
-
-function! Dict(...)
-  call function('SearchCommand', ['http://dictionary.reference.com/browse/'] + a:000)()
-endfunction
-
-function! CanIUse(...)
-  call function('SearchCommand', ['https://caniuse.com/#search='] + a:000)()
-endfunction
-
-function! Wikipedia(...)
-  call function('SearchCommand', ['http://en.wikipedia.org/wiki/Special:Search?search='] + a:000)()
-endfunction
-
 if !exists('$SSH_CLIENT')
-  nmap <silent> <Leader>/. :set opfunc=DuckDuckGo<CR>g@
-  vmap <silent> <Leader>/. :<C-U>call DuckDuckGo('visual')<CR>
-  nmap <silent> <Leader>/g :set opfunc=Github<CR>g@
-  vmap <silent> <Leader>/g :<C-U>call Github('visual')<CR>
-  nmap <silent> <Leader>/d :set opfunc=Dict<CR>g@
-  vmap <silent> <Leader>/d :<C-U>call Dict('visual')<CR>
-  nmap <silent> <Leader>/c :set opfunc=CanIUse<CR>g@
-  vmap <silent> <Leader>/c :<C-U>call CanIUse('visual')<CR>
-  nmap <silent> <Leader>/w :set opfunc=Wikipedia<CR>g@
-  vmap <silent> <Leader>/w :<C-U>call Wikipedia('visual')<CR>
+  nmap <silent> <Leader>/. :set opfunc=search#DuckDuckGo<CR>g@
+  vmap <silent> <Leader>/. :<C-U>call search#DuckDuckGo('visual')<CR>
+  nmap <silent> <Leader>/g :set opfunc=search#Github<CR>g@
+  vmap <silent> <Leader>/g :<C-U>call search#Github('visual')<CR>
+  nmap <silent> <Leader>/d :set opfunc=search#Dict<CR>g@
+  vmap <silent> <Leader>/d :<C-U>call search#Dict('visual')<CR>
+  nmap <silent> <Leader>/c :set opfunc=search#CanIUse<CR>g@
+  vmap <silent> <Leader>/c :<C-U>call search#CanIUse('visual')<CR>
+  nmap <silent> <Leader>/w :set opfunc=search#Wikipedia<CR>g@
+  vmap <silent> <Leader>/w :<C-U>call search#Wikipedia('visual')<CR>
 endif
 
-function! Keywordprg(word)
-  if exists('*CocHasProvider') && CocHasProvider('hover')
-    call CocAction('doHover')
-  elseif count(['vim','help'], &filetype)
-    execute 'h '.expand('<cword>')
-  elseif &filetype == 'fish'
-    " Fish uses a function for man, which includes more manpages. `:Man` doesn't
-    " use fish's `man` by default, so use this to get manpage location
-    execute 'Man ' . system('man -w ' . expand('<cword>'))
-  elseif count(['shell', 'sh', 'bash', 'zsh'], &filetype)
-    execute 'Man ' . expand('<cword>')
-  elseif !exists('$SSH_CLIENT')
-    call system('search ' . a:word)
-  else
-    echoerr 'Don’t know what keyword program to use'
-  endif
-endfunction
-
-command! -nargs=+ Keywordprg call Keywordprg('<args>')<CR>
-
+command! -nargs=+ Keywordprg call keywordprg#run('<args>')<CR>
 set keywordprg=:Keywordprg
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <A-Tab> coc#refresh()
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ (!(col('.') - 1) <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <CR> to confirm completion, <C-g>u means break undo chain at current position.
 inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -357,17 +275,9 @@ augroup cocnvim
   autocmd!
   " Highlight symbol under cursor on CursorHold
   autocmd CursorHold * silent call CocActionAsync('highlight')
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType * call <SID>setup_formatexpr()
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
-
-function! s:setup_formatexpr()
-  if exists('*CocHasProvider') && CocHasProvider('format')
-    setlocal formatexpr=CocAction('formatSelected')
-  endif
-endfunction
 
 " Remap for do codeAction of selected region (or line), ex: `<leader>aap` for current paragraph
 xmap <Leader>;  <Plug>(coc-codeaction-selected)
@@ -400,30 +310,7 @@ vmap <C-j> <Plug>(coc-snippets-select)
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-augroup formatting
-  autocmd! BufWritePre * call <SID>maybe_format()
-augroup END
-
-function! s:maybe_format()
-  if (!exists("g:no_autoformat") || !g:no_autoformat) && exists('*CocHasProvider') && CocHasProvider("format")
-    echom "Formatting…"
-    call CocAction("format")
-  endif
-endfunction
-
-nnoremap <silent> yof :call <SID>toggle_auto_format()<CR>
-
-function! s:toggle_auto_format()
-  if !exists('g:no_autoformat')
-    let g:no_autoformat = 0
-  endif
-  let g:no_autoformat = !g:no_autoformat
-  if g:no_autoformat
-    echom "Don’t fix on save"
-  else
-    echom "Fix on save"
-  end
-endfunction
+call formatting#init()
 
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <Leader>] :tag<Space>

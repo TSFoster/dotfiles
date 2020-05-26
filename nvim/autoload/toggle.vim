@@ -33,3 +33,16 @@ function toggle#locationList()
     endif
   endif
 endfunction
+
+function toggle#inccommand()
+  if &inccommand == 'nosplit'
+    set inccommand=split
+    echom "Show split"
+  elseif &inccommand == 'split'
+    set inccommand=
+    echom "No previews"
+  else
+    set inccommand=nosplit
+    echom "Preview but no split"
+  endif
+endfunction
