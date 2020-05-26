@@ -38,8 +38,12 @@ set wildmode=list,full
 " Don't unload hidden buffers
 set hidden
 
-" Highlight both column and row
-set cursorline cursorcolumn
+" Highlight both column and row on active window
+augroup crosshairs
+  autocmd!
+  autocmd WinEnter * set cursorline cursorcolumn
+  autocmd WinLeave * set nocursorline nocursorcolumn
+augroup END
 
 " Don't write backups to same directory, to avoid issues with coc.nvim issue 649
 set backupdir-=.
