@@ -198,3 +198,7 @@
 	path = nvim/pack/main/start/switch.vim
 	url = https://github.com/AndrewRadev/switch.vim
 	ignore = dirty
+[submodule "nvim/splitjoin.vim"]
+	path = nvim/pack/trialling/start/splitjoin.vim
+	url = https://github.com/AndrewRadev/splitjoin.vim
+	ignore = dirty
