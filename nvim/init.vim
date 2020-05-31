@@ -2,7 +2,6 @@
 " TODO investigate https://github.com/coachshea/neo-pipe
 " TODO investigate https://github.com/tpope/vim-projectionist
 " TODO make own collection of snippets (crib from honza/vim-snippets)
-" TODO decide how/whether to use vim-sleuth/projectionist
 " TODO go through pack/trialling
 " TODO remove miniyank?
 " TODO investigate turning off termguicolors permanently or selectively turn on
