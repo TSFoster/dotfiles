@@ -19,11 +19,8 @@ set lazyredraw
 " Set 24 bit color
 set termguicolors
 
-" Show line numbers except in terminals
+" Show line numbers
 set number relativenumber
-augroup numbering
-  autocmd! TermOpen * set nonumber norelativenumber
-augroup END
 
 " Use smart case sensitivity in searches
 set ignorecase smartcase
