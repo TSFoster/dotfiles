@@ -8,8 +8,6 @@
 " TODO add definitions for vim-partial
 " TODO :term clipboard/fish clipboard/vim clipboard/system clipboard
 
-if isdirectory('/Applications/Dash.app') && !exists('$SSH_CLIENT') | packadd dash.vim | endif
-
 " Mouse in all modes
 if has('mouse') | set mouse=a | endif
 
@@ -33,13 +31,6 @@ set wildmode=list,full
 
 " Don't unload hidden buffers
 set hidden
-
-" Highlight both column and row on active window
-augroup crosshairs
-  autocmd!
-  autocmd WinEnter * set cursorline cursorcolumn
-  autocmd WinLeave * set nocursorline nocursorcolumn
-augroup END
 
 " Don't write backups to same directory, to avoid issues with coc.nvim issue 649
 set backupdir-=.
@@ -384,6 +375,13 @@ augroup terminal_insert
   autocmd TermOpen * if &buftype == 'terminal' | :startinsert | endif
 augroup END
 
+" Highlight both column and row on active window
+augroup crosshairs
+  autocmd!
+  autocmd WinEnter * set cursorline cursorcolumn
+  autocmd WinLeave * set nocursorline nocursorcolumn
+augroup END
+
 " Quick way to change tab stops. Add bang to reformat file
 command! -bang -nargs=1 Stab call whitespace#set(<f-args>) | call cursor#preserve(<bang>0 ? 'normal gg=G' : '')
 
@@ -403,3 +401,5 @@ let g:switch_reverse_mapping = "<S-Tab>"
 " Avoid conflicting with matchit.vim (see https://github.com/jeetsukumaran/vim-indentwise/issues/6)
 map [<BS> <Plug>(IndentWiseBlockScopeBoundaryBegin)
 map ]<BS> <Plug>(IndentWiseBlockScopeBoundaryEnd)
+
+if isdirectory('/Applications/Dash.app') && !exists('$SSH_CLIENT') | packadd dash.vim | endif
