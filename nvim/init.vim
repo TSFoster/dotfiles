@@ -134,7 +134,7 @@ cnoremap <expr> %p fnameescape(expand('%:p'))
 cnoremap <expr> %r fnameescape(expand('%'))
 
 nnoremap <silent> <Leader>q :call buffer#quit()<CR>
-nnoremap <silent> <Leader><Leader>q write <Bar> call buffer#quit()<CR>
+nnoremap <silent> <Leader><Leader>q :call buffer#update()<CR>:call buffer#quit()<CR>
 nnoremap <silent> <Leader>w :call buffer#update()<CR>
 
 " Common substitution patterns, accessible with one button press (on a Mac
@@ -390,7 +390,6 @@ nnoremap <silent> yo<Tab> :set expandtab! <Bar> echo (&expandtab ? 'Spaces (' . 
 
 nnoremap <silent> yoq :call toggle#quickfixList()<CR>
 nnoremap <silent> yol :call toggle#locationList()<CR>
-
 
 let g:lion_squeeze_spaces = 1
 nnoremap <silent> yo<Bar> :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>

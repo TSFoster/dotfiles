@@ -38,6 +38,7 @@ set --universal theme_display_date no
 set --universal theme_display_cmd_duration no
 set --universal theme_nerd_fonts yes
 
+# TODO Make play more nicely with SSH
 echo '-> Italics'
 tic $configDir/meta/italic-fonts/xterm-256color-italic.terminfo
 set --query TERM; and set --erase TERM
