@@ -41,7 +41,7 @@ function p
 
   if [ (count $argv) -eq 0 ]
     for projectName in (__fish_p_all_project_names)
-      echo (set_color --bold)$projectName(set_color normal): (__fish_p_get_project_path $projectName ^ /dev/null)
+      echo (set_color --bold)$projectName(set_color normal): (__fish_p_get_project_path $projectName 2> /dev/null)
     end
     return 0
   end

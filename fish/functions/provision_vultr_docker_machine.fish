@@ -21,7 +21,7 @@ function provision_vultr_docker_machine
   if not set -q VULTR_API_KEY
     echo 'You must have $VULTR_API_KEY set, try one of the following options:'
     echo '    by running: env VULTR_API_KEY={key} '(basename (status filename))
-    echo '    by setting it in ~/.config/omf/secrets.fish'
+    echo '    by setting it in ~/.config/fish/secrets.fish'
     return 1
   end
 

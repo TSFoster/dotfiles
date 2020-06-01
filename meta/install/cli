@@ -112,8 +112,8 @@ end
 
 echo '-> Ruby'
 
-set --universal --export IRBRC $configDir/irb/irbrc ^/dev/null
-set --universal --export PRYRC $configDir/pry/pryrc ^/dev/null
+set --universal --export IRBRC $configDir/irb/irbrc 2>/dev/null
+set --universal --export PRYRC $configDir/pry/pryrc 2>/dev/null
 
 [ $OS = Mac ]
 and [ -d /Library/Ruby/Gems ]

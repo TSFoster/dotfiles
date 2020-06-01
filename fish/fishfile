@@ -1,9 +1,6 @@
 barnybug/docker-fish-completion
 TSFoster/docker-tools
 ohanhi/fish-elm-completions
-fisherman/fishkit
 jethrokuan/fzf
-fisherman/get
 fisherman/getopts
-fisherman/menu
 TSFoster/posix-source

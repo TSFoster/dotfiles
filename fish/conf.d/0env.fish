@@ -1,4 +1,5 @@
-set --export configDir $HOME/.config
+set --export XDG_CONFIG_HOME $HOME/.config
+set --export configDir $XDG_CONFIG_HOME
 set --export dataDir $HOME/.local/share
 set --export localBinDir $HOME/.local/bin
 set --export workspaceDir $HOME/workspace
@@ -43,8 +44,7 @@ end
 if [ $OS = Mac ]
   set --export HOMEBREW_CASK_OPTS --appdir=/Applications
   # Put the airport command in PATH
-  set --export fish_user_paths /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources $fish_user_paths
-  set --export fish_user_paths $HOME/Library/Python/3.7/bin $fish_user_paths
+  set --export fish_user_paths /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources $HOME/Library/Python/3.7/bin $fish_user_paths
   set --export iCloudDir "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
   set --export documentsDir "$iCloudDir/Documents"
   set --export workDir "$documentsDir/Work"
@@ -61,5 +61,3 @@ set --export fish_user_paths $GOPATH/bin $fish_user_paths
 
 # Set up Java
 set --export JAVA_HOME (/usr/libexec/java_home)
-
-[ -f $configDir/omf/secrets.fish ]; and source $configDir/omf/secrets.fish

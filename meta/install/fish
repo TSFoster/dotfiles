@@ -13,30 +13,16 @@ if not [ (finger $USER | awk '/Shell:/ { print $4 }') = $fishLocation ]
   chsh -s $fishLocation
 end
 
-if not [ -d $dataDir/omf ]
-  echo '-> Oh My Fish (you will need to hit Ctrl+D once installed)'
-  source $configDir/omf/functions/bobthefish_colors.fish
-  curl -L https://get.oh-my.fish > /tmp/omf.install.fish
-  fish /tmp/omf.install.fish --config=$configDir/omf --path=$dataDir/omf
-  rm /tmp/omf.install.fish
-end
-
-set fisherFile $configDir/omf/functions/fisher.fish
-if not [ -f $fisherFile ]
+if not functions --query fisher
   echo '-> Install Fisherman'
-  curl --create-dirs -L https://git.io/fisher > $fisherFile
+  curl --location --create-dirs -output $configDir/fish/fisher/functions/fisher.fish https://git.io/fisher
 end
 
 echo '-> Install Fisherman plugins'
-source $fisherFile
-fisher
+fish -c fisher
 
 echo '-> Universal variables'
 set --universal FZF_LEGACY_KEYBINDINGS 0
-set --universal theme_display_ruby no
-set --universal theme_display_date no
-set --universal theme_display_cmd_duration no
-set --universal theme_nerd_fonts yes
 
 # TODO Make play more nicely with SSH
 echo '-> Italics'

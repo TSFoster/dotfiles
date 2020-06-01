@@ -24,7 +24,7 @@ cd $dotfilesDir
 [ (git remote get-url origin) = 'https://github.com/TSFoster/dotfiles.git' ]
 and git remote set-url origin git@github.com:TSFoster/dotfiles.git
 
-source omf/env.fish
+source fish/conf.d/0env.fish
 
 mkdir -p $dataDir
 mkdir -p $localBinDir
