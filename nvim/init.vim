@@ -126,6 +126,12 @@ nnoremap q; q:
 " Use gQ if wanting to go into ex mode. Q for repeating last macro
 nnoremap Q @@
 
+" Swap visual and visual block modes. Visual block more commonly used by me
+nnoremap    v   <C-V>
+nnoremap <C-V>     v
+vnoremap    v   <C-V>
+vnoremap <C-V>     v
+
 " %% in command line maps to current file's directory
 cnoremap <expr> %% fnameescape(expand('%:h').'/')
 " %p in command line maps to current file's path
