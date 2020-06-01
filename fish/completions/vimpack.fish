@@ -13,6 +13,7 @@ function __fish_vimpack_using_command
 end
 
 complete --command=vimpack --condition='__fish_vimpack_at_stage 1' --arguments='add' --description='Install a package to nvim config' --no-files
+complete --command=vimpack --condition='__fish_vimpack_at_stage 1' --arguments='open' --description='Open a package’s URL' --no-files
 complete --command=vimpack --condition='__fish_vimpack_at_stage 1' --arguments='update' --description='Run git pull in specified packages (leave blank to update all)' --no-files
 complete --command=vimpack --condition='__fish_vimpack_at_stage 1' --arguments='list' --description='List all installed packages' --no-files
 complete --command=vimpack --condition='__fish_vimpack_at_stage 1' --arguments='remove' --description='Remove a package from nvim config' --no-files
@@ -25,4 +26,4 @@ complete --command=vimpack --condition='__fish_vimpack_using_command list ls l' 
 complete --command=vimpack --condition='__fish_vimpack_using_command list ls l' --long-option=opt --short-option=o --description='Only list packages installed to opt directories'
 complete --command=vimpack --condition='__fish_vimpack_using_command list ls l' --long-option=bundle --short-option=b --require-parameter --arguments='(ls $HOME/.config/nvim/pack/)' --description='Only list packages installed to given pack directory' --no-files
 
-complete --command=vimpack --condition='__fish_vimpack_using_command rm remove delete r d uninstall un update up' --arguments='(find $HOME/.config/nvim/pack/ -type d -depth 3 | xargs basename)' --no-files
+complete --command=vimpack --condition='__fish_vimpack_using_command open o rm remove delete r d uninstall un update up' --arguments='(find $HOME/.config/nvim/pack/ -type d -depth 3 | xargs basename)' --no-files

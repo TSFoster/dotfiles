@@ -169,6 +169,27 @@ function vimpack --description 'Functions for working with vim’s native packag
       rm -rf .git/modules/nvim/$argv
 
       cd $owd
+    case open o
+      set -e argv[1]
+
+      not count $argv > /dev/null
+      and echo Should list packages to open >&2
+      and return 1
+
+      for name in $argv
+        set url (git config --file $HOME/.config/.gitmodules --get submodule.nvim/$name.url)
+        switch $url
+          case 'http*'
+            if set --query SSH_CLIENT
+              echo $url
+            else
+              open $url
+              sleep 0.1 # Otherwise multiple URLs won't reliably be opened
+            end
+          case '*'
+            echo Don’t know how to open $url >&2
+        end
+      end
     case u
       echo Unclear whether ‘u’ is update or uninstall >&2
       return 1
