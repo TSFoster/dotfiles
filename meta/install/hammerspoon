@@ -1,11 +1,11 @@
 #!/usr/bin/env fish
 
 if [ $OS = Mac ]
-  defaults write org.hammerspoon.Hammerspoon MJConfigFile $configDir/hammerspoon/init.lua
-  if not [ -f $configDir/maildir ]; or not [ -d $HOME/Library/Mail/V(cat $configDir/maildir) ]
+  defaults write org.hammerspoon.Hammerspoon MJConfigFile $XDG_CONFIG_HOME/hammerspoon/init.lua
+  if not [ -f $XDG_CONFIG_HOME/maildir ]; or not [ -d $HOME/Library/Mail/V(cat $XDG_CONFIG_HOME/maildir) ]
     read --prompt-str='If you want mail integration, enter the mailbox version number, followed by a slash and the mailbox ID (e.g. 5/CFEC8F32-F1F3-4F20-FFB0-28213FC83240): ' maildir
     [ -d $HOME/Library/Mail/V$maildir ]
-    and echo $maildir > $configDir/maildir
+    and echo $maildir > $XDG_CONFIG_HOME/maildir
     or echo 'Mail integration not set up. To configure later, run '(status filename)' again' >&2
   end
 else

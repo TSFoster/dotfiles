@@ -5,7 +5,7 @@ if not [ $OS = Mac ]
   exit 1
 end
 
-defaults write com.googlecode.iterm2 PrefsCustomFolder $configDir/iterm
+defaults write com.googlecode.iterm2 PrefsCustomFolder $XDG_CONFIG_HOME/iterm
 
 defaults write com.apple.dock autohide -int 1
 

@@ -7,10 +7,10 @@ function __fish_p_get_project_path
 
   if [ $projectName = home ]
     echo $HOME
-  else if [ -f $projectsDir/$projectName.txt ]
-    cat $projectsDir/$projectName.txt
-  else if [ -d $workspaceDir/$projectName ]
-    echo $workspaceDir/$projectName
+  else if [ -f $projects/$projectName.txt ]
+    cat $projects/$projectName.txt
+  else if [ -d $workspace/$projectName ]
+    echo $workspace/$projectName
   else
     echo 'New directory must be created.' >&2
     return 1

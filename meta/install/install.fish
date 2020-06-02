@@ -26,10 +26,10 @@ and git remote set-url origin git@github.com:TSFoster/dotfiles.git
 
 source fish/conf.d/0env.fish
 
-mkdir -p $dataDir
-mkdir -p $localBinDir
-mkdir -p $workspaceDir
-mkdir -p $projectsDir
+mkdir -p $data
+mkdir -p $localBin
+mkdir -p $workspace
+mkdir -p $projects
 
 [ $OS = Mac ]
 or echo '!!> This is not a Mac! Let’s see how well this goes…'

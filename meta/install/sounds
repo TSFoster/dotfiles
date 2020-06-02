@@ -4,7 +4,7 @@ if [ $OS = Mac ]
   set soundsDir $HOME/Library/Sounds
   sudo mkdir -p $soundsDir
   sudo chown $USER $soundsDir
-  cp -f $configDir/meta/sounds/*.aif $soundsDir
+  cp -f $XDG_CONFIG_HOME/meta/sounds/*.aif $soundsDir
 else
   echo 'No action taken' >&2
 end

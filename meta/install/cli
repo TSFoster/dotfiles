@@ -3,9 +3,9 @@
 if [ $OS = Mac ]
   echo '-> Homebrew'
   brew update
-  brew bundle --file=$configDir/meta/Brewfile
+  brew bundle --file=$XDG_CONFIG_HOME/meta/Brewfile
   read --prompt-str='Install GUI apps (y/n)? ' --nchars=1 installGui
-  [ $installGui = y ]; and brew bundle --file=$configDir/meta/apps.Brewfile
+  [ $installGui = y ]; and brew bundle --file=$XDG_CONFIG_HOME/meta/apps.Brewfile
 else
   echo 'Skipped homebrew packages' >&2
 end
@@ -57,13 +57,13 @@ else
 end
 
 
-[ -f $configDir/git/credentials.gitconfig ]
-or touch $configDir/git/credentials.gitconfig
+[ -f $XDG_CONFIG_HOME/git/credentials.gitconfig ]
+or touch $XDG_CONFIG_HOME/git/credentials.gitconfig
 
 
 echo '-> Go'
 if command -s go > /dev/null
-  mkdir -p "$dataDir/go"
+  mkdir -p "$XDG_DATA_HOME/go"
   go get -u github.com/arial7/golorem
   go get -u github.com/mrtazz/checkmake
   go get -u github.com/mattn/efm-langserver
@@ -112,8 +112,8 @@ end
 
 echo '-> Ruby'
 
-set --universal --export IRBRC $configDir/irb/irbrc 2>/dev/null
-set --universal --export PRYRC $configDir/pry/pryrc 2>/dev/null
+set --universal --export IRBRC $XDG_CONFIG_HOME/irb/irbrc 2>/dev/null
+set --universal --export PRYRC $XDG_CONFIG_HOME/pry/pryrc 2>/dev/null
 
 [ $OS = Mac ]
 and [ -d /Library/Ruby/Gems ]
@@ -131,4 +131,4 @@ end
 
 # -> Ctags
 mkdir -p $HOME/.ctags.d
-echo "--options=$configDir/ctags/" > $HOME/.ctags.d/config.ctags
+echo "--options=$XDG_CONFIG_HOME/ctags/" > $HOME/.ctags.d/config.ctags

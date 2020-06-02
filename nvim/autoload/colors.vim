@@ -7,7 +7,7 @@ function colors#init()
 
   nnoremap <silent> <F11> :ReverseBackground<CR>
 
-  if join(readfile($dataDir . "/dark_mode")) == "true"
+  if join(readfile($XDG_DATA_HOME . "/dark_mode")) == "true"
     SetDark
   else
     SetLight

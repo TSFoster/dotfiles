@@ -39,7 +39,7 @@ else
   echo 'Skipped neovim supporting packages from gem' >&2
 end
 
-mkdir -p $dataDir/nvim/sessions
+mkdir -p $XDG_DATA_HOME/nvim/sessions
 
 echo '-> Editorconfig'
-ln $configDir/meta/editorconfig $HOME/.editorconfig
+ln $XDG_CONFIG_HOME/meta/editorconfig $HOME/.editorconfig

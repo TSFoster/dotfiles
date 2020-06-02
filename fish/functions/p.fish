@@ -30,7 +30,7 @@ function p
       return 1
     end
     for projectName in $argv
-      set -l projectInfo $projectsDir/$projectName.txt
+      set -l projectInfo $projects/$projectName.txt
       if not test -f $projectInfo; and not set -q _flag_force
         echo "Project ‘$projectName’ doesn’t exist!" >&2
       end
@@ -52,7 +52,7 @@ function p
   and return 1
 
   set projectName $argv[1]
-  set projectInfo $projectsDir/$projectName.txt
+  set projectInfo $projects/$projectName.txt
 
   if [ "$projectName" = home ]
     set projectPath $HOME
@@ -79,8 +79,8 @@ function p
       end
     end
   else
-    if [ -d $workspaceDir/$projectName ]
-      set projectPath $workspaceDir/$projectName
+    if [ -d $workspace/$projectName ]
+      set projectPath $workspace/$projectName
     else
       if set -q argv[2]
         set newPath $argv[2]

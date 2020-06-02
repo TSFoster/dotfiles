@@ -1,9 +1,9 @@
 #!/usr/bin/env fish
 
-[ $OS = Mac ]; and osascript -l JavaScript -e 'Application("System Events").appearancePreferences.darkMode()' > $dataDir/dark_mode
-[ -f $dataDir/dark_mode ]; or echo true > $dataDir/dark_mode
+[ $OS = Mac ]; and osascript -l JavaScript -e 'Application("System Events").appearancePreferences.darkMode()' > $XDG_DATA_HOME/dark_mode
+[ -f $XDG_DATA_HOME/dark_mode ]; or echo true > $XDG_DATA_HOME/dark_mode
 
-if [ (cat $dataDir/dark_mode) = true ]
+if [ (cat $XDG_DATA_HOME/dark_mode) = true ]
   echo 'Dark mode is on' >&2
 else
   echo 'Dark mode is off' >&2

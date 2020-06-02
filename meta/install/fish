@@ -15,7 +15,7 @@ end
 
 if not functions --query fisher
   echo '-> Install Fisherman'
-  curl --location --create-dirs -output $configDir/fish/fisher/functions/fisher.fish https://git.io/fisher
+  curl --location --create-dirs -output $XDG_CONFIG_HOME/fish/fisher/functions/fisher.fish https://git.io/fisher
 end
 
 echo '-> Install Fisherman plugins'
@@ -26,6 +26,6 @@ set --universal FZF_LEGACY_KEYBINDINGS 0
 
 # TODO Make play more nicely with SSH
 echo '-> Italics'
-tic $configDir/meta/italic-fonts/xterm-256color-italic.terminfo
+tic $XDG_CONFIG_HOME/meta/italic-fonts/xterm-256color-italic.terminfo
 set --query TERM; and set --erase TERM
 set --universal --export TERM xterm-256color-italic
