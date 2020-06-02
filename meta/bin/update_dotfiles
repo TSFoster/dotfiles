@@ -5,4 +5,5 @@
 nvim -es +CocUpdateSync +'sleep 500m' +'w /dev/stdout'
 vimpack update
 fish_update_completion
+fisher
 fisher self-update
