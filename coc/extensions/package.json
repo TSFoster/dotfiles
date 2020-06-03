@@ -18,7 +18,7 @@
     "coc-phpls": ">=2.1.8",
     "coc-python": ">=1.2.12",
     "coc-rls": ">=1.1.6",
-    "coc-rust-analyzer": ">=0.7.1",
+    "coc-rust-analyzer": ">=0.7.2",
     "coc-snippets": ">=2.1.26",
     "coc-solargraph": ">=1.1.6",
     "coc-svg": ">=0.0.13",
