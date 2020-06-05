@@ -198,3 +198,7 @@
 	path = nvim/pack/trialling/start/splitjoin.vim
 	url = https://github.com/AndrewRadev/splitjoin.vim
 	ignore = dirty
+[submodule "nvim/vim-sort-motion"]
+	path = nvim/pack/main/start/vim-sort-motion
+	url = https://github.com/christoomey/vim-sort-motion
+	ignore = dirty

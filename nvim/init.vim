@@ -408,3 +408,6 @@ map [<BS> <Plug>(IndentWiseBlockScopeBoundaryBegin)
 map ]<BS> <Plug>(IndentWiseBlockScopeBoundaryEnd)
 
 if isdirectory('/Applications/Dash.app') && !exists('$SSH_CLIENT') | packadd dash.vim | endif
+
+let g:sort_motion = 'g^'
+let g:sort_motion_lines = 'g%'
