@@ -1,5 +1,7 @@
 if exists("b:did_ftplugin") | finish | endif
 
+packadd vim-scriptease
+
 let b:switch_custom_definitions = [
       \ { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
       \ { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
