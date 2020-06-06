@@ -2,7 +2,7 @@
 
 if contains -- '-h' $argv; or contains -- '--help' $argv
   echo "
-    Prints information useful for prompts.
+    Prints path-related information useful for prompts.
 
     Usage: "(basename (status filename))" OUTPUT [FISH_PID]
 
@@ -14,13 +14,11 @@ if contains -- '-h' $argv; or contains -- '--help' $argv
         Line 2: the basename of the git root, if one exists (blank otherwise)
         Line 3: the dirname for the rest of the PWD (in /s/h/o/r/t format) (blank if in git root or child of git root)
         Line 4: the basename for the rest of the PWD (blank if in git root)
-        Line 5: the branch name of the git project, if one exists
   "
   exit 0
 end
 
-set branchName (git branch --show-current 2> /dev/null)
-set projectRoot (git rev-parse --show-toplevel 2> /dev/null)
+set projectRoot (command git rev-parse --show-toplevel 2> /dev/null)
 
 set output /dev/stdout
 set --query argv[1]
@@ -29,7 +27,6 @@ and set output $argv[1]
 begin
   prompt_base_and_dir "$projectRoot"
   prompt_base_and_dir ''(string replace "$projectRoot" '' $PWD)
-  echo "$branchName"
 end > $output
 
 set --query argv[2]

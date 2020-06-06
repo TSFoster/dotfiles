@@ -1,0 +1,70 @@
+#!/usr/bin/env fish
+
+if contains -- '-h' $argv; or contains -- '--help' $argv
+  echo "
+    Prints git information useful for prompts.
+
+    Usage: "(basename (status filename))" OUTPUT [FISH_PID]
+
+    All information will be written to OUTPUT (default: /dev/stdout).
+    If given, FISH_PID will be sent WINCH signal when output completed.
+
+    If not in a git repo, all lines will be blank.
+
+    Output:
+        Line 1: Branch name
+        Line 2: Staged state: STAGED|<blank>
+        Line 3: Dirty state: DIRTY|<blank>
+        Line 4: Remote status: AHEAD|BEHIND|AHEADBEHIND|<blank>
+        Line 5: Stashes: STASHES|<blank>
+  "
+  exit 0
+end
+
+set output /dev/stdout
+set --query argv[1]
+and set output $argv[1]
+
+set branchName (command git branch --show-current 2> /dev/null)
+
+if test -z "$branchName"
+  echo -n \n\n\n\n\n > $output
+  set --query argv[2]
+  and kill -WINCH $argv[2] 2> /dev/null
+  exit 0
+end
+
+command git diff --cached --no-ext-diff --quiet --exit-code 2>/dev/null
+or set stagedState STAGED
+
+command git diff --no-ext-diff --quiet --exit-code 2>/dev/null
+or set dirtyState DIRTY
+
+for line in (command git rev-list --left-right '@{upstream}...HEAD' 2>/dev/null)
+  switch "$line"
+    case '>*'
+      set ahead AHEAD
+      set --query behind
+      and break
+    case '<*'
+      set behind BEHIND
+      set --query ahead
+      and break
+  end
+end
+
+command git rev-parse --verify --quiet refs/stash >/dev/null
+and set stashes STASHES
+
+begin
+  echo $branchName
+  echo $stagedState
+  echo $dirtyState
+  echo $ahead$behind
+  echo $stashes
+end > $output
+
+set --query argv[2]
+and kill -WINCH $argv[2] 2>/dev/null
+
+exit 0
