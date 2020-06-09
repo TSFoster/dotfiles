@@ -3,6 +3,8 @@ function __fish_p_get_project_path
     echo 'No project name given.' >&2
     return 1
   end
+  set projects $XDG_DATA_HOME/projects
+
   set projectName $argv[1]
 
   if [ $projectName = home ]

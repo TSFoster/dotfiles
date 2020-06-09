@@ -1,7 +1,24 @@
 function p
+  set projects $XDG_DATA_HOME/projects
+
+  if not count $argv > /dev/null
+    set match (grep --files-with-match $PWD\$ $projects/*.txt)
+    if count $match >/dev/null
+      p (filename $match[1])
+      return 0
+    else if test $workspace/(basename $PWD) = $PWD
+      p (basename $PWD)
+      return 0
+    end
+
+    echo 'What project should I start?' >&2
+    return 1
+  end
+
   set -l options \
     (fish_opt --short=d --long=delete) \
     (fish_opt --short=f --long=force) \
+    (fish_opt --short=l --long=list) \
     (fish_opt --short=h --long=help)
   argparse $options -- $argv
 
@@ -12,6 +29,9 @@ function p
     echo '    This help message.'
     echo ''
     echo "$cmd"
+    echo '    Look for a project associated with your pwd and launch that.'
+    echo ''
+    echo "$cmd -l | --list"
     echo '    List all projects.'
     echo ''
     echo "$cmd NAME [ PATH [ -f  --force ] ]"
@@ -39,7 +59,7 @@ function p
     return 0
   end
 
-  if [ (count $argv) -eq 0 ]
+  if set -q _flag_list
     for projectName in (__fish_p_all_project_names)
       echo (set_color --bold)$projectName(set_color normal): (__fish_p_get_project_path $projectName 2> /dev/null)
     end

@@ -6,7 +6,6 @@ set --global config $XDG_CONFIG_HOME
 set --global data $HOME/.local/share
 set --global localBin $HOME/.local/bin
 set --global workspace $HOME/workspace
-set --global projects $data/projects
 
 set --export fish_key_bindings fish_vi_key_bindings
 

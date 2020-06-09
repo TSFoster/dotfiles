@@ -1,4 +1,6 @@
 function __fish_p_all_project_names
+  set projects $XDG_DATA_HOME/projects
+
   mkdir -p $projects
   mkdir -p $workspace
 
