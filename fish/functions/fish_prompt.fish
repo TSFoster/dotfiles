@@ -2,7 +2,7 @@ function fish_prompt
   set last_status $status
 
   set --query prompt_count
-  or set --global prompt_count 0
+  or set --global prompt_count -1
 
   set --query last_prompt
   or set --global last_prompt $prompt_count
@@ -30,22 +30,17 @@ function fish_prompt
   and set last_status ' '
   or set last_status \u2524_$last_status
 
-  if test $prompt_count -ne 0; and not test -f $pathinfofile
+  if not test -f $pathinfofile
     echo -n \n\n(prompt_base_and_dir $PWD) > $pathinfofile
   end
 
-  if test $prompt_count -ne 0; and not test -f $gitinfofile
+  if not test -f $gitinfofile
     echo -n \n\n\n\n\n > $gitinfofile
   end
 
-  if test $prompt_count -eq 0
-    # Fish doesn't like the asynchronous trick on the first prompt :shrug:
-    # TODO check this
-    __fish_prompt_path $pathinfofile
-    __fish_prompt_git_details $gitinfofile
-  else if test $last_prompt -lt $prompt_count
-    # Only do this once per prompt
-    # Begin/end stops the job x has finished message
+  # Only do this once per prompt
+  if test $last_prompt -lt $prompt_count
+    # Begin/end stops the "job x has finished" message
     begin
       __fish_prompt_path $pathinfofile $fish_pid &
       __fish_prompt_git_details $gitinfofile $fish_pid &
