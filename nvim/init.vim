@@ -411,3 +411,6 @@ if isdirectory('/Applications/Dash.app') && !exists('$SSH_CLIENT') | packadd das
 
 let g:sort_motion = 'g^'
 let g:sort_motion_lines = 'g%'
+
+let g:coc_status_error_sign = ">>"
+let g:coc_status_warning_sign = "\u26a0 "
