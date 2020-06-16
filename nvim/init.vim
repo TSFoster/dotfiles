@@ -169,12 +169,13 @@ nnoremap <silent> gh ciw<C-r>=printf('0x%x', <C-r>")<CR><Esc>
 let g:fugitive_git_executable='command git'
 
 nnoremap <silent> <Leader>ga :Gwrite<CR>
-nnoremap <silent> <Leader>gs :Gstatus<CR>
-nnoremap <silent> <Leader>gps :Gpush<CR>
-nnoremap <silent> <Leader>gpl :Gpull<CR>
-nnoremap <silent> <Leader>gco :Gcommit<CR>
-nnoremap <silent> <Leader>gca :Gcommit --amend<CR>
-nnoremap <silent> <Leader>gre :<C-U>execute("Grebase -i HEAD~" . v:count1)<CR>
+nnoremap <silent> <Leader>gs :Git<CR>
+nnoremap <silent> <Leader>gps :Git push<CR>
+nnoremap <silent> <Leader>gpl :Git pull<CR>
+nnoremap <silent> <Leader>gco :Git commit<CR>
+nnoremap <silent> <Leader>gca :Git commit --amend<CR>
+nnoremap <silent> <Leader>gcA :Git commit --amend --no-edit<CR>
+nnoremap <silent> <Leader>gre :<C-U>execute("Git rebase -i HEAD~" . v:count1)<CR>
 
 nnoremap <silent> <Leader>gi :CocList gitignore<CR>
 nnoremap <silent> <Leader>ge :CocList gstatus<CR>
