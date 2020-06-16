@@ -190,10 +190,10 @@ nmap <Leader>hu :CocCommand git.chunkUndo<CR>
 " show commit contains current position
 nmap <Leader>cp <Plug>(coc-git-commit)
 " create text object for git chunks
-omap ic <Plug>(coc-text-object-inner)
-xmap ic <Plug>(coc-text-object-inner)
-omap ac <Plug>(coc-text-object-outer)
-xmap ac <Plug>(coc-text-object-outer)
+omap ih <Plug>(coc-text-object-inner)
+xmap ih <Plug>(coc-text-object-inner)
+omap ah <Plug>(coc-text-object-outer)
+xmap ah <Plug>(coc-text-object-outer)
 
 let g:targets_nl = ['n', 'N']
 
