@@ -23,6 +23,7 @@ function fish_prompt
   set project_dir_color red
   set pwd_path_color $project_path_color
   set pwd_dir_color blue
+  set docker_machine_color cyan
 
   set last_status_color red
   test $last_status -eq 0
@@ -50,6 +51,13 @@ function fish_prompt
   end
 
   set first_line (set_color $last_status_color)(printf '%'$COLUMNS's' $last_status | tr \  \u2500 | tr _ \ )
+
+  set machineName
+  set dockerinfo_length 0
+  if set --query DOCKER_MACHINE_NAME
+    set machineName "⚓︎$DOCKER_MACHINE_NAME"
+    set dockerinfo_length (string length $machineName)
+  end
 
   set pathinfo (cat $pathinfofile)
   set pathinfo_length (string length (string join '' $pathinfo))
@@ -103,7 +111,9 @@ function fish_prompt
         echo -n ''$giticons[$i]
       end
     end
-    printf '%-'(expr $COLUMNS - $pathinfo_length - $gitinfo_length - 10)'s' ' '
+    printf '%-'(expr $COLUMNS - $pathinfo_length - $gitinfo_length - $dockerinfo_length)'s' ' '
+    set_color --bold $docker_machine_color
+    echo -n ''$machineName
   )
 
   set third_line (set_color $mode_color)\u25b8(set_color normal)
