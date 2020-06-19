@@ -94,6 +94,9 @@ let g:netrw_preview=1 " Vertical preview
 
 " Overrides vim-unimpaired’s map for toggling cursorcolumn
 nnoremap <silent> you :UndotreeToggle<CR>
+nnoremap <silent> ]ou :UndotreeHide<CR>
+nnoremap <silent> [ou :UndotreeShow<CR>
+
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_SetFocusWhenToggle = 0
@@ -315,6 +318,9 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 call formatting#init()
 
 nnoremap yot :TagbarToggle<CR>
+nnoremap [ot :TagbarOpen<CR>
+nnoremap ]ot :TagbarClose<CR>
+
 nnoremap <Leader>] :tag<Space>
 
 let g:polyglot_disabled = ['cryptol', 'markdown']
@@ -393,13 +399,22 @@ augroup END
 command! -bang -nargs=1 Stab call whitespace#set(<f-args>) | call cursor#preserve(<bang>0 ? 'normal gg=G' : '')
 
 " Quick way to switch between tabs and spaces
-nnoremap <silent> yo<Tab> :set expandtab! <Bar> echo (&expandtab ? 'Spaces (' . &shiftwidth . ')' : 'Tabs (' . &tabstop . ')')<CR>
+nnoremap <silent> yo<Tab> :call toggle#tabs()<CR>
+nnoremap <silent> [o<Tab> :call toggle#tabs(1)<CR>
+nnoremap <silent> ]o<Tab> :call toggle#tabs(0)<CR>
 
 nnoremap <silent> yoq :call toggle#quickfixList()<CR>
+nnoremap <silent> [oq :call toggle#quickfixList(1)<CR>
+nnoremap <silent> ]oq :call toggle#quickfixList(0)<CR>
+
 nnoremap <silent> yol :call toggle#locationList()<CR>
+nnoremap <silent> [ol :call toggle#locationList(1)<CR>
+nnoremap <silent> ]ol :call toggle#locationList(0)<CR>
 
 let g:lion_squeeze_spaces = 1
-nnoremap <silent> yo<Bar> :let g:lion_squeeze_spaces=(g:lion_squeeze_spaces ? 0 : 1)<CR>
+nnoremap <silent> yo<Bar> :call toggle#lion()<CR>
+nnoremap <silent> [o<Bar> :call toggle#lion(1)<CR>
+nnoremap <silent> ]o<Bar> :call toggle#lion(0)<CR>
 
 let g:switch_mapping = "<Tab>"
 let g:switch_reverse_mapping = "<S-Tab>"
