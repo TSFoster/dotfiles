@@ -1,3 +1,4 @@
+# TODO marker for when connected via SSH
 function fish_prompt
   set last_status $status
 
@@ -24,6 +25,7 @@ function fish_prompt
   set pwd_path_color $project_path_color
   set pwd_dir_color blue
   set docker_machine_color cyan
+  set sshinfo_color green
 
   set last_status_color red
   test $last_status -eq 0
@@ -52,12 +54,13 @@ function fish_prompt
 
   set first_line (set_color $last_status_color)(printf '%'$COLUMNS's' $last_status | tr \  \u2500 | tr _ \ )
 
-  set machineName
-  set dockerinfo_length 0
-  if set --query DOCKER_MACHINE_NAME
-    set machineName "⚓︎$DOCKER_MACHINE_NAME"
-    set dockerinfo_length (string length $machineName)
-  end
+  set --query SSH_CLIENT
+  and set sshInfo " ⚯  $USER@"(hostname)
+  set sshinfo_length (string length "$sshInfo")
+
+  set --query DOCKER_MACHINE_NAME
+  and set machineName "⚓︎$DOCKER_MACHINE_NAME"
+  set dockerinfo_length (string length "$machineName")
 
   set pathinfo (cat $pathinfofile)
   set pathinfo_length (string length (string join '' $pathinfo))
@@ -111,9 +114,11 @@ function fish_prompt
         echo -n ''$giticons[$i]
       end
     end
-    printf '%-'(expr $COLUMNS - $pathinfo_length - $gitinfo_length - $dockerinfo_length)'s' ' '
+    printf '%-'(expr $COLUMNS - $pathinfo_length - $gitinfo_length - $dockerinfo_length - $sshinfo_length)'s' ' '
     set_color --bold $docker_machine_color
     echo -n ''$machineName
+    set_color --bold $sshinfo_color
+    echo -n ''$sshInfo
   )
 
   set third_line (set_color $mode_color)\u25b8(set_color normal)
