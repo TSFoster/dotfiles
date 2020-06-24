@@ -30,7 +30,7 @@ abbr --add --global l ls
 abbr --add --global la ls -A
 abbr --add --global ll ls -l
 
-abbr --add --global psg ps -Av \| rg -S
+abbr --add --global psg psgrep
 
 abbr --add --global .. pushd ..
 abbr --add --global ~ pushd ~
