@@ -1,7 +1,8 @@
 function psgrep --description 'grep running processes'
-  ps -A -o pid,ppid,state,%cpu,%mem,command | awk '
+  ps -A -o pid,ppid,state,%cpu,%mem,command | gawk '
     BEGIN {
-      matches = 0;
+      IGNORECASE = 1
+      matches = 0
     }
 
     NR==1 {
