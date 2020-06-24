@@ -1,12 +1,13 @@
-# TODO marker for when connected via SSH
+# TODO change icon for ssh
+# TODO change icon for docker machine
 function fish_prompt
   set last_status $status
 
   set --query prompt_count
-  or set --global prompt_count -1
+  or set --global prompt_count 0
 
   set --query last_prompt
-  or set --global last_prompt $prompt_count
+  or set --global last_prompt -1
 
   set --query prompt_pids
   or set --global prompt_pids
