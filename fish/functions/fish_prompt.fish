@@ -32,13 +32,11 @@ function fish_prompt
   and set last_status ' '
   or set last_status \u2524_$last_status
 
-  if not test -f $pathinfofile
-    echo -n \n\n(prompt_base_and_dir $PWD) > $pathinfofile
-  end
+  test -f $pathinfofile
+  or echo -n \n\n(prompt_base_and_dir $PWD) > $pathinfofile
 
-  if not test -f $gitinfofile
-    echo -n \n\n\n\n\n > $gitinfofile
-  end
+  test -f $gitinfofile
+  or echo -n \n\n\n\n\n > $gitinfofile
 
   # For some reason it's unreliable doing this on the first prompt
   if test $prompt_count = 0
@@ -73,19 +71,19 @@ function fish_prompt
   set gitinfo (cat $gitinfofile)
   set giticons ' '
   set gitcolors normal
-  if test -n ''$gitinfo[1]
+  if test -n "$gitinfo[1]"
     set gitcolors $gitcolors green
     set giticons $giticons '('(string replace -r '^master|main$' '●' $gitinfo[1] | string replace -r '^feature/' '★' | string replace -r '^hotfix/' '⌁')')'
 
-    test ''$gitinfo[2] = "STAGED"
+    test "$gitinfo[2]" = "STAGED"
     and set giticons $giticons +
     and set gitcolors $gitcolors red
 
-    test ''$gitinfo[3] = "DIRTY"
+    test "$gitinfo[3]" = "DIRTY"
     and set giticons $giticons …
     and set gitcolors $gitcolors red
 
-    switch ''$gitinfo[4]
+    switch "$gitinfo[4]"
       case 'AHEAD'
         set giticons $giticons \u2191
         set gitcolors $gitcolors green
@@ -97,7 +95,7 @@ function fish_prompt
         set gitcolors $gitcolors red
     end
 
-    test ''$gitinfo[5] = "STASHES"
+    test "$gitinfo[5]" = "STASHES"
     and set giticons $giticons '❖'
     and set gitcolors $gitcolors magenta
   end
@@ -106,24 +104,24 @@ function fish_prompt
 
   set second_line (
     set_color $project_path_color
-    echo -n ''$pathinfo[1]
+    echo -n "$pathinfo[1]"
     set_color $project_dir_color
-    echo -n ''$pathinfo[2]
+    echo -n "$pathinfo[2]"
     set_color $pwd_path_color
-    echo -n ''$pathinfo[3]
+    echo -n "$pathinfo[3]"
     set_color $pwd_dir_color
-    echo -n ''$pathinfo[4]
-    if test (count $gitinfo) -gt 0
-      for i in (seq (count $gitinfo))
+    echo -n "$pathinfo[4]"
+    if test (count $giticons) -gt 0
+      for i in (seq (count $giticons))
         set_color $gitcolors[$i]
-        echo -n ''$giticons[$i]
+        echo -n "$giticons[$i]"
       end
     end
     printf '%-'(expr $COLUMNS - $pathinfo_length - $gitinfo_length - $dockerinfo_length - $sshinfo_length)'s' ' '
     set_color --bold $docker_machine_color
-    echo -n ''$machineName
+    echo -n "$machineName"
     set_color --bold $sshinfo_color
-    echo -n ''$sshInfo
+    echo -n "$sshInfo"
   )
 
   set third_line (set_color $mode_color)\u25b8(set_color normal)
