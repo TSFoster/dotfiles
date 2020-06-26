@@ -75,7 +75,7 @@ function fish_prompt
   set gitcolors normal
   if test -n ''$gitinfo[1]
     set gitcolors $gitcolors green
-    set giticons $giticons '('(string replace -r '^master$' '●' $gitinfo[1] | string replace -r '^feature/' '★' | string replace -r '^hotfix/' '⌁')')'
+    set giticons $giticons '('(string replace -r '^master|main$' '●' $gitinfo[1] | string replace -r '^feature/' '★' | string replace -r '^hotfix/' '⌁')')'
 
     test ''$gitinfo[2] = "STAGED"
     and set giticons $giticons +
