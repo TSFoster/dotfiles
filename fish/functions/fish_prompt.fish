@@ -40,8 +40,14 @@ function fish_prompt
     echo -n \n\n\n\n\n > $gitinfofile
   end
 
+  # For some reason it's unreliable doing this on the first prompt
+  if test $prompt_count = 0
+    begin
+      __fish_prompt_path $pathinfofile $fish_pid
+      __fish_prompt_git_details $gitinfofile $fish_pid
+    end
   # Only do this once per prompt
-  if test $last_prompt -lt $prompt_count
+  else if test $last_prompt -lt $prompt_count
     # Begin/end stops the "job x has finished" message
     begin
       __fish_prompt_path $pathinfofile $fish_pid &
