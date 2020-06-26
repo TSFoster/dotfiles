@@ -1,5 +1,3 @@
-# TODO change icon for ssh
-# TODO change icon for docker machine
 function fish_prompt
   set last_status $status
 
@@ -56,11 +54,11 @@ function fish_prompt
   set first_line (set_color $last_status_color)(printf '%'$COLUMNS's' $last_status | tr \  \u2500 | tr _ \ )
 
   set --query SSH_CLIENT
-  and set sshInfo " ⚯  $USER@"(hostname)
+  and set sshInfo " $USER@"(hostname)
   set sshinfo_length (string length "$sshInfo")
 
   set --query DOCKER_MACHINE_NAME
-  and set machineName "⚓︎$DOCKER_MACHINE_NAME"
+  and set machineName "[$DOCKER_MACHINE_NAME]"
   set dockerinfo_length (string length "$machineName")
 
   set pathinfo (cat $pathinfofile)
