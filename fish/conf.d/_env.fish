@@ -46,7 +46,7 @@ if command -s nvim > /dev/null
   set --export ABDUCO_CMD nvim
   if [ "$NVIM_LISTEN_ADDRESS" ]
     set --export EDITOR nvr --remote-tab-wait
-    set --export PAGER nvr '\'+call buffer#init_pager()\'' --remote-wait -
+    set --export PAGER nvr +'\'call\ buffer#init_pager\\(\\)\'' --remote-wait -
   else
     set --export EDITOR abduco -A nvim-\(random\) nvim
   end
