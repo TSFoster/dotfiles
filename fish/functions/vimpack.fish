@@ -113,6 +113,16 @@ function vimpack --description 'Functions for working with vim’s native packag
       and echo "$upToDateCount package$upToDatePlural already up to date:"\n
       and string replace '/tmp/vimpack-update-' '★ ' $upToDate
 
+      echo 'Running any post-install commands …' >&2
+
+      set updatedDirs (string replace '/tmp/vimpack-update-' '' $updated)
+      for i in (seq (count $updatedDirs))
+        cd $HOME/.config/nvim/pack/*/{opt,start}/$updatedDirs[$i]
+        set do (command git config --file $HOME/.conifg/.gitmodules --get submodule.nvim/$updatedDirs[$i].do)
+        test -n "$do"
+        and eval $do
+      end
+
       rm /tmp/vimpack-update-*
 
       cd $owd
