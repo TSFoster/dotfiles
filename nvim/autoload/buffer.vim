@@ -21,6 +21,7 @@ endfunction
 
 function buffer#init_pager()
   set bufhidden=delete
+  nnoremap <silent> q :lclose<CR><C-w>c
   filetype detect
 endfunction
 
