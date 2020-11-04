@@ -65,6 +65,3 @@ end
 set --export FD_DEFAULT_FLAGS '--exclude node_modules --exclude .git --exclude elm-stuff --exclude bower_components --exclude target --exclude .DS_Store --exclude .sass-cache --no-ignore-vcs --hidden'
 set --export RIPGREP_CONFIG_PATH $config/ripgreprc
 set --export FZF_DEFAULT_COMMAND "fd --type file $FD_DEFAULT_FLAGS"
-
-# Set up Java
-set --export JAVA_HOME (/usr/libexec/java_home)
