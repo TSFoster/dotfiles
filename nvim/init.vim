@@ -125,11 +125,6 @@ inoremap jkj j<ESC>
 " Use backspace to flip between two files
 nnoremap <BS> <C-^>
 
-" Semi-colon is much faster to type than colon
-nnoremap ; :
-vnoremap ; :
-nnoremap q; q:
-
 " Use gQ if wanting to go into ex mode. Q for repeating last macro
 nnoremap Q @@
 
