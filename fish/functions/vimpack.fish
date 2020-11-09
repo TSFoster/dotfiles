@@ -116,11 +116,15 @@ function vimpack --description 'Functions for working with vim’s native packag
       echo 'Running any post-install commands …' >&2
 
       set updatedDirs (string replace '/tmp/vimpack-update-' '' $updated)
-      for i in (seq (count $updatedDirs))
-        cd $HOME/.config/nvim/pack/*/{opt,start}/$updatedDirs[$i]
-        set do (command git config --file $HOME/.conifg/.gitmodules --get submodule.nvim/$updatedDirs[$i].do)
-        test -n "$do"
-        and eval $do
+      if count $updatedDirs >/dev/null
+        for i in (seq (count $updatedDirs))
+          cd $HOME/.config/nvim/pack/*/{opt,start}/$updatedDirs[$i]
+          set do (command git config --file $HOME/.conifg/.gitmodules --get submodule.nvim/$updatedDirs[$i].do)
+          test -n "$do"
+          and echo "Running post-install command for "$updatedDirs[$i]
+          and echo "#" $do
+          and eval $do
+        end
       end
 
       rm /tmp/vimpack-update-*
