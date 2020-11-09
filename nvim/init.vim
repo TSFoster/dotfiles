@@ -97,9 +97,13 @@ nnoremap <silent> you :UndotreeToggle<CR>
 nnoremap <silent> ]ou :UndotreeHide<CR>
 nnoremap <silent> [ou :UndotreeShow<CR>
 
-let g:undotree_WindowLayout = 4
+let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
-let g:undotree_SetFocusWhenToggle = 0
+let g:undotree_SetFocusWhenToggle = 1
+function g:Undotree_CustomMap()
+  nmap <buffer> ]c <Plug>UndotreeNextState
+  nmap <buffer> [c <Plug>UndotreePreviousState
+endfunction
 
 let g:camelcasemotion_key = '\'
 
