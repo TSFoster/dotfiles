@@ -3,3 +3,5 @@ TSFoster/docker-tools
 jethrokuan/fzf
 fisherman/getopts
 TSFoster/posix-source
+TSFoster/fish-elm-completion
+topdroplabs/docker-fish-completion
