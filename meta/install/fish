@@ -14,12 +14,12 @@ if not [ (finger $USER | awk '/Shell:/ { print $4 }') = $fishLocation ]
 end
 
 if not functions --query fisher
-  echo '-> Install Fisherman'
-  curl --location --create-dirs -output $XDG_CONFIG_HOME/fish/fisher/functions/fisher.fish https://git.io/fisher
+  echo '-> Install Fisher'
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 end
 
-echo '-> Install Fisherman plugins'
-fish -c fisher
+echo '-> Install Fisher plugins'
+fisher update
 
 echo '-> Universal variables'
 set --universal FZF_LEGACY_KEYBINDINGS 0

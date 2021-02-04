@@ -1,6 +1,5 @@
-barnybug/docker-fish-completion
+jorgebucaran/fisher
 TSFoster/docker-tools
-ohanhi/fish-elm-completions
 jethrokuan/fzf
 fisherman/getopts
 TSFoster/posix-source
