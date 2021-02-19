@@ -12,6 +12,7 @@
 /fish/fishd.*
 /fish/fisher
 /fisher
+/gatsby/
 /gcloud/
 /git/credentials.gitconfig
 /gh/
