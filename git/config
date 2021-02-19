@@ -1,16 +1,36 @@
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+[core]
+  pager = less -FRSX
+  autocrlf = input
+  editor = nvr --remote-tab-wait-silent
+[diff]
+  tool = nvr
+[difftool "nvr"]
+  cmd = nvr -s -d $LOCAL $REMOTE
+[include]
+  path = credentials.gitconfig
+  path = aliases.gitconfig
+[init]
+  templatedir = ~/.config/git/templatedir
+[merge]
+  tool = nvr
+[mergetool]
+  keepBackup = false
+[mergetool "nvr"]
+  cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
+[pull]
+  ff = only
+[push]
+  default = simple
+[rerere]
+  enabled = true
+  autoupdate = true
 [user]
   name = T.S. Foster
   email = hi@tsf.io
   signingkey = D037C418
-[include]
-  path = credentials.gitconfig
-  path = aliases.gitconfig
-  path = misc.gitconfig
-[diff]
-    tool = nvr
-[difftool "nvr"]
-    cmd = nvr -s -d $LOCAL $REMOTE
-[merge]
-    tool = nvr
-[mergetool "nvr"]
-    cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
