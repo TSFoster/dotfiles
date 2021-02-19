@@ -17,6 +17,7 @@
   path = aliases.gitconfig
 [init]
   templatedir = ~/.config/git/templatedir
+  defaultBranch = main
 [merge]
   tool = nvr
 [mergetool]
